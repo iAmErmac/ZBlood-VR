@@ -1,0 +1,237 @@
+ACTOR ProxScan : Ammo
+{
+   Inventory.MaxAmount 5
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 0
+   Inventory.Icon PROXA0
+   +IGNORESKILL
+}
+
+Actor ProximityDynamite : BloodWeaponZ
+{
+	Radius 20
+	Height 16
+	Scale 0.646
+	Inventory.PickUpMessage "Got proximity TNT!"
+	Inventory.PickUpSound "PICKWEAP"
+	Weapon.Selectionorder 880
+	Weapon.kickback 80
+	+NOGRAVITY
+	Weapon.AmmoGive 0
+	Weapon.AmmoType "DTNTAMMO"
+	Obituary "%o fell in %k's little trap!" //Returned the message from blood
+	Weapon.Ammouse 1
+	Weapon.Ammouse2	1
+	Weapon.AmmoType2	"DTNTAMMO"
+	Weapon.SlotNumber 6
+	+Weapon.Explosive
+	+NoAutoAim
+	+WEAPON.NOALERT
+	Tag "Proximity TNT"
+	
+	States
+	{
+	  Ready:
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" ABCD 3 A_WeaponReady
+		Loop
+	  DeselectDead:
+		//DYNT ABCDEABCDEABCDEABCDE 4 A_lower
+		"####" # 0 A_TakeInventory("ThrowPower",300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
+		Goto EXPLODE
+	  TakeAway:
+		"####" # 0 A_GiveInventory("RemoveProximity", 1)
+		"####" # 1 A_SelectWeapon("Pitchfork")
+		Goto DeselectAmmoLess
+	  Deselect:
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" # 0 A_TakeInventory("ThrowPower",300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" # 1 A_Lower(60)
+		Goto Deselect+4
+		"####" # 1 A_Lower
+		Goto Deselect+5
+	  DeselectAmmoLess:
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" # 1 A_Lower(60)
+		Goto DeselectAmmoLess+2
+		"####" # 1 A_Lower
+		Goto DeselectAmmoLess+3
+	  Select:
+		"####" # 0 A_TakeInventory("ThrowPower",300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" # 1 A_Raise(60)
+		Goto Select+4
+		"####" # 1 A_Raise
+		Goto Select+5
+	  Altfire:
+		Goto Throw
+	  Fire:
+	  //SPLG A 2  offset(-52,-72)
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" A 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" B 1 A_WeaponReady(14)
+		"####" # 0
+		Goto Throw
+	  Hold:
+		//"####" # 0 A_JumpIfInventory("ThrowPowerBig",90,"Boomination1")
+		"####" # 0 A_GiveInventory("TNTCounter", 1)
+		"####" # 0 A_JumpIfInventory("TNTCounter", 3, "Hold3")
+		"####" # 0 A_JumpIfInventory("TNTCounter", 2, "Hold2")
+		"####" # 0 A_JumpIfInventory("TNTCounter", 1, "Hold1")
+	  Hold1:
+		DPRO A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####"  AB 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+	  Goto Fire
+	  Hold2:
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####"  CD 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+	  Goto Fire	
+	  Hold3:
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####"  AB 2 A_WeaponReady(14)
+		"####" # 0 A_TakeInventory("TNTCounter", 3)
+		"####" # 0 A_Refire
+		"####" # 0 A_PlayWeaponSound("Spray/Can")
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+	  Goto Fire
+	// Flash:
+	//	ZIPP ABCDEFGH 1
+	//	ZIPP EDCBAIJ 1
+	//	Stop
+	  Throw:
+		"####" # 0 A_GunFlash 
+		//"####" # 0 A_JumpIfInventory("ThrowPower", 30, "Throw_15")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 28, "Throw_14")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 26, "Throw_13")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 24, "Throw_12")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 22, "Throw_11")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 20, "Throw_10")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 18, "Throw_9")  
+		"####" # 0 A_JumpIfInventory("ThrowPower", 16, "Throw_8")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 14, "Throw_7")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 12, "Throw_6")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 10, "Throw_5")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 8, "Throw_4")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 6, "Throw_3")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 4, "Throw_2")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 2, "Throw_1")
+		"####" # 0 A_FireCustomMissile("ProximityAerial1")
+		Goto ThrowFinish
+	  Throw_1:
+		"####" # 0 A_FireCustomMissile("ProximityAerial2")
+		Goto ThrowFinish
+	  Throw_2:
+		"####" # 0 A_JumpIfInventory("TNT2", 1, 2)
+		"####" # 0 A_FireCustomMissile("ProximityAerial3")
+		Goto ThrowFinish	
+	  Throw_3:
+		"####" # 0 A_FireCustomMissile("ProximityAerial4")
+		Goto ThrowFinish	
+	  Throw_4:
+		"####" # 0 A_FireCustomMissile("ProximityAerial5")
+		Goto ThrowFinish	
+	  Throw_5:
+		"####" # 0 A_FireCustomMissile("ProximityAerial6")
+		Goto ThrowFinish	
+	  Throw_6:
+		"####" # 0 A_FireCustomMissile("ProximityAerial7")
+		Goto ThrowFinish	
+	  Throw_7:
+		"####" # 0 A_FireCustomMissile("ProximityAerial8")
+		Goto ThrowFinish	
+	  Throw_8:
+		"####" # 0 A_FireCustomMissile("ProximityAerial9")
+		Goto ThrowFinish	
+	  Throw_9:
+		"####" # 0 A_FireCustomMissile("ProximityAerial10")
+		Goto ThrowFinish	
+	  Throw_10:
+		"####" # 0 A_FireCustomMissile("ProximityAerial11")
+		Goto ThrowFinish	
+	  Throw_11:
+		"####" # 0 A_FireCustomMissile("ProximityAerial12")
+		Goto ThrowFinish
+	  Throw_12:
+		"####" # 0 A_FireCustomMissile("ProximityAerial13")
+		Goto ThrowFinish	
+	  Throw_13:
+		"####" # 0 A_FireCustomMissile("ProximityAerial14")
+		Goto ThrowFinish	
+	  Throw_14:
+		"####" # 0 A_FireCustomMissile("ProximityAerial15")
+		Goto ThrowFinish	
+	  ThrowFinish:	//Why done without Offset? Because hand made is faster and more accurate!
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+		"####" # 0 A_PlayWeaponSound("TNTTOSS")
+		"####" # 0 A_TakeInventory("ThrowPower", 300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig", 300)
+		DPTS G 2
+		DPTS G 2 Offset(-3,0)
+		DPTS HI 2
+		DPTS J 1
+		DPTS J 1 Offset(0,7)
+		DPTS J 1 Offset(0,12)
+		DPTS J 1 Offset(0,20)
+		DPTS K 1 Offset(0,26)
+		DPTS K 1 Offset(2,36)
+		DPTS K 1 Offset(5,46)	
+		DPTS K 1 Offset(15,56)	
+		DPTS K 1 Offset(25,66)	
+		DPTS K 1 Offset(35,76)
+		DPTS K 10 Offset(35,120)	
+		//DPTS  GHIJK 3
+		//"####" # 0 A_JumpIfInventory("DTNTAMMO", 1, 1)
+		// Goto TakeAway
+		//TNT1 AAA 0 A_Lower
+		"####" # 0   A_JumpIfNoAmmo("TakeAway")
+		"####" A 0 A_ReplaceSprite("zblood_models", "DPRV")
+		"####" A 1 Offset(35,120)
+		"####" A 1 Offset(30,80)
+		"####" A 1 Offset(25,60)
+		"####" B 1 Offset(20,40)
+		"####" B 1 Offset(10,20)
+		"####" B 1 Offset(4,0)
+		// Goto TakeAway
+		goto Ready+2
+	  Spawn:
+		PROX A 1
+		stop
+	  Cannot:
+		"####" # 0 A_SelectWeapon("PitchFork")
+		Goto Deselect		
+	  Explode:
+		"####" # 0  A_TakeInventory("ThrowPower",255)//Moved.. now you explode then die Also no respawn boom
+		"####" # 0 A_SpawnItem("FloorKaboom")
+		"####" # 0 A_PlaySound("weapons/rocklx")
+		"####" AAAAAA 0 A_SpawnItemex("Blower",-16)
+		BLWS A 4 A_TakeInventory("ThrowPowerBig",255)
+		//"####" # 0 A_Explode(500, 128) //wtf is this op damage
+		BLWS B 8
+		BLWS C 5
+		Goto Ready
+	  Dummy:
+		DPRV ABCD 1
+		Stop
+	}
+}
+
+ACTOR ProximityDetonator : ProximityDynamite 15171
+{
+//$Category Blood Weapons
+	+WEAPON.CHEATNOTWEAPON
+}

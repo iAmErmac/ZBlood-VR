@@ -1,0 +1,6 @@
+ListMenu "SkillMenu"
+{
+	StaticPatch 96, 14, "M_NEWG", 0, "$MNU_NEWGAME"
+	StaticPatch 54, 38, "M_SKILL", 0, "$MNU_CHOOSESKILL"
+	Position 48, 63
+}

@@ -1,0 +1,314 @@
+//Weapon spawner
+
+ACTOR _FWeapAxe : RandomSpawner replaces FWeapAxe 8010
+{
+	DropItem "TommygunSpawner"
+}
+
+ACTOR _CWeapStaff : RandomSpawner replaces CWeapStaff 10
+{
+	DropItem "TommygunSpawner"
+}
+
+ACTOR _MWeapFrost : RandomSpawner replaces MWeapFrost 53
+{
+	DropItem "TommygunSpawner"
+}
+
+ACTOR _FWeapHammer : RandomSpawner replaces FWeapHammer 123
+{
+	DropItem "NapalmSpawner"
+}
+
+ACTOR _CWeapFlame : RandomSpawner replaces CWeapFlame 8009
+{
+	DropItem "NapalmSpawner"
+}
+
+ACTOR _MWeapLightning : RandomSpawner replaces MWeapLightning 8040
+{
+	DropItem "NapalmSpawner"
+}
+
+ACTOR _FWeaponPiece1 : RandomSpawner replaces FWeaponPiece1 12
+{
+	DropItem "TeslaRifleSpawner"
+}
+
+ACTOR _FWeaponPiece2 : RandomSpawner replaces FWeaponPiece2 13
+{
+	DropItem "LifeLeechSpawner"
+}
+
+ACTOR _FWeaponPiece3 : RandomSpawner replaces FWeaponPiece3 16
+{
+	DropItem "VoodooDollSpawner"
+}
+
+ACTOR _CWeaponPiece1 : RandomSpawner replaces CWeaponPiece1 18
+{
+	DropItem "TeslaRifleSpawner"
+}
+
+ACTOR _CWeaponPiece2 : RandomSpawner replaces CWeaponPiece2 19
+{
+	DropItem "LifeLeechSpawner"
+}
+
+ACTOR _CWeaponPiece3 : RandomSpawner replaces CWeaponPiece3 20
+{
+	DropItem "VoodooDollSpawner"
+}
+
+ACTOR _MWeaponPiece1 : RandomSpawner replaces MWeaponPiece1 21
+{
+	DropItem "TeslaRifleSpawner"
+}
+
+ACTOR _MWeaponPiece2 : RandomSpawner replaces MWeaponPiece2 22
+{
+	DropItem "LifeLeechSpawner"
+}
+
+ACTOR _MWeaponPiece3 : RandomSpawner replaces MWeaponPiece3 23
+{
+	DropItem "VoodooDollSpawner"
+}
+
+ACTOR _FWeapQuietus : RandomSpawner replaces FWeapQuietus
+{
+	DropItem "TeslaRifleSpawner"
+	DropItem "LifeLeechSpawner"
+	DropItem "VoodooDollSpawner"
+}
+
+ACTOR _CWeapWraithverge : RandomSpawner replaces CWeapWraithverge
+{
+	DropItem "TeslaRifleSpawner"
+	DropItem "LifeLeechSpawner"
+	DropItem "VoodooDollSpawner"
+}
+
+ACTOR _MWeapBloodscourge : RandomSpawner replaces MWeapBloodscourge
+{
+	DropItem "TeslaRifleSpawner"
+	DropItem "LifeLeechSpawner"
+	DropItem "VoodooDollSpawner"
+}
+
+
+//Ammo spawner
+
+Actor _Mana1 : RandomSpawner replaces Mana1 122
+{
+	DropItem "FlareShellSpawner", 256, 5
+	DropItem "ShellSpawner", 256, 3
+	DropItem "BulletSpawner", 256, 1
+	DropItem "HappyTNTBundle", 256, 1
+}
+
+Actor _Mana2 : RandomSpawner replaces Mana2 124
+{
+	DropItem "SprayCanisterSpawner", 256, 3
+	DropItem "HappyTNTBundle", 256, 3
+	DropItem "CellPickupSpawner", 256, 2
+	DropItem "EssencePowerSpawner", 256, 1
+	DropItem "FlareBoxSpawner", 256, 1
+}
+
+Actor _Mana3 : RandomSpawner replaces Mana3 8004
+{
+	DropItem "GasolineCanSpawner", 256, 3
+	DropItem "TrappedSoulSpawner", 256, 2
+	DropItem "ShellBundleSpawner", 256, 1
+	DropItem "BulletBoxSpawner", 256, 1
+	DropItem "TNTBoxSpawner", 256, 1
+	DropItem "ProxyBombBoxSpawner", 256, 1
+	DropItem "RemoteBombSpawner", 256, 1
+}
+
+
+//Item spawner
+
+ACTOR CrystalVial2 : CrystalVial
+{
+}
+
+Actor _CrystalVial : HealthVialSpawner replaces CrystalVial 8003
+{
+	//Here we spawn pistol
+}
+
+Actor ArtiHealth2 : ArtiHealth
+{
+}
+
+Actor _ArtiHealth : QuartzFlaskSpawner replaces ArtiHealth 8003
+{
+	//Here we spawn shotgun
+}
+
+Actor _AmuletOfWarding : AmuletSpawner replaces AmuletOfWarding 8008
+{
+	//Here we spawn spray can
+}
+
+Actor _PlatinumHelm : HelmSpawner replaces PlatinumHelm 8007
+{
+	//Here we spawn extra weapons
+}
+
+Actor _FalconShield : ShieldSpawner replaces FalconShield 8006
+{
+	//Here we spawn extra weapons
+}
+
+Actor _MeshArmor : MeshArmorSpawner replaces MeshArmor 8005
+{
+	//Here we spawn extra weapons
+}
+
+Actor _ArtiPoisonBag : RandomSpawner replaces ArtiPoisonBag 8000
+{
+	DropItem "HappyTNTBundle"
+}
+
+Actor _ArtiBoostMana : RandomSpawner replaces ArtiBoostMana 8003
+{
+	DropItem "HappyAmmoPack"
+}
+
+Actor _ArtiDarkServant : RandomSpawner replaces ArtiDarkServant 86
+{
+	DropItem "VoodooDollSpawner"
+}
+
+Actor _ArtiInvulnerability2 : RandomSpawner replaces ArtiInvulnerability2 84
+{
+	DropItem "DeathmaskSpawner"
+}
+
+Actor _ArtiBlastRadius : RandomSpawner replaces ArtiBlastRadius 10110
+{
+	DropItem "ReflectiveShotsSpawner"
+}
+
+Actor _ArtiSpeedBoots : RandomSpawner replaces ArtiSpeedBoots 8002
+{
+	DropItem "JumpingBootSpawner"
+}
+
+//Actor _ArtiHealingRadius : RandomSpawner replaces ArtiHealingRadius 10120
+//{
+//	DropItem "GunsAkimboSpawner", 256, 1
+//}
+
+Actor _ArtiTorch : RandomSpawner replaces ArtiTorch 33
+{
+	DropItem "BeastVisionSpawner"
+}
+
+Actor _ArtiBoostArmor : RandomSpawner replaces ArtiBoostArmor 8041
+{
+	DropItem "GunsAkimboSpawner", 256, 1
+}
+
+Actor ArtiPork2 : ArtiPork
+{
+}
+
+Actor _ArtiPork : RandomSpawner replaces ArtiPork 30
+{
+	DropItem "PorkalatorSpawner"
+}
+
+Actor _ArtiSuperHealth : RandomSpawner replaces ArtiSuperHealth 32
+{
+	DropItem "SuperHealthSpawner"
+}
+
+Actor HexenPot1 : Pottery1 replaces Pottery1 104
+{
+	States
+	{
+	Spawn:
+		POT1 A -1
+		Loop
+	Death:
+		POT1 A 0 A_PotteryExplode
+		TNT1 A 1 A_SpawnItem("BasicArsenalSpawner")
+		Stop
+	}
+}
+
+Actor HexenPot2 : HexenPot1 replaces Pottery2 105
+{
+	States
+	{
+	Spawn:
+		POT2 A -1
+		Loop
+	}
+}
+
+Actor HexenPot3 : HexenPot1 replaces Pottery3 106
+{
+	States
+	{
+	Spawn:
+		POT3 A -1
+		Loop
+	}
+}
+
+Actor HexenBarrel : ZBarrel replaces ZBarrel 8100
+{
+	Health 15
+	Radius 15
+	Height 32
+	Mass 1000
+	+SOLID
+	+SHOOTABLE
+	+NOBLOOD
+	+DROPOFF
+	+SLIDESONWALLS
+	+PUSHABLE
+	+TELESTOMP
+	+CANPASS
+	+NOICEDEATH
+	DropItem "BarrelLoots"
+	
+	States
+	{
+	Spawn:
+		ZBAR A -1
+		Stop
+	Death:
+		ZBAR B 2 A_PlaySound("FlechetteExplode")
+		ZBAR C 2
+		ZBAR D 2 A_NoBlocking
+		ZBAR EFG 2
+		ZBAR H 100
+	FadeOut:
+		ZBAR H 5 A_FadeOut
+		Loop
+	}
+}
+
+Actor HexenSittingCorpse : ZCorpseSitting
+{
+}
+
+Actor _ZCorpseSitting : SittingCorpseSpawner replaces ZCorpseSitting 110
+{
+	//We spawn extra weapons here
+}
+
+Actor HexenSleepingCorpse : ZCorpseSleeping
+{
+}
+
+Actor _ZCorpseSleeping : SleepingCorpseSpawner replaces ZCorpseSleeping 62
+{
+	//We spawn extra weapons here
+}

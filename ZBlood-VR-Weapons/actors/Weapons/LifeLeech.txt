@@ -1,0 +1,277 @@
+Actor LifeLeechHealth : Health
+{
+	inventory.amount 1
+	inventory.maxamount 100
+	-COUNTITEM
+}
+
+ACTOR LifeLeechAltFireMissile
+{
+	Radius 6
+	Height 8
+	Scale 0.65
+	Speed 24
+	FastSpeed 34
+	deathsound "SARGFX"
+    DamageType "Voodoo"
+	Damage (random (40,70))
+	renderstyle Add
+	alpha 0.9
+	PROJECTILE
+	+RANDOMIZE
+	States 
+	{
+		Spawn:
+			EYEB ABCD 1 bright
+			Loop
+		Death:
+			BAL2 E 0
+			Stop
+	}
+}
+
+actor LifeLeechBuddy : BloodActorZ
+{
+  radius 20
+  height 64
+  Scale 0.8
+  Mass 100
+  Speed 8
+  PainChance 200
+  ConversationID 888
+  +FLOORCLIP
+  +NOBLOOD
+  +USESPECIAL
+  -SOLID
+  +FRIENDLY
+  States
+  {
+  Spawn:
+	LLSP A 0 NoDelay A_ReplaceSprite("zblood_models", "LSPV")
+    "####" A 1 Thing_SetSpecial(0,80,765,0,0)
+    "####" A 10 A_Look
+    Loop
+  See:
+	LLSP A 0 A_ReplaceSprite("zblood_models", "LSPV")
+    "####" A 1 Thing_SetSpecial(0,80,765,0,0)
+    "####" A 3 A_Chase("Melee","Melee",CHF_DONTMOVE)
+    Loop
+  Melee:
+  Missile:
+	LLSP A 0 A_ReplaceSprite("zblood_models", "LSPV")
+    "####" A 1 Thing_SetSpecial(0,80,765,0,0)
+    "####" A 8 A_FaceTarget
+    "####" A 35 A_CustomMissile("LifeLeechAltFireMissile")
+    Goto See
+  Use:
+    "####" A 1
+	Stop
+  Dummy:
+	LSPV A 1
+	Stop
+  }
+}
+
+actor LifeLeech : BloodWeaponZ replaces BFG9000
+{
+//$Category Blood Weapons
+//$Title Life Leech
+	inventory.pickupmessage "You found the Life Leech!"
+	inventory.pickupsound "PICKWEAP"
+	Obituary "%o had %p soul sucked dry by %k."
+	DamageType "LifeLeechFlame"
+	+NOGRAVITY
+	+WEAPON.NOALERT
+	radius 20
+	height 16
+	Scale 0.8
+    weapon.selectionorder 400
+    weapon.kickback 100
+	Weapon.BobSpeed 0.8
+	Weapon.BobStyle Smooth
+	Weapon.BobRangeX 0.5
+	Weapon.BobRangeY 0.5
+	weapon.ammotype1 "EssencePower"
+	weapon.ammotype2 "EssencePower"
+	weapon.ammouse1 0
+	weapon.ammouse2 0
+	weapon.ammogive 30
+	attacksound "LLFireInitiate"
+	Weapon.SlotNumber 9
+	Tag "Life Leech"
+	
+	states
+	{
+	Spawn:
+		LLSP A -1
+		Stop
+	Ready:
+		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
+		"####" # 1 A_WeaponReady
+		loop
+	Select:
+		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" # 1 A_Raise(60)
+		Goto Deselect+2
+		"####" # 1 A_Raise
+		Goto Deselect+3
+	Deselect:
+		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" # 1 A_Lower(60)
+		Goto Deselect+2
+		"####" # 1 A_Lower
+		Goto Deselect+3
+	AltFire:
+		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
+		"####" # 1 ACS_NamedExecuteAlways("LifeLeech_Buddy")
+		"####" # 1 A_SpawnItemEX("LifeLeechBuddy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0,tid+700)
+		"####" # 1 A_TakeInventory("LifeLeech",1)
+		Goto Ready
+	Fire:
+		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
+		"####" # 0 A_AlertMonsters
+		//LLSL ABCDE 1 A_WeaponReady(14)
+		"####" AAAAA 1 A_WeaponReady(14)
+		"####" # 0 A_PlayWeaponSound("LLFire")
+		"####" B 3 A_WeaponReady(14)
+		"####" E 2 A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_SpawnItemEx("LifeLeechTwinkle",random(-3,3),random(-5,5),random(40,50))
+		"####" # 0 A_SpawnItemEx("LifeLeechTwinkle",random(-3,3),random(-5,5),random(40,50))
+		"####" # 0 A_SpawnItemEx("LifeLeechTwinkle",random(-3,3),random(-5,5),random(40,50))
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" F 3 bright A_WeaponReady(14)
+		"####" C 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" G 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" H 3 bright A_WeaponReady(14)
+		"####" I 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" J 3 bright A_WeaponReady(14)
+		"####" D 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" K 3 bright A_WeaponReady(14)
+		"####" L 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" M 3 bright A_WeaponReady(14)
+		"####" N 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" O 3 bright A_WeaponReady(14)
+		"####" P 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" Q 3 bright A_WeaponReady(14)
+		"####" R 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner3", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" S 3 bright A_WeaponReady(14)
+		"####" T 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner3", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" U 3 bright A_WeaponReady(14)
+		"####" W 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner3", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" X 3 bright A_WeaponReady(14)
+		"####" Y 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner3", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		"####" Z 3 bright A_WeaponReady(14)
+		//LLS2 C 2 bright A_WeaponReady(14)
+		"####" A 2 bright A_WeaponReady(14)
+		"####" # 0 ACS_ExecuteAlways(603, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		//LLS2 G 3 bright A_WeaponReady(14)
+		"####" A 3 bright A_WeaponReady(14)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_SpawnItemEx("LifeLeechLightSpawner2", 0, 0, 0)
+		"####" # 0 A_GunFlash
+		"####" # 0 A_FireCustomMissile("LifeLeechShot", random(-80,80)/10.0, 1, 5, 3, 0, random(-40,40)/10.0) 
+		//LLSA AB 3 A_WeaponReady(14)
+		"####" AB 3 A_WeaponReady(14)
+		"####" B 3 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		//LLSL EDCBA 1 A_WeaponReady(14)			
+		"####" AAAAA 1 A_WeaponReady(14)
+		goto ready
+	Dummy:
+		LSTV ABCDEFGHIJKLMNOPQRSTUVWXYZ 1
+		LSLV ABCDE 1
+		LSAV AB 1
+	}
+}
+
+actor LifeLeechLightSpawner2
+{
+	Radius 8
+	Height 8
+	Scale 0.5
+	States
+	{
+		Spawn:
+		OMG2 A 4
+		OMG2 A 1
+		Stop
+	}
+}
+
+actor LifeLeechLightSpawner3
+{
+	Radius 8
+	Height 8
+	Scale 0.5
+	States
+	{
+		Spawn:
+		OMG3 A 4
+		OMG3 A 1
+		Stop
+	}
+}

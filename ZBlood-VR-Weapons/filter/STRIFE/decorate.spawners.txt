@@ -1,0 +1,199 @@
+//Weapon spawner
+
+ACTOR _StrifeCrossbow : SawedoffSpawner replaces StrifeCrossbow 2001
+{
+	ConversationID 194
+}
+
+ACTOR _StrifeCrossbow2 : _StrifeCrossbow replaces StrifeCrossbow2 
+{
+}
+
+ACTOR _AssaultGun : TommygunSpawner replaces AssaultGun 2002 //replaces rifle
+{
+	ConversationID 188 //250 Gold
+}
+
+ACTOR _AssaultGunStanding : EssentianWeaponSpawner replaces AssaultGunStanding 2006
+{
+	ConversationID 189
+}
+
+ACTOR _Flamethrower : SprayCanSpawner replaces Flamethrower 2005
+{
+	ConversationID 190
+}
+
+ACTOR _MiniMissileLauncher : NapalmSpawner replaces MiniMissileLauncher 2003
+{
+	ConversationID 192
+}
+
+ACTOR _StrifeGrenadeLauncher : _MiniMissileLauncher replaces StrifeGrenadeLauncher 154
+{
+	ConversationID 195
+}
+
+ACTOR _StrifeGrenadeLauncher2 : _MiniMissileLauncher replaces StrifeGrenadeLauncher2
+{
+}
+
+ACTOR _Mauler : LifeLeechSpawner replaces Mauler 2004
+{
+	ConversationID 193
+}
+
+ACTOR _Mauler2 : LifeLeechSpawner replaces Mauler2
+{
+}
+
+
+//Ammo spawner
+
+ACTOR _ElectricBolts : ShellSpawner replaces ElectricBolts 114
+{
+	ConversationID 186
+}
+
+ACTOR _PoisonBolts : ShellBundleSpawner replaces PoisonBolts 115
+{
+	ConversationID 102
+}
+
+ACTOR _ClipOfBullets : EssentialAmmoSpawner replaces ClipOfBullets 2007
+{
+	ConversationID 179
+}
+
+ACTOR _BoxofBullets : BulletBoxSpawner replaces BoxofBullets 2048
+{
+	ConversationID 180
+}
+
+ACTOR _EnergyPod : CellPickupSpawner replaces EnergyPod 2047
+{
+	ConversationID 183
+}
+
+ACTOR _EnergyPack : PowerAmmoSpawner replaces EnergyPack 17
+{
+	ConversationID 184
+}
+
+ACTOR _MiniMissiles : GasolineCanSpawner replaces MiniMissiles 2010
+{
+	ConversationID 181
+}
+
+ACTOR _CrateOfMissiles : PowerAmmoSpawner replaces CrateOfMissiles 2046
+{
+	ConversationID 182
+}
+
+ACTOR _HEGrenadeRounds : BasicAmmoSpawner replaces HEGrenadeRounds 152
+{
+	ConversationID 177
+}
+
+ACTOR _PhosphorusGrenadeRounds : AdvancedAmmoSpawner replaces PhosphorusGrenadeRounds 153
+{
+	ConversationID 178
+}
+
+
+//Item spawner
+
+Actor _AmmoFillup : BloodAmmoRefill replaces AmmoFillup
+{
+	ConversationID 298
+}
+
+Actor _AmmoSatchel : HappyAmmoPack replaces AmmoSatchel 183
+{
+	ConversationID 187
+}
+
+Actor _ShadowArmor : BloodPowerItemsSpawner replaces ShadowArmor
+{
+	ConversationID 160
+}
+
+Actor _EnvironmentalSuit : BloodWearablesSpawner replaces EnvironmentalSuit
+{
+	ConversationID 161
+}
+
+Actor _LeatherArmor : BigArmorSpawner replaces LeatherArmor
+{
+	ConversationID 130
+}
+
+Actor _MetalArmor : SuperArmorSpawner replaces MetalArmor
+{
+	ConversationID 129
+}
+
+
+//Weapon spawner for map or quest specific objects
+
+//Chalice
+ACTOR StrifeOfferingChalice : Inventory
+{
+  +DROPPED
+  +FLOORCLIP
+  +INVENTORY.INVBAR
+  +FIXMAPTHINGPOS
+  Radius 10
+  Height 16
+  Tag "$TAG_OFFERINGCHALICE" // "Offering Chalice"
+  Inventory.Icon "I_RELC"
+  Inventory.PickupMessage "$TXT_OFFERINGCHALICE" // "You picked up the Offering Chalice."
+  Inventory.GiveQuest 2
+  ConversationID 174
+  States
+  {
+  Spawn:
+    RELC A -1
+    Stop
+  }
+}
+Actor _OfferingChalice : ChaliceItemSpawner replaces OfferingChalice
+{
+  ConversationID 174
+}
+
+//Targeter item
+ACTOR StrifeTargeter : PowerupGiver
+{
+  +FLOORCLIP
+  +INVENTORY.INVBAR
+  -INVENTORY.FANCYPICKUPSOUND
+  +FIXMAPTHINGPOS
+  Tag "$TAG_TARGETER" // "Targeter"
+  Powerup.Type "Targeter"
+  Inventory.MaxAmount 5
+  Inventory.Icon "I_TARG"
+  Inventory.PickupSound "misc/i_pkup"
+  Inventory.PickupMessage "$TXT_TARGETER" // "You picked up the Targeter."
+  ConversationID 167
+  States
+  {
+  Spawn:
+    TARG A -1
+    Stop
+  }
+}
+Actor _Targeter : TargeterSpawner replaces Targeter 207 
+{
+  ConversationID 167
+}
+
+ACTOR StrifeBurningBarrel2: StrifeBurningBarrel replaces StrifeBurningBarrel 70
+{
+  States
+  {
+  Spawn:
+    BBRL ABCD 4 Bright
+    Loop
+  }
+}

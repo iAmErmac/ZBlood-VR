@@ -1,0 +1,67 @@
+/*
+------- These affect fire armor -------
+*/
+
+// Gargoyle leader fireball
+Actor BloodImpBall: HereticImpBall replaces HereticImpBall
+{
+	DamageType "Fire"
+}
+
+// Iron lich fire projectile
+Actor BloodHeadFX3: HeadFX3 replaces HeadFX3
+{
+	DamageType "Fire"
+}
+
+// Beast fire projectile
+Actor BloodBeastBall: BeastBall replaces BeastBall
+{
+	DamageType "Fire"
+}
+
+// Snake fire projectile
+Actor BloodSnakeProjB: SnakeProjB replaces SnakeProjB
+{
+	DamageType "Fire"
+}
+
+// Minotaur fire projectile
+Actor BloodMinotaurFX1: MinotaurFX1 replaces MinotaurFX1
+{
+	DamageType "Fire"
+}
+
+// Minotaur fire line
+Actor BloodMinotaurFX2: MinotaurFX2 replaces MinotaurFX2
+{
+	DamageType "Fire"
+}
+
+/*
+------- These affect spirit armor -------
+*/
+
+// Mummy leader skull projectile
+Actor BloodMummyFX1: MummyFX1 replaces MummyFX1
+{
+	DamageType "Spiritual"
+}
+
+// Knight green axe
+Actor BloodKnightAxe: KnightAxe replaces KnightAxe
+{
+	DamageType "Spiritual"
+}
+
+// Iron lich tornado attack
+Actor BloodWhirlwind: Whirlwind replaces Whirlwind
+{
+	DamageType "Spiritual"
+}
+
+// Wizard purple orbs
+Actor BloodWizardFX1: WizardFX1 replaces WizardFX1
+{
+	DamageType "Spiritual"
+}

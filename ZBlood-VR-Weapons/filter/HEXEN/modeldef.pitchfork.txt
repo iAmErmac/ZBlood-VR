@@ -1,0 +1,22 @@
+Model Pitchfork2
+{ 
+   Path "models/weapons/pitchfork"
+   Model 0 "pitchfork.md3"
+   Skin 0 "pitchfork.png"
+   
+   Scale -1.8 1.8 1.8
+   Offset 5.0 -25.0 -15.0
+   
+   //Ready
+   FrameIndex PITC A 0 0
+   
+   //Fire
+   FrameIndex PITC B 0 4
+   FrameIndex PITC C 0 5
+   Offset 5.0 -35.0 -15.0
+   FrameIndex PITC D 0 5
+   Offset 5.0 -25.0 -15.0
+   FrameIndex PITC E 0 5
+   FrameIndex PITC F 0 4
+   FrameIndex PITC G 0 0
+}

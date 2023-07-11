@@ -1,0 +1,269 @@
+//------------- 3D MODELS -------------
+
+Model Spraycan
+{ 
+   Path "models/3d/weapons/Spraycan"
+   Model 0 "Spraycan.md3"
+   SurfaceSkin 0 0 "lighter.png"
+   SurfaceSkin 0 1 "Spraycan.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Ready
+   FrameIndex SPRR A 0 2
+   FrameIndex SPRR B 0 0
+   FrameIndex SPRR C 0 1
+   
+   //Fire
+   FrameIndex SPRF A 0 42
+   FrameIndex SPRF B 0 40
+   FrameIndex SPRF C 0 41
+}
+
+//Select
+Model Spraycan
+{ 
+   Path "models/3d/weapons/Spraycan"
+   Model 0 "Spraycan.md3"
+   SurfaceSkin 0 0 "lighter.png"
+   SurfaceSkin 0 1 "empty.png"
+   Model 1 "Spraycan.md3"
+   SurfaceSkin 1 0 "empty.png"
+   SurfaceSkin 1 1 "Spraycan.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Select
+   FrameIndex SPRC A 0 5	FrameIndex SPRC A 1 5
+   FrameIndex SPRC B 0 6	FrameIndex SPRC B 1 6
+   FrameIndex SPRC C 0 7	FrameIndex SPRC C 1 7
+   FrameIndex SPRC D 0 9	FrameIndex SPRC D 1 9
+   FrameIndex SPRC E 0 10	FrameIndex SPRC E 1 9
+   FrameIndex SPRC F 0 11	FrameIndex SPRC F 1 9
+   FrameIndex SPRC G 0 12	FrameIndex SPRC G 1 9
+}
+
+Model Spraycan
+{ 
+   Path "models/3d/weapons/Spraycan"
+   Model 0 "Spraycan.md3"
+   SurfaceSkin 0 0 "lighter.png"
+   SurfaceSkin 0 1 "Spraycan.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Ignite
+   FrameIndex SPLG A 0 14
+   FrameIndex SPLG B 0 15
+   FrameIndex SPLG C 0 16
+   FrameIndex SPLG D 0 17
+   FrameIndex SPLG E 0 18
+   FrameIndex SPLG F 0 19
+   FrameIndex SPLG G 0 20
+   
+   //Hold
+   FrameIndex SPAF A 0 21
+   FrameIndex SPAF B 0 22
+   FrameIndex SPAF C 0 23
+   FrameIndex SPAF D 0 24
+   FrameIndex SPAF E 0 25
+   FrameIndex SPAF F 0 26
+   FrameIndex SPAF G 0 24
+   
+   //Throw
+   FrameIndex DYHN A 0 27
+}
+
+//Lighter only
+Model Spraycan
+{ 
+   Path "models/3d/weapons/tnt"
+   Model 0 "lighter.md3"
+   Skin 0 "lighter.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Throw finish
+   FrameIndex DYHN B 0 2
+   FrameIndex DYHN C 0 0
+   FrameIndex DYHN D 0 1
+   FrameIndex DYHN E 0 0
+   FrameIndex DYHN F 0 2
+   FrameIndex DYHN G 0 0
+   FrameIndex DYHN H 0 1
+   FrameIndex DYHN I 0 0
+   FrameIndex DYHN J 0 2
+}
+
+//Lighter only - deselect
+Model Spraycan
+{ 
+   Path "models/3d/weapons/tnt"
+   Model 0 "lighter.md3"
+   Skin 0 "lighter.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Throw finish
+   FrameIndex ZIPD A 0 33
+   FrameIndex ZIPD B 0 34
+   FrameIndex ZIPD C 0 35
+   FrameIndex ZIPD D 0 36
+}
+
+//Flame overlays on canister
+Model Spraycan
+{ 
+   Path "models/3d/weapons/spraycan"
+   Model 0 "flame.md3"
+   Skin 0 "fire1.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Ignite
+   FrameIndex SPLF A 0 0
+   Skin 0 "fire2.png"
+   FrameIndex SPLF B 0 1
+   Skin 0 "fire3.png"
+   FrameIndex SPLF C 0 2
+   Skin 0 "fire1.png"
+   FrameIndex SPLF D 0 3
+   Skin 0 "fire2.png"
+   FrameIndex SPLF E 0 4
+   
+   //Hold
+   FrameIndex SPLF F 0 5
+   Skin 0 "fire3.png"
+   FrameIndex SPLF G 0 6
+   Skin 0 "fire1.png"
+   FrameIndex SPLF H 0 7
+   Skin 0 "fire2.png"
+   FrameIndex SPLF I 0 8
+   Skin 0 "fire3.png"
+   FrameIndex SPLF J 0 9
+   Skin 0 "fire1.png"
+   FrameIndex SPLF K 0 10
+   Skin 0 "fire2.png"
+   FrameIndex SPLF L 0 8
+   
+   //Throw
+   FrameIndex SPLF M 0 11
+}
+
+//------------- VOXEL MODELS -------------
+
+//Select
+Model Spraycan
+{ 
+   Path "models/voxel/weapons/Spraycan"
+   Model 0 "Spraycan.md3"
+   Skin 0 "spraycan_tex.png"
+   Model 1 "zippo.md3"
+   Skin 1 "zippo_tex.png"
+   Model 2 "zippo_flame.md3"
+   Skin 2 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Ready
+   FrameIndex SPRV A 0 5	FrameIndex SPRV A 1 5	FrameIndex SPRV A 2 5
+   FrameIndex SPRV B 0 5	FrameIndex SPRV B 1 5	FrameIndex SPRV B 2 7
+   FrameIndex SPRV C 0 5	FrameIndex SPRV C 1 5	FrameIndex SPRV C 2 6
+   
+   //Select
+   FrameIndex SPCV A 0 0	FrameIndex SPCV A 1 0	FrameIndex SPCV A 2 0
+   FrameIndex SPCV B 0 0	FrameIndex SPCV B 1 1	FrameIndex SPCV B 2 1
+   FrameIndex SPCV C 0 0	FrameIndex SPCV C 1 2	FrameIndex SPCV C 2 2
+   FrameIndex SPCV D 0 0	FrameIndex SPCV D 1 4	FrameIndex SPCV D 2 4
+   FrameIndex SPCV E 0 0	FrameIndex SPCV E 1 4	FrameIndex SPCV E 2 5
+   FrameIndex SPCV F 0 0	FrameIndex SPCV F 1 4	FrameIndex SPCV F 2 6
+   FrameIndex SPCV G 0 0	FrameIndex SPCV G 1 4	FrameIndex SPCV G 2 7
+   
+   //Fire
+   FrameIndex SPFV A 0 6	FrameIndex SPFV A 1 5	FrameIndex SPFV A 2 6
+   FrameIndex SPFV B 0 6	FrameIndex SPFV B 1 5	FrameIndex SPFV B 2 7
+   FrameIndex SPFV C 0 6	FrameIndex SPFV C 1 5	FrameIndex SPFV C 2 6
+}
+
+Model Spraycan
+{ 
+   Path "models/voxel/weapons/Spraycan"
+   Model 0 "Spraycan.md3"
+   Skin 0 "spraycan_tex.png"
+   Model 1 "zippo.md3"
+   Skin 1 "zippo_tex.png"
+   Model 2 "zippo_flame.md3"
+   Skin 2 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Ignite
+   FrameIndex SPLV A 0 8	FrameIndex SPLV A 1 8	FrameIndex SPLV A 2 8
+   FrameIndex SPLV B 0 9	FrameIndex SPLV B 1 9	FrameIndex SPLV B 2 9
+   FrameIndex SPLV C 0 10	FrameIndex SPLV C 1 10	FrameIndex SPLV C 2 10
+   FrameIndex SPLV D 0 11	FrameIndex SPLV D 1 11	FrameIndex SPLV D 2 11
+   FrameIndex SPLV E 0 12	FrameIndex SPLV E 1 12	FrameIndex SPLV E 2 12
+   FrameIndex SPLV F 0 14	FrameIndex SPLV F 1 14	FrameIndex SPLV F 2 14
+   FrameIndex SPLV G 0 15	FrameIndex SPLV G 1 15	FrameIndex SPLV G 2 15
+   
+   //Hold
+   FrameIndex SPAV A 0 15	FrameIndex SPAV A 1 15	FrameIndex SPAV A 2 15
+   FrameIndex SPAV B 0 15	FrameIndex SPAV B 1 15	FrameIndex SPAV B 2 16
+   FrameIndex SPAV C 0 15	FrameIndex SPAV C 1 15	FrameIndex SPAV C 2 17
+   FrameIndex SPAV D 0 15	FrameIndex SPAV D 1 15	FrameIndex SPAV D 2 18
+   FrameIndex SPAV E 0 15	FrameIndex SPAV E 1 15	FrameIndex SPAV E 2 19   
+   FrameIndex SPAV F 0 15	FrameIndex SPAV F 1 15	FrameIndex SPAV F 2 20
+   FrameIndex SPAV G 0 15	FrameIndex SPAV G 1 15	FrameIndex SPAV G 2 21
+   
+   //Throw
+   FrameIndex DYHV A 0 22	FrameIndex DYHV A 1 22	FrameIndex DYHV A 2 22
+}
+
+//Lighter only
+Model Spraycan
+{ 
+   Path "models/voxel/weapons/Spraycan"
+   Model 0 "zippo.md3"
+   Skin 0 "zippo_tex.png"
+   Model 1 "zippo_flame.md3"
+   Skin 1 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Throw finish
+   FrameIndex DYHV B 0 15	FrameIndex DYHV B 1 15
+   FrameIndex DYHV C 0 15	FrameIndex DYHV C 1 16
+   FrameIndex DYHV D 0 15	FrameIndex DYHV D 1 16
+   FrameIndex DYHV E 0 15	FrameIndex DYHV E 1 17
+   FrameIndex DYHV F 0 15	FrameIndex DYHV F 1 17
+   FrameIndex DYHV G 0 15	FrameIndex DYHV G 1 18
+   FrameIndex DYHV H 0 15	FrameIndex DYHV H 1 19
+   FrameIndex DYHV I 0 15	FrameIndex DYHV I 1 20
+   FrameIndex DYHV J 0 15	FrameIndex DYHV J 1 21
+}
+
+//Lighter only - deselect
+Model Spraycan
+{ 
+   Path "models/voxel/weapons/spraycan"
+   Model 0 "zippo.md3"
+   Skin 0 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   //Throw finish
+   FrameIndex ZIPV A 0 3
+   FrameIndex ZIPV B 0 2
+   FrameIndex ZIPV C 0 1
+   FrameIndex ZIPV D 0 0
+}

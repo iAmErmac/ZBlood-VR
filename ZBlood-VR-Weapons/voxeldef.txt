@@ -1,0 +1,42 @@
+
+MEGAA = "voxels/pickups/MEGAA.kvx"
+{
+	Spin = 20
+}
+MEGAB = "voxels/pickups/MEGAB.kvx"
+{
+	Spin = 20
+}
+MEGAC = "voxels/pickups/MEGAC.kvx"
+{
+	Spin = 20
+}
+MEGAD = "voxels/pickups/MEGAD.kvx"
+{
+	Spin = 20
+}
+MEGAE = "voxels/pickups/MEGAE.kvx"
+{
+	Spin = 20
+}
+
+SOULA = "voxels/pickups/SOULA.kvx"
+{
+	Spin = 20
+}
+SOULB = "voxels/pickups/SOULB.kvx"
+{
+	Spin = 20
+}
+SOULC = "voxels/pickups/SOULC.kvx"
+{
+	Spin = 20
+}
+SOULD = "voxels/pickups/SOULD.kvx"
+{
+	Spin = 20
+}
+SOULE = "voxels/pickups/SOULE.kvx"
+{
+	Spin = 20
+}

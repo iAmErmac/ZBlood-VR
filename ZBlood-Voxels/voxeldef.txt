@@ -1,0 +1,479 @@
+
+//gore
+
+POB2A = "voxels/gore/POB2A.kvx"
+{
+	scale = 2.0
+}
+POB2B = "voxels/gore/POB2A.kvx"
+{
+	scale = 2.0
+}
+
+//gibs
+
+BEYEA = "voxels/gibs/BEYEA.kvx"
+{
+	scale = 0.75
+}
+BLVRA = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+BLVRB = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+BLVRC = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+BLVRD = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+BLVRE = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+GUT1A = "voxels/gibs/GUT1A.kvx"
+{
+	scale = 0.75
+}
+GUT2A = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+GUT2B = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+GUT2C = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+GUT2D = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+GUT2E = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+HND1A = "voxels/gibs/HND1A.kvx"
+{
+	scale = 0.75
+}
+HND2A = "voxels/gibs/HND1A.kvx"
+{
+	scale = 0.75
+}
+POB1A = "voxels/gibs/GUT2A.kvx"
+{
+	scale = 0.75
+}
+POL5A = "voxels/gibs/BLVRA.kvx"
+{
+	scale = 0.75
+}
+
+//spraycan
+
+STOSA = "voxels/spraycan/STOSA.kvx"
+{
+	spin = 400
+}
+STOSB = "voxels/spraycan/STOSB.kvx"
+{
+	spin = 400
+}
+STOSC = "voxels/spraycan/STOSC.kvx"
+{
+	spin = 400
+}
+STOSD = "voxels/spraycan/STOSD.kvx"
+{
+	spin = 400
+}
+STOSE = "voxels/spraycan/STOSA.kvx"
+{
+	spin = 400
+}
+STOSF = "voxels/spraycan/STOSB.kvx"
+{
+	spin = 400
+}
+STOSG = "voxels/spraycan/STOSC.kvx"
+{
+	spin = 400
+}
+STOSH = "voxels/spraycan/STOSD.kvx"
+{
+	spin = 400
+}
+
+//tnt
+
+PTNTA = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTB = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTC = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTD = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTE = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTF = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTG = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+PTNTH = "voxels/tnt/PTNTA.kvx"
+{
+	spin = 400
+	scale = 0.8
+}
+
+ADYNI = "voxels/tnt/ADYNI.kvx"
+{
+	scale = 0.8
+}
+ADYNJ = "voxels/tnt/ADYNJ.kvx"
+{
+	scale = 0.8
+}
+ADYNK = "voxels/tnt/ADYNK.kvx"
+{
+	scale = 0.8
+}
+
+PTNTI = "voxels/tnt/PTNTI.kvx"
+{
+	scale = 0.8
+}
+PTNTJ = "voxels/tnt/PTNTJ.kvx"
+{
+	scale = 0.8
+}
+PTNTK = "voxels/tnt/PTNTK.kvx"
+{
+	scale = 0.8
+}
+
+TTNTA = "voxels/tnt/TTNTA.kvx"
+{
+	scale = 0.8
+}
+TTNTB = "voxels/tnt/TTNTB.kvx"
+{
+	scale = 0.8
+}
+TTNTC = "voxels/tnt/TTNTC.kvx"
+{
+	scale = 0.8
+}
+TTNTD = "voxels/tnt/TTNTD.kvx"
+{
+	scale = 0.8
+}
+TTNTE = "voxels/tnt/TTNTE.kvx"
+{
+	scale = 0.8
+}
+
+//cultist body
+
+YCULM = "voxels/monsters/browncultist/YCULM.kvx"
+{
+	scale = 0.75
+}
+YCULN = "voxels/monsters/browncultist/YCULN.kvx"
+{
+	scale = 0.75
+}
+YCULO = "voxels/monsters/browncultist/YCULO.kvx"
+{
+	scale = 0.75
+}
+PLAYN = "voxels/monsters/browncultist/YCULO.kvx"
+{
+	scale = 0.5
+}
+
+//zombie body
+
+BZODE = "voxels/monsters/zombie/BZODE.kvx"
+{
+	scale = 0.75
+}
+BZODS = "voxels/monsters/zombie/BZODS.kvx"
+{
+	scale = 0.75
+}
+
+//rat burnt body
+
+RABUI = "voxels/monsters/rat/RATBD.kvx"
+{
+	scale = 0.75
+}
+RABUJ = "voxels/monsters/rat/RATBE.kvx"
+{
+	scale = 0.75
+}
+RABUK = "voxels/monsters/rat/RATBF.kvx"
+{
+	scale = 0.75
+}
+RABUL = "voxels/monsters/rat/RATBG.kvx"
+{
+	scale = 0.75
+}
+RATBD = "voxels/monsters/rat/RATBD.kvx"
+{
+	scale = 0.75
+}
+RATBE = "voxels/monsters/rat/RATBE.kvx"
+{
+	scale = 0.75
+}
+RATBF = "voxels/monsters/rat/RATBF.kvx"
+{
+	scale = 0.75
+}
+RATBG = "voxels/monsters/rat/RATBG.kvx"
+{
+	scale = 0.75
+}
+
+//gargoyle body
+
+BGARP = "voxels/monsters/gargoyle/BGARP.kvx"
+{
+	scale = 0.75
+}
+TROOM = "voxels/monsters/gargoyle/BGARP.kvx"
+{
+	scale = 0.5
+}
+
+//moron body
+
+MORNO = "voxels/moron/MORNO.kvx"
+{
+	scale = 0.75
+}
+MORNP = "voxels/moron/MORNP.kvx"
+{
+	scale = 0.75
+}
+HORRA = "voxels/moron/HORRA.kvx"
+{
+	scale = 0.9
+}
+HORRC = "voxels/moron/HORRC.kvx"
+{
+	scale = 0.75
+}
+
+//zombiecan
+
+BZBRA = "voxels/props/BZBRA.kvx"
+{
+}
+BZBRB = "voxels/props/BZBRA.kvx"
+{
+}
+
+//corpse
+
+POL6A = "voxels/corpse/POL6A.kvx"
+{
+	scale = 0.7
+}
+POL6B = "voxels/corpse/POL6B.kvx"
+{
+	scale = 0.7
+}
+
+//props
+
+BRS1A = "voxels/props/BRS1A.kvx"
+{
+	scale = 0.6
+}
+BRS1B = "voxels/props/BRS1B.kvx"
+{
+	scale = 0.6
+}
+
+//barrel
+
+BAR1A = "voxels/props/BAR1A.kvx"
+{
+}
+BAR1B = "voxels/props/BAR1A.kvx"
+{
+}
+BBARA = "voxels/props/BAR1A.kvx"
+{
+}
+
+//lightpost
+
+TLP2A  = "voxels/lights/TLP2A.kvx"
+{
+}
+TLP2B  = "voxels/lights/TLP2A.kvx"
+{
+}
+TLP2C  = "voxels/lights/TLP2C.kvx"
+{
+}
+TLP2D  = "voxels/lights/TLP2C.kvx"
+{
+}
+TLP2E  = "voxels/lights/TLP2A.kvx"
+{
+}
+TLP2F  = "voxels/lights/TLP2A.kvx"
+{
+}
+
+//bucket
+
+PAILA  = "voxels/bucket/PAILA.kvx"
+{
+	scale = 0.75
+}
+PAILB  = "voxels/bucket/PAILB.kvx"
+{
+	scale = 0.75
+}
+PAILC  = "voxels/bucket/PAILC.kvx"
+{
+	scale = 0.75
+}
+PAILD  = "voxels/bucket/PAILD.kvx"
+{
+	scale = 0.75
+}
+PAILE  = "voxels/bucket/PAILE.kvx"
+{
+	scale = 0.75
+}
+PAILF  = "voxels/bucket/PAILF.kvx"
+{
+	scale = 0.75
+}
+PAILG  = "voxels/bucket/PAILG.kvx"
+{
+	scale = 0.75
+}
+PAILH  = "voxels/bucket/PAILH.kvx"
+{
+	scale = 0.75
+}
+PAILI  = "voxels/bucket/PAILI.kvx"
+{
+	scale = 0.75
+}
+PAILJ  = "voxels/bucket/PAILA.kvx"
+{
+	scale = 0.75
+}
+PAILK  = "voxels/bucket/PAILB.kvx"
+{
+	scale = 0.75
+}
+PAILL  = "voxels/bucket/PAILC.kvx"
+{
+	scale = 0.75
+}
+PAILM  = "voxels/bucket/PAILD.kvx"
+{
+	scale = 0.75
+}
+PAILN  = "voxels/bucket/PAILE.kvx"
+{
+	scale = 0.75
+}
+PAILO  = "voxels/bucket/PAILF.kvx"
+{
+	scale = 0.75
+}
+PAILP  = "voxels/bucket/PAILG.kvx"
+{
+	scale = 0.75
+}
+PAILQ  = "voxels/bucket/PAILH.kvx"
+{
+	scale = 0.75
+}
+PAILR  = "voxels/bucket/PAILI.kvx"
+{
+	scale = 0.75
+}
+
+//hanging bodies
+
+HDB5A = "voxels/corpse/HDB5A.kvx"
+{
+	scale = 0.8
+}
+GOR3A = "voxels/corpse/GOR3A.kvx"
+{
+	scale = 0.8
+}
+HDB1A = "voxels/corpse/HDB1A.kvx"
+{
+	scale = 0.8
+}
+HDB2A = "voxels/corpse/HDB2A.kvx"
+{
+	scale = 0.8
+}
+GOR2A = "voxels/corpse/GOR2A.kvx"
+{
+	scale = 0.8
+}
+GOR2Z = "voxels/corpse/GOR2A.kvx"
+{
+	scale = 0.8
+}
+GOR5A = "voxels/corpse/GOR5A.kvx"
+{
+	scale = 0.8
+}
+GOR5Z = "voxels/corpse/GOR5A.kvx"
+{
+	scale = 0.8
+}
+
+//gibbed body
+
+PLAYW = "voxels/corpse/PLAYW.kvx"
+{
+	scale = 0.8
+}

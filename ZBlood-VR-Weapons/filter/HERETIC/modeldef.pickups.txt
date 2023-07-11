@@ -1,0 +1,199 @@
+
+Model ShellSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_fewshell.md3"
+   Skin 0 "a_fewshell.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   //Alt fire
+   FrameIndex SHEL A 0 0
+}
+
+Model BulletSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_fewbullet.md3"
+   Skin 0 "a_fewbullet.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   //Alt fire
+   FrameIndex CLIP A 0 0
+}
+
+Model EssencePowerSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_soul.md3"
+   Skin 0 "a_soul.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   ZOffset 20
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex ESSE A 0 0
+}
+
+Model TrappedSoulSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_soul.md3"
+   Skin 0 "a_soul.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   ZOffset 15
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex ESSE A 0 0
+}
+
+Model CellPickup
+{ 
+   Path "models/ammo"
+   Model 0 "a_battery.md3"
+   Skin 0 "a_battery.png"
+   
+   Scale -2.8 2.8 2.8
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex TESC A 0 0
+}
+
+Model JumpingBoots
+{ 
+   Path "models/items"
+   Model 0 "i_boots.md3"
+   Skin 0 "i_boots.png"
+   
+   Scale -1.8 1.8 1.8
+   Offset 3 8 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex SUIT A 0 0
+}
+
+Model HappyAmmoPack
+{ 
+   Path "models/items"
+   Model 0 "i_pouch.md3"
+   Skin 0 "i_pouch.png"
+   
+   Scale -3.5 3.5 3.5
+   Offset 0 0 0
+   ZOffset 10
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex BPAK A 0 0
+}
+
+Model CloakOfShadow
+{ 
+   Path "models/items"
+   Model 0 "i_invisible.md3"
+   Skin 0 "i_invisible.png"
+   
+   Scale -2.2 2.2 2.2
+   Offset 0 0 0
+   ZOffset 10
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex INVS A 0 0
+   FrameIndex INVS B 0 1
+   FrameIndex INVS C 0 2
+   FrameIndex INVS D 0 3
+   FrameIndex INVS E 0 4
+   FrameIndex INVS F 0 5
+   FrameIndex INVS G 0 6
+   FrameIndex INVS H 0 7
+   FrameIndex INVS I 0 8
+   FrameIndex INVS J 0 9
+}
+
+Model ReflectiveShotsSpawner
+{ 
+   Path "models/items"
+   Model 0 "i_reflect.md3"
+   Skin 0 "i_reflect.png"
+   
+   Scale -1.8 1.8 1.8
+   Offset 0 0 0
+   ZOffset 15
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex MEGA A 0 0
+   FrameIndex MEGA B 0 1
+   FrameIndex MEGA C 0 2
+   FrameIndex MEGA D 0 3
+   FrameIndex MEGA E 0 4
+   FrameIndex MEGA F 0 5
+}
+
+Model LifeSeed
+{ 
+   Path "models/items"
+   Model 0 "i_seed.md3"
+   Skin 0 "i_seed.png"
+   
+   Scale -1.8 1.8 1.8
+   Offset 0 0 0
+   ZOffset 15
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex SPHL A 0 0
+   FrameIndex SPHL B 0 1
+   FrameIndex SPHL C 0 2
+   FrameIndex SPHL D 0 3
+   FrameIndex SPHL E 0 4
+   FrameIndex SPHL F 0 5
+   FrameIndex SPHL G 0 6
+   FrameIndex SPHL H 0 7
+   FrameIndex SPHL I 0 8
+   FrameIndex SPHL J 0 9
+   FrameIndex SPHL K 0 10
+   FrameIndex SPHL L 0 11
+   FrameIndex SPHL M 0 12
+   FrameIndex SPHL N 0 13
+   FrameIndex SPHL O 0 14
+   FrameIndex SPHL P 0 15
+   FrameIndex SPHL Q 0 16
+   FrameIndex SPHL R 0 17
+   FrameIndex SPHL S 0 18
+}
+
+Model BasicArmorPickup2
+{ 
+   Path "models/items"
+   Model 0 "i_basic.md3"
+   Skin 0 "i_basic.png"
+   
+   Scale -1.2 1.2 1.2
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex BARM A 0 0
+}

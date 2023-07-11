@@ -1,0 +1,132 @@
+Lock 1 Hexen
+{
+	//$Title "Steel key"
+	KeySteel
+	Message "$TXT_NEED_KEY_STEEL"
+	Mapcolor 150 150 150
+}
+
+
+Lock 2 Hexen
+{
+	//$Title "Cave key"
+	KeyCave
+	Message "$TXT_NEED_KEY_CAVE"
+	Mapcolor 255 218 0
+}
+
+
+Lock 3 Hexen
+{
+	//$Title "Axe key"
+	KeyAxe
+	Message "$TXT_NEED_KEY_AXE"
+	Mapcolor 64 64 255
+}
+
+
+Lock 4 Hexen
+{
+	//$Title "Fire key"
+	KeyFire
+	Message "$TXT_NEED_KEY_FIRE"
+	Mapcolor 255 128 0
+}
+
+
+Lock 5 Hexen
+{
+	//$Title "Emerald key"
+	KeyEmerald
+	Message "$TXT_NEED_KEY_EMERALD"
+	Mapcolor 0 255 0
+}
+
+
+Lock 6 Hexen
+{
+	//$Title "Dungeon key"
+	KeyDungeon
+	Message "$TXT_NEED_KEY_DUNGEON"
+	Mapcolor 47 151 255
+}
+
+
+Lock 7 Hexen
+{
+	//$Title "Silver key"
+	KeySilver
+	Message "$TXT_NEED_KEY_SILVER"
+	Mapcolor 154 152 188
+}
+
+
+Lock 8 Hexen
+{
+	//$Title "Rusted key"
+	KeyRusted
+	Message "$TXT_NEED_KEY_RUSTED"
+	Mapcolor 156 76 0
+}
+
+
+Lock 9 Hexen
+{
+	//$Title "Horn key"
+	KeyHorn
+	Message "$TXT_NEED_KEY_HORN"
+	Mapcolor 255 218 0
+}
+
+
+Lock 10 Hexen
+{
+	//$Title "Swamp key"
+	KeySwamp
+	Message "$TXT_NEED_KEY_SWAMP"
+	Mapcolor 64 255 64
+}
+
+
+Lock 11 Hexen
+{
+	//$Title "Castle key"
+	KeyCastle
+	Message "$TXT_NEED_KEY_CASTLE"
+	Mapcolor 255 64 64
+}
+
+
+Lock 101 Hexen
+{
+	//$Title "All keys"
+	KeySteel
+	KeyCave
+	KeyAxe
+	KeyFire
+	KeyEmerald
+	KeyDungeon
+	KeySilver
+	KeyRusted
+	KeyHorn
+	KeySwamp
+	KeyCastle
+	Message "$PD_ALLKEYS"
+}
+
+Lock 229 Hexen
+{
+	//$Title "All keys"
+	KeySteel
+	KeyCave
+	KeyAxe
+	KeyFire
+	KeyEmerald
+	KeyDungeon
+	KeySilver
+	KeyRusted
+	KeyHorn
+	KeySwamp
+	KeyCastle
+	Message "$PD_ALLKEYS"
+}

@@ -1,0 +1,49 @@
+/*
+------- These affect fire armor -------
+*/
+
+// Green Demon fireball
+Actor BloodDemon1FX1: Demon1FX1 replaces Demon1FX1
+{
+	DamageType "Fire"
+}
+
+// Heresiarch fire head
+Actor BloodSorcFX1: SorcFX1 replaces SorcFX1
+{
+	DamageType "Fire"
+}
+
+/*
+------- These affect spirit armor -------
+*/
+
+// centaur shield projectile
+Actor BloodCentaurFX: CentaurFX replaces CentaurFX
+{
+	DamageType "Spiritual"
+}
+
+// bishop projectile
+Actor BloodBishopFX: BishopFX replaces BishopFX
+{
+	DamageType "Spiritual"
+}
+
+// Wraithverge projectile
+Actor BloodHolyMissile: HolyMissile replaces HolyMissile
+{
+	DamageType "Spiritual"
+}
+
+// Wraithverge spirit
+Actor BloodHolySpirit: HolySpirit replaces HolySpirit
+{
+	DamageType "Spiritual"
+}
+
+// Heresiarch purple fireball
+Actor BloodSorcFX4: SorcFX4 replaces SorcFX4
+{
+	DamageType "Spiritual"
+}

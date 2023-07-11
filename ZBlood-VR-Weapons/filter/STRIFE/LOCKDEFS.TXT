@@ -1,0 +1,243 @@
+Lock 1 Strife
+{
+	//$Title "Base key"
+	BaseKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+
+Lock 2 Strife
+{
+	//$Title "Governor's key"
+	GovsKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+
+Lock 3 Strife
+{
+	//$Title "Travel passcard"
+	Passcard
+	RemoteMessage "$TXT_NEED_PASSCARD"
+	Message "$TXT_NEED_PASSCARD_DOOR"
+	Mapcolor 128 166 150
+}
+
+
+Lock 4 Strife
+{
+	//$Title "ID badge"
+	IDBadge
+	Message "$TXT_NEED_IDCARD"
+	Mapcolor 255 128 0
+}
+
+
+Lock 5 Strife
+{
+	//$Title "Prison key"
+	PrisonKey
+	Message "$TXT_NEED_PRISONKEY"
+	Mapcolor 0 255 0
+}
+
+
+Lock 6 Strife
+{
+	//$Title "Severed hand"
+	SeveredHand
+	Message "$TXT_NEED_HANDPRINT"
+	Mapcolor 255 151 100
+}
+
+
+Lock 7 Strife
+{
+	//$Title "Power key 1"
+	Power1Key
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+
+Lock 8 Strife
+{
+	//$Title "Power key 2"
+	Power2Key
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+
+Lock 9 Strife
+{
+	//$Title "Power key 3"
+	Power3Key
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+
+Lock 10 Strife
+{
+	//$Title "Gold key"
+	GoldKey
+	Message "$TXT_NEED_GOLDKEY"
+	Mapcolor 255 200 0
+}
+
+
+Lock 11 Strife
+{
+	//$Title "ID card"
+	IDCard
+	RemoteMessage "$TXT_NEED_IDBADGE"
+	Message "$TXT_NEED_IDBADGE_DOOR"
+	Mapcolor 200 0 0
+}
+
+Lock 12 Strife
+{
+	//$Title "Silver key"
+	SilverKey
+	Message "$TXT_NEED_SILVERKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 13 Strife
+{
+	//$Title "Oracle key"
+	OracleKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 14 Strife
+{
+	//$Title "Military key"
+	MilitaryID
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 15 Strife
+{
+	//$Title "Order key"
+	OrderKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 16 Strife
+{
+	//$Title "Warehouse key"
+	WarehouseKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 17 Strife
+{
+	//$Title "Brass key"
+	BrassKey
+	Message "$TXT_NEED_BRASSKEY"
+	Mapcolor 150 75 0
+}
+
+Lock 18 Strife
+{
+	//$Title "Red crystal key"
+	RedCrystalKey
+	Message "$TXT_NEED_REDCRYSTAL"
+	Mapcolor 150 150 150
+}
+
+Lock 19 Strife
+{
+	//$Title "Blue crystal key"
+	BlueCrystalKey
+	Message "$TXT_NEED_BLUECRYSTAL"
+	Mapcolor 150 150 150
+}
+
+Lock 20 Strife
+{
+	//$Title "Chapel key"
+	ChapelKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 21 Strife
+{
+	//$Title "Catacomb key"
+	CatacombKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 22 Strife
+{
+	//$Title "Security key"
+	SecurityKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 23 Strife
+{
+	//$Title "Core key"
+	CoreKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 24 Strife
+{
+	//$Title "Mauler key"
+	MaulerKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 25 Strife
+{
+	//$Title "Factory key"
+	FactoryKey
+	Message "$TXT_NEEDKEY"
+ 	Mapcolor 150 150 150
+}
+
+Lock 26 Strife
+{
+	//$Title "Mine key"
+	MineKey
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 27 Strife
+{
+	//$Title "New key 5"
+	NewKey5
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 50 Strife
+{
+	//$Title "Prison key"
+	PrisonPass
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}
+
+Lock 51 Strife
+{
+	//$Title "Oracle pass"
+	OraclePass
+	Message "$TXT_NEEDKEY"
+	Mapcolor 150 150 150
+}

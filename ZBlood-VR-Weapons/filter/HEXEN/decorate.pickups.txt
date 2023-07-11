@@ -1,0 +1,1103 @@
+Actor ExtraItemDrop
+{
+	Radius 1
+	Height 1
+	Speed 5
+	PROJECTILE
+	+NOCLIP
+}
+
+//Weapons
+
+Actor Pitchfork2: Pitchfork replaces Pitchfork
+{
+  +BLOODSPLATTER
+}
+
+Actor FlareFunSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("FlareGun",1)
+		Stop
+	}
+}
+
+Actor SawedoffSpawner
+{
+	-NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("Sawedoff",1)
+		Stop
+	}
+}
+
+Actor TommygunSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("Tommygun",1)
+		Stop
+	}
+}
+
+Actor SprayCanSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SprayCanisterPickup",1)
+		Stop
+	}
+}
+
+Actor TeslaRifleSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("TeslaRifle",1)
+		Stop
+	}
+}
+
+Actor NapalmSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("NapalmLauncher",1)
+		Stop
+	}
+}
+
+Actor LifeLeechSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("LifeLeech",1)
+		Stop
+	}
+}
+
+Actor VoodooDollSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("VoodooDollPickup",1)
+		Stop
+	}
+}
+
+Actor BasicArsenalSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander 
+		TNT1 A 0 A_Gravity
+		TNT1 A 0 A_Fall
+		TNT1 A 0 A_Jump(16, "SpawnA")
+		TNT1 A 0 A_Jump(32, "SpawnB")
+		Goto SpawnBonusAmmo
+	SpawnA:
+		TNT1 AAAAAAAAAA 1 A_Wander // a simple hack to scatter the drops
+		TNT1 A 0 A_DropItem("SprayCanSpawner")
+		Goto SpawnBonusAmmo
+	SpawnB:
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 0 A_DropItem("SawedoffSpawner")
+	SpawnBonusAmmo:
+		TNT1 A 0 A_DropItem("BasicAmmoSpawner")
+		Stop
+	}
+}
+
+Actor AdvancedArsenalSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 0 A_Fall
+		TNT1 A 1 A_Jump(32, "SpawnA", "SpawnB")
+		Goto SpawnBonusAmmo
+	SpawnA:
+		TNT1 A 1 A_DropItem("VoodooDollSpawner")
+		Goto SpawnBonusAmmo
+	SpawnB:
+		TNT1 A 1 A_DropItem("TeslaRifleSpawner")
+	SpawnBonusAmmo:
+		TNT1 A 1 A_DropItem("AdvancedAmmoSpawner")
+		Stop
+	}
+}
+
+
+//Ammo
+
+Actor FlareShellSpawner: CustomInventory
+{
+  Scale 0.5
+  inventory.pickupmessage "Picked up a couple of flares"
+  inventory.pickupsound "dsammoup"
+  states
+  {
+	Spawn:
+		FGR2 A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Flares", 2)
+		Stop
+  }
+}
+
+Actor FlareBoxSpawner: CustomInventory
+{
+  Scale 0.4
+  inventory.pickupmessage "Picked up a box of flares"
+  inventory.pickupsound "dsammoup"
+  states
+  {
+	Spawn:
+		FGRD A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Flares", 8)
+		Stop
+  }
+}
+
+Actor FlareBox2Spawner: CustomInventory
+{
+  Scale 0.6
+  inventory.pickupmessage "Picked up a big box of flares"
+  inventory.pickupsound "dsammoup"
+  states
+  {
+	Spawn:
+		FGRD A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Flares", 16)
+		Stop
+  }
+}
+
+Actor BulletSpawner: CustomInventory
+{
+	inventory.pickupmessage "Picked up a few bullets"
+	inventory.pickupsound "dsammoup"
+	Scale 0.7
+	+IGNORESKILL
+	States
+	{
+		Spawn:
+			CLIP A -1
+			Stop
+		Pickup:
+			TNT1 A 1 A_GiveInventory("Clip", 10)
+			Stop		
+	}
+}
+
+Actor BulletBoxSpawner: CustomInventory
+{
+	inventory.pickupmessage "Picked up a box of bullets"
+	inventory.pickupsound "dsammoup"
+	+IGNORESKILL
+	Scale 1
+	States
+	{
+		Spawn:
+			AMMO A -1
+			Stop
+		Pickup:
+			TNT1 A 1 A_GiveInventory("Clip", 25)
+			Stop		
+	}
+}
+
+Actor ShellSpawner: CustomInventory
+{
+	Inventory.PickupMessage "Picked up Shotgun shells"
+	inventory.pickupsound "dsammoup"
+	Inventory.amount 1
+	inventory.maxamount 100
+	Scale 1
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("shell", 2)
+		Stop
+	}
+}
+
+Actor ShellBundleSpawner: CustomInventory
+{
+	Inventory.PickupMessage "Picked up a box of shells"
+	inventory.pickupsound "dsammoup"
+	Inventory.amount 1
+	inventory.maxamount 100
+	Scale 0.5
+	States
+	{
+	Spawn:
+		SBOX A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("shell", 20)
+		Stop
+	}
+}
+
+Actor GasolineCanSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("GasolineCan")
+		Stop
+	}
+}
+
+Actor SprayCanisterSpawner: CustomInventory
+{
+	inventory.pickupmessage "Picked up a a spray can"
+	inventory.pickupsound "dsammoup"
+	Scale 0.8
+	+IGNORESKILL
+	
+	States
+	{
+		Spawn:
+			SPRY A -1
+		Stop
+		Pickup:
+			TNT1 A 1 A_GiveInventory("SprayCanister", 48)
+			TNT1 A 1 A_GiveInventory("SprayCan", 1)
+		Stop		
+	}
+}
+
+Actor CellPickupSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("CellPickup",1)
+		Stop
+	}
+}
+
+Actor EssencePowerSpawner: CustomInventory
+{
+   Radius 10
+   Inventory.Amount 12
+   Inventory.MaxAmount 100// Not 120
+   RenderStyle Shaded
+   Alpha 0.9
+   Scale 0.5
+   Inventory.PickupMessage "Picked up a poor soul"
+   inventory.pickupsound "dsammoup"
+  +FLOATBOB
+  +NOGRAVITY
+  
+   States
+   {
+   Spawn:
+		ESSE A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("EssencePower", 1)
+		Stop
+
+   }
+}
+
+Actor TrappedSoulSpawner: CustomInventory
+{
+   Radius 10
+   Inventory.Amount 12
+   Inventory.MaxAmount 100// Not 120
+   RenderStyle Translucent
+   Alpha 0.9
+   Scale 0.6
+   Inventory.PickupMessage "Picked up a poor soul"
+   inventory.pickupsound "dsammoup"
+  +FLOATBOB
+  +NOGRAVITY
+  
+   States
+   {
+   Spawn:
+		ESSE A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TrappedSoul", 1)
+		Stop
+
+   }
+}
+
+Actor TNTSpawner: CustomInventory
+{
+	inventory.pickupmessage "Picked up a TNT!"
+	inventory.pickupsound "dsammoup"
+	inventory.amount 1
+	inventory.maxamount 50
+	Scale 0.8
+	inventory.icon "TBNDA0"
+	States
+	{
+		Spawn:
+			TBND A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TNTAmmo", 1)
+			TNT1 A 0 A_GiveInventory("Dynamite", 1)
+			Stop
+	}
+}
+
+Actor TNTBoxSpawner
+{
+	Scale 0.8
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("TNTAmmoBox",1)
+		Stop
+	}
+}
+
+Actor ProxyBombSpawner: CustomInventory
+{
+	Inventory.PickupMessage "Picked up proximity TNT!"
+	inventory.pickupsound "dsammoup"
+	Inventory.amount 1
+	inventory.maxamount 50
+	Scale 0.5
+	Inventory.Icon "ProxA0"
+	States
+	{
+		Spawn:
+			PROX A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("DTNTAMMO", 1)
+			TNT1 A 0 A_GiveInventory("ProximityDynamite", 1)
+			Stop
+	}
+}
+
+Actor ProxyBombBoxSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("DTNTBOX",1)
+		Stop
+	}
+}
+
+Actor RemoteBombSpawner: CustomInventory
+{
+	Inventory.PickupMessage "Picked up remote TNT!"
+	inventory.pickupsound "dsammoup"
+	Inventory.amount 1
+	inventory.maxamount 50
+	Scale 0.5
+	Inventory.Icon "ProxA0"
+	States
+	{
+		Spawn:
+			REPK A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("RTNTAMMO", 1)
+			TNT1 A 0 A_GiveInventory("RemoteDynamite", 1)
+			Stop
+	}
+}
+
+Actor HappyTNTBundle : RandomSpawner
+{
+	DropItem "TNTBundle" 255 6
+	DropItem "ProxyBombSpawner" 255 1
+	DropItem "RemoteBombSpawner" 255 1
+}
+
+Actor BasicAmmoSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_Jump(16, "SpawnA")
+		TNT1 A 1 A_Jump(32, "SpawnB")
+		TNT1 A 1 A_Jump(64, "SpawnC")
+		TNT1 A 1 A_Jump(128, "SpawnD")
+		Stop
+	SpawnA:
+		TNT1 A 1 A_DropItem("EssencePowerSpawner")
+		Stop
+	SpawnB:
+		TNT1 A 1 A_DropItem("SprayCanisterSpawner")
+		Stop
+	SpawnC:
+		TNT1 A 1 A_DropItem("ShellSpawner")
+		Stop
+	SpawnD:
+		TNT1 A 1 A_DropItem("BulletSpawner")
+		Stop
+	}
+}
+
+Actor AdvancedAmmoSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_Jump(16, "SpawnA")
+		TNT1 A 1 A_Jump(32, "SpawnB")
+		TNT1 A 1 A_Jump(64, "SpawnC")
+		Stop
+	SpawnA:
+		TNT1 A 1 A_DropItem("TrappedSoulSpawner")
+		Stop
+	SpawnB:
+		TNT1 A 1 A_DropItem("CellPickupSpawner")
+		Stop
+	SpawnC:
+		TNT1 A 1 A_DropItem("GasolineCanSpawner")
+		Stop
+	}
+}
+
+//Items
+
+Actor HappyAmmoPack: CustomInventory
+{
+	Height 26
+	Inventory.PickupMessage "Picked up a pack of happy ammo!"
+	+FLOATBOB
+	+NOGRAVITY
+  
+	States
+	{
+	Spawn:
+		BPAK A -1
+		Loop
+	Pickup:
+		TNT1 A 0 A_Jump(256, "PickupA", "PickupB", "PickupC")
+		Stop
+	PickupA:
+		TNT1 A 1 A_GiveInventory("Flares",8)
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("SprayCanister",30)
+		TNT1 A 1 A_GiveInventory("EssencePower",20)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	PickupB:
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("Clip",20)
+		TNT1 A 1 A_GiveInventory("SprayCanister",48)
+		TNT1 A 1 A_GiveInventory("GasolineCan",6)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	PickupC:
+		TNT1 A 1 A_GiveInventory("Flares",8)
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("Clip",20)
+		TNT1 A 1 A_GiveInventory("TeslaCharge",30)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	}
+}
+
+Actor DeathmaskSpawner: PowerupGiver
+{
+  inventory.pickupmessage "Deathmask! Invulnerable!"
+  Inventory.Icon "DMASK"
+  powerup.type "Invulnerable"
+  +COUNTITEM
+  scale 0.7
+  powerup.color White 0.12
+  
+  states
+  {
+  Spawn:
+    PINV A -1 Bright
+	Stop
+  Use:
+    TNT1 A 0 A_GiveInventory("Deathmask", 1)
+	Stop
+  }
+}
+
+Actor ReflectiveShotsSpawner: PowerupGiver
+{
+  +COUNTITEM
+  +FLOATBOB
+  +NOGRAVITY
+  Inventory.PickupMessage "You got Reflective Shots"
+  Inventory.PickupSound "misc/p_pkup"
+  Renderstyle Translucent
+  Inventory.Icon "REFLECT"
+  powerup.type "Invulnerable"
+  powerup.mode Reflective
+  Powerup.Duration -30
+  powerup.color blue 0.25
+  Alpha 0.7
+  Scale 0.7
+  States
+  {
+  Spawn:
+    MEGA ABCDEF 6 BRIGHT
+    Loop
+  Use:
+    TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1)
+    TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
+    TNT1 A 0 A_GiveInventory("ReflectiveShots1", 1)
+    Stop
+  }
+}
+
+Actor DivingSuitSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("DivingSuit",1)
+		Stop
+	}
+}
+
+Actor JumpingBootSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("JumpingBoots",1)
+		Stop
+	}
+}
+
+actor GunsAkimboSpawner : PowerupGiver
+{
+  Scale 0.6
+  inventory.pickupmessage "Power of Akimbo!"
+  inventory.pickupsound "misc/p_pkup"
+  Inventory.Icon "AKIMBO"
+  
+  +COUNTITEM
+  +INVENTORY.FANCYPICKUPSOUND
+  +INVENTORY.BIGPOWERUP
+  powerup.type "WeaponLevel2"
+  powerup.duration 1250
+  states
+  {
+  Spawn:
+    PSTR A -1
+    stop
+  Use:
+    TNT1 A 0 A_GiveInventory ("GunsAkimbo1")
+    stop
+  }
+}
+
+Actor BeastVisionSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BeastVision",1)
+		Stop
+	}
+}
+
+Actor LifeSeed: ArtiSuperHealth
+{
+	Inventory.Icon "LIFESEED"
+	States
+	{
+	Spawn:
+		SPHL ABCDEFGHIJKLMNOPQR 1
+		TNT1 A 0 A_Jump(256, "StareA", "StareB")
+	StareA:
+		SPHL S 35
+	StareB:
+		SPHL S 35
+	CloseEye:
+		SPHL RQPONMLKJIHGFEDCB 1
+		TNT1 A 0 A_Jump(256, "SleepEyeA", "SleepEyeB")
+	SleepEyeA:
+		SPHL A 35
+	SleepEyeB:
+		SPHL A 35
+		Goto Spawn
+	}
+}
+
+Actor ArmorFragment: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("BodyArmor", 5)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor FireArmorFragment: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Fire Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARMF A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("FireArmor",5)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("FireArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SpiritArmorFragment: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Spirit Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			SARM A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 5)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("SpiritArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor ArmorFragmentSpawner
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
+		SpawnA:
+			TNT1 A 1 A_DropItem("ArmorFragment")
+			Stop
+		SpawnB:
+			TNT1 A 1 A_DropItem("FireArmorFragment")
+			Stop
+		SpawnC:
+			TNT1 A 1 A_DropItem("SpiritArmorFragment")
+			Stop
+	}
+}
+
+Actor SmallArmorDrop: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("BodyArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallFireArmorDrop: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			ARMF A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("FireArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("FireArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallSpiritArmorDrop: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			SARM A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("SpiritArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallArmorSpawner
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
+		SpawnA:
+			TNT1 A 1 A_DropItem("SmallArmorDrop")
+			Stop
+		SpawnB:
+			TNT1 A 1 A_DropItem("SmallFireArmorDrop")
+			Stop
+		SpawnC:
+			TNT1 A 1 A_DropItem("SmallSpiritArmorDrop")
+			Stop
+	}
+}
+
+Actor BigArmorSpawner: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up fortified Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",100,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",100,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",100,"DontPick")
+			TNT1 A 0 A_TakeInventory("BodyArmor", 100) // Make sure don't go over 100
+			TNT1 A 0 A_GiveInventory("BodyArmor", 100)
+			TNT1 A 0 A_TakeInventory("FireArmor", 100) // Make sure don't go over 100
+			TNT1 A 0 A_GiveInventory("FireArmor", 100)
+			TNT1 A 0 A_TakeInventory("SpiritArmor", 100) // Make sure don't go over 100
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 100)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 100
+			Fail
+	}
+}
+
+Actor SuperArmorSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SuperArmorPickup",1)
+		Stop
+	}
+}
+
+
+// Modified item drops
+
+Actor HealthVialSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("CrystalVial2")
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_Jump(6, "SpawnFlareGun") //A tiny chance to spawn a pistol along with
+		TNT1 A 1 A_Jump(32, "SpawnFlareShell") //A chance to spawn a pistol clip
+		Stop
+	SpawnFlareGun:
+		TNT1 A 1 A_DropItem("FlareFunSpawner")
+		Stop
+	SpawnFlareShell:
+		TNT1 A 1 A_DropItem("FlareShellSpawner")
+		Stop
+	}
+}
+
+Actor QuartzFlaskSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("ArtiHealth2")
+		TNT1 A 0 A_Jump(80, 1)
+		Stop
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_DropItem("SawedoffSpawner")
+		Stop
+	}
+}
+
+Actor AmuletSpawner
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("SmallArmorSpawner")
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 0 A_DropItem("SprayCanSpawner")
+		Stop
+	}
+}
+
+Actor HelmSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BasicArmorPickup2")
+		TNT1 A 1 A_DropItem("BasicArsenalSpawner")
+		Stop
+	}
+}
+
+Actor ShieldSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("BigArmorSpawner")
+		TNT1 A 1 A_DropItem("BasicArsenalSpawner")
+		Stop
+	}
+}
+
+Actor MeshArmorSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("SuperArmorSpawner")
+		TNT1 A 1 A_DropItem("AdvancedArsenalSpawner")
+		Stop
+	}
+}
+
+Actor PorkalatorSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("ArtiPork2")
+		TNT1 A 1 A_DropItem("BasicArsenalSpawner") //adding drop chance of arsenal for better spawning result
+		Stop
+	}
+}
+
+Actor SuperHealthSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("LifeSeed")
+		TNT1 A 1 A_DropItem("AdvancedArsenalSpawner") //adding drop chance for arsenal for better spawning result
+		Stop
+	}
+}
+
+Actor SittingCorpseSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("HexenSittingCorpse")
+		TNT1 A 1 A_DropItem("BasicArsenalSpawner") //adding drop chance for arsenal for better spawning result
+		Stop
+	}
+}
+
+Actor SleepingCorpseSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("HexenSleepingCorpse")
+		TNT1 A 1 A_DropItem("AdvancedArsenalSpawner") //adding drop chance for arsenal for better spawning result
+		Stop
+	}
+}
+
+Actor BarrelLoots
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(40, "SpawnA", "SpawnB")
+		Goto SpawnBonusAmmo
+	SpawnA:
+		TNT1 A 0 A_SpawnItem("VoodooDollSpawner")
+		Goto SpawnBonusAmmo
+	SpawnB:
+		TNT1 A 0 A_SpawnItem("TeslaRifleSpawner")
+	SpawnBonusAmmo:
+		TNT1 A 0 A_Jump(128, "SpawnAmmoA", "SpawnAmmoB", "SpawnAmmoC", "SpawnAmmoD", "SpawnAmmoE", "SpawnAmmoF")
+		Goto Death
+	SpawnAmmoA:
+		TNT1 A 0 A_SpawnItem("HappyTNTBundle")
+		Goto Death
+	SpawnAmmoB:
+		TNT1 A 0 A_SpawnItem("SprayCanisterSpawner")
+		Goto Death
+	SpawnAmmoC:
+		TNT1 A 0 A_SpawnItem("CellPickupSpawner")
+		Goto Death
+	SpawnAmmoD:
+		TNT1 A 0 A_SpawnItem("EssencePowerSpawner")
+		Goto Death
+	SpawnAmmoE:
+		TNT1 A 0 A_SpawnItem("BulletSpawner")
+		Goto Death
+	SpawnAmmoF:
+		TNT1 A 0 A_SpawnItem("ShellSpawner")
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}

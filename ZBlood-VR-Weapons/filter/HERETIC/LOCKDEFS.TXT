@@ -1,0 +1,73 @@
+Lock 1 Heretic
+{
+	//$Title "Green key"
+	KeyGreen
+	Message "$TXT_NEEDGREENKEY"
+	Mapcolor 0 255 0
+}
+
+
+Lock 2 Heretic
+{
+	//$Title "Blue key"
+	KeyBlue 
+	Message "$TXT_NEEDBLUEKEY"
+	Mapcolor 0 0 255
+}
+
+
+Lock 3 Heretic
+{
+	//$Title "Yellow key"
+	KeyYellow
+	Message "$TXT_NEEDYELLOWKEY"
+	Mapcolor 255 255 0
+}
+
+
+Lock 129 Heretic
+{
+	//$Title "Green key"
+	KeyGreen
+	Message "$TXT_NEEDGREENKEY"
+	Mapcolor 0 255 0
+}
+
+
+Lock 130 Heretic
+{
+	//$Title "Blue key"
+	KeyBlue 
+	Message "$TXT_NEEDBLUEKEY"
+	Mapcolor 0 0 255
+}
+
+
+Lock 131 Heretic
+{
+	//$Title "Yellow key"
+	KeyYellow
+	Message "$TXT_NEEDYELLOWKEY"
+	Mapcolor 255 255 0
+}
+
+
+Lock 229 Heretic
+{
+	//$Title "All keys"
+	KeyGreen 
+	KeyYellow 
+	KeyBlue
+	Message "$PD_ALL3"
+	RemoteMessage "$PD_ALL3O"
+}
+
+Lock 101 Heretic
+{
+	//$Title "All keys"
+	KeyGreen 
+	KeyYellow 
+	KeyBlue
+	Message "$PD_ALL3"
+	RemoteMessage "$PD_ALL3O"
+}

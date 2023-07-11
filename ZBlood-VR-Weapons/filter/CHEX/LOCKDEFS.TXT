@@ -1,0 +1,57 @@
+Lock 1 Chex
+{
+	//$Title "Red key card"
+	ChexRedCard
+	Message "$PD_REDC"
+	RemoteMessage "$PD_REDCO"
+	Mapcolor 255 0 0
+}
+
+
+Lock 2 Chex
+{
+	//$Title "Blue key card"
+	ChexBlueCard
+	Message "$PD_BLUEC"
+	RemoteMessage "$PD_BLUECO"
+	Mapcolor 0 0 255
+}
+
+
+Lock 3 Chex
+{
+	//$Title "Yellow key card"
+	ChexYellowCard
+	Message "$PD_YELLOWC"
+	RemoteMessage "$PD_YELLOWCO"
+	Mapcolor 255 255 0
+}
+
+Lock 129 Chex
+{
+	//$Title "Red key"
+	ChexRedCard
+	Message "$PD_REDK"
+	RemoteMessage "$PD_REDO"
+	Mapcolor 255 0 0
+}
+
+
+Lock 130 Chex
+{
+	//$Title "Blue key"
+	ChexBlueCard
+	Message "$PD_BLUEK"
+	RemoteMessage "$PD_BLUEO"
+	Mapcolor 0 0 255
+}
+
+
+Lock 131 Chex
+{
+	//$Title "Yellow key"
+	ChexYellowCard
+	Message "$PD_YELLOWK"
+	RemoteMessage "$PD_YELLOWO"
+	Mapcolor 255 255 0
+}

@@ -1,0 +1,17 @@
+Sprite FAR2A0, 21, 23
+{
+   Offset 25, 20
+   Patch FAIRA0, 0, 0
+}
+
+Sprite FAR2B0, 17, 18
+{
+   Offset 23, 17
+   Patch FAIRB0, 0, 0
+}
+
+Sprite FAR2C0, 20, 21
+{
+   Offset 25, 20
+   Patch FAIRC0, 0, 0
+}

@@ -1,0 +1,77 @@
+
+Class BloodWeaponZ : Weapon
+{
+	action void A_ReplaceSprite(String myvar, String ssprite, bool pickup=false, float sscale=0.7)
+	{
+		CVar readsetting = CVar.FindCVar(myvar);
+
+		if (readsetting && readsetting.GetInt()==1)
+		{
+			if(pickup)
+			{
+				invoker.sprite = GetSpriteIndex(ssprite);
+				invoker.A_SetScale(sscale);
+			}
+			else
+			{
+				if(player) Player.GetPSprite(PSP_WEAPON).sprite = GetSpriteIndex(ssprite);
+			}
+		}
+	}
+}
+
+Class BloodFlameProjectile : Actor
+{
+	override int SpecialMissileHit(Actor victim)
+	{
+		if(!victim.FindInventory("PainBurnToken"))
+		{
+			victim.SetInventory("MonsterBurnEffect", 0);
+			victim.SetInventory("MonsterBurnEffect", 1);
+		}
+		
+		Super.SpecialMissileHit(victim);
+		return -1;
+	}
+}
+
+Class BloodAOEFlameProjectile : Actor
+{
+	override int SpecialMissileHit(Actor victim)
+	{
+		mark_AOE_burn_targets();
+		
+		Super.SpecialMissileHit(victim);
+		return -1;
+	}
+	
+	action void A_MarkBurnVictims()
+	{
+		invoker.mark_AOE_burn_targets();
+	}
+	
+	void mark_AOE_burn_targets()
+	{
+		BlockThingsIterator it = BlockThingsIterator.Create(self, 320);
+		Actor mo, victim;
+		Array<Actor> victims;
+
+		while (it.Next())
+		{
+			mo = it.thing; // Get the Actor it's currently on
+			if (!mo || !mo.bSolid || Distance2D(mo) > 320 || !CheckSight(mo))
+			   continue;
+
+			victims.push(mo);
+		}
+	
+		for(int i=0; i<victims.Size(); i++)
+		{
+			victim = victims[i];
+			if(victim.FindInventory("PainBurnToken")) return;
+			
+			victim.SetInventory("MonsterBurnEffect", 0);
+			victim.SetInventory("MonsterBurnEffect", 1);
+		}
+	}
+}

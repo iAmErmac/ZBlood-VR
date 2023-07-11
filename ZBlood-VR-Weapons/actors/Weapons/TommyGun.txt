@@ -1,0 +1,727 @@
+actor Tommygun : BloodWeaponZ replaces Chaingun //2002
+{
+	//$Category Blood Weapons
+	//$Title Tommy Gun
+	+ThruGhost
+	+ThruSpecies
+	obituary "%o sung %k's tommy tune"
+	weapon.ammotype1 "Clip"
+	weapon.ammotype2 "Clip"
+	weapon.ammogive 50
+	weapon.ammouse1 1
+	weapon.ammouse2 1
+	inventory.pickupmessage "You got the Tommy Gun!"
+    inventory.pickupsound "PICKWEAP"
+	decal ZBloodBulletChip1
+	Attacksound ""
+	Scale 0.6
+	weapon.selectionorder 200
+	weapon.kickback 128
+	Weapon.BobSpeed 0.8
+	Weapon.BobStyle Smooth
+	Weapon.BobRangeX 0.5
+	Weapon.BobRangeY 0.5
+	Weapon.SisterWeapon DoubleTommyGun
+	Weapon.SlotNumber 4
+	+IGNORESKILL	  
+	+NOGRAVITY
+	Tag "Thompson Submachinegun"
+	
+	states
+	{
+		spawn:
+			TOMP A 4
+			loop
+		select:
+			TOMG A 0 A_ReplaceSprite("zblood_models", "TMVG")
+			"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+			"####" # 1 A_Raise(60)
+			Goto Select+2
+			"####" # 1 A_Raise
+			Goto Select+3
+		deselect:
+			TOMG A 0 A_ReplaceSprite("zblood_models", "TMVG")
+			"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+			"####" # 1 A_Lower(60)
+			Goto Deselect+2
+			"####" # 1 A_Lower
+			Goto Deselect+3
+		ready:
+			TOMG A 1 A_ReplaceSprite("zblood_models", "TMVG")
+			"####" # 0 A_TakeInventory("TommyCounter", 15)
+			"####" # 1 A_weaponready
+			loop
+		Fire:
+			TOMF A 0 A_ReplaceSprite("zblood_models", "TMVF")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 8, "FireEnd")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 7, "FireH")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 6, "FireG")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 5, "FireF")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 4, "FireE")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 3, "FireD")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 2, "FireC")
+			"####" # 0 A_JumpIfInventory("TommyCounter", 1, "FireB")
+			"####" # 0 A_GunFlash
+			"####" # 3 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,7),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" A 1 A_WeaponReady(14)
+			Goto Ready
+		FireB:
+			"####" # 0 A_GunFlash("FlashB")
+			"####" B 2 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,7),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" B 1 A_WeaponReady(14)
+			Goto Ready
+		FireC:
+			"####" # 0 A_GunFlash("FlashC")
+			"####" C 3 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,6),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" C 1 A_WeaponReady(14)
+			Goto Ready	
+		FireD:
+			"####" # 0 A_GunFlash("FlashD")
+			"####" D 2 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,6),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" D 1 A_WeaponReady(14)
+			Goto Ready	
+		FireE:
+			"####" # 0 A_GunFlash
+			"####" E 3 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,6),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" E 1 A_WeaponReady(14)
+			Goto Ready	
+		FireF:
+			"####" # 0 A_GunFlash("FlashB")
+			"####" F 2 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,6),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" F 1 A_WeaponReady(14)
+			Goto Ready	
+		FireG:
+			"####" # 0 A_GunFlash("FlashC")
+			"####" G 3 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,6),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" G 1 A_WeaponReady(14)
+			Goto Ready	
+		FireH:
+			"####" # 0 A_GunFlash("FlashD")
+			"####" H 2 Bright A_WeaponReady(14)
+			"####" # 0 A_FireBullets(4,3,-1,random(5,7),"ZBulletPuffT",1)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlayWeaponSound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Refire
+			"####" H 1 A_WeaponReady(14)
+			Goto Ready
+		FireEnd:
+			"####" # 0 A_TakeInventory("TommyCounter", 15)
+			"####" # 0 A_Jump(256, "FireC", "FireE", "FireG")
+			Goto Ready			
+		AltFire:
+			TOF2 A 0 A_ReplaceSprite("zblood_models", "TVF2")
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" A 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashB")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" B 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-20,-1),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashC")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" C 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-4,10),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashD")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" D 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",0+random(10,20),0,1,8,0)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-20,20),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashE")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" E 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",11+random(-8,16),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashF")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" F 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",12+random(-8,32),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashG")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" G 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",4+random(-32,8),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashH")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" H 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",-12+random(-8,0),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashI")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" I 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",-20+random(4,16),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashJ")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" J 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",-60+random(-8,8),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashK")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" K 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-30,60),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashL")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" L 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",40+random(-30,30),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashM")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" # 0 A_firebullets(12,1.8,-1, random(4,7),"ZBBulletPuff")
+			"####" M 2 bright A_WeaponReady(14)
+			"####" # 0 A_FireCustomMissile("TommygunCasing",-30+random(-70,0),0,1,8,0)
+			"####" # 0 A_PlaySound("weapons/chngun")
+			"####" # 0 A_GiveInventory("TommyCounter", 1)
+			"####" # 0 A_Light1
+			"####" # 0 A_GunFlash("AltFlashN")
+			"####" # 0 A_JumpifNoAmmo("Ready")
+			"####" N 2
+			goto ready
+		Flash:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VFlash")
+			TOFF A 2 Bright A_Light1
+			Goto LightDone
+		FlashB:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VFlashB")
+			TOFF B 2 Bright A_Light2
+			Goto LightDone
+		FlashC:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VFlashC")
+			TOFF C 2 Bright A_Light2
+			Goto LightDone
+		FlashD:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VFlashD")
+			TOFF D 2 Bright A_Light1
+			Goto LightDone
+			
+		AltFlash:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlash")
+			TOFF E 2 Bright A_Light1
+			Goto LightDone
+		AltFlashB:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashB")
+			TOFF F 2 Bright A_Light2
+			Goto LightDone
+		AltFlashC:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashC")
+			TOFF G 2 Bright A_Light2
+			Goto LightDone
+		AltFlashD:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashD")
+			TOFF H 2 Bright A_Light1
+			Goto LightDone
+		AltFlashE:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashE")
+			TOFF I 2 Bright A_Light1
+			Goto LightDone
+		AltFlashF:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashF")
+			TOFF J 2 Bright A_Light2
+			Goto LightDone
+		AltFlashG:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashG")
+			TOFF K 2 Bright A_Light2
+			Goto LightDone
+		AltFlashH:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashH")
+			TOFF L 2 Bright A_Light1
+			Goto LightDone
+		AltFlashI:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashI")
+			TOFF M 2 Bright A_Light1
+			Goto LightDone
+		AltFlashJ:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashJ")
+			TOFF N 2 Bright A_Light2
+			Goto LightDone
+		AltFlashK:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashK")
+			TOFF O 2 Bright A_Light2
+			Goto LightDone
+		AltFlashL:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashL")
+			TOFF P 2 Bright A_Light1
+			Goto LightDone
+		AltFlashM:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashM")
+			TOFF Q 2 Bright A_Light1
+			Goto LightDone
+		AltFlashN:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlashN")
+			TOFF R 1 Bright A_Light2
+			Goto LightDone
+			
+		VFlash:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF A 2 Bright A_Light1
+			Goto LightDone
+		VFlashB:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF B 2 Bright A_Light2
+			Goto LightDone
+		VFlashC:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF C 2 Bright A_Light2
+			Goto LightDone
+		VFlashD:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF D 2 Bright A_Light1
+			Goto LightDone
+			
+		VAltFlash:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF E 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashB:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF F 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashC:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF G 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashD:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF H 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashE:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF I 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashF:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF J 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashG:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF K 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashH:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF L 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashI:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF M 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashJ:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF N 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashK:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF O 2 Bright A_Light2
+			Goto LightDone
+		VAltFlashL:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF P 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashM:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+			TVFF Q 2 Bright A_Light1
+			Goto LightDone
+		VAltFlashN:
+			TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite2")
+			TVFF R 1 Bright A_Light2
+			Goto LightDone
+		NoFlashSprite:
+			TNT1 A 2 A_Light1
+			Goto LightDone
+		NoFlashSprite2:
+			TNT1 A 2 A_Light2
+			Goto LightDone
+		Dummy:
+			TMVG A 1
+			TMVF ABCDEFGH 1
+			TVF2 ABCDEFGHIJKLMN 1
+			Stop
+	}
+}
+
+ACTOR DoubleTommyGun : Tommygun
+{ 
+  weapon.ammouse 1
+  weapon.ammouse2 1
+  +POWERED_UP
+  +WEAPON.BFG
+  Weapon.SisterWeapon Tommygun
+  states
+  {
+  Ready:
+	TOM2 A 0 A_ReplaceSprite("zblood_models", "TMV2")
+	"####" A 0 ACS_ExecuteAlways(602, 0)
+	"####" # 0 A_TakeInventory("TommyCounter", 15)
+    "####" A 1 A_WeaponReady
+    loop
+  Deselect:
+	TOM2 A 0 A_ReplaceSprite("zblood_models", "TMV2")
+	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" # 1 A_Lower(60)
+	Goto Deselect+2
+	"####" # 1 A_Lower
+	Goto Deselect+3
+  Select:
+	TOM2 A 0 A_ReplaceSprite("zblood_models", "TMV2")
+	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" # 1 A_Raise(60)
+	Goto Select+2
+	"####" # 1 A_Raise
+	Goto Select+3
+  Fire:
+	TOM2 A 0 A_ReplaceSprite("zblood_models", "TMV2")
+	"####" # 0 A_GunFlash
+    "####" # 0 A_FireBullets (5.6, 1.1, 2, random(5,6), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",45+random(-8,8),0,-20,8,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+    "####" B 3 bright A_Light1
+    "####" # 0 bright A_Light0
+    "####" # 0 A_FireBullets (5.6, 1.1, 2, random(5,6), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",-45+random(-8,8),0,1,8,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+    "####" C 3 bright A_Light2
+    "####" F 1 bright A_Light0
+    "####" # 0 A_ReFire
+    goto Ready
+  AltFire:
+	TOM2 A 0 A_ReplaceSprite("zblood_models", "TMV2")
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GunFlash
+    "####" G 2 bright A_WeaponReady(14)
+	"####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" H 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" I 2 bright A_WeaponReady(14)
+	"####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" J 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" K 2 bright A_WeaponReady(14)
+	"####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" L 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" M 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+	"####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" N 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" O 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+	"####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" P 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+	"####" # 0 A_GiveInventory("TommyCounter", 1)
+	"####" # 0 A_GunFlash
+    "####" Q 2 bright A_WeaponReady(14)
+    "####" # 0 A_FireBullets (40, 2, 2, random(5,7), "ZBulletPuffT")
+    "####" # 0 A_FireCustomMissile("TommygunCasing",0+random(-48,48),0,-1,9,0)
+	"####" # 0 A_PlayWeaponSound("weapons/chngun")
+    goto Ready
+  Flash:
+	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VFlash")
+	TNT1 A 0 A_Jump (256, "FlashA", "FlashB", "FlashC", "FlashD")
+  FlashA:
+	TOFF AB 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  FlashB:
+	TOFF CD 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  FlashC:
+	TOFF BC 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  FlashD:
+	TOFF DA 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  AltFlash:
+	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "VAltFlash")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 11, "AltFlashL")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 10, "AltFlashK")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 9, "AltFlashJ")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 8, "AltFlashI")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 7, "AltFlashH")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 6, "AltFlashG")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 5, "AltFlashF")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 4, "AltFlashE")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 3, "AltFlashD")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 2, "AltFlashC")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 1, "AltFlashB")
+	TOFF E 2 Bright A_Light1
+	"####" # 0 A_Light0
+  AltFlashB:
+	TOFF F 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashC:
+	TOFF G 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashD:
+	TOFF H 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  AltFlashE:
+	TOFF I 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  AltFlashF:
+	TOFF J 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashG:
+	TOFF K 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashH:
+	TOFF L 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  AltFlashI:
+	TOFF M 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  AltFlashJ:
+	TOFF N 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashK:
+	TOFF O 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  AltFlashL:
+	TOFF P 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VFlash:
+	TNT1 A 0 A_Jump (256, "VFlashA", "VFlashB", "VFlashC", "VFlashD")
+  VFlashA:
+	TVFF AB 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VFlashB:
+	TVFF CD 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VFlashC:
+	TVFF BC 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VFlashD:
+	TVFF DA 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VAltFlash:
+	"####" # 0 A_JumpIfInventory("TommyCounter", 11, "VAltFlashL")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 10, "VAltFlashK")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 9, "VAltFlashJ")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 8, "VAltFlashI")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 7, "VAltFlashH")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 6, "VAltFlashG")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 5, "VAltFlashF")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 4, "VAltFlashE")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 3, "VAltFlashD")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 2, "VAltFlashC")
+	"####" # 0 A_JumpIfInventory("TommyCounter", 1, "VAltFlashB")
+	TVFF E 2 Bright A_Light1
+	"####" # 0 A_Light0
+  VAltFlashB:
+	TVFF F 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashC:
+	TVFF G 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashD:
+	TVFF H 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashE:
+	TVFF I 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashF:
+	TVFF J 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashG:
+	TVFF K 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashH:
+	TVFF L 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashI:
+	TVFF M 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashJ:
+	TVFF N 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashK:
+	TVFF O 2 Bright A_Light2
+	"####" # 0 A_Light0
+	Stop
+  VAltFlashL:
+	TVFF P 2 Bright A_Light1
+	"####" # 0 A_Light0
+	Stop
+  NoFlashSprite:
+	TNT1 A 0 A_Jump(128, "NoFlashSprite2")
+	TNT1 AA 2 A_Light1
+	Goto LightDone
+  NoFlashSprite2:
+	TNT1 AA 2 A_Light2
+	Goto LightDone
+  Dummy:
+	TMV2 ABCDEFGHIJKLMNOPQR 1
+	TVFF ABCDEFGHIJKLMNOP 1
+	Stop
+  }
+}
+
+Actor TommyCounter : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 15
+}

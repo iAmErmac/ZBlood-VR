@@ -1,0 +1,105 @@
+Actor RemoveProximity : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+Actor RemoveSpray : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+Actor RemoveTNT : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+Actor RemoveVodoo : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+Actor UsingPitchfork : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 1
+}
+
+actor Pitchfork : BloodWeaponZ replaces Fist
+{
+  obituary "%o was poked by %k"
+  weapon.selectionorder 2400
+  decal ZBloodBulletChip1
+  weapon.kickback 200
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  +WEAPON.NOALERT
+  Weapon.SlotNumber 1
+ // +NODAMAGETHRUST
+  	+ThruGhost
+	Tag "Pitchfork"
+
+  States
+  {
+  Ready:
+	PITC A 0 ACS_ExecuteAlways(602, 0)
+    "####" # 0 A_JumpIfInventory("RemoveProximity", 1, "TakeProximity")
+	"####" # 0 A_JumpIfInventory("RemoveSpray", 1, "TakeSpray")
+	"####" # 0 A_JumpIfInventory("RemoveTNT", 1, "TakeTNT")
+    "####" # 0 A_JumpIfInventory("RemoveVodoo", 1, "TakeDoll")
+	PITC A 0 A_ReplaceSprite("zblood_models", "PITV")
+	"####" # 0 A_GiveInventory("UsingPitchfork", 1)
+    "####" # 1 A_WeaponReady
+	Goto Ready+5
+  Deselect:
+	"####" # 0 A_TakeInventory("UsingPitchfork", 1)
+	PITC A 0 A_ReplaceSprite("zblood_models", "PITV")
+	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" # 1 A_Lower(60)
+	Goto Deselect+3
+	"####" # 1 A_Lower
+    Goto Deselect+4
+  Select:
+	PITC A 0 A_ReplaceSprite("zblood_models", "PITV")
+	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" # 1 A_Raise(60)
+	Goto Select+2
+	"####" # 1 A_Raise
+	Loop
+  Fire:
+    "####" AB 1 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+	"####" # 0 A_FireBullets(-4,0,-1,8,"PitchforkPuff",FBF_EXPLICITANGLE|FBF_NORANDOM,60)
+	"####" # 0 A_FireBullets(4,0,-1,8,"PitchforkPuff",FBF_EXPLICITANGLE|FBF_NORANDOM,60)
+	"####" # 0 A_FireBullets(10,0,-1,5,"PitchforkPuff",FBF_EXPLICITANGLE|FBF_NORANDOM,60)
+    "####" # 0 A_FireBullets(12, 0, 4, 4, "PitchforkPuff",1,64)
+    //"####" # 0 A_CustomPunch(random(2,20),FALSE,0,"PitchforkPuff",64,0,0,0,"DSPUNCH")
+    //Disabled for now because Zandronum doesn't support it yet
+	"####" # 0 A_Punch
+	"####" CDDE 1 A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH)
+	"####" FGAA 2
+    "####" # 0 A_ReFire
+	Goto Ready+5
+  TakeSpray:
+	"####" # 0 A_TakeInventory("SprayCan", 1)
+	"####" # 0 A_takeInventory("RemoveSpray", 1)
+	Goto Ready
+  TakeTNT:
+	"####" # 0 A_TakeInventory("Dynamite", 1)
+	"####" # 0 A_TakeInventory("RemoveTNT", 1)
+	Goto Ready
+  TakeDoll:
+	"####" # 0 A_TakeInventory("VoodooDoll", 1)
+	"####" # 0 A_TakeInventory("RemoveVodoo", 1)
+	Goto Ready   
+  TakeProximity:
+ 	"####" # 0 A_TakeInventory("ProximityDynamite", 1)
+	"####" # 0 A_TakeInventory("RemoveProximity", 1)
+	Goto Ready
+  Dummy:
+	PITV ABCDEDGH 1
+	Stop
+  }
+}

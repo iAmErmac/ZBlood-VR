@@ -1,0 +1,64 @@
+
+Model Shell
+{
+	Path "models/voxel/pickups"
+	Model 0 "SHELA.md3"
+	Skin 0 "SHELA_tex.png"
+	
+	FrameIndex SHELL A 0 0
+}
+
+Model CellPickup
+{
+	Path "models/voxel/pickups"
+	Model 0 "TESCA.md3"
+	Skin 0 "TESCA_tex.png"
+	
+	FrameIndex TESC A 0 0
+}
+
+Model TeslaCharge
+{
+	Path "models/voxel/pickups"
+	Model 0 "TESCA.md3"
+	Skin 0 "TESCA_tex.png"
+	
+	FrameIndex TESC A 0 0
+}
+
+Model Backpack
+{
+	Path "models/voxel/pickups"
+	Model 0 "BPAKA.md3"
+	Skin 0 "BPAKA_tex.png"
+	
+	Scale 1.7 1.2 1.8
+	
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex BPAK A 0 0
+}
+
+Model MedicinePouch
+{
+	Path "models/voxel/pickups"
+	Model 0 "BPAKA.md3"
+	Skin 0 "BPAKA_tex.png"
+	
+	Scale 1.7 1.2 1.8
+	
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex BPAK A 0 0
+}
+
+Model JumpingBoots
+{
+	Path "models/voxel/pickups"
+	Model 0 "SUITA.md3"
+	Skin 0 "SUITA_tex.png"
+	
+	FrameIndex SUIT A 0 0
+}

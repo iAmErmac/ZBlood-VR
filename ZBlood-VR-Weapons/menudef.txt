@@ -1,0 +1,30 @@
+AddOptionMenu "OptionsMenu"
+{
+	StaticText " "
+	Submenu "ZBlood VR Settings", "ZBVR_Settings"
+}
+
+OptionMenu "ZBVR_Settings" {
+	Title "VR Weapon Settings"
+	StaticText " "
+	
+	Option "Weapon models", "zblood_models", "ZBVR_WeaponModel_Option"
+	Option "Muzzle flash sprite", "zblood_muzzle_flash", "OnOff"
+	Option "Weapon fast switching", "zblood_fastswitch", "OnOff"
+	
+	StaticText " "
+	StaticText "Gore options", "Grey"
+	Option "3d bloodspots on floor", "zblood_bloodspot_3d", "OnOff"
+	Option "3d bloodspot fadeout", "zblood_bloodspot_fadeout", "ZBVR_Bloodspot_Fadeout", "zblood_bloodspot_3d"
+}
+
+OptionValue "ZBVR_WeaponModel_Option" {
+	0, "3D"
+	1, "Voxel"
+}
+
+OptionValue "ZBVR_Bloodspot_Fadeout" {
+	0, "Never"
+	1, "Default"
+	2, "Fast"
+}

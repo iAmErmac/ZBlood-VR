@@ -1,0 +1,137 @@
+pointlight RedLightGlow
+{
+    color 0.7 0.0 0.0
+    size 7
+    offset 0 4 0
+}
+
+pointlight WhiteLightGlow
+{
+    color 0.5 0.5 0.5
+    size 7
+    offset 0 4 0
+}
+
+pointlight YellowLightGlow
+{
+    color 0.93 0.93 0.0
+    size 6
+    offset 0 4 0
+}
+
+pointlight BlueLightGlow
+{
+    color 0 0.2 0.5
+    size 6
+    offset 0 4 0
+}
+
+pointlight RedLightGlowBig
+{
+    color 0.7 0.0 0.0
+    size 12
+    offset 0 4 0
+}
+
+pointlight WhiteLightGlowBig
+{
+    color 0.5 0.5 0.5
+    size 12
+    offset 0 4 0
+}
+
+pointlight YellowLightGlowBig
+{
+    color 0.93 0.93 0.0
+    size 12
+    offset 0 4 0
+}
+
+pointlight BlueLightGlowBig
+{
+    color 0 0.2 0.5
+    size 12
+    offset 0 4 0
+}
+
+flickerlight WhiteLightFlicker
+{
+    color 0.5 0.5 0.5
+    size 1
+    secondarySize 10
+    offset 0 4 0
+	chance 0.3
+	dontlightself 1
+}
+
+flickerlight ShadowFlicker
+{
+    color 0.5 0.5 0.5
+    size 1
+    secondarySize 10
+    offset 0 4 0
+	chance 0.3
+	dontlightself 1
+	subtractive 1
+}
+
+object FlareShellSpawner
+{
+    frame FGR2 { light WhiteLightGlow }
+}
+object BulletSpawner
+{
+    frame CLIP { light YellowLightGlow }
+}
+object ShellSpawner
+{
+    frame SHEL { light RedLightGlow }
+}
+object CellPickup
+{
+    frame TESC { light BlueLightGlow }
+}
+object TNTSpawner
+{
+    frame TBND { light RedLightGlow }
+}
+object TNTBundle
+{
+    frame TBND { light RedLightGlow }
+}
+object ProxyBombSpawner
+{
+    frame PROX { light RedLightGlow }
+}
+object RemoteBombSpawner
+{
+    frame REPK { light RedLightGlow }
+}
+object EssencePowerSpawner
+{
+    frame ESSE { light BlueLightGlow }
+}
+object TrappedSoulSpawner
+{
+    frame ESSE { light WhiteLightFlicker }
+}
+object ArmorShardSpawner
+{
+    frame BARM { light WhiteLightGlow }
+}
+object BasicArmorPickup2
+{
+    frame BARM { light BlueLightGlowBig }
+}
+object SuperArmorPickup
+{
+    frame ARM2 { light YellowLightGlowBig }
+}
+object Deathmask
+{
+    frame PINV { light RedLightGlowBig }
+}
+object HappyAmmoPack
+{
+    frame BPAK { light WhiteLightGlowBig }
+}

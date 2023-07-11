@@ -1,0 +1,5 @@
+version "3.0"
+
+#include "zscript/weapon_base.txt"
+#include "zscript/actor_base.txt"
+#include "zscript/dead_drops.txt"

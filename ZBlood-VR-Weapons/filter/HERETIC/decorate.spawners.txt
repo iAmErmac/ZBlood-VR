@@ -1,0 +1,159 @@
+//Weapon spawner
+
+ACTOR _Staff : RandomSpawner replaces Staff
+{
+	DropItem "Pitchfork"
+}
+
+ACTOR _Gauntlets : FlareFunSpawner replaces Gauntlets 2005
+{
+}
+
+ACTOR _GoldWand : FlareFunSpawner replaces GoldWand 9042
+{
+}
+
+ACTOR _Crossbow : SawedoffSpawner replaces Crossbow 2001
+{
+}
+
+ACTOR _Blaster : TommygunSpawner replaces Blaster 53
+{
+}
+
+ACTOR _SkullRod : RandomSpawner replaces SkullRod 2004
+{
+	DropItem "SprayCanSpawner", 256, 4
+	DropItem "TeslaRifleSpawner", 256, 1
+}
+
+ACTOR _PhoenixRod : NapalmSpawner replaces PhoenixRod 2003
+{
+}
+
+ACTOR _Mace : RandomSpawner replaces Mace
+{
+	DropItem "LifeLeechSpawner", 256, 2
+	DropItem "VoodooDollSpawner", 256, 1
+}
+
+
+//Ammo spawner
+
+Actor _GoldWandAmmo : RandomSpawner replaces GoldWandAmmo 10
+{
+	DropItem "FlareShellSpawner", 256, 2
+	DropItem "TNTSpawner", 256, 2
+	DropItem "ProxyBombSpawner", 256, 1
+}
+
+Actor _GoldWandHefty : RandomSpawner replaces GoldWandHefty 12
+{
+	DropItem "FlareBox2Spawner"
+}
+
+Actor _CrossbowAmmo : RandomSpawner replaces CrossbowAmmo 18
+{
+	DropItem "ShellSpawner"
+}
+
+Actor _CrossbowHefty : RandomSpawner replaces CrossbowHefty 19
+{
+	DropItem "ShellBundleSpawner"
+}
+
+Actor _BlasterAmmo : RandomSpawner replaces BlasterAmmo 54
+{
+	DropItem "BulletSpawner"
+}
+
+Actor _BlasterHefty : RandomSpawner replaces BlasterHefty 55
+{
+	DropItem "BulletBoxSpawner"
+}
+
+Actor _SkullRodAmmo : RandomSpawner replaces SkullRodAmmo 20
+{
+	DropItem "SprayCanisterSpawner"
+}
+
+Actor _SkullRodHefty : RandomSpawner replaces SkullRodHefty 21
+{
+	DropItem "CellPickupSpawner"
+}
+
+Actor _PhoenixRodAmmo : RandomSpawner replaces PhoenixRodAmmo 22
+{
+	DropItem "GasolineCanSpawner"
+}
+
+Actor _PhoenixRodHefty : RandomSpawner replaces PhoenixRodHefty 23
+{
+	DropItem "TNTBoxSpawner"
+	DropItem "ProxyBombBoxSpawner"
+}
+
+Actor _MaceAmmo : RandomSpawner replaces MaceAmmo 13
+{
+	DropItem "EssencePowerSpawner"
+}
+
+Actor _MaceHefty : RandomSpawner replaces MaceHefty 16
+{
+	DropItem "TrappedSoulSpawner"
+}
+
+
+//Item spawner
+
+Actor _BagOfHolding : RandomSpawner replaces BagOfHolding 8
+{
+	DropItem "HappyAmmoPack"
+}
+
+Actor _ArtiFly : RandomSpawner replaces ArtiFly 83
+{
+	DropItem "JumpingBootSpawner"
+}
+
+Actor _ArtiInvisibility : RandomSpawner replaces ArtiInvisibility 75
+{
+	DropItem "CloakOfShadow"
+	DropItem "ReflectiveShotsSpawner"
+}
+
+Actor _ArtiInvulnerability : RandomSpawner replaces ArtiInvulnerability 84
+{
+	DropItem "DeathmaskSpawner"
+}
+
+Actor _ArtiTomeOfPower : RandomSpawner replaces ArtiTomeOfPower 86
+{
+	DropItem "GunsAkimboSpawner"
+}
+
+Actor _ArtiTimeBomb : RandomSpawner replaces ArtiTimeBomb 34
+{
+	DropItem "RemoteBombSpawner", 256, 4
+	DropItem "HappyTNTBundle", 256, 1
+}
+
+Actor _ArtiTorch : RandomSpawner replaces ArtiTorch 33
+{
+	DropItem "BeastVisionSpawner"
+}
+
+Actor _ArtiSuperHealth : RandomSpawner replaces ArtiSuperHealth 32
+{
+	DropItem "LifeSeed"
+}
+
+Actor _SilverShield : RandomSpawner replaces SilverShield 85
+{
+	DropItem "BasicArmorPickup2"
+	DropItem "BigArmorSpawner"
+}
+
+Actor _EnchantedShield : SuperArmorSpawner replaces EnchantedShield 31
+{
+}

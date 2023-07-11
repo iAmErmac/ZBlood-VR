@@ -1,0 +1,124 @@
+//Weapon spawner
+
+ACTOR _SuperBootspork : FlareFunSpawner replaces SuperBootspork 2005
+{
+}
+
+ACTOR _Bootspoon : RandomSpawner replaces Bootspoon 2005
+{
+	DropItem "Pitchfork"
+}
+
+ACTOR _MiniZorcher : FlareFunSpawner replaces MiniZorcher 5010
+{
+}
+
+ACTOR _LargeZorcher : SawedoffSpawner replaces LargeZorcher 2001
+{
+}
+
+ACTOR _SuperLargeZorcher : RandomSpawner replaces SuperLargeZorcher 82
+{
+	DropItem "SawedoffSpawner"
+	DropItem "TommygunSpawner"
+}
+
+ACTOR _RapidZorcher : TommygunSpawner replaces RapidZorcher 2002
+{
+}
+
+ACTOR _PhasingZorcher : RandomSpawner replaces PhasingZorcher 2004
+{
+	DropItem "SprayCanSpawner", 256, 3
+	DropItem "TeslaRifleSpawner", 256, 2
+}
+
+ACTOR _ZorchPropulsor : NapalmSpawner replaces ZorchPropulsor 2003
+{
+}
+
+ACTOR _LAZDevice : RandomSpawner replaces LAZDevice 2006
+{
+	DropItem "LifeLeechSpawner", 256, 2
+	DropItem "VoodooDollSpawner", 256, 1
+}
+
+
+//Ammo spawner
+
+Actor _MiniZorchRecharge : RandomSpawner replaces MiniZorchRecharge 2007
+{
+	DropItem "FlareShellSpawner", 256, 3
+	DropItem "BulletSpawner", 2
+	DropItem "TNTSpawner", 256, 3
+	DropItem "ProxyBombSpawner", 256, 2
+}
+
+Actor _MiniZorchPack : RandomSpawner replaces MiniZorchPack 2048
+{
+	DropItem "FlareBox2Spawner", 256, 2
+	DropItem "BulletBoxSpawner", 256, 3
+}
+
+Actor _LargeZorchRecharge : RandomSpawner replaces LargeZorchRecharge 2008
+{
+	DropItem "ShellSpawner"
+}
+
+Actor _LargeZorchPack : RandomSpawner replaces LargeZorchPack 2049
+{
+	DropItem "ShellBundleSpawner"
+}
+
+Actor _PhasingZorch : RandomSpawner replaces PhasingZorch 2047
+{
+	DropItem "SprayCanisterSpawner", 256, 3
+	DropItem "EssencePowerSpawner", 256, 2
+}
+
+Actor _PhasingZorchPack : RandomSpawner replaces PhasingZorchPack 17
+{
+	DropItem "CellPickupSpawner"
+}
+
+Actor _PropulsorZorch : RandomSpawner replaces PropulsorZorch 2010
+{
+	DropItem "GasolineCanSpawner", 256, 3
+	DropItem "RemoteBombSpawner", 256, 2
+}
+
+Actor _PropulsorZorchPack : RandomSpawner replaces PropulsorZorchPack 2046
+{
+	DropItem "TrappedSoulSpawner", 256, 1
+	DropItem "TNTBoxSpawner", 256, 2
+	DropItem "ProxyBombBoxSpawner", 256, 2
+}
+
+
+//Item spawner
+
+Actor _Zorchpack : RandomSpawner replaces Zorchpack 8
+{
+	DropItem "HappyAmmoPack"
+}
+
+Actor _ComputerAreaMap : RandomSpawner replaces ComputerAreaMap 2026
+{
+	DropItem "ReflectiveShotsSpawner", 256, 1
+	DropItem "GunsAkimboSpawner", 256, 4
+}
+
+Actor _SlimeRepellent : RandomSpawner replaces SlimeRepellent 2018
+{
+	DropItem "ArmorShardSpawner"
+}
+
+Actor _ChexArmor : RandomSpawner replaces ChexArmor 2018
+{
+	DropItem "BasicArmorSpawner"
+}
+
+Actor _SuperChexArmor : RandomSpawner replaces SuperChexArmor 2019
+{
+	DropItem "SuperArmorSpawner"
+}

@@ -1,0 +1,55 @@
+/*
+------- These affect fire armor -------
+*/
+
+// Crusader flame thrower
+Actor BloodFastFlameMissile: FastFlameMissile replaces FastFlameMissile
+{
+	DamageType "Fire"
+}
+
+/*
+------- These affect spirit armor -------
+*/
+
+// Sigil 3 shot
+Actor BloodSpectralLightningBall2: SpectralLightningBall2 replaces SpectralLightningBall2
+{
+	DamageType "Spiritual"
+}
+
+// Sigil 2 shot
+Actor BloodSpectralLightningH3: SpectralLightningH3 replaces SpectralLightningH3
+{
+	DamageType "Spiritual"
+}
+
+// Sigil 5 shot
+Actor BloodSpectralLightningBigBall2: SpectralLightningBigBall2 replaces SpectralLightningBigBall2
+{
+	DamageType "Spiritual"
+}
+
+// Sigil 1 shot
+Actor BloodSpectralLightningV1: SpectralLightningV1 replaces SpectralLightningV1
+{
+	DamageType "Spiritual"
+}
+
+// Sigil 1 shot - weaker
+Actor BloodSpectralLightningV2: SpectralLightningV2 replaces SpectralLightningV2
+{
+	DamageType "Spiritual"
+}
+
+// Sigil 4 shot
+Actor BloodSpectralLightningBigV2: SpectralLightningBigV2 replaces SpectralLightningBigV2
+{
+	DamageType "Spiritual"
+}
+
+// Bishop missile
+Actor BloodBishopMissile: BishopMissile replaces BishopMissile
+{
+	DamageType "Spiritual"
+}

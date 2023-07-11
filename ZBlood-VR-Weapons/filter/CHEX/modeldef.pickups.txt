@@ -1,0 +1,116 @@
+
+Model ShellSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_fewshell.md3"
+   Skin 0 "a_fewshell.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   //Alt fire
+   FrameIndex SHEL A 0 0
+}
+
+Model BulletSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_fewbullet.md3"
+   Skin 0 "a_fewbullet.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   //Alt fire
+   FrameIndex CLIP A 0 0
+}
+
+Model EssencePowerSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_soul.md3"
+   Skin 0 "a_soul.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex ESSE A 0 0
+}
+
+Model TrappedSoulSpawner
+{ 
+   Path "models/ammo"
+   Model 0 "a_soul.md3"
+   Skin 0 "a_soul.png"
+   
+   Scale -1 1 1
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex ESSE A 0 0
+}
+
+Model CellPickup
+{ 
+   Path "models/ammo"
+   Model 0 "a_battery.md3"
+   Skin 0 "a_battery.png"
+   
+   Scale -2.8 2.8 2.8
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex TESC A 0 0
+}
+
+Model JumpingBoots
+{ 
+   Path "models/items"
+   Model 0 "i_boots.md3"
+   Skin 0 "i_boots.png"
+   
+   Scale -1.8 1.8 1.8
+   Offset 3 8 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex SUIT A 0 0
+}
+
+Model HappyAmmoPack
+{ 
+   Path "models/items"
+   Model 0 "i_pouch.md3"
+   Skin 0 "i_pouch.png"
+   
+   Scale -5 5 5
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex BPAK A 0 0
+}
+
+Model ArmorShardSpawner
+{ 
+   Path "models/items"
+   Model 0 "i_basic.md3"
+   Skin 0 "i_basic.png"
+   
+   Scale -1.2 1.2 1.2
+   Offset 0 0 0
+   
+   ROTATING
+   
+   //Alt fire
+   FrameIndex BARM A 0 0
+}

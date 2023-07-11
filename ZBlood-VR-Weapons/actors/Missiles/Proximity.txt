@@ -1,0 +1,152 @@
+Actor DeleteTrip
+{
+	+Solid
+	Height 1
+	Radius 1
+	+shootable
+	states
+	{
+	Spawn:
+	TNT1 AAA 2
+	Stop
+}}
+
+Actor ProximityLandMine
+{
+	Mass 9001
+	Health 15
+	DamageFactor "Stomping",2
+	Height 12
+	Radius 15//25
+	DamageFactor "Normal",0.5
+	DamageFactor "Dynamite", 60
+	DamageFactor "Napalm",60
+	DamageFactor "TripWire",100
+		// Projectile
+		Species "Trap"
+		+ThruSpecies
+	+Shootable
+	-SOLID
+	+NoBlood
+	 Speed 0
+	 +NoGravity
+	 +Activateimpact
+	   Scale 0.55
+	     painsound "weapons/rocklx"
+  activesound "weapons/rocklf"
+  DamageType "Dynamite"
+	States
+	{
+	Spawn:
+	TTNT ABCDE 4
+	Loop
+	Death.TripWire:
+	TTNT A 10
+	Death:
+	PTNT I 0 BRIGHT A_SpawnItem("DeleteTrip")
+    PTNT I 0 bright A_Explode (128,160)//A_Explode
+    MISL B 1 bright A_Pain
+	  PTNT A 0 A_CustomMissile("FloorKaboom",-16,0,0,CMF_TRACKOWNER)
+	  	  //PTNT A 0 A_CustomMissile("Blower",0,0,0,CMF_TRACKOWNER)
+		  	//  PTNT A 0 A_CustomMissile("Blower2",0,0,0,CMF_TRACKOWNER)
+   // MISL B 0 A_SpawnItem("FloorKaboom",-16)
+	TNT1 A 0 A_SpawnItemEx("VBlower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("VBlower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    		Blowers:
+			TNT1 A 0 A_FadeOut(0.65)
+			MISL A 0 A_AlertMonsters
+			TNT1 A 1
+			MISL A 0 A_Explode(96,160,1)
+			TNT1 A 1 A_Explode(96,140,1)
+			TNT1 A 1 A_Explode(96,96,1)
+			MISL A 0 A_ChangeFlag("EXTREMEDEATH",0)
+		Damage:
+			MISL A 1 A_Explode(2,768*alpha*2,1)//Both blowers at once
+			MISL A 0 A_FadeOut(.01)
+			Goto Damage
+	stop
+	}}
+
+actor ProximityAerial
+{
+  radius 15//25
+  height 12
+  +CannotPush
+  speed 0
+  Scale 0.5
+//  reactiontime 49
+Damage 0
+  painsound "weapons/rocklx"
+  activesound "weapons/rocklf"
+  DamageType "Dynamite"
+  PROJECTILE
+  +RANDOMIZE
+  +DONTSPLASH
+  +DONTGIB
+  +NOBOUNCESOUND
+   +DOOMBOUNCE
+   bouncefactor 0.5 
+   bouncecount 2
+  +PUSHABLE
+  	+ThruGhost
+	-NOTELEPORT
+  -SOLID
+  -NOGRAVITY
+  +EXTREMEDEATH
+  //+ShootAble
+  //GibHealth 0
+  //Health 1
+    Species "PlayerThrough"
+  +ThruSpecies
+  states
+  {
+  Spawn:
+    TTNT   FGHIJKLM 2
+  See:
+    TTNT   FGHIJKLM 2
+    Loop
+  Cont:
+    TTNT   FGHIJKLM 2
+    Loop
+  Death:
+  TTNT  A 0 A_Recoil(-14) //Le classic slide
+  TTNT  AAA 1
+  //TTNT  A 45 A_Stop
+  TTNT A 0 A_PlAYSOUND("Proximity/Arm")
+  TTNT  A 0 A_CustomMissile("ProximityLandMine",1,0,0,CMF_TRACKOWNER)
+    TTNT  A 0 A_CustomMissile("ITSATRAP",1,0,0,CMF_TRACKOWNER)
+	Stop
+  }
+}
+
+Actor ProximityAerial1 : ProximityAerial
+{Speed 5}
+
+Actor ProximityAerial2 : ProximityAerial
+{Speed 7}
+Actor ProximityAerial3 : ProximityAerial
+{Speed 9}
+Actor ProximityAerial4 : ProximityAerial
+{Speed 12}
+Actor ProximityAerial5 : ProximityAerial
+{Speed 14}
+Actor ProximityAerial6 : ProximityAerial
+{Speed 16}
+Actor ProximityAerial7 : ProximityAerial
+{Speed 18}
+Actor ProximityAerial8 : ProximityAerial
+{Speed 20}
+Actor ProximityAerial9 : ProximityAerial
+{Speed 22}
+Actor ProximityAerial10 : ProximityAerial
+{Speed 24}
+Actor ProximityAerial11 : ProximityAerial
+{Speed 26}
+Actor ProximityAerial12 : ProximityAerial
+{Speed 28}
+Actor ProximityAerial13 : ProximityAerial
+{Speed 30}
+Actor ProximityAerial14 : ProximityAerial
+{Speed 32}
+Actor ProximityAerial15 : ProximityAerial
+{Speed 34}

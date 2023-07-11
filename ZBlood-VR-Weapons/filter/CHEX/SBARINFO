@@ -1,0 +1,242 @@
+height 25;
+//monospacefonts true, "0";
+
+statusbar fullscreen, fullscreenoffsets
+{
+	drawimage "BLUDLEF", 0, -33;
+	drawimage "BLUDRIG", -72, -33;
+    drawnumber 3, ZBHUDFON, pink1, health, 28, -29,1;
+    drawnumber 3, ZHUDFON3, DarkerBlue2, ammo1, 62, -29,1;
+	
+	drawswitchableimage ChexRedCard, "nullimage", "STKEYS2", 71, -33;
+	drawswitchableimage ChexBlueCard, "nullimage", "STKEYS0", 71, -20;
+	drawswitchableimage ChexYellowCard, "nullimage", "STKEYS1", 71, -10;
+	
+	drawbar "TNTMTR01", "TNTMTR00", Ammo ThrowPower, horizontal, -50+center, -33; //Dammit zandro why u no support interpolate
+    
+//   drawnumber 4, BLUEFONT, white, armor, 265, 176;	
+//    drawnumber 4, BLUEFONT, white, armorx, 265, 184;
+//    drawnumber 4, BLUEFONT, white, armorz, 265, 192;
+	drawbar "REDABAR", "BLACKBAR",  FireArmor, horizontal, -69, -32;
+	drawbar "BLUEBAR", "BLACKBAR",  BodyArmor, horizontal, -69, -24;
+	drawbar "GRNABAR", "BLACKBAR",  SpiritArmor, horizontal, -69, -16;
+
+	inInventory FireArmor
+	{ drawnumber 4, BLUEFONT, white, FireArmor, -54, -31; }
+	
+	inInventory BodyArmor
+	{ drawnumber 4, BLUEFONT, white, BodyArmor, -54, -23; }
+	
+	inInventory SpiritArmor
+	{ drawnumber 4, BLUEFONT, white, SpiritArmor, -54, -15; }
+	
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, ZBHUDFON, pink1, frags, 24, 8;
+	}
+	drawselectedinventory ZBINVFON, -43, -30, -7, -27, pink1, 0;
+//	inInventory BurningToken,5
+//	{ drawbar "BLUDBAR2", "BLUDBAR1",  BurningToken, horizontal, 0, 199; }
+}
+
+statusbar normal // ZBlooD Status bar
+{
+    drawimage "BLUDBAR", 0, 144;
+    drawnumber 3, ZBHUDFON, pink1, health, 107, 178,1;
+    drawnumber 3, ZHUDFON3, untranslated, ammo1, 237, 178,1;
+
+    //keys
+    	drawswitchableimage ChexBlueCard, "nullimage", "STKEYS0", 244, 180;
+		drawswitchableimage ChexYellowCard, "nullimage", "STKEYS1", 244, 190;
+		drawswitchableimage ChexRedCard, "nullimage", "STKEYS2", 244, 167;
+
+	inInventory Flaregun
+	{ 	isSelected Flaregun, DoubleFlaregun
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Flares, 145, 180,0; }
+		
+		isSelected not Flaregun, DoubleFlaregun
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Flares, 145, 180,0; }
+	}
+	
+	inInventory not Flaregun
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo Flares, 145, 180,0; }
+
+	inInventory SawedOff
+	{ 	isSelected SawedOff, DoubleSawedOff
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Shell2, 145, 186,0;}
+		
+		isSelected not SawedOff, DoubleSawedOff
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Shell2, 145, 186,0;}
+	}
+	
+	inInventory not SawedOff
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo Shell2, 145, 186,0;}
+	
+	inInventory TommyGun
+	{ 	isSelected TommyGun, DoubleTommyGun
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Clip, 145, 192,0;}
+		
+		isSelected not TommyGun, DoubleTommyGun
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Clip, 145, 192,0;}
+	}
+	
+	inInventory not TommyGun
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo Clip, 145, 192,0;}
+	
+	inInventory NapalmLauncher
+	{ 	isSelected NapalmLauncher, DoubleNapalmLauncher
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo GasolineCan, 168, 180,0;}
+		
+		isSelected not NapalmLauncher, DoubleNapalmLauncher
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo GasolineCan, 168, 180,0;}
+	}
+	
+	inInventory not NapalmLauncher
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo GasolineCan, 168, 180,0;}
+	
+	inInventory Dynamite
+	{ 	isSelected Dynamite
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo TNTAmmo, 168, 186,0;}
+		
+		isSelected not Dynamite
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo TNTAmmo, 168, 186,0;}
+	}
+	
+	inInventory not Dynamite
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo TNTAmmo, 168, 186,0;}
+	
+	inInventory SprayCan
+	{ 	isSelected SprayCan
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo SprayCanister, 168, 192,0;}
+		
+		isSelected not SprayCan
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo SprayCanister, 168, 192,0;}
+	}
+	
+	inInventory not SprayCan
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo SprayCanister, 168, 192,0;}
+	
+	inInventory TeslaRifle
+	{ 	isSelected TeslaRifle, DoubleTesla
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo TeslaCharge, 191, 180,0;}
+		
+		isSelected not TeslaRifle, DoubleTesla
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo TeslaCharge, 191, 180,0;}
+	}
+	
+	inInventory not TeslaRifle
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo TeslaCharge, 191, 180,0;}
+	
+	inInventory LifeLeech
+	{ 	isSelected LifeLeech
+		{ drawnumber 3, BLUEFONT, LighterWhite,ammo EssencePower, 191, 186,0;}
+		
+		isSelected not LifeLeech
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo EssencePower, 191, 186,0;}
+	}
+	
+	inInventory not LifeLeech
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo EssencePower, 191, 186,0;}
+	
+	inInventory VoodooDoll
+	{ 	isSelected VoodooDoll
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Voodoo, 191, 192,0;}
+		
+		isSelected not VoodooDoll
+		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Voodoo, 191, 192,0;}
+	}
+	
+	inInventory not VoodooDoll
+    { drawnumber 3, BLUEFONT, DarkerBlue, ammo Voodoo, 191, 192,0;}
+	/*
+	isSelected ProximityBomb
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo ProxTNT, 297, 192,0;}
+		else
+		{ drawnumber 3, BLUEFONT, DarkerBlue, ammo ProxTNT, 297, 192,0;}
+	
+	isSelected RemoteBomb
+		{ drawnumber 3, BLUEFONT, LighterWhite, ammo RemBombAmmo, 315, 192,0;}
+		else
+		{ drawnumber 3, BLUEFONT, DarkerBlue, ammo RemBombAmmo, 315, 192,0;}
+	*/
+
+    //DrawString INDEXFON, white, "poo", 44, 171, 1;
+    
+	//gamemode singleplayer
+		//{
+    drawbar "REDABAR", "BLACKBAR",  FireArmor, horizontal, 44, 174;
+	drawbar "BLUEBAR", "BLACKBAR",  BodyArmor, horizontal, 44, 182;
+	drawbar "GRNABAR", "BLACKBAR",  SpiritArmor, horizontal, 44, 190;
+
+	drawbar "TNTMTR01", "TNTMTR00", Ammo ThrowPower, horizontal, 124, 175;
+	inInventory FireArmor
+	{ drawnumber 4, BLUEFONT, white, FireArmor, 59, 175; }
+	
+	inInventory BodyArmor
+	{ drawnumber 4, BLUEFONT, white, BodyArmor, 59, 183; }
+	
+	inInventory SpiritArmor
+	{ drawnumber 4, BLUEFONT, white, SpiritArmor, 59, 191; }
+
+//	inInventory BurningToken, 5
+//	{
+//		drawbar "BLUDBAR2", "BLUDBAR1",  BurningToken, horizontal, 0, 199;
+//	}
+//    drawbar "BLUEBAR", "TRANS", armor, horizontal, 44, 182;
+//    drawbar "GRNABAR", "nullimage", armor, horizontal, 44, 190;
+		//}
+		/*
+	InInventory AmmoToken, 1
+	{	drawimage "AMO_A0", 4, 190;	}
+	InInventory AmmoToken, 2
+	{	drawimage "AMO_A0", 10, 190;	}
+	InInventory AmmoToken, 3
+	{	drawimage "AMO_A0", 16, 190;	}
+	InInventory AmmoToken, 4
+	{	drawimage "AMO_A0", 22, 190;	}
+	InInventory AmmoToken, 5
+	{	drawimage "AMO_A0", 28, 190;	}
+	InInventory AmmoToken, 6
+	{	drawimage "AMO_A0", 34, 190;	}
+	InInventory AmmoToken, 7
+	{	drawimage "AMO_A0", 7, 190;	}
+	InInventory AmmoToken, 8
+	{	drawimage "AMO_A0", 13, 190;	}
+	InInventory AmmoToken, 9
+	{	drawimage "AMO_A0", 19, 190;	}
+	InInventory AmmoToken, 10
+	{	drawimage "AMO_A0", 25, 190;	}
+	InInventory AmmoToken, 11
+	{	drawimage "AMO_A0", 31, 190;	}
+	InInventory AmmoToken, 12
+	{	drawimage "D3S2E0", 20, 197;	}
+	*/
+	
+//    drawnumber 4, BLUEFONT, green, 430, 36, 192;	
+	
+	
+    //drawnumber 4, BLUEFONT, white, armor, 59, 183;
+    //drawnumber 4, BLUEFONT, white, armor, 59, 191;
+    
+    //IsSelected <weapon1>
+    
+    gamemode cooperative, deathmatch, teamgame
+    {
+        //drawimage translatable "STFBANY", 10, 10;
+    }
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, ZBHUDFON, pink1, frags, 24, 8;
+	}
+    drawselectedinventory ZBINVFON, 256, 177, 271, 170, pink1, 0;
+}
+
+statusbar inventory
+{
+	drawinventorybar Doom, 7, ZBINVFON, 107, 137, 121, 158, pink1, 1;
+}
+
+statusbar inventoryfullscreen, fullscreenoffsets
+{
+	drawinventorybar Doom, 7, ZBINVFON, -100+center, -33, -83+center, -11, pink1, 1;
+}

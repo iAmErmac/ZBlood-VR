@@ -1,0 +1,40 @@
+//------------- 3D MODELS -------------
+
+
+Model ProximityDynamite
+{ 
+   Path "models/3d/weapons/tnt"
+   Model 0 "proximity.md3"
+   Skin 0 "proxy0.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   FrameIndex DPRO A 0 0
+   Skin 0 "proxy1.png"
+   FrameIndex DPRO B 0 0
+   Skin 0 "proxy2.png"
+   FrameIndex DPRO C 0 0
+   Skin 0 "proxy3.png"
+   FrameIndex DPRO D 0 0
+}
+
+
+
+//------------- VOXEL MODELS -------------
+
+
+Model ProximityDynamite
+{ 
+   Path "models/voxel/weapons/tnt"
+   Model 0 "proxy_bomb.md3"
+   Skin 0 "proxy_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   FrameIndex DPRV A 0 0
+   FrameIndex DPRV B 0 0
+   FrameIndex DPRV C 0 0
+   FrameIndex DPRV D 0 0
+}

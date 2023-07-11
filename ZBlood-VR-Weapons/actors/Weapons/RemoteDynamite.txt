@@ -1,0 +1,417 @@
+Actor RTNTBOX : CustomInventory
+{
+	Inventory.PickupMessage "Picked up Remote Dynamite!"
+	inventory.pickupsound "dsammoup"
+	Inventory.amount 1
+	inventory.maxamount 50
+	Scale 0.5
+	Inventory.Icon "ProxA0"
+	States
+	{
+			Spawn:
+			REPK A -1
+		Stop
+		Pickup:
+			"####" # 0 A_GiveInventory("RTNTAMMO", 3)
+			"####" # 0 A_GiveInventory("RemoteDynamite", 1)
+		Stop
+}}
+
+ACTOR RemoteBombPickup : RTNTBOX 17112
+{
+//$Category Blood Weapons
+}
+
+Actor BOOMBABY : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+
+Actor RemoteDynamite : BloodWeaponZ
+{
+	Radius 20
+	Height 16
+	Scale 0.646
+	Inventory.PickUpMessage "Its time for mindgames!"
+	Inventory.PickUpSound "PICKWEAP"
+	Weapon.Selectionorder 880
+	Weapon.kickback 80	  
+	+NOGRAVITY
+	Weapon.AmmoGive 0
+	Weapon.AmmoType "RTNTAMMO"
+	Obituary "%o found %k's little bomb!" //Returned the message from blood
+	Weapon.Ammouse 1
+	Weapon.Ammouse2	0
+	Weapon.AmmoType2	"RTNTAMMO"
+	Weapon.SlotNumber 6
+	+Weapon.Explosive
+	+NoAutoAim
+	+WEAPON.NOALERT
+	Tag "Remote TNT"
+	
+	States
+	{
+	Ready:
+		DRNH A 0 A_ReplaceSprite("zblood_models", "DRNV")
+		"####" # 0 A_TakeInventory("BOOMBABY",99)
+		"####" # 0 A_jumpIfInventory("RTNTAMMO",1,"ReadyAmmo")
+		"####" ABCDE 3 A_WeaponReady
+		Goto Ready+1
+	ReadyAmmo:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" ABCDE 3 A_WeaponReady
+		Loop
+	Deselect:
+		DRNH A 0 A_ReplaceSprite("zblood_models", "DRNV")
+		"####" # 0 A_TakeInventory("ThrowPower",300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
+		"####" # 0 A_jumpIfInventory("RTNTAMMO",1,"DeselectAmmo")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" A 1 A_Lower(60)
+		Goto Deselect+5
+		"####" A 1 A_Lower
+		Goto Deselect+6
+	DeselectAmmo:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" A 1 A_Lower(60)
+		Goto DeselectAmmo+2
+		"####" A 1 A_Lower
+		Goto DeselectAmmo+3
+	Select:
+		DRNH A 0 A_ReplaceSprite("zblood_models", "DRNV")
+		"####" # 0 A_TakeInventory("ThrowPower",300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
+		"####" # 0 A_jumpIfInventory("RTNTAMMO",1,"SelectAmmo")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" ABCDE 1 A_Raise(60)
+		Goto Select+5
+		"####" ABCDE 1 A_Raise
+		Goto Select+10
+	SelectAmmo:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+		"####" ABCDE 1 A_Raise(60)
+		Goto SelectAmmo+2
+		"####" ABCDE 1 A_Raise
+		Goto SelectAmmo+7
+	Fire:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_TakeInventory("BOOMBABY",99)
+		"####" A 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" B 1 A_WeaponReady(14)
+		"####" # 0
+		Goto Throw
+	  Hold:
+		//"####" # 0 A_JumpIfInventory("ThrowPowerBig",90,"Boomination1")
+		"####" # 0 A_GiveInventory("TNTCounter", 1)
+		"####" # 0 A_JumpIfInventory("TNTCounter", 3, "Hold3")
+		"####" # 0 A_JumpIfInventory("TNTCounter", 2, "Hold2")
+		"####" # 0 A_JumpIfInventory("TNTCounter", 1, "Hold1")
+	  Hold1:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####"  AB 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+		Goto Fire
+	  Hold2:
+		DREM C 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####"  CD 2 A_WeaponReady(14)
+		"####" # 0 A_Refire
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+	  Goto Fire	
+	  Hold3:
+		DREM E 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" # 0 A_GiveInventory("ThrowPower", 3)
+		"####" # 0 A_GiveInventory("ThrowPowerBig", 3)
+		"####" EE 2 A_WeaponReady(14)
+		"####" # 0 A_TakeInventory("TNTCounter", 3)
+		"####" # 0 A_Refire
+		"####" # 0 A_PlayWeaponSound("Spray/Can")
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+		Goto Fire
+	// Flash:
+	//	ZIPP ABCDEFGH 1
+	//	ZIPP EDCBAIJ 1
+	//	Stop
+	  Throw:
+		"####" # 0 A_GunFlash 
+		//"####" # 0 A_JumpIfInventory("ThrowPower", 30, "Throw_15")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 28, "Throw_14")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 26, "Throw_13")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 24, "Throw_12")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 22, "Throw_11")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 20, "Throw_10")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 18, "Throw_9")  
+		"####" # 0 A_JumpIfInventory("ThrowPower", 16, "Throw_8")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 14, "Throw_7")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 12, "Throw_6")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 10, "Throw_5")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 8, "Throw_4")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 6, "Throw_3")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 4, "Throw_2")
+		"####" # 0 A_JumpIfInventory("ThrowPower", 2, "Throw_1")
+		"####" # 0 A_FireCustomMissile("RemoteAerial")
+		Goto ThrowFinish
+	  Throw_1:
+		"####" # 0 A_FireCustomMissile("RemoteAerial2")
+		Goto ThrowFinish
+	  Throw_2:
+		"####" # 0 A_FireCustomMissile("RemoteAerial3")
+		Goto ThrowFinish	
+	  Throw_3:
+		"####" # 0 A_FireCustomMissile("RemoteAerial4")
+		Goto ThrowFinish	
+	  Throw_4:
+		"####" # 0 A_FireCustomMissile("RemoteAerial5")
+		Goto ThrowFinish	
+	  Throw_5:
+		"####" # 0 A_FireCustomMissile("RemoteAerial6")
+		Goto ThrowFinish	
+	  Throw_6:
+		"####" # 0 A_FireCustomMissile("RemoteAerial7")
+		Goto ThrowFinish	
+	  Throw_7:
+		"####" # 0 A_FireCustomMissile("RemoteAerial8")
+		Goto ThrowFinish	
+	  Throw_8:
+		"####" # 0 A_FireCustomMissile("RemoteAerial9")
+		Goto ThrowFinish	
+	  Throw_9:
+		"####" # 0 A_FireCustomMissile("RemoteAerial10")
+		Goto ThrowFinish	
+	  Throw_10:
+		"####" # 0 A_FireCustomMissile("RemoteAerial11")
+		Goto ThrowFinish	
+	  Throw_11:
+		"####" # 0 A_FireCustomMissile("RemoteAerial12")
+		Goto ThrowFinish
+	  Throw_12:
+		"####" # 0 A_FireCustomMissile("RemoteAerial13")
+		Goto ThrowFinish	
+	  Throw_13:
+		"####" # 0 A_FireCustomMissile("RemoteAerial14")
+		Goto ThrowFinish	
+	  Throw_14:
+		"####" # 0 A_FireCustomMissile("RemoteAerial15")
+		Goto ThrowFinish	
+	  ThrowFinish:	//Why done without Offset? Because hand made is faster and more accurate!
+		DRTS E 0 A_ReplaceSprite("zblood_models", "DRTV")
+		"####" # 0 A_StopSound(CHAN_WEAPON)
+		"####" # 0 A_PlayWeaponSound("TNTTOSS")
+		"####" # 0 A_TakeInventory("ThrowPower", 300)
+		"####" # 0 A_TakeInventory("ThrowPowerBig", 300)
+		"####"  ABCDE 2
+		//"####" # 0 A_JumpIfInventory("DTNTAMMO", 1, 1)
+	 // Goto TakeAway
+	  //TNT1 AAA 0 A_Lower
+		goto Ready
+	  Spawn:
+		REMO A 1
+		stop	
+	Altfire:
+		DRNH E 0 A_ReplaceSprite("zblood_models", "DRNV")
+		"####" # 0 A_JumpIfInventory("RTNTAMMO",1,"AltFireAmmo")
+		"####" E 4
+		"####" F 0 A_PlaySound("Proximity/Det")
+		"####" FG 4 A_GiveInventory("BOOMBABY",1)
+		"####" FE 4
+		"####" # 0 A_TakeInventory("BOOMBABY",2)
+		Goto Ready
+	AltFireAmmo:
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" AA 4
+		"####" # 0 A_PlaySound("Proximity/Det")
+		DRDT A 0 A_ReplaceSprite("zblood_models", "DRFV")
+		"####" ABA 3 A_GiveInventory("BOOMBABY",1)
+		DREM A 0 A_ReplaceSprite("zblood_models", "DRMV")
+		"####" A 3
+		"####" # 0 A_TakeInventory("BOOMBABY",2)
+		Goto Ready
+	Dummy:
+		DRMV ABCDE 1
+		DRNV ABCDEFG 1
+		DRTV ABCDE 1
+		DRFV AB 1
+		Stop
+  }
+}
+
+
+actor RemoteAerial
+{
+  radius 10
+  height 6
+  +CannotPush
+  speed 0
+  Scale 0.5
+//  reactiontime 49
+  painsound "weapons/rocklx"
+  activesound "weapons/rocklf"
+  DamageType "Dynamite"
+  PROJECTILE
+  Gravity 0.6
+  Damage 0
+  +RANDOMIZE
+  +DONTSPLASH
+  +DONTGIB
+  +NOBOUNCESOUND
+   +DOOMBOUNCE
+   bouncefactor 0.5 
+   bouncecount 2
+  +PUSHABLE
+  	+ThruGhost
+
+  +SOLID
+  -NOGRAVITY
+  +EXTREMEDEATH
+  //+ShootAble
+  //GibHealth 0
+  //Health 1
+  Species "PlayerThrough"
+  +ThruSpecies
+  states
+  {
+  Spawn:
+    RAIR   ABCDEFGH 2 A_JumpIfInTargetInventory("BOOMBABY",1,"MidairDet")
+  See:
+    RAIR   ABCDEFGH 2 A_JumpIfInTargetInventory("BOOMBABY",1,"MidairDet")
+    Loop
+  Cont:
+    RAIR   ABCDEFGH 2 A_JumpIfInTargetInventory("BOOMBABY",1,"MidairDet")
+    Loop
+  Death:
+  RTNT  A 0 A_Recoil(-14) //Le classic slide
+  RTNT  AAA 1 A_JumpIfInTargetInventory("BOOMBABY",1,"MidairDet")
+  RTNT A 0 A_PlAYSOUND("Proximity/Arm")
+  RTNT  A 0 A_CustomMissile("RemoteFloor",1,0,0,CMF_TRACKOWNER)
+	Stop
+	MidairDet:
+	PTNT I 0 A_Stop
+	PTNT I 0 A_NoGravity
+	    PTNT I 0 bright A_Explode (128,160)//A_Explode
+		PTNT I 0 Bright A_PlaySound("weapons/rocklx",0)
+    MISL B 1 bright A_Pain
+	  PTNT A 0 A_CustomMissile("Kaboom",-16,0,0,CMF_TRACKOWNER)
+		  	//  PTNT A 0 A_CustomMissile("Blower2",0,0,0,CMF_TRACKOWNER)
+   // MISL B 0 A_SpawnItem("FloorKaboom",-16)
+	"####" # 0 A_SpawnItemEx("VBlower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	"####" # 0 A_SpawnItemEx("VBlower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    		Blowers:
+			"####" # 0 A_FadeOut(0.65)
+			MISL A 0 A_AlertMonsters
+			TNT1 A 1
+			MISL A 0 A_Explode(96,160,1)
+			TNT1 A 1 A_Explode(96,140,1)
+			TNT1 A 1 A_Explode(96,96,1)
+			MISL A 0 A_ChangeFlag("EXTREMEDEATH",0)
+		Damage:
+			MISL A 1 A_Explode(2,768*alpha*2,1)//Both blowers at once
+			MISL A 0 A_FadeOut(.01)
+			Goto Damage
+  }
+}
+
+Actor RemoteAerial1 : RemoteAerial
+{Speed 5}
+
+Actor RemoteAerial2 : RemoteAerial
+{Speed 6}
+
+Actor RemoteAerial3 : RemoteAerial
+{Speed 7}
+
+Actor RemoteAerial4 : RemoteAerial
+{Speed 8}
+
+Actor RemoteAerial5 : RemoteAerial
+{Speed 9}
+
+Actor RemoteAerial6 : RemoteAerial
+{Speed 10}
+
+Actor RemoteAerial7 : RemoteAerial
+{Speed 11}
+
+Actor RemoteAerial8 : RemoteAerial
+{Speed 12}
+
+Actor RemoteAerial9 : RemoteAerial
+{Speed 13}
+
+Actor RemoteAerial10 : RemoteAerial
+{Speed 14}
+
+Actor RemoteAerial11 : RemoteAerial
+{Speed 15}
+
+Actor RemoteAerial12 : RemoteAerial
+{Speed 18}
+
+Actor RemoteAerial13 : RemoteAerial
+{Speed 22}
+
+Actor RemoteAerial14 : RemoteAerial
+{Speed 26}
+
+Actor RemoteAerial15 : RemoteAerial
+{Speed 30}
+Actor RemoteFloor
+{
+	Mass 9001
+	Health 70
+	Height 10
+	Radius 6
+	DamageFactor "Normal",0.5
+	DamageFactor "Dynamite", 60
+	DamageFactor "Napalm",60
+	DamageFactor "TripWire",100
+		// Projectile
+		Species "Trap"
+		+ThruSpecies
+	+Shootable
+	-SOLID
+	+NoBlood
+	 Speed 0
+	 -NoGravity
+	 +Activateimpact
+	   Scale 0.5
+	     painsound "weapons/rocklx"
+  activesound "weapons/rocklf"
+  DamageType "Dynamite"
+	States
+	{
+	Spawn:
+	RTNT A 8 A_JumpIfInTargetInventory("BOOMBABY",1,"Death")
+	Loop
+	Death:
+	PTNT I 0 A_PlaySound("Proximity/Arm")
+    PTNT I 0 bright A_Explode (128,160)//A_Explode
+    MISL B 1 bright A_Pain
+	  PTNT A 0 A_CustomMissile("FloorKaboom",-18,0,0,CMF_TRACKOWNER)
+	  	  //PTNT A 0 A_CustomMissile("Blower",0,0,0,CMF_TRACKOWNER)
+		  	//  PTNT A 0 A_CustomMissile("Blower2",0,0,0,CMF_TRACKOWNER)
+   // MISL B 0 A_SpawnItem("FloorKaboom",-16)
+	"####" # 0 A_SpawnItemEx("VBlower",-16,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	"####" # 0 A_SpawnItemEx("VBlower2",-16,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    		Blowers:
+			"####" # 0 A_FadeOut(0.65)
+			MISL A 0 A_AlertMonsters
+			TNT1 A 1
+			MISL A 0 A_Explode(96,160,1)
+			TNT1 A 1 A_Explode(96,140,1)
+			TNT1 A 1 A_Explode(96,96,1)
+			MISL A 0 A_ChangeFlag("EXTREMEDEATH",0)
+		Damage:
+			MISL A 1 A_Explode(2,768*alpha*2,1)//Both blowers at once
+			MISL A 0 A_FadeOut(.01)
+			Goto Damage
+	stop
+	}
+}

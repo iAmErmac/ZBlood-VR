@@ -1,0 +1,4 @@
+IWAD = "zbloody_hell.wad"
+STARTUPTITLE = "ZBloody Hell"
+STARTUPCOLORS = "00 00 00", "FF 00 00"
+STARTUPTYPE = "Hexen"

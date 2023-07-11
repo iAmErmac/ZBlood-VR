@@ -1,0 +1,21 @@
+Actor TNTBundle : CustomInventory replaces RocketLauncher
+{
+//$Category Blood Weapons
+	inventory.pickupmessage "Picked up a Bundle of TNT"
+	inventory.pickupsound "dsammoup"
+	inventory.amount 1
+	inventory.maxamount 50
+	inventory.icon "TBNDA0"
+	  
+  +NOGRAVITY
+	States
+	{
+		Spawn:
+			TBND A -1
+		Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TNTAmmo", 1)
+			TNT1 A 0 A_GiveInventory("Dynamite", 1)
+		Stop		
+	}
+}

@@ -1,0 +1,114 @@
+
+decal BBloodSmear1
+{
+	pic BLUDSMR1//BSMEAR1
+	shade "00 68 00"
+	x-scale 0.2
+	y-scale 0.2
+	randomflipx
+	animator BloodSmearer
+}
+
+decal BBloodSmear2
+{
+	pic BLUDSMR1
+	shade "00 68 00"
+	x-scale 0.5
+	y-scale 0.5
+	randomflipx
+	animator BloodSmearer
+}
+
+decal BBloodSmear3
+{
+	pic BSMEAR1
+	shade "00 68 00"
+	x-scale 0.8
+	y-scale 0.8
+	randomflipx
+	animator BloodSmearer2
+}
+
+decal BBloodSmear4
+{
+	pic BLUDSMR1
+	shade "00 68 00"
+	x-scale 0.5
+	y-scale 0.5
+	randomflipx
+	animator BloodSmearer2
+}
+
+decal BloodSplat-1
+{
+	pic BLUDSPT1
+	shade "00 68 00"
+	x-scale 0.5
+	y-scale 0.5
+	randomflipx
+	randomflipy
+}
+
+decal BloodSplat-2
+{
+	pic BLUDSPT2
+	shade "00 68 00"
+	x-scale 0.5
+	y-scale 0.5
+	randomflipx
+}
+
+decal BloodSplat-3
+{
+	pic BLUDSPT3
+	shade "00 68 00"
+	x-scale 0.5
+	y-scale 0.5
+	randomflipx
+	randomflipy
+}
+
+decal BloodSplat-4
+{
+	pic BLUDSPT4
+	shade "00 68 00"
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+}
+
+decal BloodSplat-5
+{
+	pic BLUDSPT5
+	shade "00 68 00"
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	randomflipy
+}
+
+decal BrutalBloodSplat01
+{
+	pic BLUDSPT1
+	shade "00 68 00"
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	randomflipy
+}
+
+decal BrutalBloodSplat02
+{
+	pic BLUDSPT2
+	shade "00 68 00"
+	x-scale 0.4
+	y-scale 0.4
+	randomflipx
+	randomflipy
+}
+
+decalgroup BrutalBloodSplat
+{
+BrutalBloodSplat01 6
+BrutalBloodSplat02 6
+}

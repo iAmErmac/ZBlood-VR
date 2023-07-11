@@ -1,0 +1,158 @@
+
+GameInfo
+{
+	QuitSound = ""
+	EventHandlers = "DeadMonsterDrops"
+}
+
+clearskills
+
+// ================================================
+// Skill level: Easy 
+//									  STILL KICKING
+// ================================================
+//Lets face it.. people playing this dont want to die in one hit
+//After second thought.. it was still difficult!
+skill ZB_Easy
+{		
+	name = "Still Kicking"
+	textcolor = White
+	picname = "M_JKILL" 
+	acsreturn = 0		
+	spawnfilter = "Easy"
+	damagefactor = 0.3
+	//MonsterHealth = 0.7	
+	aggressiveness = 0.5
+	ammofactor = 1.4
+	doubleammofactor = 1
+	easybossbrain
+	MonsterHealth = 1.0
+}
+
+// ================================================
+// Skill level: Moderate
+//								   SLIGHTLY BROILED
+// ================================================
+skill ZB_Moderate
+{
+	name = "Slightly Broiled"		
+	textcolor = White
+	picname = "M_ROUGH"  
+	acsreturn = 1
+	spawnfilter = "Easy"
+	damagefactor = 0.5
+	//MonsterHealth = 0.86	
+	aggressiveness = 0.9
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 1.0
+}
+
+// ================================================
+// Skill level: Recommended
+//								 PINK ON THE INSIDE
+// ================================================
+skill ZB_Normal
+{
+	name = "Pink on the Inside"
+	textcolor = White	
+	picname = "M_HURT"
+	acsreturn = 2
+	spawnfilter = "Normal"
+	damagefactor = 0.75
+	aggressiveness = 1
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 1.5 //had to buff health, weapons too OP
+}
+
+// ================================================
+// Skill level: Difficult
+//										  WELL DONE
+// ================================================
+skill ZB_Difficult
+{
+	name = "Hardcore"
+	textcolor = White
+	picname = "M_ULTRA"
+	acsreturn = 3
+	spawnfilter = "Hard"
+	damagefactor = 1
+	aggressiveness = 1.1
+	ammofactor = 1
+	doubleammofactor = 1
+	MonsterHealth = 1.8
+}
+
+// ================================================
+// Skill level: Extreme
+//									   EXTRA CRISPY
+// ================================================
+//GL BEATING IT
+skill ZB_Extreme
+{
+	name = "Extra Crispy"
+	textcolor = White
+	picname = "M_NMARE"
+	acsreturn = 4
+	spawnfilter = "Hard"
+	damagefactor = 1.25
+	aggressiveness = 2
+	ammofactor = 1
+	doubleammofactor = 1
+	//MonsterHealth = 1.25
+	MonsterHealth = 1.8
+}
+
+
+// Episodes
+
+clearepisodes
+episode "&wt@01"
+{
+	name = "Hexen - Beyond Heretic"
+	key = "h"
+}
+
+cluster 1
+{
+	hub
+	exittext = "clus1msg"
+	exittextislump
+	pic = "interpic"
+}
+
+cluster 2
+{
+	hub
+	exittext = "clus2msg"
+	exittextislump
+	pic = "interpic"
+}
+
+cluster 3
+{
+	hub
+	exittext = "clus3msg"
+	exittextislump
+	pic = "interpic"
+}
+
+cluster 4
+{
+	hub
+	exittext = "clus4msg"
+	exittextislump
+	pic = "interpic"
+}
+
+gamedefaults
+{
+	activateowndeathspecials
+	infiniteflightpowerup
+	fallingdamage
+	nointermission
+	noautosequences
+	missilesactivateimpactlines
+	monsterfallingdamage
+}

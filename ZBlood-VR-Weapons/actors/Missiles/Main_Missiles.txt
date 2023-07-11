@@ -1,0 +1,729 @@
+//These Missiles are used by multiple actors so let's keep 'em here instead.
+
+actor PhantasmProjectileSolid
+{ 
+  radius 6
+  height 8
+  speed 11
+  SCALE 0.65
+  damage (random(15,30))
+  renderstyle Add
+  seesound "PhantasmMissile"
+  DamageType "Spiritual"
+  PROJECTILE
+  +RANDOMIZE
+  alpha 0.78
+  states
+  {
+  Spawn:
+    NULL A 3
+	Loop
+Death:
+	PHAM D 0
+    stop
+  }
+}
+
+actor PhantasmProjectile
+{ 
+  radius 6
+  height 8
+  speed 11
+  SCALE 0.65
+  damage (random(1,5))
+  renderstyle Add
+  seesound "PhantasmMissile"
+  DamageType "Spiritual"
+  PROJECTILE
+  +RANDOMIZE
+  +NoClip
+  alpha 0.78
+  states
+  {
+  Spawn:
+    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	    PHAM B 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+		    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 0 A_PlaySound("SKULAIR")
+    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	    PHAM B 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+		    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 0 A_PlaySound("SKULAIR")
+	    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	    PHAM B 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+		    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 0 A_PlaySound("SKULAIR")
+	    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	    PHAM B 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+		    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 0 A_PlaySound("SKULAIR")
+	    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	    PHAM B 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+		    PHAM A 3 A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+					PHAM D 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM E 2 Bright A_SpawnItem("PhantasmTrail")
+	PHAM A 0 A_Explode(random(7,12),50,0)
+	PHAM D 0 A_PlaySound("SKULAIR")
+Death:
+	PHAM D 0
+    stop
+  }
+}
+
+Actor PhantasmTrail
+{
+	height 1
+	radius 1
+	speed 0
+	scale 0.65
+	renderstyle add
+	alpha 0.5
+	+NOGRAVITY
+	states
+	{
+		Spawn:
+			PHAM ABCDE 3 A_Fadeout(0.08)
+		Stop
+	}
+}
+
+actor NapalmRocketAlt1 : BloodAOEFlameProjectile
+{
+  Decal Scorch
+  radius 8
+  height 8
+  speed 20
+  RENDERSTYLE ADD
+  Scale 0.5
+  damage 10
+  seesound "weapons/plasmaf"
+  deathsound "weapons/rocklx"
+  DamageType "Napalm"
+  PROJECTILE
+  +RANDOMIZE
+  +DONTSPLASH
+  -NOGRAVITY
+  +DOOMBOUNCE
+  +RIPPER
+  +STRIFEDAMAGE
+  -NOTELEPORT
+  states
+  {
+  Spawn:
+  	TNT1 A 0
+	TNT1 A 0 ThrustThingZ(0,24,0,1)
+	TNT1 A 0 A_JumpIf(waterlevel>2,"AltFire")
+  Fire:
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP A 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP A 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP B 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP B 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP C 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP C 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP D 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP D 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP E 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP E 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail2",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    NAPP F 1 bright A_SpawnItem ("BSmokeTrail",0,0,0,0)
+    NAPP F 0 bright A_SpawnItem ("BFireTrail",8+random[Incinerator](-5,5),0+random[Incinerator](-5,5),0,0)
+    goto Death
+  AltFire:
+    MANF AABBCCDDEEFFAABBCCDDEEFFAABBCCDDEEFF 1 bright A_SpawnItemEx("SmokeTrailSmall",random[Incinerator](-5,5),random[Incinerator](-5,5),random[Incinerator](-5,5),random[Incinerator](-1,1),random[Incinerator](-1,1),random[Incinerator](1,4))
+    goto Death
+  Death:
+      MISL B 0 A_MarkBurnVictims()
+      MISL B 0 Radius_quake(6,12,0,16,0)
+    NAPP A 1 bright A_Explode(100,250,1)
+    MISL A 0 A_PlaySound("weapons/rocklx")
+    MISL B 0 A_SpawnItemEx("NapalmKaboom",-32,-32,0+random[Incinerator](-2,2),0,0,1,0,128)
+//	MISL BBBBBB 0 A_SpawnItemEx("BurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+    TNT1 AA 1 A_SpawnItemEx ("NapalmRocketAlt2",random[Incinerator](-8,-4),random[Incinerator](-2,2),16,random[Incinerator](6,10),random[Incinerator](-3,3),random[Incinerator](3,6),random[Incinerator](-16,16))
+    stop
+  }
+}
+
+actor NapalmRocketAlt2 : NapalmRocketAlt1
+{
+  speed 1
+  +STRIFEDAMAGE
+  -EXTREMEDEATH
+  -BOUNCEONACTORS
+  damage 10
+    bouncefactor 0.5 
+  bouncecount 2
+  Gravity .7
+  states
+  {
+  Spawn:
+    MANF A 0
+	MANF A 0 A_JumpIf(waterlevel>2,"AltFire")
+  Fire:
+  	MANF A 0 A_Jump(256,1,2,3,4,5,6)
+    NAPP AABBCCDDEEFFAABBCCDDEEFFAA 1 bright A_Explode(8,32)
+    goto Death
+  AltFire:
+  	MANF A 0 A_Jump(256,1,2,3,4,5,6)
+    NAPP AABBCCDDEEFFAABB 1 bright A_SpawnItemEx("SmokeTrailSmall",0,0,0,0,0,random[Incinerator](1,4),0,0,128)
+    goto Death
+  Death:
+      MISL B 0 A_MarkBurnVictims()
+      MISL B 0 Radius_quake(5,12,0,16,0)
+    NAPP A 1 bright A_Explode(80,180,1)
+    MISL A 0 A_PlaySound("weapons/rocklx")
+    MISL B 0 A_SpawnItem("NapalmKaboom",-32,0+random[Incinerator](-2,2))
+//	MISL BBBBB 0 A_SpawnItemEx("BurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+//    MISL BBBBB 0 A_SpawnItemEx("BadBurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+    TNT1 AAA 1 A_SpawnItemEx ("NapalmRocketAlt3",random[Incinerator](-8,-4),random[Incinerator](-2,2),16,random[Incinerator](6,10),random[Incinerator](-3,3),random[Incinerator](3,6),random[Incinerator](-16,16))
+    stop
+  }
+}
+
+actor NapalmRocketAlt3 : NapalmRocketAlt1
+{
+  speed 1
+  +DOOMBOUNCE
+  +STRIFEDAMAGE
+  -EXTREMEDEATH
+  -BOUNCEONACTORS
+  damage 5
+  bouncecount 2 
+  Gravity .7
+  states
+  {
+  Spawn:
+    MANF A 0
+	MANF A 0 A_JumpIf(waterlevel>2,"AltFire")
+  Fire:
+    NAPP AABBCCDDEEFFAABBCCDDEEFFAABBCC 1 bright A_Explode(6,32)
+    goto Death
+  AltFire:
+  	MANF A 0 A_Jump(256,1,2,3,4,5,6)
+    NAPP AABBCCDDEEFFAABBCCDD 1 bright A_SpawnItemEx("SmokeTrail",0,0,0,0,0,random[Incinerator](1,4),0,0,192)
+    goto Death
+  Death:
+      MISL B 0 A_MarkBurnVictims()
+      MISL B 0 Radius_quake(4,12,0,16,0)
+    NAPP A 1 bright A_Explode(70,140,1)
+    MISL A 0 A_PlaySound("weapons/rocklx")
+    MISL B 0 A_SpawnItem("NapalmKaboom",0+random[Incinerator](-4,4),0+random[Incinerator](-2,2))
+//	MISL BBBB 0 A_SpawnItemEx("BurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+//    MISL BBBB 0 A_SpawnItemEx("BadBurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+    MISL B 0 A_SpawnItemEx ("NapalmRocketAlt4",random[Incinerator](-8,-4),random[Incinerator](-2,2),16,random[Incinerator](6,10),random[Incinerator](-3,3),random[Incinerator](4,6),random[Incinerator](-16,16))
+    stop
+  }
+}
+
+actor NapalmRocketAlt4 : NapalmRocketAlt1
+{
+  speed 5
+  +DOOMBOUNCE
+  +STRIFEDAMAGE
+  +DONTSPLASH
+  -EXTREMEDEATH
+  -BOUNCEONACTORS
+  damage 2
+  damagetype "SpecialFire"  
+  bouncecount 2 
+  Gravity .7
+  states
+  {
+  Spawn:
+    MANF A 0
+	MANF A 0 A_JumpIf(waterlevel>2,"AltFire")
+  Fire:
+  	MANF A 0 A_Jump(256,1,2,3,4,5,6)
+    NAPP AABBCCDDEEFFAABBCCDDEEFFAABBCC 1 bright A_Explode(4,32)
+    goto Death
+  AltFire:
+  	MANF A 0 A_Jump(256,1,2,3,4,5,6)
+    NAPP AABBCCDDEEFFAABBCCDD 1 bright A_SpawnItemEx("SmokeTrail",0,0,0,0,0,random[Incinerator](1,4),0,0,192)
+    goto Death
+  Death:
+      MISL B 0 A_MarkBurnVictims()
+      MISL B 0 Radius_quake(3,10,0,16,0)
+    NAPP A 1 bright A_Explode(60,200,1)
+    MISL A 0 A_PlaySound("weapons/rocklx")
+//	MISL BBBB 0 A_SpawnItemEx("BurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+//    MISL BBBB 0 A_SpawnItemEx("BadBurningInit",random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),random[Incinerator](random[Incinerator](-64,-16),random[Incinerator](16,64)),0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+    MISL B 0 A_SpawnItem("NapalmKaboom",0+random[Incinerator](-4,4),0+random[Incinerator](-2,2))
+    stop
+  }
+}
+
+actor NapalmKaboom
+{ 
+  radius 1
+  height 40
+  renderstyle Add
+  +NOBLOCKMAP
+  +DONTSPLASH
+  +RANDOMIZE
+  PROJECTILE
+  -NOTELEPORT
+  Scale 0.6
+  states
+  {
+  Spawn:
+    BFE1 B 0
+    goto Death
+  Death:
+    BFE1 AAAAA 0 A_CustomMissile("NapalmDebris", 0, 0, random(0,360), 2, random(-90,90))        
+    //BFE1 A 0 A_SpawnDebris ("NapalmDebris")
+    BFE1 A 0 A_Jump(127,12)
+    BFE1 ABCDEFGHIJK 2 Bright
+    stop
+    BFE1 LMNOPQRSTUV 2 Bright
+    stop
+  }
+}
+
+actor LifeLeechShot : BloodFlameProjectile
+{
+  PROJECTILE
+  +BRIGHT
+  Damage(random(24,36))
+  Obituary "%o had %p soul sucked dry by %k."
+  DamageType "LifeLeech"
+  DeathSound "LLFireExplode"
+  Height 8
+  Radius 8
+  SeeSound ""
+  RenderStyle Add
+  alpha 0.5
+  scale 0.6
+  speed 20
+  Decal none
+  -EXTREMEDEATH
+  -NOTELEPORT
+  +FOILINVUL
+  States
+  {
+	  Spawn: 
+		LLSS A 2 bright A_SpawnItemEx("LifeLeechTrail",0,0,0,random(-4,4),random(-4,4),random(-4,4),random(1,360))
+		LLSS A 2 BRIGHT A_SpawnItemEx("LifeLeechTwinkle",random(-7,7),random(-7,7),random(-7,7))
+		Loop
+		death:
+		LLSX ABCDEFGHIJK 2 bright
+		Stop
+		XDeath:
+		LLSX A 0 A_GiveToTarget("TwinkleHeal",1)
+		LLSX A 0 A_GiveToTarget("Health",3)
+		LLSX A 0 A_GiveToTarget("EssencePower",1)
+		Goto Death
+  }
+}
+
+Actor LifeLeechShot2 : LifeLeechShot
+{
+	DeathSound "LLFireExplode2"
+}
+
+Actor LifeLeechTrail : BloodFlameProjectile
+{
+	Projectile
+	Damage (2)
+	DamageType "LifeLeech"
+    Obituary "%o had %p soul sucked dry by %k."	
+	+RIPPER
+	+BLOODLESSIMPACT
+  -NOTELEPORT
+	+FOILINVUL
+	Speed 0
+	Radius 12
+	Height 12
+	Scale 0.15
+	Alpha 0.9
+	RenderStyle Add
+	States
+	{
+		Spawn:
+		  ESST ABCDEFGHI 1 bright A_FadeOut
+		wait
+	}
+}
+
+Actor LifeLeechTwinkle : LifeLeechTrail
+{
+	+ClientSideOnly
+	Scale 0.11
+	States
+	{
+	Spawn:
+	LLSS A 3 Bright  A_FadeOut(random(0.3,0.5))
+	LLSS A 3 Bright  A_FadeIn(random(0.3,0.4))
+	LLSS A 3 Bright  A_FadeOut(random(0.3,0.5))
+	LLSS A 3 Bright  A_FadeIn(random(0.3,0.4))
+		LLSS A 3 Bright  A_FadeOut(random(0.3,0.5))
+	LLSS A 3 Bright  A_FadeIn(random(0.3,0.4))
+		LLSS A 3 Bright  A_FadeOut(random(0.3,0.5))
+	LLSS A 3 Bright  A_FadeIn(random(0.3,0.4))
+	LoopEnd:
+	LLSS A 2 Bright  A_Fadeout(0.1)
+	Loop
+}}
+Actor LifeLeechSmallFire : BloodFlameProjectile
+{
+	Projectile
+	Damage(random(6,12))
+	DamageType "LifeLeech"
+	Obituary "%o was incinerated by %k."
+	+RIPPER
+	+BLOODLESSIMPACT
+  -NOTELEPORT
+	+FOILINVUL
+	Speed 40
+	Radius 12
+	Height 12
+	Scale 0.75
+	RenderStyle Add
+	States
+	{
+		Spawn:
+		  SFIR ABCDEFGH 3 bright A_FadeOut(0.1)
+		wait
+	}
+}
+
+Actor LifeLeechSmallfire2 : LifeLeechSmallFire
+{
+	States
+	{
+		Spawn:
+			SFIR IJKLMNOP 3 Bright A_FadeOut(0.1)
+		Wait
+	}
+}
+
+Actor ItsAtrap
+{
+	Projectile
+	+NoGravity
+  -NOTELEPORT
+	Speed 0
+	Radius 15//25
+	DamageType "TripWire"
+			Species "Trap"
+		+ThruSpecies
+	Damage (5)
+	Height 12
+	Obituary "%o triggered a proximity tnt"
+	States
+	{
+	Spawn :
+	TNT1 AAA 10
+	Loop
+	Death :
+		TNT1 A 1 A_PlaySound("Proximity/Det")
+		 TNT1 A 0 A_Explode(1,10)
+		 Stop
+	}
+}
+
+Actor VBlower
+{
+	PROJECTILE
+	Speed 0
+	+NOBLOCKMAP
+	+DONTSPLASH
+	+RIPPER
+	+FLOORHUGGER
+	+Bloodlessimpact
+  -NOTELEPORT
+	renderstyle none
+	gravity 10
+	alpha .35	// 35 tics of constant AoE afterblast damage
+	DamageType "Blast"	// players are affected less
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			MISL A 0 A_AlertMonsters
+			TNT1 A 1
+			MISL A 0 //A_Explode(96,160,1)
+			TNT1 A 1 // A_Explode(96,140,1)
+			TNT1 A 1 //A_Explode(96,96,1)
+			MISL A 0 A_ChangeFlag("EXTREMEDEATH",0)
+		Damage:
+			MISL A 1 A_FadeOut(.01)
+			Goto Damage
+	}
+}
+
+Actor VBlower2 : VBlower
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			MISL A 0 A_AlertMonsters
+			MISL A 0 //A_Explode(128,128,1)
+			TNT1 A 1 //A_Explode(60,128,1)
+			TNT1 A 1 //A_Explode(60,128,1)
+			MISL A 0 A_ChangeFlag("EXTREMEDEATH",0)
+		Damage:
+			MISL A 1 //A_Explode(2,768*alpha,1)
+			MISL A 0 A_FadeOut(.01)
+			Goto Damage
+	}
+}
+
+actor FloorKaboom
+{
+  radius 0
+  height 0
+  //Why did it have a blocking area.. it isn't even a tangible thing.
+  //All that did was make tnt damage luck based.
+  Decal Scorch
+  renderstyle Add
+  alpha 0.55
+  +NOBLOCKMAP
+  -NOGRAVITY  
+  +DONTSPLASH
+  -NOTELEPORT
+  +RANDOMIZE  
+ // PROJECTILE
+  states
+  {
+  Spawn:
+    MISL B 0
+	DEXP A 0 A_SpawnItemEx ("FloorKaboomDouble",0,0,0,momx,momy,momz,0,SXF_NOCHECKPOSITION)
+    goto Death
+  Death:
+    DEXP A 0 Radius_quake(2,7,0,16,0)    
+    DEXP A 0 A_SpawnDebris ("NapalmDebris") 
+    DEXP A 0 A_Jump(128,"AltDeath")
+    DEXP ABC 2 bright    
+    DEXP D 0 Radius_Quake (2,17,0,16,0)    
+	MISL A 0 A_JumpIf(waterlevel>2,"DeathVapor")
+    DEXP DEFGHI 3 bright
+    DEXP JKLM 2 bright
+    stop
+  DeathVapor:
+    DEXP DEFGHI 1 bright A_SpawnItemEx("SmokeTrailIn4OutSlow",random[Puffs](-10,10),random[Puffs](-10,10),15,random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](2,4))
+    DEXP JKLM 1 bright A_SpawnItemEx("SmokeTrailIn4OutSlow",random[Puffs](-20,20),random[Puffs](-20,20),30,random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](2,4))
+    stop
+  AltDeath:
+    DEXP NOP 2 bright    
+    DEXP P 0 Radius_Quake (1,10,0,16,0)
+	MISL A 0 A_JumpIf(waterlevel>2,"AltDeathVapor")
+    DEXP QRSTU 3 bright
+    DEXP VWXYZ 2 bright
+    stop
+  AltDeathVapor:
+    DEXP DEFGHI 1 bright A_SpawnItemEx("SmokeTrailIn4OutSlow",random[Puffs](-10,10),random[Puffs](-10,10),15,random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](2,4))
+    DEXP JKLM 1 bright A_SpawnItemEx("SmokeTrailIn4OutSlow",random[Puffs](-20,20),random[Puffs](-20,20),30,random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](random[Puffs](-4,0),random[Puffs](0,4)),random[Puffs](2,4))
+    stop
+  }
+}
+
+actor FloorKaboomDouble : FloorKaboom
+{
+ +NoBlockMap
+  states
+  {
+  Spawn:
+    MISL B 0
+	DEXP A 0 A_Jump(128,"AltDeath")
+    DEXP ABC 1 bright    
+	MISL A 0 A_JumpIf(waterlevel>2,"DeathVapor")
+    DEXP DEFGHI 2 bright
+    DEXP JKLM 2 bright
+    stop
+  DeathVapor:
+    DEXP DEFGHI 1 bright
+    DEXP JKLM 1 bright
+    stop
+  AltDeath:
+    DEXP NOP 1 bright    
+	MISL A 0 A_JumpIf(waterlevel>2,"AltDeathVapor")
+    DEXP QRSTU 2 bright
+    DEXP VWXYZ 2 bright
+    stop
+  AltDeathVapor:
+    DEXP DEFGHI 1 bright
+    DEXP JKLM 1 bright
+    stop
+  }
+}
+
+actor SprayCanFire : BloodFlameProjectile
+{
+  Decal PlasmaScorchLower1
+  spawnid 51
+  radius 13
+  height 8
+  speed 12
+  RENDERSTYLE ADD
+  Scale 0.2
+  damage (random(2,4))
+  alpha 0.9
+  //deathsound "weapons/plasmax"
+  //SeeSound "Spray/Can"
+  PROJECTILE
+  +RANDOMIZE
+  +CANNOTPUSH
+  +NODAMAGETHRUST
+  +RIPPER
+  +BLOODLESSIMPACT
+  translation "80:95=208:223","96:111=176:191"
+  damagetype Fire
+  states
+  {
+  Spawn:
+    //NSMK G 0 A_JumpIf (waterlevel < 1, 13)
+    NSMK G 0 A_Jump(128,6)
+    SPFI AABBCCDD 1 Bright A_SpawnItem ("BFireTrail",8+random(-7,7),8+random(-7,7),0,0)
+	TNT1 A 0 ThrustThingZ(0, 4, 0, 1)
+	SPFI EFGHI 2 bright A_SpawnItem ("BFireTrail2",8+random(-5,5),8+random(-7,7),0,0)
+    goto Death
+    SPFI ABCD 2 A_SpawnItem ("BFireTrail",8+random(-5,5),8+random(-7,7),0,0)
+	TNT1 A 0 ThrustThingZ(0, 4, 0, 1)
+	SPFI EF 2 bright A_SpawnItem ("BFireTrail2",8+random(-5,5),8+random(-5,5),0,0)
+    goto Death
+    NSMK G 0
+    goto XDeath
+  Death:
+    NSMK A 0 A_Jump(128,15)
+    SPFI GHI 2 bright A_SpawnItem ("BFireTrail",8+random(-5,5),8+random(-5,5),0,0)
+    SFIR ABCDEFGH 2 bright
+    stop
+    SPFI GHI 2 bright A_SpawnItem ("BFireTrail2",8+random(-5,5),8+random(-5,5),0,0)
+    SFIR IJKLMNOP 2 bright
+    stop
+  XDeath:
+    FTRL H 0 bright
+    stop
+  }
+}

@@ -1,0 +1,399 @@
+//------------- 3D MODELS -------------
+
+
+Model Sawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun.md3"
+   Skin 0 "shotgun_noshell.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -17.0 -8.0
+   
+   //Ready
+   FrameIndex WP01 A 0 3
+   
+   //Fire - first barrel
+   FrameIndex SWNF A 0 4
+   FrameIndex SWNF B 0 5
+   
+   //Fire - 2nd barrel
+   FrameIndex SWNF C 0 6
+   FrameIndex SWNF D 0 7
+   
+   //Fire - double barrel
+   FrameIndex SWNF E 0 8
+   FrameIndex SWNF F 0 9
+   FrameIndex SWNF G 0 10
+   FrameIndex SWNF H 0 11
+   
+   //Reload
+   FrameIndex SWNR A 0 12
+   FrameIndex SWNR B 0 13
+   FrameIndex SWNR C 0 14
+   FrameIndex SWNR D 0 15
+   FrameIndex SWNR E 0 16
+   FrameIndex SWNR F 0 17
+   FrameIndex SWNR G 0 18
+   FrameIndex SWNR H 0 19
+   Skin 0 "shotgun.png"
+   FrameIndex SWNR I 0 20
+   FrameIndex SWNR J 0 21
+   FrameIndex SWNR K 0 22
+   FrameIndex SWNR L 0 23
+   FrameIndex SWNR M 0 24
+   FrameIndex SWNR N 0 25
+   FrameIndex SWNR O 0 26
+   FrameIndex SWNR P 0 27
+   FrameIndex SWNR Q 0 28
+   FrameIndex SWNR R 0 29
+   Skin 0 "shotgun_noshell.png"
+   FrameIndex SWNR S 0 30
+   FrameIndex SWNR T 0 31
+   FrameIndex SWNR U 0 32
+}
+
+//Muzzle flash
+Model Sawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_mf1.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 1.0 -18.0 -8.0
+   
+   //Left barrel
+   FrameIndex SWFF A 0 4
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SWFF B 0 5
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SWFF C 0 5
+   
+   //Right barrel
+   Offset 7.0 -18.0 -8.0
+   
+   Skin 0 "shotgun_mf1.png"
+   FrameIndex SWFF D 0 4
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SWFF E 0 5
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SWFF F 0 5
+}
+
+//Alt fire muzzle flash
+Model Sawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_mf2.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 2.0 -18.0 -8.0
+   
+   FrameIndex SWFF G 0 8
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SWFF H 0 9
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SWFF I 0 10
+}
+
+Model DoubleSawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_akimbo.md3"
+   Skin 0 "shotgun.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -17.0 -8.0
+   
+   //Ready
+   FrameIndex SAKM A 0 3
+   
+   //Fire - first barrel
+   FrameIndex SAKM B 0 4
+   FrameIndex SAKM C 0 5
+   FrameIndex SAKM D 0 6
+   FrameIndex SAKM E 0 7
+   
+   //Fire - 2nd barrel
+   FrameIndex SAKM F 0 8
+   FrameIndex SAKM G 0 9
+   FrameIndex SAKM H 0 10
+   FrameIndex SAKM I 0 11
+   
+   //Fire - double barrel
+   FrameIndex SAKM J 0 12
+   FrameIndex SAKM K 0 13
+   FrameIndex SAKM L 0 14
+   FrameIndex SAKM M 0 15
+   FrameIndex SAKM N 0 16
+}
+
+
+
+//Muzzle flash
+Model DoubleSawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_akimbo_mf1.md3"
+   SurfaceSkin 0 0 "shotgun_mf1.png"
+   SurfaceSkin 0 1 "empty.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 1.0 -18.0 -8.0
+   
+   //Left barrel
+   FrameIndex SWFF A 0 4
+   SurfaceSkin 0 0 "shotgun_mf2.png"
+   FrameIndex SWFF B 0 5
+   SurfaceSkin 0 0 "shotgun_mf3.png"
+   FrameIndex SWFF C 0 5
+   SurfaceSkin 0 0 "empty.png"
+   SurfaceSkin 0 1 "shotgun_mf1.png"
+   FrameIndex SWFF D 0 6
+   SurfaceSkin 0 1 "shotgun_mf2.png"
+   FrameIndex SWFF E 0 7
+   SurfaceSkin 0 1 "shotgun_mf3.png"
+   FrameIndex SWFF F 0 7
+   
+   //Right barrel
+   Offset 7.0 -18.0 -8.0
+   
+   SurfaceSkin 0 0 "shotgun_mf1.png"
+   SurfaceSkin 0 1 "empty.png"
+   FrameIndex SWFF G 0 4
+   SurfaceSkin 0 0 "shotgun_mf2.png"
+   FrameIndex SWFF H 0 5
+   SurfaceSkin 0 0 "shotgun_mf3.png"
+   FrameIndex SWFF I 0 5
+   SurfaceSkin 0 0 "empty.png"
+   SurfaceSkin 0 1 "shotgun_mf1.png"
+   FrameIndex SWFF J 0 6
+   SurfaceSkin 0 1 "shotgun_mf2.png"
+   FrameIndex SWFF K 0 7
+   SurfaceSkin 0 1 "shotgun_mf3.png"
+   FrameIndex SWFF L 0 7
+}
+
+//Alt fire muzzle flash
+Model DoubleSawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_akimbo_mf2.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -18.0 -7.0
+   
+   FrameIndex SWFF M 0 11
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SWFF N 0 12
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SWFF O 0 13
+}
+
+
+
+//------------- VOXEL MODELS -------------
+
+
+Model Sawedoff
+{ 
+   Path "models/voxel/weapons/shotgun"
+   Model 0 "shotgun.md3"
+   SurfaceSkin 0 0 "shotbarrel_tex.png"
+   SurfaceSkin 0 1 "shotbody_tex.png"
+   SurfaceSkin 0 2 "empty.png" //Shell 1
+   SurfaceSkin 0 3 "empty.png" //Shell 2
+   SurfaceSkin 0 4 "shotbody_tex.png"
+   
+   Scale -1.5 1.5 1.5
+   Offset 0.0 -22.0 -10.0
+   
+   //Ready
+   FrameIndex WP0V A 0 3
+   
+   //Fire - first barrel
+   FrameIndex SWVF A 0 4
+   FrameIndex SWVF B 0 5
+   
+   //Fire - 2nd barrel
+   FrameIndex SWVF C 0 6
+   FrameIndex SWVF D 0 7
+   
+   //Fire - double barrel
+   FrameIndex SWVF E 0 8
+   FrameIndex SWVF F 0 9
+   FrameIndex SWVF G 0 10
+   FrameIndex SWVF H 0 11
+   
+   //Reload
+   FrameIndex SWVR A 0 12
+   FrameIndex SWVR B 0 13
+   FrameIndex SWVR C 0 14
+   FrameIndex SWVR D 0 15
+   FrameIndex SWVR E 0 16
+   FrameIndex SWVR F 0 17
+   FrameIndex SWVR G 0 18
+   FrameIndex SWVR H 0 19
+   Skin 0 "shotgun.png"
+   FrameIndex SWVR I 0 20
+   FrameIndex SWVR J 0 21
+   FrameIndex SWVR K 0 22
+   FrameIndex SWVR L 0 23
+   FrameIndex SWVR M 0 24
+   FrameIndex SWVR N 0 25
+   FrameIndex SWVR O 0 26
+   FrameIndex SWVR P 0 27
+   FrameIndex SWVR Q 0 28
+   FrameIndex SWVR R 0 29
+   Skin 0 "shotgun_noshell.png"
+   FrameIndex SWVR S 0 30
+   FrameIndex SWVR T 0 31
+   FrameIndex SWVR U 0 32
+}
+
+//Muzzle flash
+Model Sawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_mf1.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 1.0 -18.0 -8.0
+   
+   //Left barrel
+   FrameIndex SVFF A 0 4
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SVFF B 0 5
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SVFF C 0 5
+   
+   //Right barrel
+   Offset 7.0 -17.0 -8.0
+   
+   Skin 0 "shotgun_mf1.png"
+   FrameIndex SVFF D 0 4
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SVFF E 0 5
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SVFF F 0 5
+}
+
+//Alt fire muzzle flash
+Model Sawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_mf2.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 2.0 -18.0 -8.0
+   
+   FrameIndex SVFF G 0 8
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SVFF H 0 9
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SVFF I 0 10
+}
+
+Model DoubleSawedoff
+{ 
+   Path "models/voxel/weapons/shotgun"
+   Model 0 "shotgun_akimbo.md3"
+   Skin 0 "shotgun_tex.png"
+   
+   Scale -1.5 1.5 1.5
+   Offset 0.0 -22.0 -10.0
+   
+   //Ready
+   FrameIndex SAKV A 0 3
+   
+   //Fire - first barrel
+   FrameIndex SAKV B 0 4
+   FrameIndex SAKV C 0 5
+   FrameIndex SAKV D 0 6
+   FrameIndex SAKV E 0 7
+   
+   //Fire - 2nd barrel
+   FrameIndex SAKV F 0 8
+   FrameIndex SAKV G 0 9
+   FrameIndex SAKV H 0 10
+   FrameIndex SAKV I 0 11
+   
+   //Fire - double barrel
+   FrameIndex SAKV J 0 12
+   FrameIndex SAKV K 0 13
+   FrameIndex SAKV L 0 14
+   FrameIndex SAKV M 0 15
+   FrameIndex SAKV N 0 16
+}
+
+//Muzzle flash
+Model DoubleSawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_akimbo_mf1.md3"
+   SurfaceSkin 0 0 "shotgun_mf1.png"
+   SurfaceSkin 0 1 "empty.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset -1.0 -18.0 -8.0
+   
+   //Left barrel
+   FrameIndex SVFF A 0 4
+   SurfaceSkin 0 0 "shotgun_mf2.png"
+   FrameIndex SVFF B 0 5
+   SurfaceSkin 0 0 "shotgun_mf3.png"
+   FrameIndex SVFF C 0 5
+   
+   SurfaceSkin 0 0 "empty.png"
+   SurfaceSkin 0 1 "shotgun_mf1.png"
+   Offset 1.0 -17.0 -8.0
+   
+   FrameIndex SVFF D 0 6
+   SurfaceSkin 0 1 "shotgun_mf2.png"
+   FrameIndex SVFF E 0 7
+   SurfaceSkin 0 1 "shotgun_mf3.png"
+   FrameIndex SVFF F 0 7
+   
+   //Right barrel
+   Offset 5.0 -18.0 -8.0
+   
+   SurfaceSkin 0 0 "shotgun_mf1.png"
+   SurfaceSkin 0 1 "empty.png"
+   FrameIndex SVFF G 0 4
+   SurfaceSkin 0 0 "shotgun_mf2.png"
+   FrameIndex SVFF H 0 5
+   SurfaceSkin 0 0 "shotgun_mf3.png"
+   FrameIndex SVFF I 0 5
+   
+   SurfaceSkin 0 0 "empty.png"
+   SurfaceSkin 0 1 "shotgun_mf1.png"
+   Offset 7.0 -17.0 -8.0
+   
+   FrameIndex SVFF J 0 6
+   SurfaceSkin 0 1 "shotgun_mf2.png"
+   FrameIndex SVFF K 0 7
+   SurfaceSkin 0 1 "shotgun_mf3.png"
+   FrameIndex SVFF L 0 7
+}
+
+//Alt fire muzzle flash
+Model DoubleSawedoff
+{ 
+   Path "models/3d/weapons/shotgun"
+   Model 0 "shotgun_akimbo_mf2.md3"
+   Skin 0 "shotgun_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset -2.0 -18.0 -9.0
+   
+   FrameIndex SVFF M 0 11
+   Skin 0 "shotgun_mf2.png"
+   FrameIndex SVFF N 0 12
+   Skin 0 "shotgun_mf3.png"
+   FrameIndex SVFF O 0 13
+}

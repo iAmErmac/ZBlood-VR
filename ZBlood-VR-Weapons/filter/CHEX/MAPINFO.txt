@@ -1,0 +1,201 @@
+
+clearskills
+
+// ================================================
+// Skill level: Easy 
+//									  STILL KICKING
+// ================================================
+//Lets face it.. people playing this dont want to die in one hit
+//After second thought.. it was still difficult!
+skill ZB_Easy
+{		
+	name = "Still Kicking"
+	textcolor = White
+	picname = "M_JKILL" 
+	acsreturn = 0		
+	spawnfilter = "Easy"
+	damagefactor = 0.3
+	//MonsterHealth = 0.7	
+	aggressiveness = 0.5
+	ammofactor = 1.4
+	doubleammofactor = 1
+	easybossbrain
+	MonsterHealth = 1.8 //had to buff health, weapons too OP
+}
+
+// ================================================
+// Skill level: Moderate
+//								   SLIGHTLY BROILED
+// ================================================
+skill ZB_Moderate
+{
+	name = "Slightly Broiled"		
+	textcolor = White
+	picname = "M_ROUGH"  
+	acsreturn = 1
+	spawnfilter = "Easy"
+	damagefactor = 0.5
+	//MonsterHealth = 0.86	
+	aggressiveness = 0.9
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 1.8
+}
+
+// ================================================
+// Skill level: Recommended
+//								 PINK ON THE INSIDE
+// ================================================
+skill ZB_Normal
+{
+	name = "Pink on the Inside"
+	textcolor = White	
+	picname = "M_HURT"
+	acsreturn = 2
+	spawnfilter = "Normal"
+	damagefactor = 0.75
+	aggressiveness = 1
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 2.0
+}
+
+// ================================================
+// Skill level: Difficult
+//										  WELL DONE
+// ================================================
+skill ZB_Difficult
+{
+	name = "Hardcore"
+	textcolor = White
+	picname = "M_ULTRA"
+	acsreturn = 3
+	spawnfilter = "Hard"
+	damagefactor = 1
+	aggressiveness = 1.1
+	ammofactor = 1
+	doubleammofactor = 1
+	MonsterHealth = 2.2
+}
+
+// ================================================
+// Skill level: Extreme
+//									   EXTRA CRISPY
+// ================================================
+//GL BEATING IT
+skill ZB_Extreme
+{
+	name = "Extra Crispy"
+	textcolor = White
+	picname = "M_NMARE"
+	acsreturn = 4
+	spawnfilter = "Hard"
+	damagefactor = 1.25
+	aggressiveness = 2
+	ammofactor = 1
+	doubleammofactor = 1
+	//MonsterHealth = 1.25
+	MonsterHealth = 2.5
+}
+
+// Episodes
+
+clearepisodes
+episode e1m1
+{
+	picname = "M_EPI1"
+	name = "$TXT_CHEX_EP"
+	key = "k"
+}
+
+defaultmap
+{
+	sucktime = 1
+}
+
+map E1M1 lookup "CHUSTR_E1M1"
+{
+	levelnum = 1
+	titlepatch = "WILV00"
+	next = "E1M2"
+	secretnext = "E1M9"
+	sky1 = "SKY1"
+	cluster = 1
+	par = 30
+	music = "$MUSIC_E1M1"
+}
+
+map E1M2 lookup "CHUSTR_E1M2"
+{
+	levelnum = 2
+	titlepatch = "WILV01"
+	next = "E1M3"
+	secretnext = "E1M9"
+	sky1 = "SKY1"
+	cluster = 1
+	par = 75
+	music = "$MUSIC_E1M2"
+}
+
+map E1M3 lookup "CHUSTR_E1M3"
+{
+	levelnum = 3
+	titlepatch = "WILV02"
+	next = "E1M4"
+	secretnext = "E1M9"
+	sky1 = "SKY1"
+	cluster = 1
+	par = 120
+	music = "$MUSIC_E1M3"
+}
+
+map E1M4 lookup "CHUSTR_E1M4"
+{
+	levelnum = 4
+	titlepatch = "WILV03"
+	next = "E1M5"
+	secretnext = "E1M9"
+	sky1 = "SKY1"
+	cluster = 1
+	par = 90
+	music = "$MUSIC_E1M4"
+}
+
+map E1M5 lookup "CHUSTR_E1M5"
+{
+	levelnum = 5
+	titlepatch = "WILV04"
+	next = "EndGame1"
+	secretnext = "E1M9"
+	sky1 = "SKY1"
+	cluster = 1
+	par = 165
+	music = "$MUSIC_E1M5"
+	needclustertext
+}
+
+// Clusters (correspond with same-numbered episode)
+
+cluster 1
+{
+	flat = "FLOOR4_8"
+	exittext = lookup, "CE1TEXT"
+}
+
+cluster 2
+{
+	flat = "SFLR6_1"
+	exittext = lookup, "CE2TEXT"
+}
+
+cluster 3
+{
+	flat = "MFLR8_4"
+	exittext = lookup, "CE3TEXT"
+}
+
+cluster 4
+{
+	flat = "MFLR8_3"
+	exittext = lookup, "CE4TEXT"
+}

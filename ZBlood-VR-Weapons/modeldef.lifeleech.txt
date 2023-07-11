@@ -1,0 +1,137 @@
+//------------- 3D MODELS -------------
+
+
+Model LifeLeech
+{ 
+   Path "models/3d/weapons/lifeleech"
+   Model 0 "lifeleech.md3"
+   Skin 0 "lifeleech.png"
+   
+   Scale -2 2 2
+   Offset 3.0 -15.0 -10.0
+   PitchOffset -17.0
+   
+   //Ready
+   FrameIndex LLST A 0 0
+   
+   //Fire   
+   FrameIndex LLST B 0 1
+   FrameIndex LLST C 0 2
+   FrameIndex LLST D 0 3
+   FrameIndex LLST E 0 4
+   FrameIndex LLST F 0 5
+   FrameIndex LLST G 0 6
+   FrameIndex LLST H 0 7
+   FrameIndex LLST I 0 8
+   FrameIndex LLST J 0 9
+   FrameIndex LLST K 0 10
+   FrameIndex LLST L 0 11
+   FrameIndex LLST M 0 12
+   FrameIndex LLST N 0 13
+   FrameIndex LLST O 0 14
+   FrameIndex LLST P 0 15
+   FrameIndex LLST Q 0 16
+   FrameIndex LLST R 0 17
+   FrameIndex LLST S 0 17
+   FrameIndex LLST Z 0 17
+}
+
+Model LifeLeech
+{ 
+   Path "models/3d/weapons/lifeleech"
+   Model 0 "lifeleech.md3"
+   Skin 0 "lifeleech.png"
+   Model 1 "lifeleech_beam.md3"
+   Skin 1 "lifeleech.png"
+   
+   Scale -2 2 2
+   Offset 3.0 -15.0 -10.0
+   PitchOffset -17.0
+   
+   FrameIndex LLST T 0 17	FrameIndex LLST T 0 0
+   FrameIndex LLST U 0 17	FrameIndex LLST U 0 0
+   FrameIndex LLST V 0 17	FrameIndex LLST V 0 0
+   FrameIndex LLST W 0 17	FrameIndex LLST W 0 0
+   FrameIndex LLST X 0 17	FrameIndex LLST X 0 0
+   FrameIndex LLST Y 0 17	FrameIndex LLST Y 0 0
+}
+
+//Stand mode
+Model LifeLeechBuddy
+{ 
+   Path "models/3d/weapons/lifeleech"
+   Model 0 "leechbuddy.md3"
+   Skin 0 "leechbuddy.jpg"
+   
+   Scale 1.1 1.1 1.1
+   Offset 0.0 0.0 0.0
+   
+   ROTATING
+   Rotation-Speed 0.2
+   
+   //Ready
+   FrameIndex LLSP A 0 0
+}
+
+
+
+//------------- VOXEL MODELS -------------
+
+Model LifeLeech
+{ 
+   Path "models/voxel/weapons/lifeleech"
+   Model 0 "lifeleech.md3"
+   SurfaceSkin 0 0 "lifeleech_tex.png"
+   SurfaceSkin 0 1 "leech_sparks.png"
+   
+   Scale -2 2 2
+   Offset 3.0 -22.0 -10.0
+   PitchOffset -17.0
+   
+   //Ready
+   FrameIndex LSTV A 0 0
+   
+   //Fire
+   FrameIndex LSTV B 0 1
+   FrameIndex LSTV C 0 2
+   FrameIndex LSTV D 0 3
+   FrameIndex LSTV E 0 4
+   FrameIndex LSTV F 0 5
+   FrameIndex LSTV G 0 6
+   FrameIndex LSTV H 0 7
+   FrameIndex LSTV I 0 8
+   FrameIndex LSTV J 0 9
+   FrameIndex LSTV K 0 10
+   FrameIndex LSTV L 0 11
+   FrameIndex LSTV M 0 12
+   FrameIndex LSTV N 0 13
+   FrameIndex LSTV O 0 14
+   FrameIndex LSTV P 0 15
+   FrameIndex LSTV Q 0 16
+   FrameIndex LSTV R 0 17
+   FrameIndex LSTV S 0 17
+   FrameIndex LSTV T 0 18
+   FrameIndex LSTV U 0 18
+   FrameIndex LSTV V 0 18
+   FrameIndex LSTV W 0 18
+   FrameIndex LSTV X 0 18
+   FrameIndex LSTV Y 0 18
+   FrameIndex LSTV Z 0 17
+}
+
+//Stand mode
+Model LifeLeechBuddy
+{ 
+   Path "models/voxel/weapons/lifeleech"
+   Model 0 "leechbuddy.md3"
+   Skin 0 "lifeleech_tex.jpg"
+   
+   Scale 1.1 1.1 1.1
+   Offset 0.0 0.0 6.0
+   
+   ROTATING
+   Rotation-Speed 0.2
+   
+   //Ready
+   FrameIndex LSPV A 0 0
+}

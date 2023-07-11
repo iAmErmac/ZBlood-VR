@@ -1,0 +1,12 @@
+
+Class DeadManDropEvent : EventHandler
+{
+	override void WorldThingDied(WorldEvent e)
+	{
+		//console.printf(e.thing.GetSpecies());
+		if(e.thing && e.thing.bIsMonster && !e.thing.bNoBlood && (e.thing.GetSpecies() == "ZombieMan" || e.thing.GetSpecies() == "ShotgunGuy" || e.thing.GetSpecies() == "DoomImp" || e.thing.GetSpecies() == "Demon" || e.thing.GetSpecies() == "ChaingunGuy"))
+		{
+			if(random(0,8) % 8 == 0) e.thing.A_Dropitem("UselessStuff");
+		}
+	}
+}

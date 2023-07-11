@@ -1,0 +1,25 @@
+// Borrowed from Bolognese mod
+
+decal BrutalBloodSplat01
+{
+pic BSPL1
+x-scale 0.4
+y-scale 0.4
+randomflipx
+randomflipy
+}
+
+decal BrutalBloodSplat02
+{
+pic BSPL2
+x-scale 0.4
+y-scale 0.4
+randomflipx
+randomflipy
+}
+
+decalgroup BrutalBloodSplat
+{
+BrutalBloodSplat01 6
+BrutalBloodSplat02 6
+}
