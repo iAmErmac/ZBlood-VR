@@ -1,0 +1,39 @@
+//------------- 3D MODEL -------------
+
+Model CalebOffHandFist
+{ 
+   Path "models/3d/weapons/hand"
+   Model 0 "hand.md3"
+   Skin 0 "hand.png"
+   
+   Scale -0.65 0.65 0.65
+   Offset 5.0 -20.0 -11.0
+   
+   //Ready
+   FrameIndex FIST A 0 0
+   
+   //Punch
+   FrameIndex FIST B 0 1
+   FrameIndex FIST C 0 2
+   FrameIndex FIST D 0 3
+}
+
+//------------- VOXEL MODEL -------------
+
+Model CalebOffHandFist
+{ 
+   Path "models/voxel/weapons/hand"
+   Model 0 "hand.md3"
+   Skin 0 "hand_tex.png"
+   
+   Scale -0.65 0.65 0.65
+   Offset 5.0 -20.0 -11.0
+   
+   //Ready
+   FrameIndex FSTV A 0 0
+   
+   //Punch
+   FrameIndex FSTV B 0 1
+   FrameIndex FSTV C 0 2
+   FrameIndex FSTV D 0 3
+}

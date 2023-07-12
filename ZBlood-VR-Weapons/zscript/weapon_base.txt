@@ -14,7 +14,14 @@ Class BloodWeaponZ : Weapon
 			}
 			else
 			{
-				if(player) Player.GetPSprite(PSP_WEAPON).sprite = GetSpriteIndex(ssprite);
+				if(player)
+				{
+					int hand = !invoker.bOffhandWeapon;
+					if(hand)
+						Player.GetPSprite(PSP_WEAPON).sprite = GetSpriteIndex(ssprite);
+					else
+						Player.GetPSprite(PSP_OFFHANDWEAPON).sprite = GetSpriteIndex(ssprite);
+				}
 			}
 		}
 	}

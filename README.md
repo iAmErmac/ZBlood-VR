@@ -11,10 +11,12 @@ This mod replaces all weapons for ZBloody Hell mod (https://www.moddb.com/mods/z
 [<img src="https://cdn.ko-fi.com/cdn/kofi2.png?v=2" height="36" alt="Buy me a Cofee!">](https://ko-fi.com/ermac)
 
 ## Features
-* 3D and voxel weapon models
+* Switch between 3D and voxel weapon models anytime
 * Can be played with Heretic/Hexen/Strife/Chex
-* Optional voxel addon to replace more sprite items to voxel
+* Optional voxel addon to replace more sprite items into voxel
 * Dual wield support (QuestZDoom)
+
+![Caleb](https://i.imgur.com/Ky7v3a4.jpg)
 
 ## Installation
 
@@ -74,7 +76,7 @@ To install:
 
 * Pegg - for ZBloodX Unofficial base
 * J. S. Graham and Joseph Otey - for ZBlood base
-* sluggard - for ZBloody Hell mod
+* LordOZ_98 - for ZBloody Hell mod
 * Luigis - for additional mapping and support
 * Cheello - for additional voxels (Blood - Coagulated)
 * Cherno - for SimSun shader

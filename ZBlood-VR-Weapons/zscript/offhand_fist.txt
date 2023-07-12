@@ -1,0 +1,79 @@
+Class CalebOffHandFist : BloodWeaponZ
+{
+  Default
+  {
+  Weapon.SelectionOrder 3700;
+  Weapon.Kickback 100;
+  Weapon.SlotNumber 1;
+  Obituary "$OB_MPFIST";
+  Tag "$TAG_FIST";
+  +WEAPON.WIMPY_WEAPON;
+  +WEAPON.MELEEWEAPON;
+  +WEAPON.OFFHANDWEAPON;
+  +WEAPON.NOHANDSWITCH;
+  +WEAPON.CHEATNOTWEAPON;
+  +INVENTORY.UNDROPPABLE;
+  +INVENTORY.UNTOSSABLE;
+  +INVENTORY.UNCLEARABLE;
+  }
+  
+  States
+  {
+  Ready:
+	TNT1 A 0;
+    FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+    "####" A 1 A_WeaponReady;
+    Loop;
+  Deselect:
+    FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+    "####" A 1 A_Lower;
+    Loop;
+  Select:
+    FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+    "####" A 1 A_Raise;
+    Loop;
+  Fire:
+    "####" B 2;
+    "####" C 2 A_Punch;
+    "####" DCB 2;
+    "####" A 4 A_ReFire;
+    Goto Ready;
+  Dummy:
+	FSTV ABCD 1;
+	stop;
+  }
+}
+
+Class OffhandFistHandler : EventHandler
+{
+	override void WorldTick()
+	{
+		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
+		if (_isInitialized) return;
+		
+		PlayerInfo player = players[consolePlayer];
+		if (player == null) { return; }
+		
+		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
+		_isInitialized = true;
+	}
+	
+	override void OnRegister()
+	{
+		_isInitialized = false;
+	}
+
+	override void WorldLoaded(WorldEvent event)
+	{
+		_isTitlemap = CheckTitlemap();
+	}
+
+	private static bool CheckTitlemap()
+	{
+		bool isTitlemap = (level.mapname == "TITLEMAP");
+		return isTitlemap;
+	}
+	
+	private bool _isTitlemap;
+	private bool _isInitialized;
+}
