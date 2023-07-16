@@ -32,6 +32,20 @@ Class Zippo : BloodWeaponZ
 			else
 				player.SetInventory("LighterReady", 0, false);
 		}
+		else if(owner.player.ReadyWeapon is "Spraycan" && player.CountInv("ZippoOpen") > 0)
+		{
+			//measure hand distance from multiple coords so less chance of failure
+			Actor tempPuff = player.LineAttack(150, 3, 0, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ);
+			Actor tempPuff2 = player.LineAttack(120, 3, 0, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ);
+			Actor tempPuff3 = player.LineAttack(90, 3, 0, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ);
+			int hand_dist = level.vec3diff(tempPuff.pos, player.OffhandPos).length();
+			int hand_dist2 = level.vec3diff(tempPuff2.pos, player.OffhandPos).length();
+			int hand_dist3 = level.vec3diff(tempPuff3.pos, player.OffhandPos).length();
+			iF(hand_dist < 2 || hand_dist2 < 2 || hand_dist3 < 2)
+				player.SetInventory("LighterReady", 1, false);
+			else
+				player.SetInventory("LighterReady", 0, false);
+		}
 		else
 		{
 			player.SetInventory("LighterReady", 0, false);
@@ -215,56 +229,6 @@ Class FlameDynLightSpawner : Actor
 	}
 }
 
-Class dummyLineTracer : Actor
-{
-  Default
-  {
-    Mass        0;
-    Radius      1;
-    Height      2;
-	Health		0x7FFFFFFF;
-
-    +NOBLOCKMAP;
-    +NOGRAVITY;
-    +BLOODLESSIMPACT;
-    +GHOST;
-    +NOTONAUTOMAP;
-    +SKYEXPLODE;
-	+NOCLIP;
-  }
-  
-  override void tick()
-  {
-	if(getAge() > 5) { destroy(); return; }
-	if(!master) return; 
-	
-	self.A_SetAngle(master.OffhandAngle+90);
-	self.A_SetRoll(master.OffhandRoll);
-	self.A_SetPitch(-master.OffhandPitch);
-	self.SetOrigin(master.OffhandPos, true);
-	console.printf("%d, %d, %d", angle, roll, pitch);
-	//LineAttack(angle, 100, - pitch, 0, "none", "testPuff", LAF_NOIMPACTDECAL | LAF_NORANDOMPUFFZ | LAF_NOINTERACT);
-	/*FLineTraceData t;
-	LineTrace(
-               angle,
-               10,
-               pitch-90,
-			   TRF_THRUACTORS,
-               data: t
-            );
-	vector3 hitpos = t.HitLocation;
-	Actor.Spawn("testPuff", hitpos);*/
-	destroy();
-  }
-
-  States
-  {
-    Spawn:
-      TNT1 A 2;
-      Stop;
-  }
-}
-
 class testPuff : Actor
 {
   Default
@@ -290,6 +254,35 @@ class testPuff : Actor
     Spawn:
       TNT1 A 0;
       TNT1 A 1 A_SpawnParticle("FF 00 00", SPF_FULLBRIGHT, 1, 2, 0, 0, 0, 0);
+      stop;
+  }
+}
+
+class bloodDummyPuff : Actor
+{
+  Default
+  {
+    Mass        0;
+    Radius      1;
+    Height      2;
+
+    +NOBLOCKMAP;
+    +NOGRAVITY;
+    +BLOODLESSIMPACT;
+    +PUFFONACTORS;
+    +DONTSPLASH;
+    +NOTRIGGER;
+	+NOTARGET;
+    +FORCEXYBILLBOARD;
+    +NOTONAUTOMAP;
+    +SKYEXPLODE;
+  }
+
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      TNT1 A 1;
       stop;
   }
 }
