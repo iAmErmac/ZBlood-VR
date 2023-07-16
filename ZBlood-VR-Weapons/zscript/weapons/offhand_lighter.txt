@@ -1,0 +1,295 @@
+Class Zippo : BloodWeaponZ
+{
+	Default
+	{
+	Weapon.SelectionOrder 5101;
+	Weapon.Kickback 100;
+	Weapon.SlotNumber 1;
+	Obituary "$OB_MPFIST";
+	Tag "$TAG_FIST";
+	+WEAPON.WIMPY_WEAPON;
+	+WEAPON.MELEEWEAPON;
+	+WEAPON.OFFHANDWEAPON;
+	+WEAPON.NOHANDSWITCH;
+	+WEAPON.CHEATNOTWEAPON;
+	+INVENTORY.UNDROPPABLE;
+	+INVENTORY.UNTOSSABLE;
+	+INVENTORY.UNCLEARABLE;
+	}
+	
+	override void tick()
+	{
+		if(!owner || owner.health <= 0)
+			return;
+			
+		let player = owner.player.mo;
+		
+		if(owner.player.ReadyWeapon is "Dynamite" && player.CountInv("ZippoOpen") > 0)
+		{
+			int hand_dist = level.vec3diff(player.AttackPos, player.OffhandPos).length();
+			iF(hand_dist < 8)
+				player.SetInventory("LighterReady", 1, false);
+			else
+				player.SetInventory("LighterReady", 0, false);
+		}
+		else
+		{
+			player.SetInventory("LighterReady", 0, false);
+		}
+		
+		if(player.CountInv("UsingLighter") > 0) A_Jump(256, "ReadyDisabled");
+	}
+
+	States
+	{
+	Ready:
+		TNT1 A 0;
+		ZIPO A 0 A_JumpIfInventory("UsingLighter", 1, "ReadyDisabled");
+		ZIPO A 0 A_ReplaceSprite("zblood_models", "ZIPV");
+		"####" # 0 A_JumpIf(waterlevel>2, "Cannot");
+		"####" A 0 A_JumpIfInventory("ZippoOpen", 1, "ReadyLit");
+		"####" A 1 A_WeaponReady;
+		Loop;
+	ReadyLit:
+		"####" B 0 A_TakeInventory("PutOutFlame", 1);
+		"####" B 0 A_FireProjectile("FlameDynLightSpawner", 0, 0);
+		"####" B 1 A_WeaponReady();
+		Goto Ready;
+	ReadyDisabled:
+		TNT1 A 0 A_GiveInventory("PutOutFlame", 1);
+		TNT1 A 1 A_FireProjectile("FlameDynLightSpawner", 0, 0);
+		TNT1 A 0 A_JumpIfInventory("UsingLighter", 1, "ReadyDisabled");
+		TNT1 A 0 A_Overlay(1009, "Flame");
+		Goto Ready;
+	Deselect:
+		ZIPO A 0 A_ReplaceSprite("zblood_models", "ZIPV");
+		"####" A 0 A_JumpIfInventory("ZippoOpen", 1, "DeselectCloseLid");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Lower(60);
+		Goto Deselect+3;
+		"####" # 1 A_Lower;
+		wait;
+	DeselectCloseLid:
+		"####" A 0 A_TakeInventory("ZippoOpen", 1);
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Lower(60);
+		Goto DeselectCloseLid+2;
+		"####" GFE 2;
+		"####" A 0 A_StartSound("Lighter/Close", CHAN_WEAPON);
+		"####" A 1 A_Lower;
+		wait;
+	Select:
+		ZIPO A 0 A_ReplaceSprite("zblood_models", "ZIPV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Raise(60);
+		Goto Select+2;
+		"####" # 1 A_Raise;
+		wait;
+	Fire:
+		"####" # 0 A_JumpIf(waterlevel>2, "Cannot");
+		"####" A 0 A_JumpIfInventory("ZippoOpen", 1, "CloseLid");
+		"####" A 0 A_StartSound("Lighter/Open", CHAN_WEAPON);
+		"####" EFG 2;
+		"####" B 0 A_GiveInventory("ZippoOpen", 1);
+		"####" B 0 A_StartSound("Lighter/Light", CHAN_WEAPON);
+		"####" B 0 A_TakeInventory("PutOutFlame", 1);
+		"####" B 0 A_Overlay(1009, "Flame");
+		"####" BBBBBB 1 A_FireProjectile("FlameDynLightSpawner", 0, 0);
+		Goto Ready;
+	CloseLid:
+		"####" # 0 A_GiveInventory("PutOutFlame", 1);
+		"####" GFE 2;
+		"####" A 0 A_TakeInventory("ZippoOpen", 1);
+		"####" A 0 A_StartSound("Lighter/Close", CHAN_WEAPON);
+		"####" A 10;
+		Goto Ready;
+	Cannot:
+		"####" A 1 A_JumpIfInventory("ZippoOpen", 1, "CloseLid");
+		Goto Ready;
+	Flame:
+		TNT1 A 1;
+		ZIPF A 0 A_JumpIf(zblood_models == 1, "VoxelFlame");
+		"####" BBB 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		"####" CCC 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		"####" DDD 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		Goto Flame+1;
+	VoxelFlame:
+		ZPVF BBB 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		"####" CCC 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		"####" DDD 1 BRIGHT A_JumpIfInventory("PutOutFlame", 1, "PutOut");
+		Goto Flame+1;
+	PutOut:
+		TNT1 A 1;
+		Stop;
+	Dummy:
+		ZIPV ABCDEFGHI 1;
+		stop;
+	}
+}
+
+Class ZippoOpen : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}
+
+Class PutOutFlame : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}
+
+Class LighterReady : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}
+
+Class UsingLighter : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}
+
+Class FlameDynLight : Actor
+{
+	Default
+	{
+	Mass        0;
+	Radius      1;
+	Height      2;
+	Health		0x7FFFFFFF;
+
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	+BLOODLESSIMPACT;
+	+GHOST;
+	+NOTONAUTOMAP;
+	+SKYEXPLODE;
+	+NOCLIP;
+	}
+
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_AttachLight("zippo_flame1", DynamicLight.RandomFlickerLight, "FF F4 A1", 7, 10, DYNAMICLIGHT.LF_DONTLIGHTSELF | DYNAMICLIGHT.LF_ATTENUATE);
+		TNT1 A 1;
+		Stop;
+	}
+}
+
+Class FlameDynLightSpawner : Actor
+{
+	Default
+	{
+	Mass        0;
+	Radius      1;
+	Height      2;
+	Health		0x7FFFFFFF;
+
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	+BLOODLESSIMPACT;
+	+GHOST;
+	+NOTONAUTOMAP;
+	+SKYEXPLODE;
+	+NOCLIP;
+	}
+
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItemEx("FlameDynLight", 0, 0, 2);
+		TNT1 A 1;
+		Stop;
+	}
+}
+
+Class dummyLineTracer : Actor
+{
+  Default
+  {
+    Mass        0;
+    Radius      1;
+    Height      2;
+	Health		0x7FFFFFFF;
+
+    +NOBLOCKMAP;
+    +NOGRAVITY;
+    +BLOODLESSIMPACT;
+    +GHOST;
+    +NOTONAUTOMAP;
+    +SKYEXPLODE;
+	+NOCLIP;
+  }
+  
+  override void tick()
+  {
+	if(getAge() > 5) { destroy(); return; }
+	if(!master) return; 
+	
+	self.A_SetAngle(master.OffhandAngle+90);
+	self.A_SetRoll(master.OffhandRoll);
+	self.A_SetPitch(-master.OffhandPitch);
+	self.SetOrigin(master.OffhandPos, true);
+	console.printf("%d, %d, %d", angle, roll, pitch);
+	//LineAttack(angle, 100, - pitch, 0, "none", "testPuff", LAF_NOIMPACTDECAL | LAF_NORANDOMPUFFZ | LAF_NOINTERACT);
+	/*FLineTraceData t;
+	LineTrace(
+               angle,
+               10,
+               pitch-90,
+			   TRF_THRUACTORS,
+               data: t
+            );
+	vector3 hitpos = t.HitLocation;
+	Actor.Spawn("testPuff", hitpos);*/
+	destroy();
+  }
+
+  States
+  {
+    Spawn:
+      TNT1 A 2;
+      Stop;
+  }
+}
+
+class testPuff : Actor
+{
+  Default
+  {
+    Mass        0;
+    Radius      1;
+    Height      2;
+
+    +NOBLOCKMAP;
+    +NOGRAVITY;
+    +BLOODLESSIMPACT;
+    +PUFFONACTORS;
+    +DONTSPLASH;
+    +NOTRIGGER;
+	+NOTARGET;
+    +FORCEXYBILLBOARD;
+    +NOTONAUTOMAP;
+    +SKYEXPLODE;
+  }
+
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      TNT1 A 1 A_SpawnParticle("FF 00 00", SPF_FULLBRIGHT, 1, 2, 0, 0, 0, 0);
+      stop;
+  }
+}

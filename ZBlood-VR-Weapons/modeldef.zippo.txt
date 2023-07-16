@@ -1,0 +1,87 @@
+//------------- 3D MODEL -------------
+
+Model Zippo
+{ 
+   Path "models/3d/weapons/zippo"
+   Model 0 "zippo.md3"
+   Skin 0 "zippo.png"
+   
+   Scale -0.7 0.7 0.7
+   Offset 0.0 -28.0 -11.0
+   
+   //Ready
+   FrameIndex ZIPO A 0 0
+   
+   //Ready lit
+   FrameIndex ZIPO B 0 4
+   FrameIndex ZIPO C 0 5
+   FrameIndex ZIPO D 0 6
+   
+   //Open Lid
+   FrameIndex ZIPO E 0 1
+   FrameIndex ZIPO F 0 2
+   FrameIndex ZIPO G 0 3
+}
+
+Model Zippo
+{ 
+   Path "models/3d/weapons/zippo"
+   Model 0 "zippo_flame.md3"
+   Skin 0 "zippo.png"
+   
+   Scale -0.7 0.7 0.7
+   Offset 0.0 -28.0 -11.0
+   
+   //Ready
+   FrameIndex ZIPF A 0 0
+   
+   //Ready lit
+   FrameIndex ZIPF B 0 1
+   FrameIndex ZIPF C 0 2
+   FrameIndex ZIPF D 0 3
+   FrameIndex ZIPF E 0 4
+}
+
+//------------- VOXEL MODEL -------------
+
+Model Zippo
+{ 
+   Path "models/voxel/weapons/zippo"
+   Model 0 "zippo.md3"
+   Skin 0 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 0.0 -28.0 -11.0
+   
+   //Ready
+   FrameIndex ZIPV A 0 0
+   
+   //Ready lit
+   FrameIndex ZIPV B 0 4
+   FrameIndex ZIPV C 0 5
+   FrameIndex ZIPV D 0 6
+   
+   //Open Lid
+   FrameIndex ZIPV E 0 1
+   FrameIndex ZIPV F 0 2
+   FrameIndex ZIPV G 0 3
+}
+
+Model Zippo
+{ 
+   Path "models/voxel/weapons/zippo"
+   Model 0 "zippo_flame.md3"
+   Skin 0 "zippo_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 0.0 -28.0 -11.0
+   
+   //Ready
+   FrameIndex ZPVF A 0 0
+   
+   //Ready lit
+   FrameIndex ZPVF B 0 1
+   FrameIndex ZPVF C 0 2
+   FrameIndex ZPVF D 0 3
+   FrameIndex ZPVF E 0 4
+}

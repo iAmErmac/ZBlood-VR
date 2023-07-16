@@ -1,4 +1,4 @@
-# ZBody Hell VR addon
+# ZBlood Vengeance
 
 ![ZBloody Hell](https://blood-wiki.org/images/5/5a/ZBlood-Gargoyle.png)
 
@@ -13,10 +13,11 @@ This mod replaces all weapons for ZBloody Hell mod (https://www.moddb.com/mods/z
 ## Features
 * Switch between 3D and voxel weapon models anytime
 * Can be played with Heretic/Hexen/Strife/Chex
-* Optional voxel addon to replace more sprite items into voxel
+* Optional voxel addon (thanks to Cheello) to replace more sprite items into voxel
 * Dual wield support (QuestZDoom)
+* Light up dynamites and spray-can like you'd actually do (requires a dual wield build)
 
-![Caleb](https://i.imgur.com/Ky7v3a4.jpg)
+![Vengeance awaits](https://i.imgur.com/Ky7v3a4.jpg)
 
 ## Installation
 

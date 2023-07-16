@@ -1,0 +1,54 @@
+
+Class BloodOffhandWeaponHandler : EventHandler
+{
+	override void WorldTick()
+	{
+		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
+		
+		PlayerInfo player = players[consolePlayer];
+		if (player == null) { return; }
+		
+		HandleOffhandAutoSwitchWeapon();
+		
+		if (_isInitialized) return;
+		
+		if(!player.mo.CountInv("Zippo")) player.mo.setinventory("Zippo", 1, false); //Give player lighter
+		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
+		Weapon weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
+		player.OffhandWeapon = weap;
+		player.PendingWeapon = weap;
+		player.mo.BringUpWeapon();
+		_isInitialized = true;
+	}
+	
+	void HandleOffhandAutoSwitchWeapon()
+	{
+		PlayerInfo player = players[consolePlayer];
+		if(player.ReadyWeapon IS "Dynamite" && !(player.OffhandWeapon IS "Zippo"))
+		{
+			Weapon weap = Weapon(player.mo.FindInventory("Zippo"));
+			player.OffhandWeapon = weap;
+			player.PendingWeapon = weap;
+			player.mo.BringUpWeapon();
+		}
+	}
+	
+	override void OnRegister()
+	{
+		_isInitialized = false;
+	}
+
+	override void WorldLoaded(WorldEvent event)
+	{
+		_isTitlemap = CheckTitlemap();
+	}
+
+	private static bool CheckTitlemap()
+	{
+		bool isTitlemap = (level.mapname == "TITLEMAP");
+		return isTitlemap;
+	}
+	
+	private bool _isTitlemap;
+	private bool _isInitialized;
+}

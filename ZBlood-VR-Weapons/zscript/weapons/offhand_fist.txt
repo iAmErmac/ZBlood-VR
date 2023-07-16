@@ -1,0 +1,121 @@
+Class CalebOffHandFist : BloodWeaponZ
+{
+  Default
+  {
+  Weapon.SelectionOrder 5100;
+  Weapon.Kickback 100;
+  Weapon.SlotNumber 1;
+  Obituary "$OB_MPFIST";
+  Tag "$TAG_FIST";
+  +WEAPON.WIMPY_WEAPON;
+  +WEAPON.MELEEWEAPON;
+  +WEAPON.OFFHANDWEAPON;
+  +WEAPON.NOHANDSWITCH;
+  +WEAPON.CHEATNOTWEAPON;
+  +INVENTORY.UNDROPPABLE;
+  +INVENTORY.UNTOSSABLE;
+  +INVENTORY.UNCLEARABLE;
+  }
+  
+	States
+	{
+	Ready:
+		TNT1 A 0;
+		FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+		"####" A 1 A_WeaponReady;
+		Loop;
+	Deselect:
+		FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Lower(60);
+		Goto Deselect+2;
+		"####" # 1 A_Lower;
+		wait;
+	Select:
+		FIST A 0 A_ReplaceSprite("zblood_models", "FSTV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Raise(60);
+		Goto Select+2;
+		"####" # 1 A_Raise;
+		wait;
+	Fire:
+		"####" B 2;
+		"####" B 0 A_JumpIfInventory("PowerStrength", 1, "Berserked");
+	Normal:
+		"####" C 2 A_CustomPunchLine(2 * random(1, 10), TRUE, 0, "BloodFistPuff");
+		Goto FireEnd;
+	Berserked:
+		"####" C 2 A_CustomPunchLine(20 * random(1, 10), TRUE, 0, "BloodFistPuff");
+	FireEnd:
+		"####" DCB 2;
+		"####" A 12 A_ReFire;
+		Goto Ready;
+	Dummy:
+		FSTV ABCD 1;
+		stop;
+	}
+	
+	action void A_CustomPunchLine (int damage, bool norandom = false, int flags = CPF_USEAMMO, class<Actor> pufftype = "BulletPuff", double range = 0, double lifesteal = 0, int lifestealmax = 0, class<BasicArmorBonus> armorbonustype = "ArmorBonus", sound MeleeSound = 0, sound MissSound = "")
+	{
+		if (range == 0)
+			range = DEFMELEERANGE;
+			
+		FLineTraceData l;
+		double z = player.mo.OffhandPos.z - FloorZ; //height * 0.5 - floorclip + player.mo.AttackZOffset*player.crouchFactor;
+		double angleP = player.mo.OffhandAngle + 90.0;
+		double pitchP = player.mo.OffhandPitch;
+		LineTrace(angleP, range, pitchP, TRF_BLOCKUSE, offsetz: z, data: l);
+		let lline = l.HitLine;
+		if (lline)
+		{
+			lline.Activate(self, l.LineSide, SPAC_Use);
+		}
+	
+		//A_CustomPunch(damage, norandom, flags, pufftype, range, lifesteal, lifestealmax, armorbonustype, meleesound, misssound);
+		//something weird happening with custom punch, firing on the main hand
+		//so we are going to make our own attack codes to use
+		double pitch = AimTarget() ? BulletSlope(null, ALF_PORTALRESTRICT) : OffhandPitch;
+		LineAttack (angle, range, pitch, damage, 'Melee', pufftype, LAF_ISOFFHAND);
+	}
+}
+
+Class BloodFistPuff : BulletPuff
+{
+	Default
+	{
+	Scale 0.8;
+	renderstyle "Translucent";
+	alpha 0.5;
+	DamageType "PitchFork";
+	+nodamagethrust;
+	+NOBLOCKMAP;
+	+ALLOWPARTICLES;
+	+RANDOMIZE;
+	+ThruGhost;
+	}
+  
+	States
+	{
+	Spawn:
+		PUFF A 0 ;
+		stop;
+	Crash:
+		TNT1 A 0 A_PlaySound("vrfist/strong", 6);
+		Goto Melee+1;
+	Melee:
+		TNT1 A 0 A_PlaySound("vrfist/punch", 6);
+		PUFF A 0 A_Jump(128,9);
+		PUFF ABCDEFGH 4;
+		stop;
+		PUFF IJKLMNOP 4;
+		stop;
+	XDeath:
+		TNT1 A 0 A_PlaySound("vrfist/rip", 6);
+		BLD2 A 0 A_jump(128,"Xdeath2");
+		BLD2 FGHI 4;
+		Stop;
+	XDeath2:
+		BLD2 OPQR 4;
+		Stop;
+	}
+}

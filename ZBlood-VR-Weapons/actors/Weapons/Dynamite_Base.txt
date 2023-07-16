@@ -84,7 +84,7 @@ Actor Dynamite : BloodWeaponZ
   Deselect:
 	DYND A 0 A_ReplaceSprite("zblood_models", "DNDV")
 	"####" AB 3// A_jumpIfInventory("ThrowerPowerBig",120,"Explode") //A check to ensure the boom is correct
-	"####" C 1 A_PlaySound("dsZIPCLS")
+	"####" C 1 //A_PlaySound("dsZIPCLS")
 	"####" # 0 A_JumpIfnoammo("DeselectAmmoLess")
     "####" DE 1 A_Lower
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
@@ -114,25 +114,35 @@ Actor Dynamite : BloodWeaponZ
 	//TNT1 AAAAAAAA 0 A_Raise
     //TNT1 AAA 1 A_Raise
     "####" AB 3
-	"####" C 3 A_PlayWeaponSound ("dsZIPCLS")
+	"####" C 3 //A_PlayWeaponSound ("dsZIPCLS")
     "####" D 3 A_Raise
     "####" EF 3 A_Raise
     Goto Select+8
   SelectFast:
 	DYNU A 0 A_ReplaceSprite("zblood_models", "DNUV")
     "####" AB 2
-	"####" C 2 A_PlayWeaponSound ("dsZIPCLS")
+	"####" C 2 //A_PlayWeaponSound ("dsZIPCLS")
     "####" D 2 A_Raise(60)
     "####" EF 3 A_Raise(60)
     Goto SelectFast+5
   Fire:
+	DYNR A 0 A_ReplaceSprite("zblood_models", "DYNV")
+	"####" A 0 A_JumpIfInventory("ZippoOpen", 1, 2)
+	"####" A 0 A_Print("Light up the Lighter first")
+	Goto Ready
+	"####" A 0 A_JumpIfInventory("LighterReady", 1, 2)
+	"####" A 0 A_Print("Bring the Lighter closer to light up Dynamite")
+	Goto Ready
+	"####" A 4 A_GiveInventory("UsingLighter", 1)
 	DYNL A 0 A_ReplaceSprite("zblood_models", "DNLV")
     "####" AB 3 A_WeaponReady(14)
 	"####" # 0 A_PlayWeaponSound("TNTFUSE")
 	"####" # 0 A_TakeInventory("StopFuseBurn",1)
 	"####" # 0 A_Overlay(1001, "FuseBurn")
 	"####" CD 3 A_WeaponReady(14)
-	"####" EFG 3 A_WeaponReady(14)
+	"####" E 3 A_WeaponReady(14)
+	"####" E 0 A_TakeInventory("UsingLighter", 1)
+	"####" FG 3 A_WeaponReady(14)
 	"####" # 0 A_Refire
 	"####" G 1 A_WeaponReady(14)
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig", 140, "Explode")
@@ -155,51 +165,51 @@ Actor Dynamite : BloodWeaponZ
 	Goto LightDone
   FuseBurn2:
 	TNT1 A 0
-	DSPR D 4 Bright A_Light2
+	DSPR DDDD 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn3:
 	TNT1 A 0
-	DSPR E 4 Bright A_Light2
+	DSPR EEEE 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn4:
 	TNT1 A 0
-	DSPR F 4 Bright A_Light2
+	DSPR FFFF 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn5:
 	TNT1 A 0
-	DSPR G 3 Bright A_Light2
+	DSPR GGG 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn6:
 	TNT1 A 0
-	DSPR H 4 Bright A_Light2
+	DSPR HHHH 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn7:
 	TNT1 A 0
-	DSPR I 4 Bright A_Light2
+	DSPR IIII 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn8:
 	TNT1 A 0
-	DSPR J 3 Bright A_Light2
+	DSPR JJJ 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurn9:
 	TNT1 A 0
-	DSPR J 2 Bright A_Light2
+	DSPR JJ 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light2; }
 	Goto LightDone
   FuseBurnHold1:
 	TNT1 A 0
-	DSPR E 2 Bright A_Light(3)
+	DSPR EE 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light(3); }
 	Goto LightDone
   FuseBurnHold2:
 	TNT1 A 0
-	DSPR F 2 Bright A_Light(3)
+	DSPR FF 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light(3); }
 	Goto LightDone
   FuseBurnHold3:
 	TNT1 A 0
-	DSPR E 3 Bright A_Light(3)
+	DSPR EEE 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light(3); }
 	Goto LightDone
   FuseBurnHold4:
 	TNT1 A 0
-	DSPR F 3 Bright A_Light(3)
+	DSPR FFF 1 Bright { A_JumpIfInventory("StopFuseBurn",1,"Defuse"); A_Light(3); }
 	Goto LightDone
   Defuse:
 	TNT1 A 0
@@ -223,7 +233,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   Hold2:
 	DYNT B 0 A_ReplaceSprite("zblood_models", "DNTV")
     "####" # 0 A_GiveInventory("ThrowPower", 3)
@@ -233,7 +243,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0  A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   Hold3:
 	DYNT C 0 A_ReplaceSprite("zblood_models", "DNTV")
     "####" # 0 A_GiveInventory("ThrowPower", 3)
@@ -244,7 +254,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_TakeInventory("TNTCounter", 3)
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11
+	Goto Fire+21
   BooMination1:	//Should add 4-6 more frames near the end so its less clunky
 	DYNO A 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",93,"BooMination2")
@@ -255,7 +265,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination2:
 	DYNO B 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",96,"BooMination3")
@@ -266,7 +276,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination3:
 	DYNO C 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",99,"BooMination4")
@@ -277,7 +287,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination4:
 	DYNO A 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",102,"BooMination5")
@@ -288,7 +298,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination5:
 	DYNO B 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",105,"BooMination6")
@@ -299,7 +309,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination6:
 	DYNO C 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",108,"BooMination7")
@@ -310,7 +320,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination7:
 	DYNO H 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",108,"BooMination8")
@@ -321,7 +331,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination8:
 	DYNO D 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",111,"BooMination9")
@@ -332,7 +342,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination9:
 	DYNO E 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",114,"BooMination10")
@@ -343,7 +353,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination10:
 	DYNO F 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",117,"BooMination11")
@@ -354,7 +364,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination11:
 	DYNO F 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",120,"BooMination12")
@@ -365,7 +375,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination12:
 	DYNO G 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig",123,"BooMination13")
@@ -376,7 +386,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto Fire+11	
+	Goto Fire+21	
   BooMination13:
 	DYNO G 0 A_ReplaceSprite("zblood_models", "DNOV")
 	"####" # 0 A_JumpIfInventory("ThrowPowerBig", 126, "Explode")
@@ -389,6 +399,14 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_StopSound(CHAN_WEAPON)
 	Goto Explode
   AltFire:
+	DYNR A 0 A_ReplaceSprite("zblood_models", "DNLV")
+	"####" A 0 A_JumpIfInventory("ZippoOpen", 1, 2)
+	"####" A 0 A_Print("Light up the Lighter first")
+	Goto Ready
+	"####" A 0 A_JumpIfInventory("LighterReady", 1, 2)
+	"####" A 0 A_Print("Bring the Lighter closer to light up Dynamite")
+	Goto Ready
+	"####" A 3 A_GiveInventory("UsingLighter", 1)
     DYNL A 0 A_ReplaceSprite("zblood_models", "DNLV")
   	//"####" # 0 A_JumpIfInventory("ThrowPowerBig",90,"Boomination1")
 	"####" # 0 A_GiveInventory("TNT2", 1)
@@ -397,7 +415,9 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_TakeInventory("StopFuseBurn",1)
 	"####" # 0 A_Overlay(1001, "FuseBurn")
 	"####" CD 3 A_WeaponReady(14)
-	"####" EFF 2 A_WeaponReady(14)
+	"####" E 2 A_WeaponReady(14)
+	"####" E 0 A_TakeInventory("UsingLighter", 1)
+	"####" FF 2 A_WeaponReady(14)
 	"####" # 0 A_Refire
 	"####" G 1 A_WeaponReady(14)
 	"####" # 0 A_GiveInventory("TNT2", 1)
@@ -423,7 +443,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0  A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto AltFire+11
+	Goto AltFire+21
   AltHold2:
     DYNT B 0 A_ReplaceSprite("zblood_models", "DNTV")
     "####" # 0 A_GiveInventory("ThrowPower", 2)
@@ -433,7 +453,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0  A_JumpIf(waterlevel>2,"Cannot")
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-	Goto AltFire+11
+	Goto AltFire+21
   AltHold3:
     DYNT C 0 A_ReplaceSprite("zblood_models", "DNTV")
 	"####" # 0 A_GiveInventory("ThrowPower", 2)//Fixed a very slow boom delay
@@ -444,7 +464,7 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_TakeInventory("TNTCounter", 3)
 	"####" # 0 A_Refire
 	"####" # 0 A_StopSound(CHAN_WEAPON)
-  Goto AltFire+11
+  Goto AltFire+21
   //Flash:
 	//ZIPP ABCDEFGH 1
 	//ZIPP EDCBAIJ 1
