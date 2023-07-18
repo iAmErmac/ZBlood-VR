@@ -1,0 +1,27 @@
+Texture "models/3d/weapons/tnt/remote_bomb.png"
+    pic "models/3d/weapons/tnt/remote_bomb2.png" tics 4
+    pic "models/3d/weapons/tnt/remote_bomb.png" tics 4
+    pic "models/3d/weapons/tnt/remote_bomb2.png" tics 4
+    pic "models/3d/weapons/tnt/remote_bomb.png" tics 30
+	
+Texture "models/3d/weapons/tnt/trigger0.png"
+    pic "models/3d/weapons/tnt/trigger1.png" tics 4
+    pic "models/3d/weapons/tnt/trigger2.png" tics 4
+    pic "models/3d/weapons/tnt/trigger3.png" tics 4
+    pic "models/3d/weapons/tnt/trigger4.png" tics 4
+    pic "models/3d/weapons/tnt/trigger3.png" tics 4
+    pic "models/3d/weapons/tnt/trigger2.png" tics 4
+	
+Texture "models/voxel/weapons/tnt/remote_tex.png"
+    pic "models/voxel/weapons/tnt/remote_tex2.png" tics 4
+    pic "models/voxel/weapons/tnt/remote_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/remote_tex2.png" tics 4
+    pic "models/voxel/weapons/tnt/remote_tex.png" tics 30
+	
+Texture "models/voxel/weapons/tnt/trigger_tex.png"
+    pic "models/voxel/weapons/tnt/trigger1_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/trigger2_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/trigger3_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/trigger4_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/trigger3_tex.png" tics 4
+    pic "models/voxel/weapons/tnt/trigger2_tex.png" tics 4

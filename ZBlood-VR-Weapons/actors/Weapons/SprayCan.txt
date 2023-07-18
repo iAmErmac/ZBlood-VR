@@ -91,7 +91,7 @@ actor Spraycan : BloodWeaponZ
     //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
     //"####" CCCCCCCCCCCCCCCC 1 A_Lower
     "####" CCBB 1
-    "####" # 0 A_PlayWeaponSound ("dsZIPCLS")
+    //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" A 1 A_Lower(60)
 	Goto Deselect+11
@@ -100,7 +100,7 @@ actor Spraycan : BloodWeaponZ
   DeselectNoAmmo:
     ZIPD A 0 A_ReplaceSprite("zblood_models", "ZIPV")
 	"####" AB 2
-	"####" C 2 A_PlayWeaponSound ("dsZIPCLS")
+	//"####" C 2 A_PlayWeaponSound ("dsZIPCLS")
 	//"####" # 0 A_TakeInventory("Spraycan")
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" D 1 A_Lower(60)
@@ -113,7 +113,7 @@ actor Spraycan : BloodWeaponZ
 	"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
 	"####" # 0 A_Raise
 	"####" # 0 A_GiveInventory("HoldingSpray",1)
-    "####" # 0 A_PlayWeaponSound ("dsZIPCLS")
+    //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
     "####" BBCCDD 1 A_Raise
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" EFG 3 A_Raise(60)

@@ -5,21 +5,16 @@
 Model RemoteDynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "remote.md3"
-   SurfaceSkin 0 0 "remote0.png"
-   SurfaceSkin 0 1 "trigger0.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "remote_bomb.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
    FrameIndex DREM A 0 0
-   SurfaceSkin 0 1 "trigger1.png"
    FrameIndex DREM B 0 0
-   SurfaceSkin 0 1 "trigger2.png"
    FrameIndex DREM C 0 0
-   SurfaceSkin 0 1 "trigger3.png"
    FrameIndex DREM D 0 0
-   SurfaceSkin 0 1 "trigger4.png"
    FrameIndex DREM E 0 0
 }
 
@@ -27,20 +22,16 @@ Model RemoteDynamite
 Model RemoteDynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "trigger.md3"
-   Skin 0 "trigger0.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
    FrameIndex DRNH A 0 0
-   Skin 0 "trigger1.png"
    FrameIndex DRNH B 0 0
-   Skin 0 "trigger2.png"
    FrameIndex DRNH C 0 0
-   Skin 0 "trigger3.png"
    FrameIndex DRNH D 0 0
-   Skin 0 "trigger4.png"
    FrameIndex DRNH E 0 0
 }
 
@@ -48,51 +39,61 @@ Model RemoteDynamite
 Model RemoteDynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "trigger.md3"
-   Skin 0 "trigger0.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "remote_bomb.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
    FrameIndex DRTS A 0 0
-   Skin 0 "trigger1.png"
    FrameIndex DRTS B 0 0
-   Skin 0 "trigger2.png"
    FrameIndex DRTS C 0 0
-   Skin 0 "trigger3.png"
    FrameIndex DRTS D 0 0
-   Skin 0 "trigger4.png"
    FrameIndex DRTS E 0 0
 }
 
+/*
 //Fire
 Model RemoteDynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "remote.md3"
-   SurfaceSkin 0 0 "remote0.png"
-   SurfaceSkin 0 1 "trigger0.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
-   FrameIndex DRDT A 0 15
-   FrameIndex DRDT B 0 16
+   FrameIndex DRDT A 0 0
+   FrameIndex DRDT B 0 0
 }
 
 //Fire - no ammo
 Model RemoteDynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "trigger.md3"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "empty.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 0.0 -28.0 -11.0
+   
+   FrameIndex DRNH E 0 0
+   FrameIndex DRNH F 0 0
+   FrameIndex DRNH G 0 0
+}
+*/
+
+//Remote
+Model BombRemote
+{ 
+   Path "models/3d/weapons/tnt"
+   Model 0 "remote.md3"
    Skin 0 "trigger0.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -24.0 -9.0
    
-   FrameIndex DRNH E 0 14
-   FrameIndex DRNH F 0 15
-   FrameIndex DRNH G 0 16
+   FrameIndex RMTE A 0 0
 }
 
 
@@ -105,28 +106,26 @@ Model RemoteDynamite
    Path "models/voxel/weapons/tnt"
    Model 0 "remote_bomb.md3"
    Skin 0 "remote_tex.png"
-   Model 1 "trigger.md3"
-   Skin 1 "trigger_tex.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
-   FrameIndex DRMV A 0 0	FrameIndex DRMV A 1 0
-   FrameIndex DRMV B 0 0	FrameIndex DRMV B 1 0
-   FrameIndex DRMV C 0 0	FrameIndex DRMV C 1 0
-   FrameIndex DRMV D 0 0	FrameIndex DRMV D 1 0
-   FrameIndex DRMV E 0 0	FrameIndex DRMV E 1 0
+   FrameIndex DRMV A 0 0
+   FrameIndex DRMV B 0 0
+   FrameIndex DRMV C 0 0
+   FrameIndex DRMV D 0 0
+   FrameIndex DRMV E 0 0
 }
 
 //Ready - no ammo
 Model RemoteDynamite
 { 
    Path "models/voxel/weapons/tnt"
-   Model 0 "trigger.md3"
-   Skin 0 "trigger_tex.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
    FrameIndex DRNV A 0 0
    FrameIndex DRNV B 0 0
@@ -143,11 +142,11 @@ Model RemoteDynamite
 Model RemoteDynamite
 { 
    Path "models/voxel/weapons/tnt"
-   Model 0 "trigger.md3"
-   Skin 0 "trigger_tex.png"
+   Model 0 "remote_bomb.md3"
+   Skin 0 "remote_tex.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
    FrameIndex DRTV A 0 0
    FrameIndex DRTV B 0 0
@@ -156,18 +155,31 @@ Model RemoteDynamite
    FrameIndex DRTV E 0 0
 }
 
+/*
 //Fire
 Model RemoteDynamite
 { 
    Path "models/voxel/weapons/tnt"
    Model 0 "remote_bomb.md3"
-   Skin 0 "remote_tex.png"
-   Model 1 "trigger.md3"
-   Skin 1 "trigger_tex.png"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 3.0 -28.0 -15.0
+   Offset 0.0 -28.0 -11.0
    
-   FrameIndex DRFV A 0 0	FrameIndex DRFV A 1 0
-   FrameIndex DRFV B 0 0	FrameIndex DRFV B 1 0
+   FrameIndex DRFV A 0 0
+   FrameIndex DRFV B 0 0
+}
+*/
+
+//Remote
+Model BombRemote
+{ 
+   Path "models/voxel/weapons/tnt"
+   Model 0 "remote.md3"
+   Skin 0 "trigger_tex.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 0.0 -24.0 -9.0
+   
+   FrameIndex RMTV A 0 0
 }

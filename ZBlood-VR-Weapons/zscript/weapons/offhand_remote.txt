@@ -1,0 +1,52 @@
+Class BombRemote : BloodWeaponZ
+{
+  Default
+  {
+  Weapon.SelectionOrder 5200;
+  Weapon.Kickback 100;
+  Weapon.SlotNumber 1;
+  Obituary "$OB_MPFIST";
+  Tag "$TAG_FIST";
+  +WEAPON.WIMPY_WEAPON;
+  +WEAPON.MELEEWEAPON;
+  +WEAPON.OFFHANDWEAPON;
+  +WEAPON.NOHANDSWITCH;
+  +WEAPON.CHEATNOTWEAPON;
+  +INVENTORY.UNDROPPABLE;
+  +INVENTORY.UNTOSSABLE;
+  +INVENTORY.UNCLEARABLE;
+  }
+  
+	States
+	{
+	Ready:
+		TNT1 A 0;
+		RMTE A 0 A_ReplaceSprite("zblood_models", "RMTV");
+		"####" A 1 A_WeaponReady;
+		Loop;
+	Deselect:
+		RMTE A 0 A_ReplaceSprite("zblood_models", "RMTV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Lower(60);
+		Goto Deselect+2;
+		"####" # 1 A_Lower;
+		wait;
+	Select:
+		RMTE A 0 A_ReplaceSprite("zblood_models", "RMTV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Raise(60);
+		Goto Select+2;
+		"####" # 1 A_Raise;
+		wait;
+	Fire:
+		"####" A 4;
+		"####" A 0 A_StartSound("Proximity/Det", CHAN_WEAPON);
+		"####" AA 4 A_GiveInventory("BOOMBABY",1);
+		"####" A 8;
+		"####" # 0 A_TakeInventory("BOOMBABY",2);
+		Goto Ready;
+	Dummy:
+		RMTV A 1;
+		stop;
+	}
+}
