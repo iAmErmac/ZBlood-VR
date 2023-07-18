@@ -5,18 +5,17 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-	FrameIndex DYNU A 0 3
-	FrameIndex DYNU B 0 4
-	FrameIndex DYNU C 0 5
-	FrameIndex DYNU D 0 5
-	FrameIndex DYNU E 0 5
-	FrameIndex DYNU F 0 5
+	FrameIndex DYNU A 0 0
+	FrameIndex DYNU B 0 0
+	FrameIndex DYNU C 0 0
+	FrameIndex DYNU D 0 0
+	FrameIndex DYNU E 0 0
+	FrameIndex DYNU F 0 0
 }
 
 //Deselect
@@ -24,34 +23,33 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYND A 0 10
-   FrameIndex DYND B 0 9
-   FrameIndex DYND C 0 8
-   FrameIndex DYND D 0 7
-   FrameIndex DYND E 0 6
-   FrameIndex DYND F 0 5
+   FrameIndex DYND A 0 0
+   FrameIndex DYND B 0 0
+   FrameIndex DYND C 0 0
+   FrameIndex DYND D 0 0
+   FrameIndex DYND E 0 0
+   FrameIndex DYND F 0 0
 }
 
 //Deselect - No ammo
 Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "empty.png"
-   Skin 0 "lighter.png"
+   Model 0 "tnt.md3"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex ZIPD A 0 32
-   FrameIndex ZIPD B 0 33
-   FrameIndex ZIPD C 0 34
-   FrameIndex ZIPD D 0 35
+   FrameIndex ZIPD A 0 0
+   FrameIndex ZIPD B 0 0
+   FrameIndex ZIPD C 0 0
+   FrameIndex ZIPD D 0 0
 }
 
 //Ready
@@ -59,15 +57,14 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
    FrameIndex DYNR A 0 0
-   FrameIndex DYNR B 0 1
-   FrameIndex DYNR C 0 2
+   FrameIndex DYNR B 0 0
+   FrameIndex DYNR C 0 0
 }
 
 //Fire
@@ -75,22 +72,30 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "lighter.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
+   Model 1 "lighter.md3"
+   Skin 1 "lighter.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYNL A 0 14
-   FrameIndex DYNL B 0 15
-   FrameIndex DYNL C 0 16
-   FrameIndex DYNL D 0 17
-   FrameIndex DYNL E 0 18
+   FrameIndex DYNL A 0 1	FrameIndex DYNL A 1 0
+   FrameIndex DYNL B 0 1	FrameIndex DYNL B 1 1
+   FrameIndex DYNL C 0 1	FrameIndex DYNL C 1 2
+   FrameIndex DYNL D 0 1	FrameIndex DYNL D 1 3
+   FrameIndex DYNL E 0 0	FrameIndex DYNL E 1 4
+}
+Model Dynamite
+{ 
+   Path "models/3d/weapons/tnt"
+   Model 0 "tnt.md3"
+   Skin 0 "tnt.png"
    
-   SurfaceSkin 0 0 "empty.png"
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYNL F 0 19
-   FrameIndex DYNL G 0 20
+   FrameIndex DYNL F 0 0
+   FrameIndex DYNL G 0 0
 }
 
 //Hold
@@ -98,15 +103,14 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYNT A 0 20
-   FrameIndex DYNT B 0 21
-   FrameIndex DYNT C 0 20
+   FrameIndex DYNT A 0 0
+   FrameIndex DYNT B 0 0
+   FrameIndex DYNT C 0 0
 }
 
 //Hold explode
@@ -114,42 +118,41 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "tnt.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYNO A 0 20
-   FrameIndex DYNO B 0 21
-   FrameIndex DYNO C 0 22
-   FrameIndex DYNO D 0 23
-   FrameIndex DYNO E 0 24
-   FrameIndex DYNO F 0 25
-   FrameIndex DYNO G 0 26
-   FrameIndex DYNO H 0 23
+   FrameIndex DYNO A 0 0
+   FrameIndex DYNO B 0 0
+   FrameIndex DYNO C 0 0
+   FrameIndex DYNO D 0 0
+   FrameIndex DYNO E 0 0
+   FrameIndex DYNO F 0 0
+   FrameIndex DYNO G 0 0
+   FrameIndex DYNO H 0 0
 }
 
 //Throw
 Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
-   Model 0 "lighter.md3"
+   Model 0 "tnt.md3"
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYHN A 0 27   
-   FrameIndex DYHN B 0 28
-   FrameIndex DYHN C 0 29
-   FrameIndex DYHN D 0 30
-   FrameIndex DYHN E 0 31
-   FrameIndex DYHN F 0 32
-   FrameIndex DYHN G 0 33
-   FrameIndex DYHN H 0 32
-   FrameIndex DYHN I 0 33
-   FrameIndex DYHN J 0 32
+   FrameIndex DYHN A 0 0
+   FrameIndex DYHN B 0 0
+   FrameIndex DYHN C 0 0
+   FrameIndex DYHN D 0 0
+   FrameIndex DYHN E 0 0
+   FrameIndex DYHN F 0 0
+   FrameIndex DYHN G 0 0
+   FrameIndex DYHN H 0 0
+   FrameIndex DYHN I 0 0
+   FrameIndex DYHN J 0 0
 }
 
 //Throw done
@@ -157,18 +160,16 @@ Model Dynamite
 { 
    Path "models/3d/weapons/tnt"
    Model 0 "tnt.md3"
-   SurfaceSkin 0 0 "empty.png"
-   SurfaceSkin 0 1 "tnt.png"
+   Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex TNTF M 0 11
-   FrameIndex TNTF N 0 12
-   FrameIndex TNTF O 0 13
-   Model 0 "lighter.md3"
-   FrameIndex TNTF P 0 33
-   FrameIndex TNTF Q 0 32
+   FrameIndex TNTF M 0 0
+   FrameIndex TNTF N 0 0
+   FrameIndex TNTF O 0 0
+   FrameIndex TNTF P 0 0
+   FrameIndex TNTF Q 0 0
 }
 
 //Spark overlay
@@ -220,9 +221,9 @@ Model Dynamite
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DYNV A 0 6
-   FrameIndex DYNV B 0 6
-   FrameIndex DYNV C 0 6
+   FrameIndex DYNV A 0 0
+   FrameIndex DYNV B 0 0
+   FrameIndex DYNV C 0 0
 }
 
 //Select
@@ -236,11 +237,11 @@ Model Dynamite
    Offset 3.0 -28.0 -15.0
    
    FrameIndex DNUV A 0 0
-   FrameIndex DNUV B 0 1
-   FrameIndex DNUV C 0 2
-   FrameIndex DNUV D 0 3
-   FrameIndex DNUV E 0 5
-   FrameIndex DNUV F 0 6
+   FrameIndex DNUV B 0 0
+   FrameIndex DNUV C 0 0
+   FrameIndex DNUV D 0 0
+   FrameIndex DNUV E 0 0
+   FrameIndex DNUV F 0 0
 }
 
 //Deselect
@@ -253,31 +254,31 @@ Model Dynamite
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DNDV A 0 5
-   FrameIndex DNDV B 0 4
-   FrameIndex DNDV C 0 3
-   FrameIndex DNDV D 0 2
-   FrameIndex DNDV E 0 1
+   FrameIndex DNDV A 0 0
+   FrameIndex DNDV B 0 0
+   FrameIndex DNDV C 0 0
+   FrameIndex DNDV D 0 0
+   FrameIndex DNDV E 0 0
    
    NOINTERPOLATION
    
-   FrameIndex DNDV F 0 0	FrameIndex DNDV F 1 0	FrameIndex DNDV F 2 0
+   FrameIndex DNDV F 0 0
 }
 
 //Deselect - No ammo
 Model Dynamite
 { 
    Path "models/voxel/weapons/tnt"
-   Model 0 "zippo_tnt.md3"
+   Model 0 "tnt.md3"
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex ZIPV A 0 4
-   FrameIndex ZIPV B 0 3
-   FrameIndex ZIPV C 0 2
-   FrameIndex ZIPV D 0 1
+   FrameIndex ZIPV A 0 0
+   FrameIndex ZIPV B 0 0
+   FrameIndex ZIPV C 0 0
+   FrameIndex ZIPV D 0 0
 }
 
 //Fire
@@ -288,23 +289,27 @@ Model Dynamite
    Skin 0 "tnt_tex.png"
    Model 1 "zippo_tnt.md3"
    Skin 1 "zippo_tex.png"
-   Model 2 "zippo_tnt_flame.md3"
-   Skin 2 "zippo_tex.png"
    
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DNLV A 0 10	FrameIndex DNLV A 1 10	FrameIndex DNLV A 2 10
-   FrameIndex DNLV B 0 11	FrameIndex DNLV B 1 11	FrameIndex DNLV B 2 11
-   FrameIndex DNLV C 0 12	FrameIndex DNLV C 1 12	FrameIndex DNLV C 2 12
-   FrameIndex DNLV D 0 13	FrameIndex DNLV D 1 13	FrameIndex DNLV D 2 13
-   FrameIndex DNLV E 0 14	FrameIndex DNLV E 1 14	FrameIndex DNLV E 2 14
+   FrameIndex DNLV A 0 1	FrameIndex DNLV A 1 0
+   FrameIndex DNLV B 0 1	FrameIndex DNLV B 1 1
+   FrameIndex DNLV C 0 1	FrameIndex DNLV C 1 2
+   FrameIndex DNLV D 0 1	FrameIndex DNLV D 1 3
+   FrameIndex DNLV E 0 0	FrameIndex DNLV E 1 4
+}
+Model Dynamite
+{ 
+   Path "models/voxel/weapons/tnt"
+   Model 0 "tnt.md3"
+   Skin 0 "tnt_tex.png"
    
-   Skin 1 "empty.png"
-   Skin 2 "empty.png"
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
    
-   FrameIndex DNLV F 0 15	FrameIndex DNLV F 1 15	FrameIndex DNLV F 2 15
-   FrameIndex DNLV G 0 16	FrameIndex DNLV G 1 16	FrameIndex DNLV G 2 16
+   FrameIndex DNLV F 0 0
+   FrameIndex DNLV G 0 0
 }
 
 //Hold
@@ -317,9 +322,9 @@ Model Dynamite
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DNTV A 0 17
-   FrameIndex DNTV B 0 18
-   FrameIndex DNTV C 0 19
+   FrameIndex DNTV A 0 0
+   FrameIndex DNTV B 0 0
+   FrameIndex DNTV C 0 0
 }
 
 //Hold explode
@@ -332,21 +337,21 @@ Model Dynamite
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex DNOV A 0 16
-   FrameIndex DNOV B 0 17
-   FrameIndex DNOV C 0 18
-   FrameIndex DNOV D 0 19
-   FrameIndex DNOV E 0 20
-   FrameIndex DNOV F 0 21
-   FrameIndex DNOV G 0 22
-   FrameIndex DNOV H 0 19
+   FrameIndex DNOV A 0 0
+   FrameIndex DNOV B 0 0
+   FrameIndex DNOV C 0 0
+   FrameIndex DNOV D 0 0
+   FrameIndex DNOV E 0 0
+   FrameIndex DNOV F 0 0
+   FrameIndex DNOV G 0 0
+   FrameIndex DNOV H 0 0
 }
 
 //Throw
 Model Dynamite
 { 
    Path "models/voxel/weapons/tnt"
-   Model 0 "zippo_tnt.md3"
+   Model 0 "tnt.md3"
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
@@ -354,19 +359,19 @@ Model Dynamite
    
    NOINTERPOLATION
    
-   FrameIndex DNHV A 0 16
-   FrameIndex DNHV B 0 15
-   FrameIndex DNHV C 0 14
-   FrameIndex DNHV D 0 13
-   FrameIndex DNHV E 0 12
-   FrameIndex DNHV F 0 10
-   FrameIndex DNHV G 0 11
-   FrameIndex DNHV H 0 10
-   FrameIndex DNHV I 0 11
+   FrameIndex DNHV A 0 0
+   FrameIndex DNHV B 0 0
+   FrameIndex DNHV C 0 0
+   FrameIndex DNHV D 0 0
+   FrameIndex DNHV E 0 0
+   FrameIndex DNHV F 0 0
+   FrameIndex DNHV G 0 0
+   FrameIndex DNHV H 0 0
+   FrameIndex DNHV I 0 0
    
    NOINTERPOLATION
    
-   FrameIndex DNHV J 0 10	FrameIndex DNHV J 1 10
+   FrameIndex DNHV J 0 0
 }
 
 //Throw done
@@ -379,9 +384,44 @@ Model Dynamite
    Scale -0.8 0.8 0.8
    Offset 3.0 -28.0 -15.0
    
-   FrameIndex TNTV P 0 15
-   FrameIndex TNTV Q 0 14
-   FrameIndex TNTV M 0 6
-   FrameIndex TNTV N 0 7
-   FrameIndex TNTV O 0 8
+   FrameIndex TNTV P 0 0
+   FrameIndex TNTV Q 0 0
+   FrameIndex TNTV M 0 0
+   FrameIndex TNTV N 0 0
+   FrameIndex TNTV O 0 0
+}
+
+//Spark overlay
+Model Dynamite
+{
+   Path "models/voxel/weapons/tnt"
+   Model 0 "tntspark.md3"
+   SurfaceSkin 0 0 "empty.png"
+   SurfaceSkin 0 1 "tntspark1.png"
+   SurfaceSkin 0 2 "empty.png"
+   
+   Scale -0.8 0.8 0.8
+   Offset 3.0 -28.0 -15.0
+   
+   FrameIndex DSPV A 0 0
+   SurfaceSkin 0 1 "tntspark2.png"
+   FrameIndex DSPV B 0 1
+   SurfaceSkin 0 1 "tntspark3.png"
+   FrameIndex DSPV C 0 2
+   SurfaceSkin 0 1 "tntspark2.png"
+   FrameIndex DSPV D 0 3
+   SurfaceSkin 0 1 "tntspark3.png"
+   FrameIndex DSPV E 0 4
+   SurfaceSkin 0 1 "tntspark2.png"
+   FrameIndex DSPV F 0 5
+   SurfaceSkin 0 1 "tntspark3.png"
+   FrameIndex DSPV G 0 6
+   SurfaceSkin 0 1 "tntspark2.png"
+   FrameIndex DSPV H 0 7
+   SurfaceSkin 0 0 "tntspark3.png"
+   FrameIndex DSPV I 0 8
+   SurfaceSkin 0 0 "tntspark2.png"
+   SurfaceSkin 0 1 "tntspark3.png"
+   SurfaceSkin 0 2 "tntspark4.png"
+   FrameIndex DSPV J 0 9
 }
