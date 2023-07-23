@@ -16,8 +16,8 @@ Class BloodWeaponZ : Weapon
 			{
 				if(player)
 				{
-					int hand = !invoker.bOffhandWeapon;
-					if(hand)
+					int mainhand = !invoker.bOffhandWeapon;
+					if(mainhand)
 						Player.GetPSprite(PSP_WEAPON).sprite = GetSpriteIndex(ssprite);
 					else
 						Player.GetPSprite(PSP_OFFHANDWEAPON).sprite = GetSpriteIndex(ssprite);
@@ -31,11 +31,7 @@ Class BloodFlameProjectile : Actor
 {
 	override int SpecialMissileHit(Actor victim)
 	{
-		if(!victim.FindInventory("PainBurnToken"))
-		{
-			victim.SetInventory("MonsterBurnEffect", 0);
-			victim.SetInventory("MonsterBurnEffect", 1);
-		}
+		if(!victim.CountInv("PainBurnToken")) victim.SetInventory("MonsterBurnEffect", 1);
 		
 		Super.SpecialMissileHit(victim);
 		return -1;
@@ -75,9 +71,8 @@ Class BloodAOEFlameProjectile : Actor
 		for(int i=0; i<victims.Size(); i++)
 		{
 			victim = victims[i];
-			if(victim.FindInventory("PainBurnToken")) return;
+			if(victim.CountInv("PainBurnToken")) return;
 			
-			victim.SetInventory("MonsterBurnEffect", 0);
 			victim.SetInventory("MonsterBurnEffect", 1);
 		}
 	}

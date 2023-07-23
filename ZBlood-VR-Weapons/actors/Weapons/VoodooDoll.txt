@@ -37,6 +37,8 @@ actor VoodooDoll : BloodWeaponZ
 	weapon.ammogive 100
 	weapon.ammotype2 "Voodoo"
 	Weapon.SlotNumber 0
+	+WEAPON.MELEEWEAPON
+	+WEAPON.NOHANDSWITCH
 	Tag "Voodoo Doll"
   
     //+WEAPON.NOALERT
@@ -44,7 +46,9 @@ actor VoodooDoll : BloodWeaponZ
   {
   Ready:
 	VDOL A 0 A_ReplaceSprite("zblood_models", "VDLV")
+	"####" # 1 A_TakeInventory("UsingVoodooSpell", 1)
     "####" # 0 A_TakeInventory("UsingPitchfork", 1)
+	"####" # 0 A_JumpIfInventory("VoodooSpellCasted", 1, "DeselectAlt")
     //"####" # 0 A_JumpIf(momx >= 6,"ReadyMoving")
     //"####" # 0 A_JumpIf(momx <= -6,"ReadyMoving")
     "####" A 1 A_WeaponReady
@@ -60,7 +64,15 @@ actor VoodooDoll : BloodWeaponZ
 	"####" A 1 A_Lower(60)
 	Goto Deselect+4
 	"####" A 1 A_Lower
-	Goto Deselect+5
+	Wait
+  DeselectAlt:
+	VDLW A 0 A_ReplaceSprite("zblood_models", "VDWV")
+	"####" # 0 A_TakeInventory("VoodooDoll", 1) 
+	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" G 1 A_Lower(60)
+	Goto DeselectAlt+3
+	"####" G 1 A_Lower
+	Wait
   Select:
 	VDOL A 0 A_ReplaceSprite("zblood_models", "VDLV")
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
@@ -69,6 +81,17 @@ actor VoodooDoll : BloodWeaponZ
 	"####" A 1 A_Raise
 	Goto Select+3
   Fire:
+	"####" # 1
+	"####" # 0 A_Refire
+	Goto Ready
+  Hold:
+	VDLW A 0 A_ReplaceSprite("zblood_models", "VDWV")
+	"####" # 0 A_GiveInventory("UsingVoodooSpell", 1)
+	"####" # 10
+	"####" # 0 A_Refire
+	Goto Ready
+
+	/*
 	"####" # 0 A_JumpIfTargetInLOS(1)
 	Goto Self
 	"####" # 0 A_Jump(96,"Chest","Shoulder")
@@ -130,7 +153,7 @@ actor VoodooDoll : BloodWeaponZ
 	"####" # 0 A_JumpIfInventory("Voodoo", 1, 1)
     goto DeselectAlt
 	"####" # 0
-	Goto Ready	
+	Goto Ready
   AltFire:
 	VDLW A 0 A_ReplaceSprite("zblood_models", "VDWV")
     "####" # 0 A_PlaySound ("Voodoo/Chant")
@@ -148,6 +171,8 @@ actor VoodooDoll : BloodWeaponZ
 	Goto Deselect+3
 	"####" G 1 A_Lower
 	Goto Deselect+4
+	*/
+	
   //Flash:
     //VDOL J 0    
     //stop

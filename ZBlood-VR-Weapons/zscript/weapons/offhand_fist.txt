@@ -1,21 +1,22 @@
 Class CalebOffHandFist : BloodWeaponZ
 {
-  Default
-  {
-  Weapon.SelectionOrder 5100;
-  Weapon.Kickback 100;
-  Weapon.SlotNumber 1;
-  Obituary "$OB_MPFIST";
-  Tag "$TAG_FIST";
-  +WEAPON.WIMPY_WEAPON;
-  +WEAPON.MELEEWEAPON;
-  +WEAPON.OFFHANDWEAPON;
-  +WEAPON.NOHANDSWITCH;
-  +WEAPON.CHEATNOTWEAPON;
-  +INVENTORY.UNDROPPABLE;
-  +INVENTORY.UNTOSSABLE;
-  +INVENTORY.UNCLEARABLE;
-  }
+	Default
+	{
+	Weapon.SelectionOrder 5100;
+	Weapon.Kickback 100;
+	Weapon.SlotNumber 1;
+	Obituary "$OB_MPFIST";
+	Tag "$TAG_FIST";
+	+WEAPON.WIMPY_WEAPON;
+	+WEAPON.MELEEWEAPON;
+	+WEAPON.OFFHANDWEAPON;
+	+WEAPON.NOHANDSWITCH;
+	+WEAPON.CHEATNOTWEAPON;
+	+INVENTORY.UNDROPPABLE;
+	+INVENTORY.UNTOSSABLE;
+	+INVENTORY.UNCLEARABLE;
+	Inventory.AltHUDIcon "FISTA0";
+	}
   
 	States
 	{

@@ -1,6 +1,7 @@
 
 Class BloodOffhandWeaponHandler : EventHandler
 {
+	
 	override void WorldTick()
 	{
 		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
@@ -11,11 +12,26 @@ Class BloodOffhandWeaponHandler : EventHandler
 		HandleOffhandAutoSwitchWeapon();
 		HandleSprayCanIgnition();
 		
+		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
+		
+		if(!player.OffhandWeapon)
+		{
+			Weapon weap = Weapon(player.mo.FindInventory(prevWeapon));
+			if(weap)
+			{
+				player.OffhandWeapon = weap;
+				player.PendingWeapon = weap;
+				player.mo.BringUpWeapon();
+			}
+		}
+		
+		if(voodoo_cursor && !(player.OffhandWeapon is "OfhandVoodooDoll")) voodoo_cursor.bInvisible = true;
+		
 		if (_isInitialized) return;
 		
-		if(!player.mo.CountInv("Zippo")) player.mo.setinventory("Zippo", 1, false); //Give player lighter
+		//Initialization part
 		
-		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
+		if(!player.mo.CountInv("Zippo")) player.mo.setinventory("Zippo", 1, false); //Give player lighter
 		
 		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
 		
@@ -23,6 +39,9 @@ Class BloodOffhandWeaponHandler : EventHandler
 		player.OffhandWeapon = weap;
 		player.PendingWeapon = weap;
 		player.mo.BringUpWeapon();
+		
+		voodoo_cursor = Actor.Spawn("voodooTargetIcon");
+		
 		_isInitialized = true;
 	}
 	
@@ -32,6 +51,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if((player.ReadyWeapon IS "Dynamite" || player.ReadyWeapon IS "Spraycan") && !(player.OffhandWeapon IS "Zippo"))
 		{
+			player.mo.setinventory("PutOutFlame", 1, false);
 			Weapon weap = Weapon(player.mo.FindInventory("Zippo"));
 			player.OffhandWeapon = weap;
 			player.PendingWeapon = weap;
@@ -50,6 +70,28 @@ Class BloodOffhandWeaponHandler : EventHandler
 				player.mo.BringUpWeapon();
 			}
 		}
+		
+		if(player.ReadyWeapon IS "VoodooDoll")
+		{
+			if(!(player.OffhandWeapon is "OfhandVoodooDoll")) prevWeapon = player.OffhandWeapon.GetClassName();
+		
+			if(!player.mo.CountInv("OfhandVoodooDoll")) player.mo.setinventory("OfhandVoodooDoll", 1, false);
+			
+			if(!(player.OffhandWeapon IS "OfhandVoodooDoll"))
+			{
+				Weapon weap = Weapon(player.mo.FindInventory("OfhandVoodooDoll"));
+				player.OffhandWeapon = weap;
+				player.PendingWeapon = weap;
+				player.mo.BringUpWeapon();
+			}
+			
+			markVoodooTargets();
+		}
+		else
+		{
+			player.mo.setinventory("OfhandVoodooDoll", 0, false);
+			player.mo.setinventory("VoodooSpellCasted", 0, false);
+		}
 	}
 	
 	void HandleSprayCanIgnition()
@@ -62,6 +104,33 @@ Class BloodOffhandWeaponHandler : EventHandler
 		}
 		else
 			tiny_flame = NULL;
+	}
+	
+	void markVoodooTargets()
+	{
+		let player = players[consolePlayer].mo;
+		if(!player) return;
+		
+		if(!player.CountInv("OfhandVoodooDoll")) return;
+		
+		voodoo_cursor.bInvisible = true;
+		
+		let VoodooWeapon = OfhandVoodooDoll(player.FindInventory("OfhandVoodooDoll"));
+		player.target = NULL;
+		VoodooWeapon.voodoo_target = NULL;
+		
+		double pitch = player.AimTarget() ? player.BulletSlope(null, ALF_PORTALRESTRICT) : player.pitch;
+		FLineTraceData t;
+		bool hit = player.LineTrace(player.angle, 2048, pitch, offsetz: player.height-12, data: t);
+		if (hit && t.HitType == TRACE_HitActor && !Actor(t.HitActor).bInvulnerable && t.HitActor.bSolid && t.HitActor.health > 0)
+		{
+			double distance = t.Distance;
+			voodoo_cursor.scale.x    = 3.0;
+			voodoo_cursor.scale.y    = 3.0;
+			voodoo_cursor.bInvisible = false;
+			voodoo_cursor.SetOrigin(t.HitLocation, true);
+			VoodooWeapon.voodoo_target = t.HitActor;
+		}
 	}
 	
 	override void OnRegister()
@@ -83,6 +152,30 @@ Class BloodOffhandWeaponHandler : EventHandler
 	private bool _isTitlemap;
 	private bool _isInitialized;
 	private actor tiny_flame;
+	private actor voodoo_cursor;
+	Class<Weapon> prevWeapon;
+}
+
+Class HapticHelper : EventHandler
+{
+	static void BuzzHand(int hand = 0)
+	{
+		Let player = Players[ConsolePlayer].mo;
+		if(!player) return;
+		
+		player.LineAttack(0, 0, 0, 1, "melee", "hapticDummy", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | (hand ? LAF_ISOFFHAND : 0));
+	}
+	
+	static void Buzz()
+	{
+		HapticHelper.BuzzHand();
+		HapticHelper.BuzzHand(1);
+	}
+	
+	static void BuzzOffhand()
+	{
+		HapticHelper.BuzzHand(1);
+	}
 }
 
 Class IgnitingSprayCan : Inventory
@@ -128,4 +221,98 @@ Class SpraycanFlameIgnite : Actor
 		SFLM GA 2;
 		Stop;
 	}
+}
+
+class testPuff : Actor
+{
+  Default
+  {
+    Mass        0;
+    Radius      1;
+    Height      2;
+
+    +NOBLOCKMAP;
+    +NOGRAVITY;
+    +BLOODLESSIMPACT;
+    +PUFFONACTORS;
+    +DONTSPLASH;
+    +NOTRIGGER;
+	+NOTARGET;
+    +FORCEXYBILLBOARD;
+    +NOTONAUTOMAP;
+    +SKYEXPLODE;
+  }
+
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      TNT1 A 1 A_SpawnParticle("FF 00 00", SPF_FULLBRIGHT, 1, 2, 0, 0, 0, 0);
+      stop;
+  }
+}
+
+Class testPuffBig : testPuff
+{
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      TNT1 A 1 A_SpawnParticle("FF 00 00", SPF_FULLBRIGHT, 175, 10, 0, 0, 0, 0);
+      stop;
+  }
+}
+
+class bloodDummyPuff : Actor
+{
+  Default
+  {
+    Mass        0;
+    Radius      1;
+    Height      2;
+
+    +NOBLOCKMAP;
+    +NOGRAVITY;
+    +BLOODLESSIMPACT;
+    +PUFFONACTORS;
+    +DONTSPLASH;
+    +NOTRIGGER;
+	+NOTARGET;
+    +FORCEXYBILLBOARD;
+    +NOTONAUTOMAP;
+    +SKYEXPLODE;
+  }
+
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      TNT1 A 1;
+      stop;
+  }
+}
+
+class voodooTargetIcon : bloodDummyPuff
+{
+  Default
+  {
+  Renderstyle "Add";
+  }
+  States
+  {
+    Spawn:
+      TNT1 A 0;
+      VCUR A 1;
+      Wait;
+  }
+
+}
+
+class hapticDummy : bloodDummyPuff
+{
+  Default
+  {
+	DamageType "Melee";
+	Damage 1;
+  }
 }

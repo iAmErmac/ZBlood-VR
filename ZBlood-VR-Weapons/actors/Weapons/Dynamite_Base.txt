@@ -60,6 +60,7 @@ Actor Dynamite : BloodWeaponZ
 	+Weapon.Explosive
 	+NoAutoAim
 	+WEAPON.NOALERT
+	+WEAPON.NOHANDSWITCH
 	Tag "TNT"
 	
 	States
@@ -533,7 +534,7 @@ Actor Dynamite : BloodWeaponZ
 	//ZIPP EDCBAIJ 1
 	//Stop
   Spawn:
-    TNTF A 1
+	TBND A -1
     stop
   Cannot:
   "####" # 0 A_TakeInventory("ThrowPower",255)

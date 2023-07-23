@@ -4,66 +4,82 @@
 Model VoodooDoll
 { 
    Path "models/3d/weapons/voodoo"
-   Model 0 "voodoo2.md3"
+   Model 0 "voodoo_fist.md3"
    Skin 0 "voodoo.png"
    
-   Scale -0.6 0.6 0.6
-   Offset 16.0 -28.0 -18.0
+   Scale -0.55 0.55 0.55
+   Offset 0.0 -20.0 -11.0
    
    //Ready
    FrameIndex VDOL A 0 0
    
    //Chest
-   FrameIndex VDOL B 0 1
-   FrameIndex VDOL C 0 2
-   FrameIndex VDOL D 0 3
-   FrameIndex VDOL E 0 4
-   FrameIndex VDOL F 0 5
+   FrameIndex VDOL B 0 0
+   FrameIndex VDOL C 0 0
+   FrameIndex VDOL D 0 0
+   FrameIndex VDOL E 0 0
+   FrameIndex VDOL F 0 0
    
    //Eye
-   FrameIndex VDOL G 0 7
-   FrameIndex VDOL H 0 8
-   FrameIndex VDOL I 0 9
-   FrameIndex VDOL J 0 10
-   FrameIndex VDOL K 0 11
+   FrameIndex VDOL G 0 0
+   FrameIndex VDOL H 0 0
+   FrameIndex VDOL I 0 0
+   FrameIndex VDOL J 0 0
+   FrameIndex VDOL K 0 0
    
    //Shoulder
-   FrameIndex VDOL L 0 13
-   FrameIndex VDOL M 0 14
-   FrameIndex VDOL N 0 15
-   FrameIndex VDOL O 0 16
+   FrameIndex VDOL L 0 0
+   FrameIndex VDOL M 0 0
+   FrameIndex VDOL N 0 0
+   FrameIndex VDOL O 0 0
    
    //Pelvis
-   FrameIndex VDOL P 0 18
-   FrameIndex VDOL Q 0 19
-   FrameIndex VDOL R 0 20
-   FrameIndex VDOL S 0 21
-   FrameIndex VDOL T 0 24
+   FrameIndex VDOL P 0 0
+   FrameIndex VDOL Q 0 0
+   FrameIndex VDOL R 0 0
+   FrameIndex VDOL S 0 0
+   FrameIndex VDOL T 0 0
    
    //Self
-   FrameIndex VDOL U 0 26
-   FrameIndex VDOL V 0 27
-   FrameIndex VDOL W 0 28
-   FrameIndex VDOL X 0 29
+   FrameIndex VDOL U 0 0
+   FrameIndex VDOL V 0 0
+   FrameIndex VDOL W 0 0
+   FrameIndex VDOL X 0 0
 }
 
 Model VoodooDoll
 { 
    Path "models/3d/weapons/voodoo"
-   Model 0 "voodoo.md3"
-   Skin 0 "voodoo_nospike.png"
+   Model 0 "voodoo_hand.md3"
+   Skin 0 "voodoo.png"
    
-   Scale -0.6 0.6 0.6
-   Offset 10.0 -28.0 0.0
+   Scale -0.55 0.55 0.55
+   Offset 0.0 -20.0 -11.0
    
    //Alt fire
-   FrameIndex VDLW A 0 30
-   FrameIndex VDLW B 0 31
-   FrameIndex VDLW C 0 32
-   FrameIndex VDLW D 0 33
-   FrameIndex VDLW E 0 34
-   FrameIndex VDLW F 0 35
-   FrameIndex VDLW G 0 36
+   FrameIndex VDLW A 0 0
+   FrameIndex VDLW B 0 0
+   FrameIndex VDLW C 0 0
+   FrameIndex VDLW D 0 0
+   FrameIndex VDLW E 0 0
+   FrameIndex VDLW F 0 0
+   FrameIndex VDLW G 0 0
+}
+
+Model OfhandVoodooDoll
+{ 
+   Path "models/3d/weapons/voodoo"
+   Model 0 "voodoo_doll.md3"
+   Skin 0 "voodoo.png"
+   
+   Scale 0.6 0.6 0.6
+   Offset 0.0 -30.0 -8.0
+   
+   FrameIndex DOLL A 0 0
+   FrameIndex DOLL B 0 1
+   FrameIndex DOLL C 0 6
+   FrameIndex DOLL D 0 12
+   FrameIndex DOLL E 0 17
 }
 
 
@@ -73,71 +89,81 @@ Model VoodooDoll
 Model VoodooDoll
 { 
    Path "models/voxel/weapons/voodoo"
-   Model 0 "voodoo.md3"
-   SurfaceSkin 0 0 "voodoo_tex.png"
-   SurfaceSkin 0 1 "voodoo_tex.png"
-   SurfaceSkin 0 2 "voodoo_tex.png"
-   SurfaceSkin 0 3 "voodoo_hand_tex.png"
-   SurfaceSkin 0 4 "voodoo_spike_tex.png"
+   Model 0 "voodoo_fist.md3"
+   SurfaceSkin 0 0 "hand_tex.png"
+   SurfaceSkin 0 1 "voodoo_spike_tex.png"
    
-   Scale -0.6 0.6 0.6
-   Offset 16.0 -28.0 -18.0
+   Scale -0.55 0.55 0.55
+   Offset 0.0 -20.0 -11.0
    
    //Ready
    FrameIndex VDLV A 0 0
    
    //Chest
-   FrameIndex VDLV B 0 1
-   FrameIndex VDLV C 0 2
-   FrameIndex VDLV D 0 3
-   FrameIndex VDLV E 0 4
-   FrameIndex VDLV F 0 5
+   FrameIndex VDLV B 0 0
+   FrameIndex VDLV C 0 0
+   FrameIndex VDLV D 0 0
+   FrameIndex VDLV E 0 0
+   FrameIndex VDLV F 0 0
    
    //Eye
-   FrameIndex VDLV G 0 7
-   FrameIndex VDLV H 0 8
-   FrameIndex VDLV I 0 9
-   FrameIndex VDLV J 0 10
-   FrameIndex VDLV K 0 11
+   FrameIndex VDLV G 0 0
+   FrameIndex VDLV H 0 0
+   FrameIndex VDLV I 0 0
+   FrameIndex VDLV J 0 0
+   FrameIndex VDLV K 0 0
    
    //Shoulder
-   FrameIndex VDLV L 0 14
-   FrameIndex VDLV M 0 15
-   FrameIndex VDLV N 0 16
-   FrameIndex VDLV O 0 17
+   FrameIndex VDLV L 0 0
+   FrameIndex VDLV M 0 0
+   FrameIndex VDLV N 0 0
+   FrameIndex VDLV O 0 0
    
    //Pelvis
-   FrameIndex VDLV P 0 19
-   FrameIndex VDLV Q 0 20
-   FrameIndex VDLV R 0 21
-   FrameIndex VDLV S 0 22
-   FrameIndex VDLV T 0 24
+   FrameIndex VDLV P 0 0
+   FrameIndex VDLV Q 0 0
+   FrameIndex VDLV R 0 0
+   FrameIndex VDLV S 0 0
+   FrameIndex VDLV T 0 0
    
    //Self
-   FrameIndex VDLV U 0 26
-   FrameIndex VDLV V 0 27
-   FrameIndex VDLV W 0 28
-   FrameIndex VDLV X 0 29
+   FrameIndex VDLV U 0 0
+   FrameIndex VDLV V 0 0
+   FrameIndex VDLV W 0 0
+   FrameIndex VDLV X 0 0
 }
 
 Model VoodooDoll
 { 
    Path "models/voxel/weapons/voodoo"
-   Model 0 "voodoo_wave.md3"
-   SurfaceSkin 0 0 "voodoo_tex.png"
-   SurfaceSkin 0 1 "voodoo_tex.png"
-   SurfaceSkin 0 2 "voodoo_tex.png"
-   SurfaceSkin 0 3 "voodoo_hand2_tex.png"
+   Model 0 "voodoo_hand.md3"
+   Skin 0 "voodoo_hand2_tex.png"
    
-   Scale -0.6 0.6 0.6
-   Offset 16.0 -28.0 -18.0
+   Scale -0.55 0.55 0.55
+   Offset 0.0 -20.0 -11.0
    
    //Alt fire
    FrameIndex VDWV A 0 0
-   FrameIndex VDWV B 0 1
-   FrameIndex VDWV C 0 2
-   FrameIndex VDWV D 0 3
-   FrameIndex VDWV E 0 4
-   FrameIndex VDWV F 0 5
-   FrameIndex VDWV G 0 6
+   FrameIndex VDWV B 0 0
+   FrameIndex VDWV C 0 0
+   FrameIndex VDWV D 0 0
+   FrameIndex VDWV E 0 0
+   FrameIndex VDWV F 0 0
+   FrameIndex VDWV G 0 0
+}
+
+Model OfhandVoodooDoll
+{ 
+   Path "models/voxel/weapons/voodoo"
+   Model 0 "voodoo_doll.md3"
+   Skin 0 "voodoo_tex.png"
+   
+   Scale 0.6 0.6 0.6
+   Offset 0.0 -30.0 -8.0
+   
+   FrameIndex DOLV A 0 0
+   FrameIndex DOLV B 0 1
+   FrameIndex DOLV C 0 6
+   FrameIndex DOLV D 0 12
+   FrameIndex DOLV E 0 17
 }

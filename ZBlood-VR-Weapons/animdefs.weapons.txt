@@ -12,6 +12,12 @@ Texture "models/3d/weapons/tnt/trigger0.png"
     pic "models/3d/weapons/tnt/trigger3.png" tics 4
     pic "models/3d/weapons/tnt/trigger2.png" tics 4
 	
+Texture "models/3d/weapons/tnt/proxy0.png"
+    pic "models/3d/weapons/tnt/proxy1.png" tics 6
+    pic "models/3d/weapons/tnt/proxy2.png" tics 6
+    pic "models/3d/weapons/tnt/proxy3.png" tics 6
+    pic "models/3d/weapons/tnt/proxy0.png" tics 18
+	
 Texture "models/voxel/weapons/tnt/remote_tex.png"
     pic "models/voxel/weapons/tnt/remote_tex2.png" tics 4
     pic "models/voxel/weapons/tnt/remote_tex.png" tics 4
@@ -25,3 +31,9 @@ Texture "models/voxel/weapons/tnt/trigger_tex.png"
     pic "models/voxel/weapons/tnt/trigger4_tex.png" tics 4
     pic "models/voxel/weapons/tnt/trigger3_tex.png" tics 4
     pic "models/voxel/weapons/tnt/trigger2_tex.png" tics 4
+	
+Texture "models/voxel/weapons/tnt/proxy_tex.png"
+    pic "models/voxel/weapons/tnt/proxy1_tex.png" tics 6
+    pic "models/voxel/weapons/tnt/proxy2_tex.png" tics 6
+    pic "models/voxel/weapons/tnt/proxy3_tex.png" tics 6
+    pic "models/voxel/weapons/tnt/proxy_tex.png" tics 18

@@ -230,8 +230,8 @@ Actor ProximityDynamite : BloodWeaponZ
 	}
 }
 
-ACTOR ProximityDetonator : ProximityDynamite 15171
+/*ACTOR ProximityDetonator : ProximityDynamite 15171
 {
 //$Category Blood Weapons
 	+WEAPON.CHEATNOTWEAPON
-}
+}*/

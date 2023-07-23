@@ -9,7 +9,7 @@ Model RemoteDynamite
    Skin 0 "remote_bomb.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DREM A 0 0
    FrameIndex DREM B 0 0
@@ -26,7 +26,7 @@ Model RemoteDynamite
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRNH A 0 0
    FrameIndex DRNH B 0 0
@@ -43,7 +43,7 @@ Model RemoteDynamite
    Skin 0 "remote_bomb.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRTS A 0 0
    FrameIndex DRTS B 0 0
@@ -61,7 +61,7 @@ Model RemoteDynamite
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRDT A 0 0
    FrameIndex DRDT B 0 0
@@ -75,7 +75,7 @@ Model RemoteDynamite
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRNH E 0 0
    FrameIndex DRNH F 0 0
@@ -125,7 +125,7 @@ Model RemoteDynamite
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRNV A 0 0
    FrameIndex DRNV B 0 0
@@ -146,7 +146,7 @@ Model RemoteDynamite
    Skin 0 "remote_tex.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRTV A 0 0
    FrameIndex DRTV B 0 0
@@ -164,7 +164,7 @@ Model RemoteDynamite
    Skin 0 "empty.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -28.0 -11.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex DRFV A 0 0
    FrameIndex DRFV B 0 0
@@ -179,7 +179,7 @@ Model BombRemote
    Skin 0 "trigger_tex.png"
    
    Scale -0.8 0.8 0.8
-   Offset 0.0 -24.0 -9.0
+   Offset -2.0 -28.0 -11.0
    
    FrameIndex RMTV A 0 0
 }

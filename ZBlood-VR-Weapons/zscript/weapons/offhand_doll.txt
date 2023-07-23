@@ -1,0 +1,233 @@
+Class OfhandVoodooDoll : BloodWeaponZ
+{
+	Default
+	{
+	Weapon.SelectionOrder 5300;
+	Weapon.Kickback 100;
+	Weapon.SlotNumber 1;
+	Obituary "%o was punched to death by %k.";
+	Tag "Vodoo Doll";
+	+WEAPON.WIMPY_WEAPON;
+	+WEAPON.MELEEWEAPON;
+	+WEAPON.OFFHANDWEAPON;
+	+WEAPON.NOHANDSWITCH;
+	+WEAPON.CHEATNOTWEAPON;
+	+INVENTORY.UNDROPPABLE;
+	+INVENTORY.UNTOSSABLE;
+	+INVENTORY.UNCLEARABLE;
+	Inventory.AltHUDIcon "DOLLA0";
+	}
+	
+	override void tick()
+	{
+		if(!owner || owner.health <= 0)
+			return;
+			
+		let player = owner.player.mo;
+		
+		/*if(!player.CountInv("Voodoo"))
+		{
+			destroy();
+			return;
+		}*/
+		
+		if(owner.player.ReadyWeapon is "VoodooDoll" && owner.player.OffhandWeapon is "OfhandVoodooDoll")
+		{
+			if(player.CountInv("UsingVoodooSpell"))
+			{
+				if(!player.CountInv("Voodoo")) return;
+				
+				//console.printf("%d", level.vec3diff(player.AttackPos, player.OffhandPos).length());
+				if(level.vec3diff(player.AttackPos, player.OffhandPos).length() < 4)
+				{
+					A_StartSound("Voodoo/Chant", CHAN_WEAPON);
+					CastVoodooSpell();
+					player.SetInventory("UsingVoodooSpell", 0);
+					player.SetInventory("Voodoo", 0);
+					player.SetInventory("VoodooSpellCasted", 1);
+					return;
+				}
+			}
+			else if(!voodoo_triggered)
+			{
+				//measure hand distance from multiple points on the doll
+				Double angle = owner.angle;
+				Double pitch = owner.AimTarget() ? owner.BulletSlope(null, ALF_PORTALRESTRICT) : owner.pitch;
+				
+				Actor tempPuff1 = player.LineAttack(angle-90, 3, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | LAF_ISOFFHAND); //head
+				Actor tempPuff2 = player.LineAttack(angle-90, 1, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | LAF_ISOFFHAND); //torso
+				Actor tempPuff3 = player.LineAttack(angle+90, 1, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | LAF_ISOFFHAND); //pelvis
+				
+				Actor tempPuff4 = player.LineAttack(angle+115, 6, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ); //spike tip
+				
+				bool poke_head = level.vec3diff(tempPuff1.pos, tempPuff4.pos).length() < 2;
+				bool poke_torso = level.vec3diff(tempPuff2.pos, tempPuff4.pos).length() < 2;
+				bool poke_pelvis = level.vec3diff(tempPuff3.pos, tempPuff4.pos).length() < 2;
+				
+				if(poke_head || poke_torso | poke_pelvis)
+				{
+					if(!voodoo_target)
+						player.A_DamageSelf(1); //self damage if no target
+					else
+						player.target = voodoo_target;
+					
+					if(poke_head)
+					{
+						owner.Player.SetPSprite(PSP_OFFHANDWEAPON, FindState("DollPain2"));
+						player.A_DamageTarget(26+random(-3,3), 'Voodoo', DMSS_NOPROTECT);
+					}
+					else if(poke_torso)
+					{
+						if(random(0,1) > 0)
+						{
+							owner.Player.SetPSprite(PSP_OFFHANDWEAPON, FindState("DollPain1"));
+							player.A_DamageTarget(18+random(-2,2), 'Voodoo', DMSS_NOPROTECT);
+						}
+						else
+						{
+							owner.Player.SetPSprite(PSP_OFFHANDWEAPON, FindState("DollPain3"));
+							player.A_DamageTarget(22+random(-5,5), 'Voodoo', DMSS_NOPROTECT);
+						}
+					}
+					else
+					{
+						owner.Player.SetPSprite(PSP_OFFHANDWEAPON, FindState("DollPain4"));
+						player.A_DamageTarget(30+random(-3,3), 'Voodoo', DMSS_NOPROTECT);
+					}
+					
+					A_TakeInventory("Voodoo", 1);
+					A_StartSound("Voodoo/Stab", CHAN_WEAPON);
+					HapticHelper.Buzz();
+					
+					voodoo_triggered = true;
+				}
+			}
+		}
+		
+		if(voodoo_triggered)
+		{
+			if(level.vec3diff(player.OffhandPos, player.AttackPos).length() > 9) voodoo_triggered = false;
+		}
+	}
+	
+	//Modified BFGSpray
+	void CastVoodooSpell()
+	{
+		int damage;
+		FLineTraceData t;
+		Let player = Players[ConsolePlayer].mo;
+
+		class<Actor> spraytype = "VoodooPuff";
+		int numrays = (player.CountInv("Voodoo") / 2) - 10;
+		int damagecnt = 15;
+		if(numrays <= 0)
+		{
+			numrays = 40;
+			damagecnt = 10;
+		}
+		double ang = 90.;
+		double distance = 16 * 64;
+		double vrange = 32.;
+
+		for (int i = 0; i < numrays; i++)
+		{
+			double an = player.angle - ang / 2 + ang / numrays*i;
+
+			player.LineTrace(an, distance, player.pitch, offsetz: player.height-12, data: t);
+			
+			if (t.HitActor != null)
+			{
+				Actor spray = Spawn(spraytype, t.HitActor.pos + (0, 0, t.HitActor.Height / 4), ALLOW_REPLACE);
+
+				int dmgFlags = 0;
+				Name dmgType = 'Voodoo';
+
+				if (spray != null)
+				{
+					if ((spray.bMThruSpecies && target.GetSpecies() == t.HitActor.GetSpecies()) || 
+						(!(BFGF_HURTSOURCE) && player == t.HitActor)) // [XA] Don't hit oneself unless we say so.
+					{
+						spray.Destroy();
+						continue;
+					}
+					if (spray.bPuffGetsOwner) spray.target = target;
+					if (spray.bFoilInvul) dmgFlags |= DMG_FOILINVUL;
+					if (spray.bFoilBuddha) dmgFlags |= DMG_FOILBUDDHA;
+					dmgType = spray.DamageType;
+				}
+
+				damage = 0;
+				for (int j = 0; j < damagecnt; ++j)
+					damage += Random[BFGSpray](1, 8);
+
+				int newdam = t.HitActor.DamageMobj(player, player, damage, dmgType, dmgFlags);
+			}
+		}
+	}
+  
+	States
+	{
+	Ready:
+		TNT1 A 0;
+		DOLL A 0 A_ReplaceSprite("zblood_models", "DOLV");
+		"####" A 1 A_WeaponReady;
+		Loop;
+	Deselect:
+		DOLL A 0 A_ReplaceSprite("zblood_models", "DOLV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Lower(60);
+		Goto Deselect+2;
+		"####" # 1 A_Lower;
+		wait;
+	Select:
+		DOLL A 0 A_ReplaceSprite("zblood_models", "DOLV");
+		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2);
+		"####" # 1 A_Raise(60);
+		Goto Select+2;
+		"####" # 1 A_Raise;
+		wait;
+	Fire:
+		"####" A 10;
+		Goto Ready;
+	DollPain1:
+		"####" B 4;
+		"####" A 12;
+		Goto Ready;
+	DollPain2:
+		"####" C 4;
+		"####" A 12;
+		Goto Ready;
+	DollPain3:
+		"####" D 4;
+		"####" A 12;
+		Goto Ready;
+	DollPain4:
+		"####" E 4;
+		"####" A 4;
+		"####" E 4;
+		"####" A 4;
+		Goto Ready;
+	Dummy:
+		DOLV ABCDE 1;
+		stop;
+	}
+	
+	private bool voodoo_triggered;
+	actor voodoo_target;
+}
+
+Class UsingVoodooSpell : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}
+
+Class VoodooSpellCasted : Inventory
+{
+	Default
+	{
+	inventory.maxamount 1;
+	}
+}

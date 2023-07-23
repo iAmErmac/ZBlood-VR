@@ -64,6 +64,7 @@ actor Spraycan : BloodWeaponZ
   Weapon.SlotNumber 7
   weapon.ammouse2 48
   +WEAPON.NOALERT
+  +WEAPON.NOHANDSWITCH
   +NOAUTOAIM
   Tag "Spraycan"
   

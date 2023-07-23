@@ -1,21 +1,22 @@
 Class BombRemote : BloodWeaponZ
 {
-  Default
-  {
-  Weapon.SelectionOrder 5200;
-  Weapon.Kickback 100;
-  Weapon.SlotNumber 1;
-  Obituary "$OB_MPFIST";
-  Tag "$TAG_FIST";
-  +WEAPON.WIMPY_WEAPON;
-  +WEAPON.MELEEWEAPON;
-  +WEAPON.OFFHANDWEAPON;
-  +WEAPON.NOHANDSWITCH;
-  +WEAPON.CHEATNOTWEAPON;
-  +INVENTORY.UNDROPPABLE;
-  +INVENTORY.UNTOSSABLE;
-  +INVENTORY.UNCLEARABLE;
-  }
+	Default
+	{
+	Weapon.SelectionOrder 5200;
+	Weapon.Kickback 100;
+	Weapon.SlotNumber 1;
+	Obituary "%o was punched to death by %k.";
+	Tag "Bomb Remote";
+	+WEAPON.WIMPY_WEAPON;
+	+WEAPON.MELEEWEAPON;
+	+WEAPON.OFFHANDWEAPON;
+	+WEAPON.NOHANDSWITCH;
+	+WEAPON.CHEATNOTWEAPON;
+	+INVENTORY.UNDROPPABLE;
+	+INVENTORY.UNTOSSABLE;
+	+INVENTORY.UNCLEARABLE;
+	Inventory.AltHUDIcon "RMTEA0";
+	}
   
 	States
 	{
@@ -39,7 +40,7 @@ Class BombRemote : BloodWeaponZ
 		"####" # 1 A_Raise;
 		wait;
 	Fire:
-		"####" A 4;
+		"####" A 4 { HapticHelper.BuzzOffhand(); }
 		"####" A 0 A_StartSound("Proximity/Det", CHAN_WEAPON);
 		"####" AA 4 A_GiveInventory("BOOMBABY",1);
 		"####" A 8;

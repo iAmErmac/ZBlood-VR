@@ -1,0 +1,25 @@
+Sprite ZIPOA0, 250, 120
+{
+   Offset -39, -81
+   Patch TNTFL0, 0, 0
+}
+
+Sprite RMTEA0, 250, 120
+{
+   Offset -39, -79
+   Patch DRNHA0, 0, 0
+}
+
+Sprite RMTEA0, 68, 60
+{
+   Offset -128, -108
+   Patch VDOLA0, 0, 0
+}
+
+Sprite "VCURA0", 100, 100
+{
+	XScale 20.000
+	YScale 20.000
+	Offset 50, 50
+	Patch "VCURA0", 0, 0
+}
