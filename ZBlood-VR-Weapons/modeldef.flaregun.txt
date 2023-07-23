@@ -45,68 +45,48 @@ Model FlareGun
    FrameIndex FAFR D 0 7
 }
 
-Model DoubleFlareGun
+Model FlareGun2
 { 
    Path "models/3d/weapons/flaregun"
    Model 0 "flaregun.md3"
    Skin 0 "flaregun.png"
-   Model 1 "flaregun_left.md3"
-   Skin 1 "flaregun.png"
    
    Scale -1.3 1.3 1.3
    Offset 0.0 -24.0 -12.0
    
    //Ready
-   FrameIndex FAKM A 0 3	FrameIndex FAKM A 1 3
+   FrameIndex FLAR A 0 3
    
-   //Fire right
-   FrameIndex FAKM B 0 4	FrameIndex FAKM B 1 4
-   FrameIndex FAKM C 0 5	FrameIndex FAKM C 1 5
-   FrameIndex FAKM D 0 6	FrameIndex FAKM D 1 6
-   FrameIndex FAKM E 0 7	FrameIndex FAKM E 1 7
-   FrameIndex FAKM F 0 8	FrameIndex FAKM F 1 8
-   FrameIndex FAKM G 0 9	FrameIndex FAKM G 1 9
-   FrameIndex FAKM H 0 10	FrameIndex FAKM H 1 10
-   FrameIndex FAKM I 0 11	FrameIndex FAKM I 1 11
-   
-   //Fire left
-   FrameIndex FAKM J 0 12	FrameIndex FAKM J 1 12
-   FrameIndex FAKM K 0 13	FrameIndex FAKM K 1 13
-   FrameIndex FAKM L 0 14	FrameIndex FAKM L 1 14
-   FrameIndex FAKM M 0 15	FrameIndex FAKM M 1 15
-   FrameIndex FAKM N 0 16	FrameIndex FAKM N 1 16
-   FrameIndex FAKM O 0 17	FrameIndex FAKM O 1 17
-   FrameIndex FAKM P 0 18	FrameIndex FAKM P 1 18
-   FrameIndex FAKM Q 0 19	FrameIndex FAKM Q 1 19
+   //Fire
+   FrameIndex FLAR B 0 4
+   FrameIndex FLAR C 0 5
+   FrameIndex FLAR D 0 6
+   FrameIndex FLAR E 0 7
+   FrameIndex FLAR F 0 8
+   FrameIndex FLAR G 0 9
+   FrameIndex FLAR H 0 10
+   FrameIndex FLAR I 0 11
+   FrameIndex FLAR J 0 12
+   FrameIndex FLAR K 0 13
+   FrameIndex FLAR L 0 14
 }
 
 //Gun flash
-Model DoubleFlareGun
+Model FlareGun2
 { 
    Path "models/3d/weapons/flaregun"
    Model 0 "flaregun_mf.md3"
    Skin 0 "flare_mf1.png"
-   Model 1 "flaregun_left_mf.md3"
-   Skin 1 "empty.png"
    
    Scale -1.3 1.3 1.3
    Offset 0.0 -24.0 -12.0
    
-   //muzzle flash right
-   FrameIndex FAKF A 0 4	FrameIndex FAKF A 1 4
+   FrameIndex FAFR A 0 4
+   FrameIndex FAFR B 0 5
    Skin 0 "flare_mf2.png"
-   FrameIndex FAKF B 0 5	FrameIndex FAKF B 1 5
+   FrameIndex FAFR C 0 6
    Skin 0 "flare_mf3.png"
-   FrameIndex FAKF C 0 6	FrameIndex FAKF C 1 6
-   
-   //muzzle flash left
-   Skin 0 "empty.png"
-   Skin 1 "flare_mf1.png"	
-   FrameIndex FAKF D 0 12	FrameIndex FAKF D 1 12
-   Skin 1 "flare_mf2.png"
-   FrameIndex FAKF E 0 13	FrameIndex FAKF E 1 13
-   Skin 1 "flare_mf3.png"
-   FrameIndex FAKF F 0 14	FrameIndex FAKF F 1 14
+   FrameIndex FAFR D 0 7
 }
 
 
@@ -157,67 +137,46 @@ Model FlareGun
    FrameIndex FAVR D 0 7
 }
 
-Model DoubleFlareGun
+Model FlareGun2
 { 
    Path "models/voxel/weapons/flaregun"
    Model 0 "flaregun.md3"
    Skin 0 "flaregun_tex.png"
-   Model 1 "flaregun_left.md3"
-   Skin 1 "flaregun_tex.png"
    
-   Scale -1.3 1.3 1.3
+   Scale -1.2 1.2 1.2
    Offset 0.0 -23.0 -13.0
    
    //Ready
-   FrameIndex FAKV A 0 3	FrameIndex FAKV A 1 3
+   FrameIndex FLAV A 0 3
    
-   //Fire right
-   FrameIndex FAKV B 0 4	FrameIndex FAKV B 1 4
-   FrameIndex FAKV C 0 5	FrameIndex FAKV C 1 5
-   FrameIndex FAKV D 0 6	FrameIndex FAKV D 1 6
-   FrameIndex FAKV E 0 7	FrameIndex FAKV E 1 7
-   FrameIndex FAKV F 0 8	FrameIndex FAKV F 1 8
-   FrameIndex FAKV G 0 9	FrameIndex FAKV G 1 9
-   FrameIndex FAKV H 0 10	FrameIndex FAKV H 1 10
-   FrameIndex FAKV I 0 11	FrameIndex FAKV I 1 11
-   
-   //Fire left
-   FrameIndex FAKV J 0 12	FrameIndex FAKV J 1 12
-   FrameIndex FAKV K 0 13	FrameIndex FAKV K 1 13
-   FrameIndex FAKV L 0 14	FrameIndex FAKV L 1 14
-   FrameIndex FAKV M 0 15	FrameIndex FAKV M 1 15
-   FrameIndex FAKV N 0 16	FrameIndex FAKV N 1 16
-   FrameIndex FAKV O 0 17	FrameIndex FAKV O 1 17
-   FrameIndex FAKV P 0 18	FrameIndex FAKV P 1 18
-   FrameIndex FAKV Q 0 19	FrameIndex FAKV Q 1 19
+   //Fire
+   FrameIndex FLAV B 0 4
+   FrameIndex FLAV C 0 5
+   FrameIndex FLAV D 0 6
+   FrameIndex FLAV E 0 7
+   FrameIndex FLAV F 0 8
+   FrameIndex FLAV G 0 9
+   FrameIndex FLAV H 0 10
+   FrameIndex FLAV I 0 11
+   FrameIndex FLAV J 0 12
+   FrameIndex FLAV K 0 13
+   FrameIndex FLAV L 0 14
 }
 
 //Gun flash
-Model DoubleFlareGun
+Model FlareGun2
 { 
    Path "models/3d/weapons/flaregun"
    Model 0 "flaregun_mf.md3"
    Skin 0 "flare_mf1.png"
-   Model 1 "flaregun_left_mf.md3"
-   Skin 1 "empty.png"
    
    Scale -1.3 1.3 1.3
    Offset -2.0 -32.0 -5.0
    
-   //muzzle flash right
-   FrameIndex FAFV A 0 4	FrameIndex FAFV A 1 4
+   FrameIndex FAVR A 0 4
+   FrameIndex FAVR B 0 5
    Skin 0 "flare_mf2.png"
-   FrameIndex FAFV B 0 5	FrameIndex FAFV B 1 5
+   FrameIndex FAVR C 0 6
    Skin 0 "flare_mf3.png"
-   FrameIndex FAFV C 0 6	FrameIndex FAFV C 1 6
-   
-   //muzzle flash left
-   Offset 4.0 -32.0 -5.0
-   Skin 0 "empty.png"
-   Skin 1 "flare_mf1.png"	
-   FrameIndex FAFV D 0 12	FrameIndex FAFV D 1 12
-   Skin 1 "flare_mf2.png"
-   FrameIndex FAFV E 0 13	FrameIndex FAFV E 1 13
-   Skin 1 "flare_mf3.png"
-   FrameIndex FAFV F 0 14	FrameIndex FAFV F 1 14
+   FrameIndex FAVR D 0 7
 }

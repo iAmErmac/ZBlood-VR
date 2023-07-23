@@ -1,0 +1,226 @@
+ACTOR ReflectiveShots : CustomInventory replaces Megasphere
+{
+  +COUNTITEM
+  Inventory.PickupMessage "You got Reflective Shots"
+  Inventory.PickupSound "misc/p_pkup"
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  Renderstyle Translucent
+  Alpha 0.7
+  Scale 0.7
+  States
+  {
+  Spawn:
+    MEGA ABCDE 6 BRIGHT
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1)
+    TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
+    TNT1 A 0 A_GiveInventory("ReflectiveShots1", 1)
+    Stop
+  }
+}
+
+ACTOR ReflectiveShots1 : PowerupGiver
+{ 
+  +INVENTORY.AUTOACTIVATE  
+  Powerup.Duration -30
+  powerup.color blue 0.25
+  Powerup.Type "Invulnerable"
+  powerup.mode Reflective   
+}
+
+Actor DivingSuitActivated : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+
+actor DivingSuit : CustomInventory 6246
+{
+//$Category Blood Powerups
+	tag "Diving Suit"
+ Scale 0.8
+ inventory.pickupmessage "Picked up Diving Suit"
+ inventory.pickupsound "misc/p_pkup"
+ //powerup.color DarkSalmon 0.25
+ //powerup.type "IronFeet"
+ //powerup.type "HighJump"
+ //powerup.duration 1
+  Inventory.Amount 100
+  Inventory.MaxAmount 100
+  -Inventory.InterHubstrip
+ +COUNTITEM
+ +DONTSPLASH
+ +INVENTORY.FANCYPICKUPSOUND
+ +INVENTORY.INVBAR
+ inventory.usesound "misc/p_pkup"
+ inventory.icon "INSUIT"
+ Scale 0.75
+  states
+  {
+  Spawn:
+   SUTD A -1
+   stop
+  Use:
+    TNT1 A 0 A_JumpIF(waterlevel > 2, "Success")
+	TNT1 A 0 A_JumpIF(waterlevel < 2, "Failure")
+  Success:
+    TNT1 A 0 ACS_NamedExecuteAlways("ActivateDivingSuit")
+  Failure:
+	TNT1 A 0
+	Fail
+  }
+}
+actor DivingSuitActive : PuzzleItem
+{	inventory.maxamount 1		-INVENTORY.INVBAR	}
+actor DivingSuitTicCounter : PuzzleItem
+{	inventory.maxamount 35		-INVENTORY.INVBAR	}
+actor DivingSuitEffect : PowerupGiver
+{
+  Height 46
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  powerup.color darkblue 0.05
+  Inventory.MaxAmount 0
+  Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
+  Powerup.Type "IronFeet"
+  Powerup.Duration 35
+  States
+  {
+  Spawn:
+    SUTD A -1 Bright
+    Stop
+  }
+}
+
+actor PowerAir : PowerProtection
+{
+	damagefactor "Drowning", 0
+}
+
+actor DivingSuit2 : CustomInventory 32118
+{
+//$Category Blood Powerups
+  Inventory.MaxAmount 1
+  Inventory.Amount 1
+  States
+  {
+    Spawn:
+    SUTD A -1 Bright
+    Stop
+	Pickup:
+	INFR A 1 A_GiveInventory("DivingSuit",100)
+	INFR A 1 A_TakeInventory("DivingSuit2",1)
+	Stop
+  }
+}
+
+ACTOR BeastVision : CustomInventory replaces Infrared 6241
+{
+//$Category Blood Powerups
+  +COUNTITEM
+  Inventory.MaxAmount 1
+  inventory.icon "INBEAST"
+
+  Inventory.PickupSound "misc/i_pkup"
+  Inventory.UseSound "misc/p_pkup"
+  Inventory.PickupMessage "Picked up Beast Vision"
+  Inventory.Amount 100
+  Inventory.MaxAmount 100
+  -INVENTORY.INTERHUBSTRIP
+  +DONTSPLASH
+  +INVENTORY.INVBAR
+  
+  Scale 0.5
+  Tag "Beast Vision"
+  States
+  {
+    Spawn:
+    INFR A -1 Bright
+    Stop
+  Use:
+   	TNT1 A 0 ACS_NamedExecuteAlways("ActivateBeastVision")
+	Fail
+  }
+}
+actor BeastVisionActive : PuzzleItem
+{	inventory.maxamount 1		-INVENTORY.INVBAR	}
+actor BeastVisionTicCounter : PuzzleItem
+{	inventory.maxamount 35		-INVENTORY.INVBAR	}
+Actor BeastVisionEffect : PowerupGiver
+{
+  Powerup.Duration 0x7FFFFFFF
+  Powerup.Type "LightAmp"
+ +INVENTORY.AUTOACTIVATE
+ +INVENTORY.ALWAYSPICKUP
+ -INVENTORY.INVBAR
+ +INVENTORY.QUIET
+ //+INVENTORY.ADDITIVETIME	//normally there is no need for this, but it is useful for debugging anyway
+ +DONTSPLASH
+}
+
+actor Deathmask : PowerupGiver replaces InvulnerabilitySphere // 2022
+{ 
+//$Category Blood Powerups
+//$Title Deathmask
+  spawnid 133
+  inventory.pickupmessage "Deathmask! Invulnerable!"
+  inventory.maxamount 0
+  powerup.type "Invulnerable"
+  +COUNTITEM
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  
+  
+  scale 0.7
+  powerup.color White 0.12
+  states
+  {
+  Spawn:
+    PINV A -1 Bright
+  Stop
+  }
+}
+
+actor GunsAkimbo : CustomInventory replaces Berserk
+{ 
+//$Category Blood Powerups
+  spawnid 134
+  Scale 0.6
+  inventory.pickupmessage "Guns Akimbo!"
+  inventory.pickupsound "misc/p_pkup"
+  +COUNTITEM
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.FANCYPICKUPSOUND
+  +INVENTORY.BIGPOWERUP
+  states
+  {
+  Spawn:
+    PSTR A -1
+    stop
+  Pickup:
+    TNT1 A 0 A_GiveInventory ("GunsAkimbo1")
+    stop
+  }
+}
+
+actor GunsAkimbo1 : PowerupGiver
+{
+  Scale 0.6 
+  inventory.maxamount 0
+  //powerup.type "WeaponLevel2"
+  powerup.type "PowerTargeter" //we don't need weaponlevel powerup here so using an useless powerup in the place
+  powerup.duration 1250
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.BIGPOWERUP
+  +INVENTORY.ALWAYSPICKUP
+  //powerup.color Red 0.09
+  states
+  {
+  Spawn:
+    PSTR A -1
+    stop
+  }
+}
