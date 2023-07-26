@@ -7,223 +7,256 @@ Model TeslaRifle
    Model 0 "teslagun.md3"
    Skin 0 "tesla0.png"
    
-   Scale -0.45 0.45 0.45
-   Offset 2.0 -23.0 -10.0
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
    //Ready
-   FrameIndex TESR A 0 4
-   Skin 0 "tesla1.png"
-   FrameIndex TESR B 0 4
-   Skin 0 "tesla2.png"
-   FrameIndex TESR C 0 4
-   Skin 0 "tesla3.png"
-   FrameIndex TESR D 0 4
-   Skin 0 "tesla4.png"
-   FrameIndex TESR E 0 4
+   FrameIndex TESL A 0 0
    
    //Fire
-   Skin 0 "tesla1.png"
-   FrameIndex TESL B 0 5
-   Skin 0 "tesla2.png"
-   FrameIndex TESL C 0 6
-   Skin 0 "tesla3.png"
-   FrameIndex TESL D 0 7
-   Skin 0 "tesla4.png"
-   FrameIndex TESL E 0 8
-   Skin 0 "tesla0.png"
-   FrameIndex TESL F 0 9
-   Skin 0 "tesla1.png"
-   FrameIndex TESL G 0 10
+   FrameIndex TESL B 0 1
+   FrameIndex TESL C 0 2
+   FrameIndex TESL D 0 3
+   FrameIndex TESL E 0 4
+   FrameIndex TESL F 0 5
+   FrameIndex TESL G 0 6
    
-   Skin 0 "tesla4.png"
-   FrameIndex TEXX A 0 11
-   Skin 0 "tesla2.png"
-   FrameIndex TEXX B 0 12
-   Skin 0 "tesla0.png"
-   FrameIndex TEXX C 0 13
+   FrameIndex TEXX A 0 7
+   FrameIndex TEXX B 0 8
+   FrameIndex TEXX C 0 9
    
    //Alt fire
-   Skin 0 "tesla1.png"
-   FrameIndex TES2 A 0 15
-   FrameIndex TES2 B 0 16
-   Skin 0 "tesla2.png"
-   FrameIndex TES2 C 0 17
-   FrameIndex TES2 D 0 18
-   Skin 0 "tesla3.png"
-   FrameIndex TES2 E 0 19
-   FrameIndex TES2 F 0 20
-   Skin 0 "tesla4.png"
-   FrameIndex TES2 G 0 21
-   FrameIndex TES2 H 0 22
-   Skin 0 "tesla0.png"
-   FrameIndex TES2 I 0 23
-   FrameIndex TES2 J 0 24
-   Skin 0 "tesla1.png"
-   FrameIndex TES2 K 0 25
-   FrameIndex TES2 L 0 26
-   Skin 0 "tesla2.png"
-   FrameIndex TES2 M 0 27
-   FrameIndex TES2 N 0 28
-   Skin 0 "tesla3.png"
-   FrameIndex TES2 O 0 29
-   FrameIndex TES2 P 0 30
-   Skin 0 "tesla4.png"
-   FrameIndex TES2 Q 0 31
-   FrameIndex TES2 R 0 32
-   Skin 0 "tesla0.png"
-   FrameIndex TES2 S 0 33
-   FrameIndex TES2 T 0 34
-   Skin 0 "tesla1.png"
-   FrameIndex TES2 U 0 35
-   FrameIndex TES2 V 0 36
-   Skin 0 "tesla2.png"
-   FrameIndex TES2 W 0 37
-   FrameIndex TES2 X 0 38
-   Skin 0 "tesla3.png"
-   FrameIndex TES2 Y 0 39
-   FrameIndex TES2 Z 0 40
-   Skin 0 "tesla4.png"
-   FrameIndex TES3 A 0 41
-   FrameIndex TES3 B 0 42
-   Skin 0 "tesla0.png"
-   FrameIndex TES3 C 0 43
-   FrameIndex TES3 D 0 44
+   FrameIndex TES2 A 0 11
+   FrameIndex TES2 B 0 12
+   FrameIndex TES2 C 0 13
+   FrameIndex TES2 D 0 14
+   FrameIndex TES2 E 0 15
+   FrameIndex TES2 F 0 16
+   FrameIndex TES2 G 0 17
+   FrameIndex TES2 H 0 18
+   FrameIndex TES2 I 0 19
+   FrameIndex TES2 J 0 20
+   FrameIndex TES2 K 0 21
+   FrameIndex TES2 L 0 22
+   FrameIndex TES2 M 0 23
+   FrameIndex TES2 N 0 24
+   FrameIndex TES2 O 0 25
+   FrameIndex TES2 P 0 26
+   FrameIndex TES2 Q 0 27
+   FrameIndex TES2 R 0 28
+   FrameIndex TES2 S 0 29
+   FrameIndex TES2 T 0 30
+   FrameIndex TES2 U 0 31
+   FrameIndex TES2 V 0 32
+   FrameIndex TES2 W 0 33
+   FrameIndex TES2 X 0 34
+   FrameIndex TES2 Y 0 35
+   FrameIndex TES2 Z 0 36
+   FrameIndex TES3 A 0 37
+   FrameIndex TES3 B 0 38
+   FrameIndex TES3 C 0 39
+   FrameIndex TES3 D 0 40
    
    //Recoil
-   Skin 0 "tesla1.png"
-   FrameIndex TE2F A 0 45
-   FrameIndex TE2F B 0 47
-   Skin 0 "tesla2.png"
-   FrameIndex TE2F C 0 48
-   FrameIndex TE2F D 0 49
-   Skin 0 "tesla3.png"
-   FrameIndex TE2F E 0 49
+   FrameIndex TE2F A 0 41
+   FrameIndex TE2F B 0 42
+   FrameIndex TE2F C 0 43
+   FrameIndex TE2F D 0 44
+   FrameIndex TE2F E 0 45
+   FrameIndex TE2F F 0 46
 }
 
-//Muzzle flash
+//Barrel sparks
 Model TeslaRifle
 { 
    Path "models/3d/weapons/teslagun"
    Model 0 "tesla_spark.md3"
    Skin 0 "tesla_mf1.png"
    
-   Scale -1.0 1.0 1.0
-   Offset 2.0 -32.0 -6.0
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
-   //Ready
-   FrameIndex TSMK A 0 15
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TSMK B 0 16
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TSMK C 0 17
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TSMK D 0 18
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TSMK E 0 19
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TSMK F 0 20
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TSMK G 0 21
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TSMK H 0 22
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TSMK I 0 23
-   Skin 0 "tesla_mf10.png"
-   FrameIndex TSMK J 0 24
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TSMK K 0 25
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TSMK L 0 26
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TSMK M 0 27
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TSMK N 0 28
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TSMK O 0 29
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TSMK P 0 30
-   Skin 0 "tesla_mf1.png"
-   FrameIndex TSMK Q 0 31
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TSMK R 0 32
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TSMK S 0 33
-   Skin 0 "tesla_mf10.png"
-   FrameIndex TSMK T 0 34
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TSMK U 0 35
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TSMK V 0 36
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TSMK W 0 37
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TSMK X 0 38
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TSMK Y 0 39
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TSMK Z 0 40
-   Skin 0 "tesla_mf1.png"
-   FrameIndex TSM2 A 0 41
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TSM2 B 0 42
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TSM2 C 0 43
+   FrameIndex TSMK A 0 11
+   FrameIndex TSMK B 0 12
+   FrameIndex TSMK C 0 13
+   FrameIndex TSMK D 0 14
+   FrameIndex TSMK E 0 15
+   FrameIndex TSMK F 0 16
+   FrameIndex TSMK G 0 17
+   FrameIndex TSMK H 0 18
+   FrameIndex TSMK I 0 19
+   FrameIndex TSMK J 0 20
+   FrameIndex TSMK K 0 21
+   FrameIndex TSMK L 0 22
+   FrameIndex TSMK M 0 23
+   FrameIndex TSMK N 0 24
+   FrameIndex TSMK O 0 25
+   FrameIndex TSMK P 0 26
+   FrameIndex TSMK Q 0 27
+   FrameIndex TSMK R 0 28
+   FrameIndex TSMK S 0 29
+   FrameIndex TSMK T 0 30
+   FrameIndex TSMK U 0 31
+   FrameIndex TSMK V 0 32
+   FrameIndex TSMK W 0 33
+   FrameIndex TSMK X 0 34
+   FrameIndex TSMK Y 0 35
+   FrameIndex TSMK Z 0 36
+   FrameIndex TSM2 A 0 37
+   FrameIndex TSM2 B 0 38
+   FrameIndex TSM2 C 0 39
 }
 
-//Bolt flash
+//Lightning
 Model TeslaRifle
 { 
    Path "models/3d/weapons/teslagun"
    Model 0 "tesla_bolt.md3"
    Skin 0 "tesla_bolt.png"
    
-   Scale -1.5 1.5 1.5
-   Offset 10.0 -20.0 -34.0
+   Scale -1.5 .5 1.5
+   Offset 0.0 -30.0 -12.0
    
    //Ready
-   FrameIndex TSM2 D 0 44
-   FrameIndex TSM2 E 0 44
+   FrameIndex TSM2 D 0 40
+   FrameIndex TSM2 E 0 41
 }
 
-Model DoubleTesla
+Model TeslaRifle2
 { 
    Path "models/3d/weapons/teslagun"
-   Model 0 "tesla_akimbo.md3"
+   Model 0 "teslagun.md3"
    Skin 0 "tesla0.png"
    
-   Scale -0.45 0.45 0.45
-   Offset 2.0 -20.0 -10.0
+   Scale 1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
    //Ready
-   FrameIndex TAKR A 0 3
-   Skin 0 "tesla1.png"
-   FrameIndex TAKR B 0 3
-   Skin 0 "tesla2.png"
-   FrameIndex TAKR C 0 3
-   Skin 0 "tesla3.png"
-   FrameIndex TAKR D 0 3
-   Skin 0 "tesla4.png"
-   FrameIndex TAKR E 0 3
+   FrameIndex TESL A 0 0
    
    //Fire
-   Skin 0 "tesla3.png"
-   FrameIndex TAKM A 0 4
-   Skin 0 "tesla4.png"
-   FrameIndex TAKM B 0 4
+   FrameIndex TESL B 0 1
+   FrameIndex TESL C 0 2
+   FrameIndex TESL D 0 3
+   FrameIndex TESL E 0 4
+   FrameIndex TESL F 0 5
+   FrameIndex TESL G 0 6
    
-   //Barrel spinning
-   Skin 0 "tesla1.png"
-   FrameIndex TAKM C 0 5
-   Skin 0 "tesla2.png"
-   FrameIndex TAKM D 0 6
-   Skin 0 "tesla3.png"
-   FrameIndex TAKM E 0 7
-   Skin 0 "tesla4.png"
-   FrameIndex TAKM F 0 8
-   Skin 0 "tesla5.png"
-   FrameIndex TAKM G 0 9
-   Skin 0 "tesla0.png"
-   FrameIndex TAKM H 0 10
+   FrameIndex TEXX A 0 7
+   FrameIndex TEXX B 0 8
+   FrameIndex TEXX C 0 9
+   
+   //Alt fire
+   FrameIndex TES2 A 0 11
+   FrameIndex TES2 B 0 12
+   FrameIndex TES2 C 0 13
+   FrameIndex TES2 D 0 14
+   FrameIndex TES2 E 0 15
+   FrameIndex TES2 F 0 16
+   FrameIndex TES2 G 0 17
+   FrameIndex TES2 H 0 18
+   FrameIndex TES2 I 0 19
+   FrameIndex TES2 J 0 20
+   FrameIndex TES2 K 0 21
+   FrameIndex TES2 L 0 22
+   FrameIndex TES2 M 0 23
+   FrameIndex TES2 N 0 24
+   FrameIndex TES2 O 0 25
+   FrameIndex TES2 P 0 26
+   FrameIndex TES2 Q 0 27
+   FrameIndex TES2 R 0 28
+   FrameIndex TES2 S 0 29
+   FrameIndex TES2 T 0 30
+   FrameIndex TES2 U 0 31
+   FrameIndex TES2 V 0 32
+   FrameIndex TES2 W 0 33
+   FrameIndex TES2 X 0 34
+   FrameIndex TES2 Y 0 35
+   FrameIndex TES2 Z 0 36
+   FrameIndex TES3 A 0 37
+   FrameIndex TES3 B 0 38
+   FrameIndex TES3 C 0 39
+   FrameIndex TES3 D 0 40
+   
+   //Recoil
+   FrameIndex TE2F A 0 41
+   FrameIndex TE2F B 0 42
+   FrameIndex TE2F C 0 43
+   FrameIndex TE2F D 0 44
+   FrameIndex TE2F E 0 45
+   FrameIndex TE2F F 0 46
+}
+
+//Barrel sparks
+Model TeslaRifle2
+{ 
+   Path "models/3d/weapons/teslagun"
+   Model 0 "tesla_spark.md3"
+   Skin 0 "tesla_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
+   
+   FrameIndex TSMK A 0 11
+   FrameIndex TSMK B 0 12
+   FrameIndex TSMK C 0 13
+   FrameIndex TSMK D 0 14
+   FrameIndex TSMK E 0 15
+   FrameIndex TSMK F 0 16
+   FrameIndex TSMK G 0 17
+   FrameIndex TSMK H 0 18
+   FrameIndex TSMK I 0 19
+   FrameIndex TSMK J 0 20
+   FrameIndex TSMK K 0 21
+   FrameIndex TSMK L 0 22
+   FrameIndex TSMK M 0 23
+   FrameIndex TSMK N 0 24
+   FrameIndex TSMK O 0 25
+   FrameIndex TSMK P 0 26
+   FrameIndex TSMK Q 0 27
+   FrameIndex TSMK R 0 28
+   FrameIndex TSMK S 0 29
+   FrameIndex TSMK T 0 30
+   FrameIndex TSMK U 0 31
+   FrameIndex TSMK V 0 32
+   FrameIndex TSMK W 0 33
+   FrameIndex TSMK X 0 34
+   FrameIndex TSMK Y 0 35
+   FrameIndex TSMK Z 0 36
+   FrameIndex TSM2 A 0 37
+   FrameIndex TSM2 B 0 38
+   FrameIndex TSM2 C 0 39
+}
+
+//Lightning
+Model TeslaRifle2
+{ 
+   Path "models/3d/weapons/teslagun"
+   Model 0 "tesla_bolt.md3"
+   Skin 0 "teslabolt.png"
+   
+   Scale 1.5 .5 1.5
+   Offset 0.0 -30.0 -12.0
+   
+   //Ready
+   FrameIndex TSM2 D 0 40
+   FrameIndex TSM2 E 0 41
+}
+
+
+Model TeslaArc
+{ 
+   Path "models/3d/weapons/teslagun"
+   Model 0 "tesla_arc.md3"
+   Skin 0 "tesla_arc1.png"
+   
+   Scale 1.0 1.0 1.0
+   Offset 0.0 0.0 0.0
+   
+   USEACTORPITCH
+   
+   //Ready
+   FrameIndex TARC A 0 0
 }
 
 
@@ -234,212 +267,241 @@ Model DoubleTesla
 Model TeslaRifle
 { 
    Path "models/voxel/weapons/teslagun"
-   Model 0 "tesla.md3"
-   Skin 0 "tesla_tex.png"
+   Model 0 "teslagun.md3"
+   Skin 0 "tesla_tex1.png"
    
-   Scale -1.7 1.7 1.7
-   Offset 0.0 -32.0 -9.0
-   
-   NOINTERPOLATION
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
    //Ready
-   FrameIndex TSRV A 0 3
-   FrameIndex TSRV B 0 3
-   FrameIndex TSRV C 0 3
-   FrameIndex TSRV D 0 3
-   FrameIndex TSRV E 0 3
-}
-
-Model TeslaRifle
-{ 
-   Path "models/voxel/weapons/teslagun"
-   Model 0 "tesla.md3"
-   Skin 0 "tesla_tex.png"
-   
-   Scale -1.7 1.7 1.7
-   Offset 0.0 -32.0 -9.0
+   FrameIndex TSLV A 0 0
    
    //Fire
-   FrameIndex TSLV B 0 4
-   FrameIndex TSLV C 0 5
-   FrameIndex TSLV D 0 6
-   FrameIndex TSLV E 0 7
-   FrameIndex TSLV F 0 8
-   FrameIndex TSLV G 0 9
+   FrameIndex TSLV B 0 1
+   FrameIndex TSLV C 0 2
+   FrameIndex TSLV D 0 3
+   FrameIndex TSLV E 0 4
+   FrameIndex TSLV F 0 5
+   FrameIndex TSLV G 0 6
    
-   FrameIndex TEXV A 0 10
-   FrameIndex TEXV B 0 11
-   FrameIndex TEXV C 0 12
+   FrameIndex TEXV A 0 7
+   FrameIndex TEXV B 0 8
+   FrameIndex TEXV C 0 9
    
    //Alt fire
-   FrameIndex TS2V A 0 14
-   FrameIndex TS2V B 0 15
-   FrameIndex TS2V C 0 16
-   FrameIndex TS2V D 0 17
-   FrameIndex TS2V E 0 18
-   FrameIndex TS2V F 0 19
-   FrameIndex TS2V G 0 20
-   FrameIndex TS2V H 0 21
-   FrameIndex TS2V I 0 22
-   FrameIndex TS2V J 0 23
-   FrameIndex TS2V K 0 24
-   FrameIndex TS2V L 0 25
-   FrameIndex TS2V M 0 26
-   FrameIndex TS2V N 0 27
-   FrameIndex TS2V O 0 28
-   FrameIndex TS2V P 0 29
-   FrameIndex TS2V Q 0 30
-   FrameIndex TS2V R 0 31
-   FrameIndex TS2V S 0 32
-   FrameIndex TS2V T 0 33
-   FrameIndex TS2V U 0 34
-   FrameIndex TS2V V 0 35
-   FrameIndex TS2V W 0 36
-   FrameIndex TS2V X 0 37
-   FrameIndex TS2V Y 0 38
-   FrameIndex TS2V Z 0 39
-   FrameIndex TS3V A 0 40
-   FrameIndex TS3V B 0 41
-   FrameIndex TS3V C 0 42
-   FrameIndex TS3V D 0 43
+   FrameIndex TS2V A 0 11
+   FrameIndex TS2V B 0 12
+   FrameIndex TS2V C 0 13
+   FrameIndex TS2V D 0 14
+   FrameIndex TS2V E 0 15
+   FrameIndex TS2V F 0 16
+   FrameIndex TS2V G 0 17
+   FrameIndex TS2V H 0 18
+   FrameIndex TS2V I 0 19
+   FrameIndex TS2V J 0 20
+   FrameIndex TS2V K 0 21
+   FrameIndex TS2V L 0 22
+   FrameIndex TS2V M 0 23
+   FrameIndex TS2V N 0 24
+   FrameIndex TS2V O 0 25
+   FrameIndex TS2V P 0 26
+   FrameIndex TS2V Q 0 27
+   FrameIndex TS2V R 0 28
+   FrameIndex TS2V S 0 29
+   FrameIndex TS2V T 0 30
+   FrameIndex TS2V U 0 31
+   FrameIndex TS2V V 0 32
+   FrameIndex TS2V W 0 33
+   FrameIndex TS2V X 0 34
+   FrameIndex TS2V Y 0 35
+   FrameIndex TS2V Z 0 36
+   FrameIndex TS3V A 0 37
+   FrameIndex TS3V B 0 38
+   FrameIndex TS3V C 0 39
+   FrameIndex TS3V D 0 40
    
    //Recoil
-   FrameIndex T2FV A 0 44
-   FrameIndex T2FV B 0 46
-   FrameIndex T2FV C 0 47
-   FrameIndex T2FV D 0 48
-   FrameIndex T2FV E 0 48
+   FrameIndex T2FV A 0 41
+   FrameIndex T2FV B 0 42
+   FrameIndex T2FV C 0 43
+   FrameIndex T2FV D 0 44
+   FrameIndex T2FV E 0 45
+   FrameIndex T2FV F 0 46
 }
 
 //Muzzle flash
 Model TeslaRifle
 { 
    Path "models/voxel/weapons/teslagun"
-   Model 0 "tesla_mf.md3"
+   Model 0 "tesla_spark.md3"
    Skin 0 "tesla_mf1.png"
    
-   Scale -1.7 1.7 1.7
-   Offset 0.0 -24.0 -9.0
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
-   //Ready
-   FrameIndex TMKV A 0 15
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TMKV B 0 16
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TMKV C 0 17
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TMKV D 0 18
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TMKV E 0 19
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TMKV F 0 20
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TMKV G 0 21
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TMKV H 0 22
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TMKV I 0 23
-   Skin 0 "tesla_mf10.png"
-   FrameIndex TMKV J 0 24
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TMKV K 0 25
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TMKV L 0 26
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TMKV M 0 27
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TMKV N 0 28
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TMKV O 0 29
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TMKV P 0 30
-   Skin 0 "tesla_mf1.png"
-   FrameIndex TMKV Q 0 31
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TMKV R 0 32
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TMKV S 0 33
-   Skin 0 "tesla_mf10.png"
-   FrameIndex TMKV T 0 34
-   Skin 0 "tesla_mf4.png"
-   FrameIndex TMKV U 0 35
-   Skin 0 "tesla_mf8.png"
-   FrameIndex TMKV V 0 36
-   Skin 0 "tesla_mf2.png"
-   FrameIndex TMKV W 0 37
-   Skin 0 "tesla_mf6.png"
-   FrameIndex TMKV X 0 38
-   Skin 0 "tesla_mf3.png"
-   FrameIndex TMKV Y 0 39
-   Skin 0 "tesla_mf7.png"
-   FrameIndex TMKV Z 0 40
-   Skin 0 "tesla_mf1.png"
-   FrameIndex TM2V A 0 41
-   Skin 0 "tesla_mf5.png"
-   FrameIndex TM2V B 0 42
-   Skin 0 "tesla_mf9.png"
-   FrameIndex TM2V C 0 43
+   FrameIndex TMKV A 0 11
+   FrameIndex TMKV B 0 12
+   FrameIndex TMKV C 0 13
+   FrameIndex TMKV D 0 14
+   FrameIndex TMKV E 0 15
+   FrameIndex TMKV F 0 16
+   FrameIndex TMKV G 0 17
+   FrameIndex TMKV H 0 18
+   FrameIndex TMKV I 0 19
+   FrameIndex TMKV J 0 20
+   FrameIndex TMKV K 0 21
+   FrameIndex TMKV L 0 22
+   FrameIndex TMKV M 0 23
+   FrameIndex TMKV N 0 24
+   FrameIndex TMKV O 0 25
+   FrameIndex TMKV P 0 26
+   FrameIndex TMKV Q 0 27
+   FrameIndex TMKV R 0 28
+   FrameIndex TMKV S 0 29
+   FrameIndex TMKV T 0 30
+   FrameIndex TMKV U 0 31
+   FrameIndex TMKV V 0 32
+   FrameIndex TMKV W 0 33
+   FrameIndex TMKV X 0 34
+   FrameIndex TMKV Y 0 35
+   FrameIndex TMKV Z 0 36
+   FrameIndex TM2V A 0 37
+   FrameIndex TM2V B 0 38
+   FrameIndex TM2V C 0 39
 }
 
 //Bolt flash
 Model TeslaRifle
 { 
-   Path "models/3d/weapons/teslagun"
+   Path "models/voxel/weapons/teslagun"
    Model 0 "tesla_bolt.md3"
    Skin 0 "tesla_bolt.png"
    
-   Scale -1.5 1.5 1.5
-   Offset 10.0 -20.0 -34.0
+   Scale -1.5 .5 1.5
+   Offset 0.0 -30.0 -12.0
    
    //Ready
    FrameIndex TM2V D 0 44
    FrameIndex TM2V E 0 44
 }
 
-Model DoubleTesla
+Model TeslaRifle2
 { 
    Path "models/voxel/weapons/teslagun"
-   Model 0 "tesla.md3"
-   Skin 0 "tesla_tex.png"
-   Model 1 "tesla_left.md3"
-   Skin 1 "tesla_tex.png"
+   Model 0 "teslagun.md3"
+   Skin 0 "tesla_tex1.png"
    
-   Scale -1.7 1.7 1.7
-   Offset 0.0 -32.0 -9.0
-   
-   NOINTERPOLATION
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
    
    //Ready
-   FrameIndex TKRV A 0 3	FrameIndex TKRV A 1 3
-   FrameIndex TKRV B 0 3	FrameIndex TKRV B 1 3
-   FrameIndex TKRV C 0 3	FrameIndex TKRV C 1 3
-   FrameIndex TKRV D 0 3	FrameIndex TKRV D 1 3
-   FrameIndex TKRV E 0 3	FrameIndex TKRV E 1 3
-}
-
-Model DoubleTesla
-{ 
-   Path "models/voxel/weapons/teslagun"
-   Model 0 "tesla.md3"
-   Skin 0 "tesla_tex.png"
-   Model 1 "tesla_left.md3"
-   Skin 1 "tesla_tex.png"
-   
-   Scale -1.7 1.7 1.7
-   Offset 0.0 -32.0 -9.0
+   FrameIndex TSLV A 0 0
    
    //Fire
-   FrameIndex TKMV A 0 4	FrameIndex TKMV A 1 4
-   FrameIndex TKMV B 0 4	FrameIndex TKMV B 1 4
+   FrameIndex TSLV B 0 1
+   FrameIndex TSLV C 0 2
+   FrameIndex TSLV D 0 3
+   FrameIndex TSLV E 0 4
+   FrameIndex TSLV F 0 5
+   FrameIndex TSLV G 0 6
    
-   //Barrel spinning
-   FrameIndex TKMV C 0 5	FrameIndex TKMV C 1 5
-   FrameIndex TKMV D 0 6	FrameIndex TKMV D 1 6
-   FrameIndex TKMV E 0 7	FrameIndex TKMV E 1 7
-   FrameIndex TKMV F 0 8	FrameIndex TKMV F 1 8
-   FrameIndex TKMV G 0 9	FrameIndex TKMV G 1 9
+   FrameIndex TEXV A 0 7
+   FrameIndex TEXV B 0 8
+   FrameIndex TEXV C 0 9
    
-   NOINTERPOLATION
+   //Alt fire
+   FrameIndex TS2V A 0 11
+   FrameIndex TS2V B 0 12
+   FrameIndex TS2V C 0 13
+   FrameIndex TS2V D 0 14
+   FrameIndex TS2V E 0 15
+   FrameIndex TS2V F 0 16
+   FrameIndex TS2V G 0 17
+   FrameIndex TS2V H 0 18
+   FrameIndex TS2V I 0 19
+   FrameIndex TS2V J 0 20
+   FrameIndex TS2V K 0 21
+   FrameIndex TS2V L 0 22
+   FrameIndex TS2V M 0 23
+   FrameIndex TS2V N 0 24
+   FrameIndex TS2V O 0 25
+   FrameIndex TS2V P 0 26
+   FrameIndex TS2V Q 0 27
+   FrameIndex TS2V R 0 28
+   FrameIndex TS2V S 0 29
+   FrameIndex TS2V T 0 30
+   FrameIndex TS2V U 0 31
+   FrameIndex TS2V V 0 32
+   FrameIndex TS2V W 0 33
+   FrameIndex TS2V X 0 34
+   FrameIndex TS2V Y 0 35
+   FrameIndex TS2V Z 0 36
+   FrameIndex TS3V A 0 37
+   FrameIndex TS3V B 0 38
+   FrameIndex TS3V C 0 39
+   FrameIndex TS3V D 0 40
    
-   FrameIndex TKMV H 0 10	FrameIndex TKMV H 1 10
+   //Recoil
+   FrameIndex T2FV A 0 41
+   FrameIndex T2FV B 0 42
+   FrameIndex T2FV C 0 43
+   FrameIndex T2FV D 0 44
+   FrameIndex T2FV E 0 45
+   FrameIndex T2FV F 0 46
+}
+
+//Muzzle flash
+Model TeslaRifle2
+{ 
+   Path "models/voxel/weapons/teslagun"
+   Model 0 "tesla_spark.md3"
+   Skin 0 "tesla_mf1.png"
+   
+   Scale -1.3 1.3 1.3
+   Offset 0.0 -20.0 -11.0
+   
+   FrameIndex TMKV A 0 11
+   FrameIndex TMKV B 0 12
+   FrameIndex TMKV C 0 13
+   FrameIndex TMKV D 0 14
+   FrameIndex TMKV E 0 15
+   FrameIndex TMKV F 0 16
+   FrameIndex TMKV G 0 17
+   FrameIndex TMKV H 0 18
+   FrameIndex TMKV I 0 19
+   FrameIndex TMKV J 0 20
+   FrameIndex TMKV K 0 21
+   FrameIndex TMKV L 0 22
+   FrameIndex TMKV M 0 23
+   FrameIndex TMKV N 0 24
+   FrameIndex TMKV O 0 25
+   FrameIndex TMKV P 0 26
+   FrameIndex TMKV Q 0 27
+   FrameIndex TMKV R 0 28
+   FrameIndex TMKV S 0 29
+   FrameIndex TMKV T 0 30
+   FrameIndex TMKV U 0 31
+   FrameIndex TMKV V 0 32
+   FrameIndex TMKV W 0 33
+   FrameIndex TMKV X 0 34
+   FrameIndex TMKV Y 0 35
+   FrameIndex TMKV Z 0 36
+   FrameIndex TM2V A 0 37
+   FrameIndex TM2V B 0 38
+   FrameIndex TM2V C 0 39
+}
+
+//Bolt flash
+Model TeslaRifle2
+{ 
+   Path "models/voxel/weapons/teslagun"
+   Model 0 "tesla_bolt.md3"
+   Skin 0 "teslabolt.png"
+   
+   Scale -1.5 .5 1.5
+   Offset 0.0 -30.0 -12.0
+   
+   //Ready
+   FrameIndex TM2V D 0 44
+   FrameIndex TM2V E 0 44
 }

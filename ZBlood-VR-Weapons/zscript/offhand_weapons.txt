@@ -15,17 +15,6 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
 		
-		if(!player.OffhandWeapon)
-		{
-			Weapon weap = Weapon(player.mo.FindInventory(prevWeapon));
-			if(weap)
-			{
-				player.OffhandWeapon = weap;
-				player.PendingWeapon = weap;
-				player.mo.BringUpWeapon();
-			}
-		}
-		
 		if(voodoo_cursor && !(player.OffhandWeapon is "OfhandVoodooDoll")) voodoo_cursor.bInvisible = true;
 		
 		if (_isInitialized) return;
@@ -139,45 +128,221 @@ Class BloodOffhandWeaponHandler : EventHandler
 		Playerinfo player = players[consolePlayer];
 		if(!player) return;
 		
-		console.printf(""..(player.ReadyWeapon && player.ReadyWeapon.bNoHandSwitch ? 0 : 1));
 		Weapon weap;
 		
 		if(!player.mo.CountInv("PowerTargeter"))
 		{
 			if(player.OffhandWeapon is "FlareGun2") player.OffhandWeapon = NULL;
 			player.mo.SetInventory("FlareGun2", 0, false);
-			weap = Weapon(player.mo.FindInventory("FlareGun"));
-			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
-			return;
-		}
+			
+			if(player.OffhandWeapon is "Sawedoff2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("Sawedoff2", 0, false);
+			
+			if(player.OffhandWeapon is "Tommygun2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("Tommygun2", 0, false);
+			
+			if(player.OffhandWeapon is "NapalmLauncher2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("NapalmLauncher2", 0, false);
+			
+			if(player.OffhandWeapon is "TeslaRifle2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("TeslaRifle2", 0, false);
 		
-		if(player.OffhandWeapon && !(player.OffhandWeapon is "FlareGun"))
-		{
-			prevWeapon = player.OffhandWeapon.GetClassName();
+			if(!player.OffhandWeapon)
+			{
+				if(prevWeapon && player.mo.CountInv(prevWeapon))
+					weap = Weapon(player.mo.FindInventory(prevWeapon));
+				else
+					weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
+				player.OffhandWeapon = weap;
+				player.PendingWeapon = weap;
+				player.mo.BringUpWeapon();
+			}
+			
+			init_akimbo = false;
+			
+			return;
 		}
 		
 		//When Akimbo powerup is activated
 		
-		if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "FlareGun")
-		{
-			weap = Weapon(player.mo.FindInventory("FlareGun"));
-			weap.bOffhandWeapon = false;
-			weap.bNoHandSwitch = true;
-			player.mo.A_SelectWeapon("FlareGun");
-		}
+		if(player.OffhandWeapon && !(player.OffhandWeapon is "FlareGun") && !(player.OffhandWeapon is "Sawedoff"))
+			prevWeapon = player.OffhandWeapon.GetClassName();
+		
+		if(!init_akimbo) SetupAkimbo();
 		
 		if(player.ReadyWeapon && player.ReadyWeapon.GetClassName() ==  "FlareGun")
 		{
 			if(!player.mo.CountInv("FlareGun2")) player.mo.SetInventory("FlareGun2", 1, false);
-			player.OffhandWeapon = Weapon(player.mo.FindInventory("FlareGun2"));
-			weap = Weapon(player.mo.FindInventory("FlareGun"));
-			if(weap && !weap.bNoHandSwitch) weap.bNoHandSwitch = true;
+			if(!(player.OffhandWeapon is "FlareGun2"))
+			{
+				weap = Weapon(player.mo.FindInventory("FlareGun2"));
+				player.OffhandWeapon = weap;
+				player.mo.A_SelectWeapon("FlareGun2");
+				player.SetPSprite(PSP_OFFHANDWEAPON, weap.FindState("Select"));
+			}
 		}
 		else
 		{
 			if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "FlareGun2") player.OffhandWeapon = NULL;
 			player.mo.SetInventory("FlareGun2", 0, false);
 		}
+		
+		if(player.ReadyWeapon && player.ReadyWeapon.GetClassName() ==  "Sawedoff")
+		{
+			if(!player.mo.CountInv("Sawedoff2")) player.mo.SetInventory("Sawedoff2", 1, false);
+			if(!(player.OffhandWeapon is "Sawedoff2"))
+			{
+				weap = Weapon(player.mo.FindInventory("Sawedoff2"));
+				player.OffhandWeapon = weap;
+				player.mo.A_SelectWeapon("Sawedoff2");
+				player.SetPSprite(PSP_OFFHANDWEAPON, weap.FindState("Select"));
+			}
+		}
+		else
+		{
+			if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "Sawedoff2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("Sawedoff2", 0, false);
+		}
+		
+		if(player.ReadyWeapon && player.ReadyWeapon.GetClassName() ==  "Tommygun")
+		{
+			if(!player.mo.CountInv("Tommygun2")) player.mo.SetInventory("Tommygun2", 1, false);
+			if(!(player.OffhandWeapon is "Tommygun2"))
+			{
+				weap = Weapon(player.mo.FindInventory("Tommygun2"));
+				player.OffhandWeapon = weap;
+				player.mo.A_SelectWeapon("Tommygun2");
+				player.SetPSprite(PSP_OFFHANDWEAPON, weap.FindState("Select"));
+			}
+		}
+		else
+		{
+			if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "Tommygun2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("Tommygun2", 0, false);
+		}
+		
+		if(player.ReadyWeapon && player.ReadyWeapon.GetClassName() ==  "NapalmLauncher")
+		{
+			if(!player.mo.CountInv("NapalmLauncher2")) player.mo.SetInventory("NapalmLauncher2", 1, false);
+			if(!(player.OffhandWeapon is "TeslaRifle"))
+			{
+				weap = Weapon(player.mo.FindInventory("NapalmLauncher2"));
+				player.OffhandWeapon = weap;
+				player.mo.A_SelectWeapon("NapalmLauncher2");
+				player.SetPSprite(PSP_OFFHANDWEAPON, weap.FindState("Select"));
+			}
+		}
+		else
+		{
+			if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "NapalmLauncher2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("NapalmLauncher2", 0, false);
+		}
+		
+		if(player.ReadyWeapon && player.ReadyWeapon.GetClassName() ==  "TeslaRifle")
+		{
+			if(!player.mo.CountInv("TeslaRifle2")) player.mo.SetInventory("TeslaRifle2", 1, false);
+			if(!(player.OffhandWeapon is "TeslaRifle2"))
+			{
+				weap = Weapon(player.mo.FindInventory("TeslaRifle2"));
+				player.OffhandWeapon = weap;
+				player.mo.A_SelectWeapon("TeslaRifle2");
+				player.SetPSprite(PSP_OFFHANDWEAPON, weap.FindState("Select"));
+			}
+			
+			ShowTeslaArcs();
+		}
+		else
+		{
+			if(player.OffhandWeapon && player.OffhandWeapon.GetClassName() == "TeslaRifle2") player.OffhandWeapon = NULL;
+			player.mo.SetInventory("TeslaRifle2", 0, false);
+		}
+		
+		if(!player.OffhandWeapon)
+		{
+			if(prevWeapon && player.mo.CountInv(prevWeapon))
+				weap = Weapon(player.mo.FindInventory(prevWeapon));
+			else
+				weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
+			player.OffhandWeapon = weap;
+			player.PendingWeapon = weap;
+			player.mo.BringUpWeapon();
+		}
+	}
+	
+	void SetupAkimbo()
+	{
+		Playerinfo player = players[consolePlayer];
+		if(!player) return;
+		
+		Weapon weap;
+		
+		weap = Weapon(player.mo.FindInventory("FlareGun"));
+		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		
+		weap = Weapon(player.mo.FindInventory("Sawedoff"));
+		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		
+		weap = Weapon(player.mo.FindInventory("Tommygun"));
+		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		
+		weap = Weapon(player.mo.FindInventory("NapalmLauncher"));
+		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		
+		weap = Weapon(player.mo.FindInventory("TeslaRifle"));
+		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		
+		player.OffhandWeapon = player.PendingWeapon = NULL;
+		
+		init_akimbo = true;
+	}
+	
+	//hacky way to show an arcing "sprite" between both hand weapons
+	//the sprite here is actually a 2D model so we can rotate it to angle between hands
+	void ShowTeslaArcs()
+	{
+		Playerinfo plr = players[consolePlayer];
+		Let player = plr.mo;
+		if(!player) return;
+		
+		//show the electric arc only when certain weapon sprites are loaded
+		String curSpite, curSpite2;
+		if(plr.ReadyWeapon) curSpite = ""..plr.GetPSprite(PSP_WEAPON).Sprite;
+		if(plr.OffhandWeapon) curSpite2 = ""..plr.GetPSprite(PSP_OFFHANDWEAPON).Sprite;
+		if(!(curSpite == "TES2" || curSpite == "TES3" || curSpite2 == "TES2" || curSpite2 == "TES3")) return;
+		
+		//find the two points to arc over
+		Double angle = player.angle;
+		Double pitch = player.AimTarget() ? player.BulletSlope(null, ALF_PORTALRESTRICT) : player.pitch;
+		let tempPuff1 = player.LineAttack(angle, 10, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ);
+		let tempPuff2 = player.LineAttack(angle, 10, pitch, 0, "none", "bloodDummyPuff", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | LAF_ISOFFHAND);
+		
+		double hand_dist = level.vec3diff(tempPuff1.pos, tempPuff2.pos).length();
+		
+		let tesla_arc = Actor.Spawn("TeslaArc", tempPuff1.pos); //this actor shows as electric arc
+		let offhand_dummy = Actor.Spawn("bloodDummyPuff", tempPuff2.pos); //dummy actor for angle and pitch reference
+		
+		tesla_arc.A_SetScale(hand_dist/14); //scale the arc based on hand distance
+		tesla_arc.A_SetAngle(tesla_arc.AngleTo(offhand_dummy)); //make sure always arcing at the correct angle
+		tesla_arc.A_SetPitch(GetPitchTo(tesla_arc, offhand_dummy)); //make sure always arcing at the correct pitch
+		
+		//get rid of the placeholder actors
+		tempPuff1.destroy();
+		tempPuff2.destroy();
+		offhand_dummy.destroy();
+	}
+	
+	double GetPitchTo(Actor source, Actor target, double zOfs = 0, double targZOfs = 0, bool absolute = false)
+	{
+		Vector3 origin = (source.pos.xy, source.pos.z - source.floorClip + zOfs);
+		Vector3 dest = (target.pos.xy, target.pos.z - target.floorClip + targZOfs);
+
+		Vector3 diff;
+		if (!absolute)
+			diff = level.Vec3Diff(origin, dest);
+		else
+			diff = dest - origin;
+
+		return -atan2(diff.z, diff.xy.Length());
 	}
 	
 	override void OnRegister()
@@ -200,7 +365,8 @@ Class BloodOffhandWeaponHandler : EventHandler
 	private bool _isInitialized;
 	private actor tiny_flame;
 	private actor voodoo_cursor;
-	Class<Weapon> prevWeapon;
+	private Class<Weapon> prevWeapon;
+	private bool init_akimbo;
 }
 
 Class HapticHelper : EventHandler
@@ -222,6 +388,14 @@ Class HapticHelper : EventHandler
 	static void BuzzOffhand()
 	{
 		HapticHelper.BuzzHand(1);
+	}
+	
+	static void BuzzWeapon(Weapon weap)
+	{
+		if(!weap || !weap.owner) return;
+		
+		int hand = weap.bOffhandWeapon ? 1 : 0;
+		HapticHelper.BuzzHand(hand);
 	}
 }
 

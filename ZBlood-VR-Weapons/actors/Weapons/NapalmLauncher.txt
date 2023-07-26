@@ -156,9 +156,7 @@ actor NapalmLauncher : BloodWeaponZ 12001 // 2003
   //weapon.ammouse2 1
   +WEAPON.EXPLOSIVE
   +WEAPON.NOAUTOFIRE
-    
   +NOGRAVITY
-  Weapon.SisterWeapon DoubleNapalmLauncher
   Weapon.SlotNumber 5
   Tag "Napalm Launcher"
 	
@@ -166,28 +164,24 @@ actor NapalmLauncher : BloodWeaponZ 12001 // 2003
   {
   Ready:
 	NLAN A 0 A_ReplaceSprite("zblood_models", "NLNV")
-	"####" BBB 1 A_WeaponReady
-	"####" CCC 1 A_WeaponReady
-	"####" DDD 1 A_WeaponReady
-	"####" EEE 1 A_WeaponReady
-	"####" AAAAA 1 A_WeaponReady
+	"####" A 1 A_WeaponReady
     loop
   Deselect:
 	NLAN A 0 A_ReplaceSprite("zblood_models", "NLNV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Lower(60)
-	Goto Deselect+2
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Lower
-	Loop
+    "####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" A 1 A_Lower(60)
+	Wait
+	"####" A 1 A_Lower
+	Wait
   Select:
 	NLAN A 0 A_ReplaceSprite("zblood_models", "NLNV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Raise(60)
-	Goto Select+2
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Raise
-	Loop
+    "####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
+	"####" A 1 A_Raise(60)
+	Wait
+	"####" A 1 A_Raise
+	Wait
   Fire:
-	"####" # 0 A_GunFlash
+	"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
     "####" F 0 A_PlaySound("dsnapalm")
     "####" F 0 A_FireCustomMissile ("NapalmRocket2", 0,1,5,3+random(-1,1))
 	"####" F 5 bright A_WeaponReady(14)
@@ -198,14 +192,14 @@ actor NapalmLauncher : BloodWeaponZ 12001 // 2003
 	"####" # 0 A_JumpIfInventory("GasolineCan", 12, 1)
 	Goto Fire
 	"####" # 0 A_TakeInventory("GasolineCan", 11)
-	"####" # 0 A_GunFlash
+	"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
     "####" F 0 A_PlayWeaponSound("dsnaplm2")
     "####" F 0 A_FireCustomMissile ("NapalmRocketAlt1",random(-2,2),1,5,3+random(-2,2))
 	"####" F 6 bright A_WeaponReady(14)
     "####" GHI 5 bright A_WeaponReady(14)
     "####" L 0 A_ReFire
     goto Ready
-  Flash:
+  Flash1:
 	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
 	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash2")
 	NLFF A 3 Bright A_Light1
@@ -260,171 +254,26 @@ actor NapalmLauncher : BloodWeaponZ 12001 // 2003
   }
 }
 
-ACTOR DoubleNapalmLauncher : NapalmLauncher
+//only used for akimbo
+Actor NapalmLauncher2 : NapalmLauncher
 {
-  +POWERED_UP
-  +WEAPON.BFG
-  Weapon.SisterWeapon NapalmLauncher
+  Tag "Another Submachinegun"
+  weapon.selectionorder 9080
+  weapon.ammogive 0
+  +WEAPON.CHEATNOTWEAPON
+  +WEAPON.OFFHANDWEAPON
+  +WEAPON.NOHANDSWITCH
+  +POWERED_UP //this tag is here to hide this weapon from weapon wheels
+	
   states
   {
-  Ready:
-	NAKM A 0 A_ReplaceSprite("zblood_models", "NAKV")
-	"####" # 0 ACS_ExecuteAlways(602, 0)
-	"####" # 0 A_TakeInventory("DoubleNapalmCheck", 1)
-    "####" BBB 1 A_WeaponReady
-    "####" CCC 1 A_WeaponReady
-    "####" DDD 1 A_WeaponReady
-    "####" EEE 1 A_WeaponReady
-    "####" AAAA 1 A_WeaponReady
-    loop
   Deselect:
-	NAKM A 0 A_ReplaceSprite("zblood_models", "NAKV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Lower(60)
-	Goto Deselect+2
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Lower
-	Loop
+	NLAN A 0 A_ReplaceSprite("zblood_models", "NLNV")
+	"####" A 1 A_Lower(100)
+	Wait
   Select:
-	NAKM A 0 A_ReplaceSprite("zblood_models", "NAKV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Raise(60)
-	Goto Select+2
-	"####" BBBBCCCCDDDDEEEEAAAA 1 A_Raise
-	Loop
-  Fire:
-	"####" # 0 A_GunFlash
-    "####" # 0 A_Light1
-    "####" F 2 bright A_WeaponReady(14)
-    "####" # 0 A_PlaySound("dsnapalm")
-    "####" # 0 A_FireCustomMissile ("NapalmRocket",0+random(-1,1),1,10,-5+random(-1,1))
-	"####" G 2 bright A_WeaponReady(14)
-    "####" HI 2 bright A_WeaponReady(14)
-    "####" J 2 A_WeaponReady(14)
-	"####" # 0 A_GiveInventory("DoubleNapalmCheck", 1)
-	"####" # 0 A_JumpIFNoAmmo("Ready")
-	"####" # 0 A_GunFlash("Flash2")
-	"####" # 0 A_Light1
-    "####" K 2 bright A_WeaponReady(14)
-    "####" # 0 A_PlaySound("dsnapalm")
-    "####" # 0 A_FireCustomMissile ("NapalmRocket",0+random(-1,1),1,-10,-5+random(-1,1))
-	"####" L 2 bright A_WeaponReady(14)
-    "####" MN 2 bright A_WeaponReady(14)
-    "####" O 2 A_WeaponReady(14)
-	"####" # 0 A_Refire
-    goto Ready
-  AltFire:
-	"####" # 0 A_JumpIfInventory("GasolineCan", 12, 1)
-	Goto Ready
-	"####" # 0 A_GunFlash
-    "####" # 0 A_Light1
-    "####" F 2 bright A_WeaponReady(14)  
-    "####" # 0 A_PlayWeaponSound("dsnaplm2")
-    "####" # 0 A_FireCustomMissile ("NapalmRocketAlt1",0+random(-1,1),1,10,-5+random(-1,1))
-	"####" # 0 A_TakeInventory("GasolineCan", 11)
-	"####" G 2 bright A_WeaponReady(14)
-    "####" H 2 bright A_WeaponReady(14)
-    "####" I 2 bright A_WeaponReady(14)
-    "####" J 2 bright A_WeaponReady(14)
-	"####" # 0 A_GiveInventory("DoubleNapalmCheck", 1)
-	"####" # 0 A_JumpIfInventory("GasolineCan", 12, 1)
-	Goto Ready //Jes mentioned jumping to a non-defined ready state
-	"####" # 0 A_GunFlash("AltFlash2")
-	"####" # 0 A_Light1
-    "####" K 2 bright A_WeaponReady(14)
-    "####" # 0 A_PlayWeaponSound("dsnaplm2")
-    "####" # 0 A_FireCustomMissile ("NapalmRocketAlt1",0+random(-1,1),1,-10,-5+random(-1,1))
-    "####" # 0 A_TakeInventory("GasolineCan", 11)
-	"####" L 2 bright A_WeaponReady(14)
-    "####" M 2 bright A_WeaponReady(14)
-    "####" N 2 bright A_WeaponReady(14)
-    "####" O 2 bright A_WeaponReady(14)
-	"####" # 0 A_Refire
-    goto Ready
-  Flash:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash3")
-	NAKF A 2 Bright A_Light1
-	NAKF B 2 Bright A_Light2
-	NAKF C 2 Bright A_Light2
-	NAKF D 1 Bright A_Light1
-	NAKF E 1 Bright A_Light0
-	NAKF FG 1 Bright
-	Stop
-  Flash2:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash4")
-	NAKF H 2 Bright A_Light1
-	NAKF I 2 Bright A_Light2
-	NAKF J 2 Bright A_Light2
-	NAKF K 1 Bright A_Light1
-	NAKF L 1 Bright A_Light0
-	NAKF MN 1 Bright
-	Stop
-  AltFlash:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoAltFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "AltFlash3")
-	NAKF A 2 Bright A_Light1
-	NAKF B 2 Bright A_Light2
-	NAKF C 2 Bright A_Light2
-	NAKF D 1 Bright A_Light1
-	NAKF E 1 Bright A_Light0
-	NAKF FG 1 Bright
-	Stop
-  AltFlash2:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoAltFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "AltFlash4")
-	NAKF H 2 Bright A_Light1
-	NAKF I 2 Bright A_Light2
-	NAKF J 2 Bright A_Light2
-	NAKF K 1 Bright A_Light1
-	NAKF L 1 Bright A_Light0
-	NAKF MN 1 Bright
-	Stop
-  Flash3:
-	NAVF A 2 Bright A_Light1
-	NAVF B 2 Bright A_Light2
-	NAVF C 2 Bright A_Light2
-	NAVF D 1 Bright A_Light1
-	NAVF E 1 Bright A_Light0
-	NAVF FG 1 Bright
-	Stop
-  Flash4:
-	NAVF H 2 Bright A_Light1
-	NAVF I 2 Bright A_Light2
-	NAVF J 2 Bright A_Light2
-	NAVF K 1 Bright A_Light1
-	NAVF L 1 Bright A_Light0
-	NAVF MN 1 Bright
-	Stop
-  AltFlash3:
-	NAVF A 2 Bright A_Light1
-	NAVF B 2 Bright A_Light2
-	NAVF C 2 Bright A_Light2
-	NAVF D 1 Bright A_Light1
-	NAVF E 1 Bright A_Light0
-	NAVF FG 1 Bright
-	Stop
-  AltFlash4:
-	NAVF H 2 Bright A_Light1
-	NAVF I 2 Bright A_Light2
-	NAVF J 2 Bright A_Light2
-	NAVF K 1 Bright A_Light1
-	NAVF L 1 Bright A_Light0
-	NAVF MN 1 Bright
-	Stop
-  NoFlashSprite:
-	TNT1 A 2 Bright A_Light1
-	TNT1 AA 2 Bright A_Light2
-	TNT1 A 1 Bright A_Light1
-	Goto LightDone
-  NoAltFlashSprite:
-	TNT1 A 2 Bright A_Light1
-	TNT1 AA 2 Bright A_Light2
-	TNT1 A 1 Bright A_Light1
-	Goto LightDone
-  Dummy:
-	NAKV ABCDEFGHIJKLMNO 1
-	NAVF ABCDEFGHIJKLMN 1
-	Stop
+	NLAN A 0 A_ReplaceSprite("zblood_models", "NLNV")
+	"####" A 1 A_Raise(100)
+	Wait
   }
 }

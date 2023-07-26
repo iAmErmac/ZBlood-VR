@@ -21,7 +21,7 @@ Model Spraycan
    FrameIndex SPRF C 0 0
 }
 
-//Select
+/*
 Model Spraycan
 { 
    Path "models/3d/weapons/Spraycan"
@@ -41,6 +41,7 @@ Model Spraycan
    FrameIndex SPRC F 0 0
    FrameIndex SPRC G 0 0
 }
+*/
 
 Model Spraycan
 { 
@@ -116,7 +117,6 @@ Model Spraycan
 
 //------------- VOXEL MODELS -------------
 
-//Select
 Model Spraycan
 { 
    Path "models/voxel/weapons/Spraycan"
@@ -131,6 +131,7 @@ Model Spraycan
    FrameIndex SPRV B 0 0
    FrameIndex SPRV C 0 0
    
+   /*
    //Select
    FrameIndex SPCV A 0 5
    FrameIndex SPCV B 0 0
@@ -139,6 +140,7 @@ Model Spraycan
    FrameIndex SPCV E 0 0
    FrameIndex SPCV F 0 0
    FrameIndex SPCV G 0 0
+   */
    
    //Fire
    FrameIndex SPFV A 0 0

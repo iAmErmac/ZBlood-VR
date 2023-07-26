@@ -25,6 +25,11 @@ Class BloodWeaponZ : Weapon
 			}
 		}
 	}
+	
+	action void A_HapticBuzz()
+	{
+		HapticHelper.BuzzWeapon(invoker);
+	}
 }
 
 Class BloodFlameProjectile : Actor

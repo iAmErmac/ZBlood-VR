@@ -1,3 +1,12 @@
+
+Texture "models/3d/weapons/napalm/napalm1.png"
+	pic "models/3d/weapons/napalm/napalm1.png" tics 4
+	pic "models/3d/weapons/napalm/napalm2.png" tics 4
+	pic "models/3d/weapons/napalm/napalm3.png" tics 4
+	pic "models/3d/weapons/napalm/napalm4.png" tics 4
+	pic "models/3d/weapons/napalm/napalm5.png" tics 4
+	pic "models/3d/weapons/napalm/napalm1.png" tics 4
+	
 Texture "models/3d/weapons/tnt/remote_bomb.png"
     pic "models/3d/weapons/tnt/remote_bomb2.png" tics 4
     pic "models/3d/weapons/tnt/remote_bomb.png" tics 4
@@ -37,3 +46,45 @@ Texture "models/voxel/weapons/tnt/proxy_tex.png"
     pic "models/voxel/weapons/tnt/proxy2_tex.png" tics 6
     pic "models/voxel/weapons/tnt/proxy3_tex.png" tics 6
     pic "models/voxel/weapons/tnt/proxy_tex.png" tics 18
+	
+Texture "models/3d/weapons/teslagun/tesla0.png"
+    pic "models/3d/weapons/teslagun/tesla0.png" tics 2
+    pic "models/3d/weapons/teslagun/tesla1.png" tics 2
+    pic "models/3d/weapons/teslagun/tesla2.png" tics 2
+    pic "models/3d/weapons/teslagun/tesla3.png" tics 2
+    pic "models/3d/weapons/teslagun/tesla4.png" tics 2
+	
+Texture "models/3d/weapons/teslagun/tesla_mf1.png"
+    pic "models/3d/weapons/teslagun/tesla_mf1.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf2.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf3.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf4.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf5.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf6.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf7.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf8.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf9.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_mf10.png" rand 0 2
+	
+Texture "models/voxel/weapons/teslagun/tesla_tex1.png"
+    pic "models/voxel/weapons/teslagun/tesla_tex1.png" tics 2
+    pic "models/voxel/weapons/teslagun/tesla_tex2.png" tics 2
+    pic "models/voxel/weapons/teslagun/tesla_tex1.png" tics 2
+    pic "models/voxel/weapons/teslagun/tesla_tex3.png" tics 2
+	
+Texture "models/voxel/weapons/teslagun/tesla_mf1.png"
+    pic "models/voxel/weapons/teslagun/tesla_mf1.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf2.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf3.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf4.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf5.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf6.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf7.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf8.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf9.png" rand 0 2
+    pic "models/voxel/weapons/teslagun/tesla_mf10.png" rand 0 2
+	
+Texture "models/3d/weapons/teslagun/tesla_arc1.png"
+    pic "models/3d/weapons/teslagun/tesla_arc1.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_arc2.png" rand 0 2
+    pic "models/3d/weapons/teslagun/tesla_arc3.png" rand 0 2

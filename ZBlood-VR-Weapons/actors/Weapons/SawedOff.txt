@@ -13,13 +13,12 @@ ACTOR Sawedoff : BloodWeaponZ replaces SuperShotgun //82
    Weapon.AmmoGive 12
    Weapon.AmmoUse 1
    Weapon.AmmoUse2 1
-   Weapon.SisterWeapon DoubleSawedoff
    Weapon.SlotNumber 3
    Xscale 0.8
    YScale 0.9
    +ThruGhost
-	+NOGRAVITY
-	Tag "Sawed off Shotgun"
+   +NOGRAVITY
+   Tag "Sawed off Shotgun"
   
    states
    {
@@ -28,69 +27,66 @@ ACTOR Sawedoff : BloodWeaponZ replaces SuperShotgun //82
 		Loop
 	Ready:
 		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
-		"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Ready2")
-		"####" # 1 A_WeaponReady
-		Loop
-	Ready2:
-		SWNF B 0 A_ReplaceSprite("zblood_models", "SWVF")
 		"####" # 1 A_WeaponReady
 		Loop
 	DeSelect:
 		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
 		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 		"####" # 1 A_Lower(60)
-		Goto Deselect+2
+		Wait
 		"####" # 1 A_Lower
-		Goto Deselect+3
+		Wait
 	Select:
 		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
 		"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 		"####" # 1 A_Raise(60)
-		Goto Select+2
+		Wait
 		"####" # 1 A_Raise
-		Goto Select+3
+		Wait
 	Fire:
 		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
 		"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Fire2")
-		"####" # 0 A_Gunflash
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
 		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
-		"####" A 1 A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
-		"####" AABB 1 BRIGHT A_WeaponReady(14)
-		"####" B 4 A_WeaponReady(14)
+		"####" A 2
+		"####" B 2 BRIGHT A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
+		"####" CC 4 A_WeaponReady(14)
+		"####" # 0 A_CheckReload
 		"####" # 0 A_GiveInventory("sawedoffbarrelcheck",1)
 		Goto ready
 	Fire2:
 		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
-		"####" # 0 A_Gunflash
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
 		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
-		"####" C 1 A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
-		"####" CCDD 1 BRIGHT A_WeaponReady(14)
-		"####" D 2 A_WeaponReady(14)
-		"####" # 0 A_TakeInventory("sawedoffbarrelcheck",1)
-		Goto Reload
+		"####" D 2
+		"####" E 2 BRIGHT A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
+		"####" F 1 A_TakeInventory("sawedoffbarrelcheck",1)
+		Goto ReloadGun
 	AltFire:
 		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
 		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
 		"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Fire2")
 		"####" # 0 A_JumpIfInventory("shell", 2, 1)
 		Goto Fire
-		"####" # 0 A_Gunflash
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
 		"####" # 0 A_PlayWeaponSound("SAWNALT")
-		"####" E 1 A_FireBullets(10.2, 7.2, 10, 5, "ZBBulletPuff", 1)
-		"####" E 1 A_FireBullets(7.2, 10.2, 10, 5, "ZBBulletPuff", 1)
-		"####" FG 2 BRIGHT A_WeaponReady(14)
-		"####" H 6 A_WeaponReady(14)
-	Reload:
+		"####" G 2
+		"####" H 2 A_FireBullets(10.2, 7.2, 10, 5, "ZBBulletPuff", 1)
+		"####" I 2 A_FireBullets(7.2, 10.2, 10, 5, "ZBBulletPuff", 1)
+		"####" J 1
+		"####" K 1
+	ReloadGun:
 		SWNR A 0 A_ReplaceSprite("zblood_models", "SWVR")
-		"####" # 0 A_JumpIfNoAmmo("Ready")
+		"####" # 0 A_CheckReload
 		"####" ABC 1
 		"####" # 0 A_PlaySound("weapons/sawedoffload")
 		"####" DEF 1
-		"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
-		"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
+		"####" # 0 A_FireCustomMissile("ShotgunCasing",-60+random(-8,8),0,1,-12+random(-2,2),0)
+		"####" # 0 A_FireCustomMissile("ShotgunCasing",-60+random(-8,8),0,1,-12+random(-2,2),0)
+		"####" G 6
 		"####" GHIJKLMNOPQRST 1
 		Goto Ready
-	Flash:
+	Flash1:
 		TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
 		TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash3")
 		TNT1 A 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Flash2")
@@ -159,173 +155,95 @@ ACTOR Sawedoff : BloodWeaponZ replaces SuperShotgun //82
    }
 }
 
-ACTOR DoubleSawedoff : Sawedoff
+actor sawedoffbarrelcheck : inventory
 {
-  +POWERED_UP
-  +ThruGhost
-  +WEAPON.BFG
-  weapon.ammouse 1
-  weapon.ammouse2 1
-  Weapon.SisterWeapon Sawedoff
-  states
-  {
-  Ready:
-    SAKM A 1 A_ReplaceSprite("zblood_models", "SAKV")
-	"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Ready2")
-    "####" # 1 A_WeaponReady
-    loop
-  Ready2:
-    "####" E 1 A_WeaponReady
-    loop
-  Deselect: 
-	SAKM A 0 A_ReplaceSprite("zblood_models", "SAKV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" # 1 A_Lower(60)
-	loop
-	"####" # 1 A_Lower
-    loop
-  Select:
-	SAKM A 0 A_ReplaceSprite("zblood_models", "SAKV")
-	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" # 1 A_Raise(60)
-	loop
-	"####" # 1 A_Raise
-    loop
-  Fire:
-	"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Fire2")
-	"####" # 0 A_Gunflash
-    "####" # 3 Bright A_WeaponReady(14)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
-	"####" # 0 A_FireBullets (7.6, 4.1, 10, 5, "ZBBulletPuff")
-	"####" # 0 A_PlaySound ("dsSAWFIR")
-	"####" B 3 Bright A_WeaponReady(14)
-	"####" C 3 A_WeaponReady(14)
-	"####" # 0 A_GiveInventory("sawedoffbarrelcheck",1)
-	"####" # 0 A_JumpIfInventory("Shell", 1, 1)
-	Stop
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",45+random(-8,8),0,-4,7+random(-2,2),0)
-	"####" # 0 A_FireBullets (7.6, 4.1, 10, 5, "ZBBulletPuff")
-	"####" # 0 A_PlaySound ("dsSAWFIR")
-	"####" D 3 Bright A_WeaponReady(14)
-	"####" E 3 A_WeaponReady(14)
-	"####" E 2 A_WeaponReady(14)
-    goto Ready2
-  Fire2:
-	"####" # 0 A_Gunflash
-    "####" E 3 Bright A_WeaponReady(14)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
-	"####" # 0 A_FireBullets (7.6, 4.1, 10, 5, "ZBBulletPuff")
-	"####" # 0 A_PlaySound ("dsSAWFIR")
-	"####" F 3 Bright A_WeaponReady(14)
-	"####" G 3 A_WeaponReady(14)
-	"####" # 0 TakeInventory("sawedoffbarrelcheck",1)
-	"####" # 0 A_JumpIfInventory("Shell", 1, 1)
-	Stop
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",45+random(-8,8),0,-4,7+random(-2,2),0)
-	"####" # 0 A_FireBullets (7.6, 4.1, 10, 5, "ZBBulletPuff")
-	"####" # 0 A_PlaySound ("dsSAWFIR")
-	"####" H 3 Bright A_WeaponReady(14)
-	"####" I 3 A_WeaponReady(14)
-	"####" A 2 A_WeaponReady(14)
-    goto Ready
-  AltFire:
-	"####" # 0 A_JumpIfInventory("Shell", 4, 1)
-	Goto Fire
-	"####" # 0 A_JumpIfInventory("Shell", 4, 1)
-	Goto Flash
-    "####" # 4 Bright A_WeaponReady(14)
-	"####" # 0 A_Gunflash
-	"####" # 0 TakeInventory("sawedoffbarrelcheck",1)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",-45+random(-8,8),0,1,7+random(-2,2),0)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",45+random(-8,8),0,-4,7+random(-2,2),0)
-	"####" # 0 A_FireCustomMissile("ShotgunCasing",45+random(-8,8),0,-4,7+random(-2,2),0)
-	"####" # 0 A_FireBullets (12.2, 8.1, 40, 5, "ZBBulletPuff")
-	"####" # 0 A_TakeInventory("Shell", 3)
-	"####" AA 0 A_PlayWeaponSound ("SAWNALT")
-	"####" JKLMN 3 A_WeaponReady(14)
-	"####" A 4 A_WeaponReady(14)
-    goto Ready
-  Flash:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash3")
-	TNT1 A 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Flash2")
-	TNT1 A 1
-	SWFF A 2 Bright A_Light1
-	SWFF B 2 Bright A_Light2
-	SWFF C 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light0
-	SWFF D 2 Bright A_Light1
-	SWFF E 2 Bright A_Light2
-	SWFF F 2 Bright A_Light1
-	Stop
-  Flash2:
-	TNT1 A 1
-	SWFF G 2 Bright A_Light1
-	SWFF H 2 Bright A_Light2
-	SWFF I 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light0
-	SWFF J 2 Bright A_Light1
-	SWFF K 2 Bright A_Light2
-	SWFF L 2 Bright A_Light1
-	Stop
-  AltFlash:
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "AltNoFlashSprite")
-	TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "AltFlash2")
-	SWFF M 3 Bright A_Light1
-	SWFF N 2 Bright A_Light2
-	SWFF O 2 Bright A_Light1
-	SWFF I 0 Bright A_Light0
-	Stop
-  Flash3:
-	TNT1 A 0 A_JumpIfInventory("sawedoffbarrelcheck",1,"Flash4")
-	TNT1 A 1
-	SVFF A 2 Bright A_Light1
-	SVFF B 2 Bright A_Light2
-	SVFF C 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light0
-	SVFF D 2 Bright A_Light1
-	SVFF E 2 Bright A_Light2
-	SVFF F 2 Bright A_Light1
-	Stop
-  Flash4:
-	TNT1 A 1
-	SVFF G 2 Bright A_Light1
-	SVFF H 2 Bright A_Light2
-	SVFF I 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light0
-	SVFF J 2 Bright A_Light1
-	SVFF K 2 Bright A_Light2
-	SVFF L 2 Bright A_Light1
-	Stop
-  AltFlash2:
-	SVFF M 2 Bright A_Light1
-	SVFF N 2 Bright A_Light2
-	SVFF O 2 Bright A_Light1
-	SVFF I 0 Bright A_Light0
-	Stop
-  NoFlashSprite:
-	TNT1 A 3 Bright A_Light1
-	TNT1 A 2 Bright A_Light2
-	TNT1 A 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light0
-	TNT1 A 2 Bright A_Light1
-	TNT1 A 2 Bright A_Light2
-	TNT1 A 2 Bright A_Light1
-	Stop
-  AltNoFlashSprite:
-	TNT1 A 3 Bright A_Light1
-	TNT1 A 2 Bright A_Light2
-	TNT1 A 2 Bright A_Light1
-	TNT1 A 0 Bright A_Light0
-	Stop
-  Dummy:
-	SAKV ABCDEFGHIJKLMN 1
-	Stop
-  }
+	inventory.amount 1
+	inventory.maxamount 1
 }
 
-actor sawedoffbarrelcheck : inventory
+//only used for akimbo
+Actor Sawedoff2 : Sawedoff
+{
+  Tag "Another Shotgun"
+  weapon.selectionorder 880
+  weapon.ammogive 0
+  +WEAPON.CHEATNOTWEAPON
+  +WEAPON.OFFHANDWEAPON
+  +WEAPON.NOHANDSWITCH
+  +POWERED_UP //this tag is here to hide this weapon from weapon wheels
+  
+   states
+   {
+	Spawn:
+		SOSP A -1
+		Loop
+	Ready:
+		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
+		"####" # 1 A_WeaponReady
+		Loop
+	DeSelect:
+		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
+		"####" # 1 A_Lower(100)
+		Wait
+	Select:
+		WP01 A 0 A_ReplaceSprite("zblood_models", "WP0V")
+		"####" # 1 A_Raise(100)
+		Wait
+	Fire:
+		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
+		"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck2",1,"Fire2")
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
+		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
+		"####" A 1 A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
+		"####" AABB 1 BRIGHT A_WeaponReady(14)
+		"####" B 4 A_WeaponReady(14)
+		"####" # 0 A_CheckReload
+		"####" # 0 A_GiveInventory("sawedoffbarrelcheck2",1)
+		Goto ready
+	Fire2:
+		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
+		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
+		"####" C 1 A_FireBullets(7.2, 6.4, 10, 5, "ZBBulletPuff", 1)
+		"####" CCDD 1 BRIGHT A_WeaponReady(14)
+		"####" D 2 A_WeaponReady(14)
+		"####" # 0 A_TakeInventory("sawedoffbarrelcheck2",1)
+		Goto ReloadGun
+	AltFire:
+		SWNF A 0 A_ReplaceSprite("zblood_models", "SWVF")
+		"####" # 0 A_PlayWeaponSound("dsSAWFIR")
+		"####" # 0 A_JumpIfInventory("sawedoffbarrelcheck2",1,"Fire2")
+		"####" # 0 A_JumpIfInventory("shell", 2, 1)
+		Goto Fire
+		"####" # 0 A_Overlay(1000+random(1,10), "Flash1")
+		"####" # 0 A_PlayWeaponSound("SAWNALT")
+		"####" E 1 A_FireBullets(10.2, 7.2, 10, 5, "ZBBulletPuff", 1)
+		"####" E 1 A_FireBullets(7.2, 10.2, 10, 5, "ZBBulletPuff", 1)
+		"####" FG 2 BRIGHT A_WeaponReady(14)
+		"####" H 6 A_WeaponReady(14)
+		Goto ReloadGun
+	Flash:
+		TNT1 A 0 A_JumpIf(GetCVar("zblood_muzzle_flash") == false, "NoFlashSprite")
+		TNT1 A 0 A_JumpIf(GetCVar("zblood_models") == 1, "Flash3")
+		TNT1 A 0 A_JumpIfInventory("sawedoffbarrelcheck2",1,"Flash2")
+		TNT1 A 1
+		SWFF A 2 Bright A_Light1
+		SWFF B 2 Bright A_Light2
+		SWFF C 2 Bright A_Light1
+		SWFF C 0 Bright A_Light0
+		Stop
+	Flash3:
+		TNT1 A 0 A_JumpIfInventory("sawedoffbarrelcheck2",1,"Flash4")
+		TNT1 A 1
+		SVFF A 2 Bright A_Light1
+		SVFF B 2 Bright A_Light2
+		SVFF C 2 Bright A_Light1
+		SVFF C 0 Bright A_Light0
+		Stop
+   }
+}
+
+actor sawedoffbarrelcheck2 : inventory
 {
 	inventory.amount 1
 	inventory.maxamount 1

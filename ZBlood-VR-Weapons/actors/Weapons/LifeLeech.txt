@@ -126,7 +126,7 @@ actor LifeLeech : BloodWeaponZ replaces BFG9000
 	AltFire:
 		LLST A 0 A_ReplaceSprite("zblood_models", "LSTV")
 		"####" # 1 ACS_NamedExecuteAlways("LifeLeech_Buddy")
-		"####" # 1 A_SpawnItemEX("LifeLeechBuddy",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0,tid+700)
+		"####" # 1 A_SpawnItemEX("LifeLeechBuddy",20,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0,tid+700)
 		"####" # 1 A_TakeInventory("LifeLeech",1)
 		Goto Ready
 	Fire:

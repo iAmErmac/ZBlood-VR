@@ -83,49 +83,37 @@ Actor Dynamite : BloodWeaponZ
 	"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
 	Goto EXPLODE
   Deselect:
-	DYND A 0 A_ReplaceSprite("zblood_models", "DNDV")
-	"####" AB 3// A_jumpIfInventory("ThrowerPowerBig",120,"Explode") //A check to ensure the boom is correct
-	"####" C 1 //A_PlaySound("dsZIPCLS")
+	DYNR A 0 A_ReplaceSprite("zblood_models", "DYNV")
 	"####" # 0 A_JumpIfnoammo("DeselectAmmoLess")
-    "####" DE 1 A_Lower
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" F 1 A_Lower(60)
-	Goto Deselect+8
-	"####" F 1 A_Lower
-	Goto Deselect+9
+	"####" A 1 A_Lower(60)
+	Wait
+	"####" A 1 A_Lower
+	Wait
   DeselectBoomed:
 	BLWS A 4 A_TakeInventory("ThrowPowerBig",255)
 	"####" # 0 A_Explode(500, 128) //wtf is this op damage
 	BLWS B 3 A_Lower
 	BLWS C 1 A_Lower
-	Goto DeselectBoomed+3
+	Wait
   DeselectAmmoLess:
 	ZIPD A 0 A_ReplaceSprite("zblood_models", "ZIPV")
-	"####" ABCD 2
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" # 1 A_Lower(60)
-	Goto DeselectAmmoLess+6
+	Wait
 	"####" # 1 A_Lower
-	Goto DeselectAmmoLess+7
+	Wait
   Select:
 	DYNU A 0 A_ReplaceSprite("zblood_models", "DNUV")
 	"####" # 0 A_TakeInventory("ThrowPower",300)
 	"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 1, "SelectFast")
-	//TNT1 AAAAAAAA 0 A_Raise
-    //TNT1 AAA 1 A_Raise
-    "####" AB 3
-	"####" C 3 //A_PlayWeaponSound ("dsZIPCLS")
-    "####" D 3 A_Raise
-    "####" EF 3 A_Raise
-    Goto Select+8
+    "####" A 1 A_Raise
+    Wait
   SelectFast:
 	DYNU A 0 A_ReplaceSprite("zblood_models", "DNUV")
-    "####" AB 2
-	"####" C 2 //A_PlayWeaponSound ("dsZIPCLS")
-    "####" D 2 A_Raise(60)
-    "####" EF 3 A_Raise(60)
-    Goto SelectFast+5
+    "####" A 3 A_Raise(60)
+    Wait
   Fire:
 	DYNR A 0 A_ReplaceSprite("zblood_models", "DYNV")
 	"####" A 0 A_JumpIfInventory("ZippoOpen", 1, 2)

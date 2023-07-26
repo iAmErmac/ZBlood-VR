@@ -75,52 +75,31 @@ actor Spraycan : BloodWeaponZ
 	"####" # 0 A_StopSound(CHAN_WEAPON)
     "####" # 0 A_JumpIf(waterlevel>2,"Cannot")
     "####" A 3 A_WeaponReady
-	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
-	"####" C 3 A_WeaponReady
-	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
-	"####" B 3 A_WeaponReady
-	"####" # 0 A_JumpIf(waterlevel>2,"Cannot")
-	"####" C 3 A_WeaponReady
-    "####" # 0 A_JumpIf(waterlevel>2,"Cannot")
     loop
   Deselect:
-    SPRC D 0 A_ReplaceSprite("zblood_models", "SPCV")
+    SPRR A 0 A_ReplaceSprite("zblood_models", "SPRV")
 	"####" # 0 A_JumpIfNoAmmo("DeselectNoAmmo")
-    "####" DD 1 A_Lower
-	"####" # 0 A_TakeInventory("HoldingSpray",40)
-    //"####" DDBBCC 1
-    //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
-    //"####" CCCCCCCCCCCCCCCC 1 A_Lower
-    "####" CCBB 1
-    //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" A 1 A_Lower(60)
-	Goto Deselect+11
+	Wait
 	"####" A 1 A_Lower
-	Goto Deselect+12
+	Wait
   DeselectNoAmmo:
     ZIPD A 0 A_ReplaceSprite("zblood_models", "ZIPV")
-	"####" AB 2
-	//"####" C 2 A_PlayWeaponSound ("dsZIPCLS")
-	//"####" # 0 A_TakeInventory("Spraycan")
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
 	"####" D 1 A_Lower(60)
-	Goto DeselectNoAmmo+5
+	Wait
 	"####" D 1 A_Lower
-	Goto DeselectNoAmmo+6
+	Wait
   Select:
-    SPRC A 0 A_ReplaceSprite("zblood_models", "SPCV")
+    SPRR A 0 A_ReplaceSprite("zblood_models", "SPRV")
   	"####" # 0 A_TakeInventory("ThrowPower",300)
 	"####" # 0 A_TakeInventory("ThrowPowerBig",300)//Safe measures
-	"####" # 0 A_Raise
-	"####" # 0 A_GiveInventory("HoldingSpray",1)
-    //"####" # 0 A_PlayWeaponSound ("dsZIPCLS")
-    "####" BBCCDD 1 A_Raise
 	"####" # 0 A_JumpIf(GetCVar("zblood_fastswitch") == 0, 2)
-	"####" EFG 3 A_Raise(60)
-	Goto Select+13
-	"####" EFG 3 A_Raise
-	Goto Select+16
+	"####" A 1 A_Raise(60)
+	Goto Select+4
+	"####" A 1 A_Raise
+	Wait
   Cannot:
 	"####" # 0 A_TakeInventory("HoldingSpray",40)
 	"####" # 0 A_TakeInventory("ThrowPower",255)
@@ -131,26 +110,6 @@ actor Spraycan : BloodWeaponZ
 	"####" # 0 A_TakeInventory("HoldingSpray",40)
 	"####" # 1 A_SelectWeapon("Pitchfork")
 	Goto Ready
-  IgniteOverlay:
-	"####" # 0
-	SPLF ABCDE 3 Bright
-	Stop
-  IgnitedOverlay1:
-	"####" # 0
-	SPLF LFG 2 Bright
-	Stop
-  IgnitedOverlay2:
-	"####" # 0
-	SPLF HI 2 Bright
-	Stop
-  IgnitedOverlay3:
-	"####" # 0
-	SPLF JK 2 Bright
-	Stop
-  IgnitedOverlay4:
-	"####" # 0
-	SPLF M 2 Bright
-	Stop
   Fire:
     SPRF A 0 A_ReplaceSprite("zblood_models", "SPFV")
   	"####" # 0 A_JumpIfNoAmmo("TakeAway")
@@ -392,6 +351,26 @@ actor Spraycan : BloodWeaponZ
     SPRR A 0 A_ReplaceSprite("zblood_models", "SPRV")
 	"####" A 3
 	goto Ready
+  IgniteOverlay:
+	"####" # 0
+	SPLF ABCDE 3 Bright
+	Stop
+  IgnitedOverlay1:
+	"####" # 0
+	SPLF LFG 2 Bright
+	Stop
+  IgnitedOverlay2:
+	"####" # 0
+	SPLF HI 2 Bright
+	Stop
+  IgnitedOverlay3:
+	"####" # 0
+	SPLF JK 2 Bright
+	Stop
+  IgnitedOverlay4:
+	"####" # 0
+	SPLF M 2 Bright
+	Stop
   Spawn:
     PLAS A -1
     stop

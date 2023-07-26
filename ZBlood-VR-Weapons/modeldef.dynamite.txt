@@ -18,6 +18,7 @@ Model Dynamite
 	FrameIndex DYNU F 0 0
 }
 
+/*
 //Deselect
 Model Dynamite
 { 
@@ -35,6 +36,7 @@ Model Dynamite
    FrameIndex DYND E 0 0
    FrameIndex DYND F 0 0
 }
+*/
 
 //Deselect - No ammo
 Model Dynamite
@@ -244,6 +246,7 @@ Model Dynamite
    FrameIndex DNUV F 0 0
 }
 
+/*
 //Deselect
 Model Dynamite
 { 
@@ -264,6 +267,7 @@ Model Dynamite
    
    FrameIndex DNDV F 0 0
 }
+*/
 
 //Deselect - No ammo
 Model Dynamite
