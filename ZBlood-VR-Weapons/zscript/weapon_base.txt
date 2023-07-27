@@ -47,7 +47,7 @@ Class BloodAOEFlameProjectile : Actor
 {
 	override int SpecialMissileHit(Actor victim)
 	{
-		mark_AOE_burn_targets();
+		markAreaBurnTargets();
 		
 		Super.SpecialMissileHit(victim);
 		return -1;
@@ -55,10 +55,10 @@ Class BloodAOEFlameProjectile : Actor
 	
 	action void A_MarkBurnVictims()
 	{
-		invoker.mark_AOE_burn_targets();
+		invoker.markAreaBurnTargets();
 	}
 	
-	void mark_AOE_burn_targets()
+	void markAreaBurnTargets()
 	{
 		BlockThingsIterator it = BlockThingsIterator.Create(self, 320);
 		Actor mo, victim;

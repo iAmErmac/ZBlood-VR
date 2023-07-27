@@ -1,5 +1,5 @@
 
 gameinfo
 {
-	AddEventHandlers = "DeadManDropEvent", "BloodOffhandWeaponHandler", "HapticHelper"
+	AddEventHandlers = "DeadManDropEvent", "MonsterBurnHelper", "BloodOffhandWeaponHandler", "HapticHelper"
 }

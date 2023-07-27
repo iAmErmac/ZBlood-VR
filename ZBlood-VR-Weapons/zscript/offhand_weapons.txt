@@ -147,6 +147,21 @@ Class BloodOffhandWeaponHandler : EventHandler
 			if(player.OffhandWeapon is "TeslaRifle2") player.OffhandWeapon = NULL;
 			player.mo.SetInventory("TeslaRifle2", 0, false);
 		
+			weap = Weapon(player.mo.FindInventory("FlareGun"));
+			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
+			
+			weap = Weapon(player.mo.FindInventory("Sawedoff"));
+			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
+			
+			weap = Weapon(player.mo.FindInventory("Tommygun"));
+			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
+			
+			weap = Weapon(player.mo.FindInventory("NapalmLauncher"));
+			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
+			
+			weap = Weapon(player.mo.FindInventory("TeslaRifle"));
+			if(weap && weap.bNoHandSwitch) weap.bNoHandSwitch = false;
+		
 			if(!player.OffhandWeapon)
 			{
 				if(prevWeapon && player.mo.CountInv(prevWeapon))
@@ -277,19 +292,35 @@ Class BloodOffhandWeaponHandler : EventHandler
 		Weapon weap;
 		
 		weap = Weapon(player.mo.FindInventory("FlareGun"));
-		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		if(weap && weap.bOffhandWeapon)
+		{
+			weap.bOffhandWeapon = false;
+			weap.bNoHandSwitch = true;
+		}
 		
 		weap = Weapon(player.mo.FindInventory("Sawedoff"));
-		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		{
+			weap.bOffhandWeapon = false;
+			weap.bNoHandSwitch = true;
+		}
 		
 		weap = Weapon(player.mo.FindInventory("Tommygun"));
-		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		{
+			weap.bOffhandWeapon = false;
+			weap.bNoHandSwitch = true;
+		}
 		
 		weap = Weapon(player.mo.FindInventory("NapalmLauncher"));
-		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		{
+			weap.bOffhandWeapon = false;
+			weap.bNoHandSwitch = true;
+		}
 		
 		weap = Weapon(player.mo.FindInventory("TeslaRifle"));
-		if(weap && weap.bOffhandWeapon) weap.bOffhandWeapon = false;
+		{
+			weap.bOffhandWeapon = false;
+			weap.bNoHandSwitch = true;
+		}
 		
 		player.OffhandWeapon = player.PendingWeapon = NULL;
 		
@@ -308,7 +339,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		String curSpite, curSpite2;
 		if(plr.ReadyWeapon) curSpite = ""..plr.GetPSprite(PSP_WEAPON).Sprite;
 		if(plr.OffhandWeapon) curSpite2 = ""..plr.GetPSprite(PSP_OFFHANDWEAPON).Sprite;
-		if(!(curSpite == "TES2" || curSpite == "TES3" || curSpite2 == "TES2" || curSpite2 == "TES3")) return;
+		if(!(curSpite == "TES2" || curSpite == "TES3" || curSpite == "TS2V" || curSpite == "TS3V" || curSpite2 == "TES2" || curSpite2 == "TES3" || curSpite2 == "TS2V" || curSpite2 == "TS3V")) return;
 		
 		//find the two points to arc over
 		Double angle = player.angle;
