@@ -1,0 +1,25 @@
+
+episode e1m1
+{
+	name = "$TXT_D1E1"
+	key = "k"
+}
+
+episode e2m1
+{
+	name = "$TXT_D1E2"
+	key = "t"
+}
+
+episode e3m1
+{
+	name = "$TXT_D1E3"
+	key = "i"
+}
+
+episode e4m1
+{
+	name = "$TXT_D1E4"
+	key = "t"
+	optional
+} 

@@ -30,7 +30,7 @@ Class MonsterBurnEffect : Inventory
 	override void PostBeginPlay()
 	{
 		self_timeout = true;
-		pain_countdown = random(7,15) * 35;
+		pain_countdown = random(3,7) * 35;
 		pain_death = false;
 		is_blood_enemy = isBloodEnemy(owner);
 	}
@@ -48,14 +48,6 @@ Class MonsterBurnEffect : Inventory
 			painfulBurnOwner();
 			return;
 		}
-		
-		/*if(owner && !pain_death && (owner.health <= 1 || owner.InStateSequence(owner.CurState, owner.ResolveState("Death"))) )
-		{
-			//if(owner.bNogravity || owner.bFloat || owner.radius > 29)
-				initPainBurn();
-			//else
-				//burn_owner();
-		}*/
 		
 		if(timeout < 92)
 			timeout++;
@@ -83,36 +75,6 @@ Class MonsterBurnEffect : Inventory
 		}
 		return false;
 	}
-	
-	/*
-	void burn_owner()
-	{
-		if(!owner.InStateSequence(owner.CurState, owner.ResolveState("Burn")) && !owner.InStateSequence(owner.CurState, owner.ResolveState("Death.Flare")) && !owner.InStateSequence(owner.CurState, owner.ResolveState("Death.Fire")) && !owner.InStateSequence(owner.CurState, owner.ResolveState("Death.SpecialFire")) && owner.health <= 0)
-		{
-			Actor.Spawn("BurningMonster", owner.pos);
-			owner.destroy();
-		}
-	}
-	
-	private void initPainBurn()
-	{
-		if(owner.InStateSequence(owner.CurState, owner.ResolveState("Burn")) || owner.InStateSequence(owner.CurState, owner.ResolveState("Death.Flare")) || owner.InStateSequence(owner.CurState, owner.ResolveState("Death.Fire")) || owner.InStateSequence(owner.CurState, owner.ResolveState("Death.SpecialFire")))
-		{
-			return;
-		}
-	
-		owner.SetInventory("PainBurnToken", 1);
-		self_timeout = false;
-		owner.A_SetHealth(1000);
-		
-		let burn_tint = Actor.Spawn("BurningMonsterTint", owner.pos);
-		burn_tint.master = owner;
-		owner.bSolid = true;
-		owner.bBright = true;
-		owner.bFRIGHTENED = true;
-		owner.speed *= frandom(1.2, 1.5);
-	}
-	*/
 	
 	private void painfulBurnOwner()
 	{
@@ -251,10 +213,16 @@ Class BurningMonsterTint : Actor
 	-COUNTKILL
 	}
 	
+	override void PostBeginPlay()
+	{
+		glow_helper = Actor.Spawn("BurningGlow", master.pos);
+	}
+	
 	override void Tick()
 	{   
 		if (!master || master.health <= 0)
 		{
+			glow_helper.destroy();
 			destroy();
 			return;
 		}
@@ -266,12 +234,38 @@ Class BurningMonsterTint : Actor
 		bFLOORCLIP = master.bFLOORCLIP;
 		bSPRITEFLIP = master.bSPRITEFLIP;
 		SetOrigin(master.pos,false);
+		glow_helper.SetOrigin(master.pos,false);
 	}
 	states
 	{
 	Spawn:
 		#### # 1;
 		loop;
+	}
+	
+	private actor glow_helper;
+}
+
+Class BurningGlow : BulletPuff
+{
+	Default
+	{
+	+FLOAT
+	+NOGRAVITY
+	+SPAWNFLOAT
+	+NOBLOCKMAP
+	-COUNTKILL
+	radius 1;
+	height 1;
+	}
+	
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_AttachLightDef("BurningGlow1", "BURNINGGUY2");
+		TNT1 A 1;
+		wait;
 	}
 }
 

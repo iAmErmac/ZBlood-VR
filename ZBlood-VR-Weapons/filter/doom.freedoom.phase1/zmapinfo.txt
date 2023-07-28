@@ -1,0 +1,25 @@
+
+episode e1m1
+{
+	name = "Outpost Outbreak"
+	key = "k"
+}
+
+episode e2m1
+{
+	name = "Military Labs"
+	key = "t"
+}
+
+episode e3m1
+{
+	name = "Event Horizon"
+	key = "i"
+}
+
+episode e4m1
+{
+	name = "Double Impact"
+	key = "t"
+	optional
+} 

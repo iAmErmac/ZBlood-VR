@@ -1,0 +1,6 @@
+
+episode map01
+{
+	name  = "Plutonia Levels"
+	key  = "t"
+}

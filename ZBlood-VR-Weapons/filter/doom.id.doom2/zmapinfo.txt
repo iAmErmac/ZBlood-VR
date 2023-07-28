@@ -1,0 +1,6 @@
+
+episode map01
+{
+	name = "Doom2 Levels"
+	key = "h"
+}

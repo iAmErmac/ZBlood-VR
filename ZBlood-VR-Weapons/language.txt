@@ -1,0 +1,17 @@
+[enu default]
+
+ZBV_OPTIONS			= "ZBlood VR Options";
+
+ZBV_WEAPON			= "VR Weapons";
+ZBV_WEAPON_MODEL	= "Weapon Models";
+ZBV_WEAPON_FLASH	= "Muzzle Flash Sprite";
+ZBV_WEAPON_SWITCH	= "Fast Switching";
+
+ZBV_BULLETZ			= "BulletZ";
+ZBV_BULLETZ_ON		= "BulletZ for Hitscans";
+ZBV_BULLETZ_NOTE1	= "Enemy hitscan attacks will be replaced with projectiles";
+ZBV_BULLETZ_SPEED	= "Bullet Speed";
+
+ZBV_BLOOD			= "3D Bloodspot";
+ZBV_BLOOD_3D		= "Bloodspot on Floor";
+ZBV_BLOOD_FADE		= "Bloodspot Fadeout";

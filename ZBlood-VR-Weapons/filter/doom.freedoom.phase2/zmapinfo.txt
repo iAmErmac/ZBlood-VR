@@ -1,0 +1,6 @@
+
+episode map01
+{
+	name = "Freedoom2 Levels"
+	key = "h"
+}

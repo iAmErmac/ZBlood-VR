@@ -1,5 +1,7 @@
 server int zblood_models = 0;
 server int zblood_fastswitch = 0;
 server bool zblood_muzzle_flash = true;
+server bool zblood_bulletz = false;
+server int zblood_bulletspeed = 105;
 server bool zblood_bloodspot_3d = true;
 server int zblood_bloodspot_fadeout = 1;
