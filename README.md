@@ -12,10 +12,15 @@ This mod replaces all weapons for ZBloody Hell mod (https://www.moddb.com/mods/z
 
 ## Features
 * Switch between 3D and voxel weapon models anytime
-* Can be played with Heretic/Hexen/Strife/Chex
 * Optional voxel addon (thanks to Cheello) to replace more sprite items into voxel
+* Option to disable replacing Doom monsters from Blood (to play Doom levels)
+* Cultist hitscan attacks can be replaced with projectiles
 * Dual wield support (QuestZDoom)
-* Light up dynamites and spray-can like you'd actually do (requires a dual wield build)
+* Akimbo weapons as they were meant to be (weapons on each hand when Akimbo activated)
+* Light up Dynamites and Spray-Can like you'd actually do (requires a dual wield build)
+* Stab Voodoo doll to hurt monsters (with gaze targetting)
+* Burn (almost) any monster in any wad with FlareGun, Spray-Can and LifeLeech
+* Compatible with Doom/Heretic/Hexen/Strife/Chex iwads (you can play those levels)
 
 ![Vengeance awaits](https://i.imgur.com/Ky7v3a4.jpg)
 
@@ -28,7 +33,6 @@ Load the mods in this order:
 4) ZBloody_Hell_v1915x_Patch.pk3 (interactive portals)
 5) ZBlood-VR-Weapons
 6) ZBlood-Voxels (additional voxels by Cheello, optional)
-7) bulletz_zbhl.pk3 (BulletZ for ZBlood, optional)
 
 ### GZDoom VR (PC-VR)
 

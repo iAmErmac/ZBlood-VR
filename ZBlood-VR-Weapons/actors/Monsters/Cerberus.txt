@@ -1,0 +1,261 @@
+Actor CerberusFire : Hellhoundfire 
+{ 
+Scale 0.3 
+Damage (random(1,8)) 
++RIPPER 
+-BLOODSPLATTER 
+SeeSound "weapons/plasmaf" 
+}
+
+Actor Cerberus
+{
+//$Category Blood Monsters
+//$Title Cerberus
+//$Color 17
+	Health 3250
+	Radius 55
+	Height 70
+	Speed 20
+	Mass 4500
+	PainChance 20
+	Scale 0.8
+	SeeSound "cerberusSee"
+	PainSound "cerberuspain"
+	DeathSound "cerberusdie"
+	ActiveSound "cerberus/roam"
+	MeleeRange 35
+	Monster
+	Species "Enemies"	
+	PainChance "CalebFire", 0	
+	+BOSSDEATH
+	+FLOORCLIP
+	+BOSS
+	+NORADIUSDMG
+	+DONTMORPH
+	+NOFEAR
+	+MISSILEMORE
+	States
+	{
+	Spawn:
+		TNT1 A 0
+	SpawnLoop:
+		TNT1 A 0 A_JumpIfHealthLower(2500,"SpawnHeadless")	
+		CERB A 10 A_Look
+		Loop
+	SpawnHeadless:
+		CERX A 10 A_Look
+		Loop
+	See:
+        TNT1 A 0 A_JumpIfInventory("SawPlayer", 1, "See2")
+	    TNT1 A 0 A_GiveInventory("SawPlayer", 1)		
+	See2:
+		TNT1 A 0 A_JumpIfHealthLower(2500,"See3")
+		CERB ABCDE 4 A_Chase
+		Loop
+	See3:
+		CERX ABCDE 4 A_Chase("Melee2","Missile2")
+		Loop
+	Missile:
+		TNT1 A 0 A_Jump(128,1)
+		TNT1 A 0 A_JumpifCloser(486, "NapalmRocket_Cerberus")
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("NapalmRocket_Cerberus", 34, 15, 0) 
+		CERB H 7 A_FaceTarget
+		CERB I 7 Bright A_CustomMissile("NapalmRocket_Cerberus", 34, -15, 0) 
+		CERB J 7
+		Goto See2
+	NapalmRocket_Cerberus:	
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB F 7 A_FaceTarget
+		CERB G 7 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERB H 0 A_FaceTarget
+		CERB I 0 Bright A_CustomMissile("CerberusFire", 34, -15, 0) 
+		CERB J 7 A_FaceTarget
+		TNT1 A 0 A_JumpIfCloser(486,"NapalmRocket_Cerberus")		
+		Goto See2
+	Melee:
+		CERB F 5 A_FaceTarget
+		CERB G 5 Bright A_CustomMeleeAttack(2*random(8,18), "Hellhound/BiteHit", "HellHound/Bite")
+		CERB H 5 A_FaceTarget
+		CERB I 5 Bright A_CustomMeleeAttack(2*random(8,18), "Hellhound/BiteHit", "HellHound/Bite")
+		CERB J 5
+		Goto See2
+	Missile2:
+		TNT1 A 0 A_Jump(128,1)	
+		TNT1 A 0 A_JumpifCloser(486, "NapalmRocket_Cerberus2")
+		CERX F 7 A_FaceTarget
+		CERX E 0 A_FaceTarget
+		CERX G 7 Bright A_CustomMissile("NapalmRocket_Cerberus", 34, 15, 0) 
+		CERX E 0 A_FaceTarget
+		Goto See3
+	NapalmRocket_Cerberus2:	
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0)
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMissile("CerberusFire", 34, 15, 0) 
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_JumpIfCloser(486,"NapalmRocket_Cerberus2")
+		Goto See3
+	Melee2:
+		CERX F 4 A_FaceTarget
+		CERX G 4 Bright A_CustomMeleeAttack(2*random(8,18), "Hellhound/BiteHit", "HellHound/Bite")
+		Goto See3
+	Pain:
+		TNT1 A 0 A_JumpIfHealthLower(2500,"Fuck2")
+		CERB K 5 A_Pain
+		CERB K 5
+		Goto See2
+	Pain2:
+		CERX C 5 A_Pain
+		CERX C 5
+		Goto See3
+	Death:
+	XDeath:
+        TNT1 A 0 A_GiveToTarget("KillCount",1)	
+		CERX H 5
+		CERX I 5 A_Scream
+		CERX J 5 A_Fall
+		CERX KLMNOP 5
+		CERX Q -1 A_KillMaster	
+		Stop
+	Fuck2:
+		TNT1 A 0
+		TNT1 A 0 A_Jumpifinventory("Paincheck", 1, "Pain2")
+		TNT1 A 0 A_Changeflag("MISSILEEVENMORE", 1)
+		CERB L 0 A_GiveInventory("Paincheck")
+		CERB L 5 A_Wander
+		CERB M 5 A_PlaySound("Cerberus/PainD",CHAN_BODY)
+		CERB N 5 A_Wander
+		goto See3
+		}
+}
+
+actor Cerberus2 : Cerberus 6133
+{
+//$Category Blood Monsters
+//$Title Cerberus
+}
+
+actor NapalmRocket
+{
+  Decal Scorch
+  radius 11
+  height 8
+  speed 32
+  RENDERSTYLE ADD
+  Scale 0.5
+  damage (random(120,200))
+  deathsound "weapons/rocklx"
+  activesound "weapons/plasmaf"
+  PROJECTILE
+  +RANDOMIZE
+  +EXTREMEDEATH
+  SpawnID 207
+  +DONTSPLASH
+  DamageType "Napalm"
+  states
+  {
+  Spawn:
+	NAPP A 1
+	TNT1 A 0 A_LoopActiveSound
+  Fire:
+	TNT1 A 0 A_JumpIf(waterlevel>0,"AltFire")
+    NAPP AABBCCDDEEFF 1 bright A_SpawnItem ("BSmokeTrail",0+random(-1,1),0+random(-1,1),0,0)
+    loop
+  AltFire:
+    NAPP AABBCCDDEE 1 bright A_SpawnItemEx("SmokeTrailSmall")
+	Goto Fire
+  Death:
+    NAPP A 1 bright
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TNT1 A 0 A_SpawnItemEx("Kaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    stop
+  }
+}
+
+actor NapalmRocket2 : NapalmRocket //Don't affect the parent class as it's used by stuff other than Napalm Launcher.
+{
+Speed 45 //Accidentially gave it lower speed for test and forgot to roll it back.
+}
+
+actor NapalmRocket_Cerberus : NapalmRocket
+{
+  damage (random(100,150))
+  DamageType ""
+  -WINDTHRUST
+  +EXTREMEDEATH
+  states
+  {
+  Spawn:
+	TNT1 A 0
+	TNT1 A 0 A_LoopActiveSound
+  SpawnLoop:
+    NAPP AABBCCDDEEFF 1 bright A_SpawnItemEx("BSmokeTrail",0+random(-1,1),0+random(-1,1),0,0)
+    Loop
+  Death:
+    NAPP F 1 bright A_Explode(random(31,60)/random(2,1),132)
+    Stop
+  }
+}
+
+Actor NapalmRocket_Cerberus2 : NapalmRocket_Cerberus
+{
+}
+
+Actor NapalmRocket_Cerberus3 : NapalmRocket_Cerberus
+{
+}
+
+Actor Melee2 : NapalmRocket_Cerberus
+{
+}
+
+Actor Missile2 : NapalmRocket_Cerberus
+{
+}
+
+actor Paincheck : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor Killcount : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+actor Sawplayer : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}

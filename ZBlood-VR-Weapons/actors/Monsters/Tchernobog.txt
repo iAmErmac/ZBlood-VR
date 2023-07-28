@@ -1,0 +1,503 @@
+Actor Tchernobog : Cyberdemon 6134
+{
+//$Category Blood Monsters
+//$Title Tchernobog
+//$Color 17
+	tag "$Tchernobog"
+  obituary "The one that binds didn't like the stupid look on %o's face"
+  health 4400
+  radius 56
+  height 160
+  ProjectilePassHeight 160
+  mass 2400
+  MaxStepHeight 3560
+  MaxTargetRange 2777
+  speed 3
+  painchance 4
+  seesound ""
+SeeSound "Omni/Laugh" 
+PainSound "Omni/Pain" 
+DeathSound "Omni/Death" 
+ActiveSound "Omni/Search"
+  Scale 1.0
+  MONSTER
+  +FLOORCLIP
+  +BOSS
+  +DONTHURTSPECIES
+  +QUICKTORETALIATE
+  +MISSILEMORE
+  //+MISSILEEVENMORE
+  +DROPOFF
+  -NORADIUSDMG
+  RadiusDamageFactor .2
+  PainChance "Fire", 0
+  PainChance "Flare", 0
+  PainChance "Shock", 16
+  PainChance "Sawedoff", 2
+  Painchance "Tommy", 0
+  Painchance "Tesla", 0
+  PainChance "LifeLeech", 0
+  PainChance "SawedoffLess", 0
+  PainChance "Sawedoff2", 8
+  PainChance "Napalm", 2
+  PainChance "Dynamite", 2
+  PainChance "ZBloodBullet", 0
+  PainChance "Blast", 0
+  DamageFactor "Fire", 0
+  DamageFactor "Flare", 0.1
+  DamageFactor "Disintegrate", 1.25
+  DamageFactor "LifeLeech", 1.4
+  DamageFactor "Shock", 0.75
+  DamageFactor "Tesla", 0.85
+  DamageFactor "Dynamite", 1.25
+  DamageFactor "Napalm", 1.15
+  DamageFactor "Blast", 0.1
+  DamageFactor "Stomping", 0
+  DamageFactor "Tchern",0
+  DamageFactor "Falling",0
+    DamageFactor "Voodoo",0.05
+	  DamageFactor "CalebBullet",0.05
+  DamageType "Tchern"
+  states
+  {
+	  Spawn:
+		  TCHR A 10 A_Look
+	  loop
+	  See:
+		  TNT1 A 0 A_JumpIfTargetINLos("See2", 120)
+		  TCHR AAAAABBBBBCCCCC 1 A_Chase
+		  TNT1 A 0 A_PlaySound("TchernobogHoof")
+		  TNT1 A 0 A_SpawnItemEx("TchernoStomp")
+		  TNT1 A 0 A_Explode(1000,260)
+		  TCHR DDDDDEEEEEFFFFF 1 A_Chase
+		  TNT1 A 0 A_PlaySound("TchernobogHoof")
+		  TNT1 A 0 A_SpawnItemEx("TchernoStomp")
+		  		  TNT1 A 0 A_Explode(1000,260)
+	  loop
+	  See2:
+		  TCHR AAAAABBBBBCCCCC 1 A_Chase
+		  TNT1 A 0 A_PlaySound("TchernobogHoof")
+		  TNT1 A 0 A_SpawnItemEx("TchernoStomp")
+		  		  TNT1 A 0 A_Explode(1000,260)
+		  TNT1 A 0 ACS_ExecuteAlways(998, 0, ((random(-24,24) + angle) * 65536)/360)
+		  TCHR DDDDDEEEEEFFFFF 1 A_Chase
+		  TNT1 A 0 A_PlaySound("TchernobogHoof")
+		  TNT1 A 0 A_SpawnItemEx("TchernoStomp")
+		  		  TNT1 A 0 A_Explode(1000,260)
+		  TNT1 A 0 ACS_ExecuteAlways(998, 0, ((random(-24,24) + angle) * 65536)/360)
+	  Goto See
+	  Missile:
+		TCHR H 0 A_Jump(60,"Slow","Xslow","Fast")
+		TCHR H 5 A_Jump(90,"Maximalion")
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+	    TCHR I 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+		TCHR I 3 Bright A_FaceTarget
+			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+	    TNT1 I 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+		TCHR J 3 Bright A_FaceTarget
+			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR K 3 Bright A_FaceTarget
+			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR H 3 Bright A_FaceTarget
+			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TNT1 A 0 A_CustomMissile("TchernobogMissile2", 128, 24,2)
+		TNT1 A 0 A_CustomMissile("TchernobogMissile", 128, -24,-2)
+		TCHR I 6 Bright
+		TCHR JK 5
+		Goto See
+		Maximalion:
+		TCHR G 5
+		TCHR G 4 BRight A_FACEtARGET
+		TCHR G 4 A_FaceTarget
+			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+					    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+							    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+									    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+											    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+													    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+															    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																	    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																			    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																					    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																							    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																									    TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+																										
+																										
+				TCHR G 0 A_CustomMissile("TchernobogMaximo", 108, 0)
+		TCHR G 6 BRight
+
+		TCHR G 5 Bright
+				Fast:
+		TCHR G 5 A_FaceTarget
+		TCHR G 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TNT1 A 0 A_CustomMissile("TchernoFastMissile2", 108, 24)
+		TCHR G 6 Bright
+		TCHR G 5
+		Goto See	
+		XSlow:
+		TCHR G 5 A_FaceTarget
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR G 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TNT1 A 0 A_CustomMissile("TchernoXSlowMissile2", 118, 24)
+		TNT1 A 0 A_CustomMissile("TchernoXSlowMissile", 118, -24)
+		TCHR G 6 Bright
+		TCHR G 5
+		Goto See			
+		Slow:
+		TCHR G 5 A_FaceTarget
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR H 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR I 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+//		TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR H 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TCHR I 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("LifeLeechShot",random(108,128),24,random(-60,60))
+	//	TNT1 A 0 A_GiveToTarget("PlayerBurner", random(1,2))
+		TNT1 A 0 A_CustomMissile("TchernoSlowMissile2", 108, 24)
+		TNT1 A 0 A_CustomMissile("TchernoSlowMissile", 108, -24)
+		TCHR J 6 Bright
+		TCHR G 5
+		Goto See		
+	  Pain:
+		TNT1 A 0 A_JumpIfHealthLower(2400, "PainX")
+		TCHR L 11 A_Pain
+	  Goto See
+	  PainX:
+		TCHR L 11 A_PlaySound("TchernobogPain4")
+		TNT1 A 0 Radius_quake(2,18,0,16,0)
+	  Goto See
+	  Death:
+		TCHR MM 7 A_Scream
+				TNT1 A 0 A_GiveToTarget("TchernobogDead", 1)
+		TCHR NOPQ 7
+		TCHR Q 55 Radius_quake(9,170,0,100,0)
+		TNT1 A 0
+		TCHR RS 8 Bright
+		TNT1 A 0 A_PlaySound("TchernobogBurn",0)
+		TNT1 A 0 A_UnsetShootable
+		TCHR TUV 10 Bright
+		TCHR TUVTUV 8 Bright
+		TCHR T 0 Radius_quake(5,120,0,100,0)
+		TCHR TUVTUV 5 Bright
+		TCHR TUV 4 Bright
+		TCHR T 0 Radius_quake(3,120,0,100,0)
+		TCHR TUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUVTUV 2 Bright
+		TNT1 A 0 A_UnsetSolid
+		TCHR WXY 8 Bright
+		TCHR Y 2 A_Fadeout(0.1)
+		Wait
+  }
+}
+
+actor TchernobogMissile
+{
+  Decal Scorch
+  radius 16
+  height 9
+  XScale 0.65
+  YScale 0.55
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(80,90))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+    loop
+  Death:
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TNT1 A 1 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    stop
+  }
+}
+
+Actor TchernobogMissile2 : TchernobogMissile
+{
+	States
+	{
+		Spawn:
+			TROK AAAABBBBCCCCDDDDEEEE 1 Bright A_SpawnItem ("TfireTrail2",0+random(-1,1),0+random(-1,1),0,0)
+		Loop
+	}
+}
+
+Actor TchernoSlowMissile : TchernobogMissile
+{ 	Speed 5 }
+
+Actor TchernoSlowMissile2 : TchernobogMissile2
+{ 	Speed 5 }
+
+Actor TchernoXSlowMissile : TchernobogMissile
+{	Speed 5}
+Actor TchernoXSlowMissile2 : TchernobogMissile2
+{	Speed 5}
+
+Actor TchernoFastMissile : TchernobogMissile
+{	Speed 6}
+Actor TchernoFastMissile2 : TchernobogMissile2
+{	Speed 6}
+Actor TchernobogMaximo
+{
+  Decal Scorch
+  radius 16
+  height 9
+  XScale 0.65
+  YScale 0.55
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(90,160))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+	Loop
+  Death:
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 6 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    TNT1 A 0 A_SpawnItemEx("TchernoMaximo2")
+		TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 8 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+	stop
+  }
+}
+Actor TchernoMaximo2
+{
+  Decal Scorch
+  radius 16
+  height 9
+  Scale 1
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(90,160))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+  Death:
+	TNT1 A 0 A_spawnitem("BlueFlameFurrel")
+  	TNT1 A 0 A_PlaySound("world/barrelx")
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 8 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    TNT1 A 0 A_SpawnItemEx("TchernoMaximo3")
+	TNT1 A 0 A_PlaySound("world/barrelx")
+		TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 8 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+	stop
+  }
+}
+Actor TchernoMaximo3
+{
+  Decal Scorch
+  radius 16
+  height 9
+  Scale 1.7
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(90,160))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+  Death:
+  	TNT1 A 0 A_PlaySound("world/barrelx")
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 14 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    TNT1 A 0 A_SpawnItemEx("TchernoMaximo4")
+		TNT1 A 0 A_PlaySound("world/barrelx")
+		TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 14 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+	stop
+  }
+}
+Actor TchernoMaximo4
+{
+  Decal Scorch
+  radius 16
+  height 9
+  Scale 2.5
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(90,160))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+  Death:
+	TNT1 A 0 A_SPawnitem("BlueFlameFurrel")
+  	TNT1 A 0 A_PlaySound("world/barrelx")
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 13 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+    TNT1 A 0 A_SpawnItemEx("TchernoMaximo5")
+		TNT1 A 0 A_PlaySound("world/barrelx")
+		TROK A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 13 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+	stop
+  }
+}
+Actor TchernoMaximo5
+{
+  Decal Scorch
+  radius 16
+  height 9
+  Scale 3.4
+  speed 5
+  RENDERSTYLE ADD
+  damage (random(90,160))
+  PROJECTILE
+  +DONTSPLASH
+  DamageType Fire
+  deathsound "world/barrelx"
+  states
+  {
+  Spawn:
+    TROK AAAABBBBCCCCDDDDEEEE 1 bright A_SpawnItem ("TfireTrail",random(-2,-1),0+random(-1,1),0,0)
+  Death:
+  TNT1 A 0 A_SpawnItem("BlueFlameFurrel")
+  	TNT1 A 0 A_PlaySound("world/barrelx")
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 16 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+		TNT1 A 0 A_PlaySound("world/barrelx")
+		TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 16 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+		TNT1 A 0 A_PlaySound("world/barrelx")
+	TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 16 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+			TNT1 A 0 A_PlaySound("world/barrelx")
+		TNT1 A 0 A_SpawnItemEx("Blower",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+	TNT1 A 0 A_SpawnItemEx("Blower2",-12,0,-2,0,0,-10,0,SXF_NOCHECKPOSITION)
+    TROK A 16 A_SpawnItemEx("TchernobogKaboom",0,0,-15+random(-2,2),0,0,1,0,128)
+	TROK AAAAAAAA 2 A_FadeOut(0.15)
+	stop
+  }
+}
+
+Actor BlueFlameFurrel
+{
+	+NoGravity
+	Projectile
+	States
+	{
+	Spawn:
+	Death:
+	TNT1 AAAA 3 A_SpawnItemex("TfireTrail",random(-10,10),random(-10,10),random(-10,10),random(-10,10),random(-10,10),random(-10,10))
+	Stop
+	}
+}
+Actor PlayerBurner : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 35 // decrease by one every 35 tic
+}
+
+Actor TchernoStomp
+{
+	+DONTSPLASH
+	+PAINLESS
+	+NOTIMEFREEZE
+	+BLOODLESSIMPACT
+	+NODAMAGETHRUST
+	Radius 1
+	Height 1
+	Damage 0
+	DamageType "TchernoStomp"
+	Obituary "%o got too close to The One That Binds"
+    States
+	{
+	Spawn:
+		TNT1 A 1
+		goto Death
+	Death:
+		TNT1 A 1 A_Explode(128,96,0)
+		Stop	
+	}
+}
+
+Actor TchernobogKaboom
+{
+    radius 1
+    height 1
+    Decal Scorch
+    renderstyle Add
+	DamageType Fire
+    alpha 0.75
+    +NOGRAVITY  
+    +DONTSPLASH
+    +RANDOMIZE
+	States
+	{
+		Spawn:
+		See:
+			TNT1 A 0 Radius_quake(2,8,0,16,0)
+			TEX2 ABC 3 bright A_Explode(50,100)
+			TNT1 A 0 Radius_Quake (1,10,0,16,0)
+			TEX2 DEFG 3 bright A_Explode(50,100)
+			TEX2 HIJ 2 bright A_Explode(50,100)
+			TEX2 KL 2 bright A_Explode(50,100)
+		stop
+	}
+}

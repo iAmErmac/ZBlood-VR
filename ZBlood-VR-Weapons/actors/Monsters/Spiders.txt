@@ -1,0 +1,895 @@
+Actor BabySpiderSpawner 6140
+{
+//$Category Blood Monsters
+//$Title Baby Spider Spawner
+//$Color 17
+		//$Sprite "SKULG1"
+	tag "$BabySpiderSpawner1"
+	+ISMONSTER
+	height 0
+
+	+Noclip
+	Radius 16
+	States
+	{
+	Spawn:
+		TNT1 AA 0 A_Jumpif(151 <= (ACS_ExecuteWithResult(615)),"Death")
+		TNT1 A 0 A_Jump(250,"Red","Red","Green")
+		TNT1 A 0 A_Jump(224,"Blue","Yellow","Purple")
+		TNT1 A 0 A_Jump(256,"Cyan","Black","White")
+		TNT1 A 0 A_Print("Random Spider failed to decide.")
+		Goto Death
+	Red:
+		TNT1 A 0 A_SpawnItemEx("NewSpiderRed",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Green:
+		TNT1 A 0 A_SpawnItemEx("SpiderGreen",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Blue:
+		TNT1 A 0 A_SpawnItemEx("SpiderBlue",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Yellow:
+		TNT1 A 0 A_SpawnItemEx("SpiderYellow",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Purple:
+		TNT1 A 0 A_SpawnItemEx("SpiderPurple",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Cyan:
+		TNT1 A 0 A_SpawnItemEx("SpiderCyan",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Black:
+		TNT1 A 0 A_SpawnItemEx("SpiderBlack",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	White:
+		TNT1 A 0 A_SpawnItemEx("SpiderWhite",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death	
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor IChecked : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+
+ACTOR SpiderMother: Arachnotron
+{
+//$Category Blood Monsters
+//$Title Mother Spider
+	tag "$SpiderMother1"
+    Speed 6
+	Health 500
+	Radius 34
+	Height 40
+	+MISSILEMORE +MISSILEEVENMORE
+	+SLIDESONWALLS +DROPOFF +THRUSPECIES
+	-CANNOTPUSH
+	painchance 7
+	Obituary "%o Will now ragequit thanks to spiders"
+	PainChance "Fire", 0
+	PainChance "Flare", 0
+	PainChance "Tommy", 1
+	PainChance "Napalm", 255
+	PainChance "Dynamite", 0
+	Painchance "Pitchfork", 40
+	Painchance "Tesla", 20
+	PainChance "Shock", 255
+	PainChance "Sawedoff", 3
+	PainChance "SawedoffLess", 3
+	PainChance "Sawedoff2", 3
+	PainChance "Blast", 0
+	PainChance "LifeLeech", 0
+	PainChance "ZBloodBullet", 0
+	PainChance "Voodoo", 16
+	painsound "MotherSpiderPain"
+	DeathSound "MotherSpiderDie"
+	ActiveSound "MotherSpiderSee"
+	SeeSound "MotherSpiderSee"
+	DamageFactor "Tesla", 0.6//Lel
+	DamageFactor "Shock", 0.1//ITS ONLY A STUN ON ME
+	DamageFactor "Napalm", 0.6//Resistive
+	DamageFactor "Dynamite", 0.45//Resist like crazy
+	DamageFactor "Fire", 0.01//What are you doing!?! Up from 0.1
+	DamageFactor "Flare",0.02//Up from 0%
+	DamageFactor "ZBloodBullet",0.46
+	DamageFactor "SawedOff", 0.50//I haz 3000 hp
+	DamageFactor "Tommy", 0.53//I haz 3000 hp
+	DamageFactor "PitchFork", 1.42//KEEP THAT AWAY
+	DamageFactor "Stomping", 0
+	  DamageFactor "Voodoo",0
+	    DamageFactor "CalebBullet",0
+	Species "Spiders"
+	mass 1000 //I am very light its annoying just like in blood!
+	-CANUSEWALLS
+	PoisonDamage 40
+	RadiusDamageFactor 0.155
+	MaxStepHeight 60
+	States
+	{
+	Spawn:
+		SPDW A 0 A_jumpIfInventory("IChecked",1,2)
+		SHIA A 0 A_GiveInventory("IChecked",1)
+		SPDW A 0 ACS_ExecuteAlways(619,0)
+		SPDW A 10 A_look
+		Goto Spawn+3
+	Idle:
+		SPDW A 10 A_Look
+		Loop
+	See:
+		SPDW BBBBCCDD 3 A_ExtChase(0,0,0,0)
+		SPDW AA 3 A_Chase
+		SPDW A 0 A_Recoil(-2)
+		TNT1 A 0 A_Stop
+	//	TNT1 A 0 A_Jump(128, 2)
+	//No more lameness!
+		SPDW B 0 A_ExtChase(0,0,0,0)
+				SPDW A 0 A_Jump(25,"Jeroonemo")//Less JerooOp
+	Goto See+3
+	IAMCRAB:
+	SPDW A 0 A_FaceTarget
+	SPDW A 0 A_SetAngle(angle+90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle-90)
+	SPDW AAABBBCCCDDD 3
+		SPDW A 0 A_SetAngle(angle+90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle-90)
+	SPDW AAABBBCCCDDD 3
+		SPDW A 0 A_SetAngle(angle+90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle-90)
+	SPDW AAABBBCCCDDD 3
+		SPDW A 0 A_SetAngle(angle+90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle-90)
+	SPDW AAABBBCCCDDD 3
+	Goto See
+	IAMCRAB2:
+		SPDW  A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-4)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+		SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW  A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-4)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+		SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+			SPDW A 0 A_SetAngle(angle-90)
+	SPDW A 0 A_Recoil(-3)
+	SPDW W 0 A_SetAngle(angle+90)
+	SPDW AAABBBCCCDDD 3
+	Goto See
+	Pain.Napalm:
+	SPDF A 0 A_Recoil(-40)
+	Pain.Shock:
+	Pain.Tesla:
+	//A new stunt to escape from getting corner and catch up with escapers
+	Jeroonemo:
+	SPDF A 0 A_CposRefire
+	SPDF A 0 A_ActiveSound
+	SPDF A 0 A_SeTAngle(angle+Random(-70,70))
+	SPDF A 0 A_Recoil(-19)
+	SPDF AAA 4 ThrustThingZ(0,24,0,0)
+					SPDF AAAAA 2 A_SpawnItemEx("BabySpiderSpawner2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER)
+	SPDF AA 4
+	SPDF AAA 3 ThrustThingZ(0,10,0,0) //Less Spiders
+	Goto Missile
+	Melee:
+	SPDF A 0 A_FaceTarget
+	SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+		SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+		SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+		SPDF A 0 A_FaceTarget
+		SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+		SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+		SPDF A 0 A_Recoil(-4) //Get off me! people could camp shial's head
+	SPDW AAABBBCCCDDD 2 A_CustomMeleeAttack(8)
+	Missile:
+	SPDW A 0 A_CposRefire//Lol
+		SPDW EE 4 //Shial didn't use that for birthing stuff
+		TNT1 A 0 A_SpawnItemEx("BabySpiderSpawner2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER)
+		SPDW A 0 A_ActiveSound
+		SPDW A 0
+				TNT1 A 0 A_SpawnItemEx("BabySpiderSpawner2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER)
+//Now faster to spawn to make out for her being less lame if you arent in sight
+	Goto See
+	Pain:
+		SPDW A 2 A_Pain
+		SPDW BCD 2 A_Chase
+		SPDW C 0 A_Jump(127,"See")
+		SPDW C 0 A_Jump(80,"IAMCRAB","IAMCRAB2")
+		Goto Jeroonemo
+	Death:
+		SPDD AA 2 A_Scream
+		SPDD BB 1 A_NoBlocking
+		SPDD BB 1 // A_BossDeath
+		TNT1 A 0 A_SpawnDebris ("OrganDebris")
+		TNT1 A 0 A_GiveToTarget("EndShialBoss")
+		TNT1 A 0 A_Burst("FlyingBlood")
+		SPDD CDE 2
+		SPDD F -1
+		Stop
+				Death.Fire:
+		SPBD A 0 A_PlaySound("SpiderBurn")
+		SPBD ABEGHFECABEGHFEC 5 Bright
+	SPBD IJK 5 Bright
+	SPBD LMNLMNLMNLMNLMNLMNLMNLMNLMN 15 bright
+	SPBD O 0 A_NOBLOCKING
+	SPBD O 0 A_Scream
+	SPBD O -1
+	}
+}
+
+ACTOR SpiderMother2 : SpiderMother 6132
+{
+//$Category Blood Monsters
+//$Title Mother Spider
+//$Color 17
+}
+
+ACTOR SpiderMother3 : SpiderMother 6133
+{
+//$Category Blood Monsters
+//$Title Mother Spider
+//$Color 17
+	Health 2222
+	Radius 24
+}
+
+ACTOR SpiderRed // Delirium Spider
+{
+	tag "$SpiderRed1"
+
+  	Health 12
+	Radius 16
+	Height 8
+	Mass 10
+	Speed 3
+	fastspeed 5
+	PainChance 128
+	//PoisonDamage 1
+	Damage 1
+	Monster
+	GibHealth 50
+	+FLOORCLIP	+DONTSPLASH	+AMBUSH
+	+SLIDESONWALLS +DROPOFF -NODROPOFF
+	+SHOOTABLE -NORADIUSDMG -THRUSPECIES
+		-CANUSEWALLS //This was missing lol
+	MaxTargetRange 20
+	MeleeRange 20
+	scale .35
+	Gravity .6
+	radiusdamagefactor 1
+	translation "48:79=16:47","128:151=16:39","80:111=48:79","112:127=[96,48,32]:[32,16,0]"
+	attacksound "dsdolstb"
+	painsound "SpiderPain"
+	deathsound "SpiderDie"
+	activesound "SpiderSee"
+	Obituary "%o got bitten by a little spider"
+	DamageType "Turner"
+	Species "Spiders"
+	DamageFactor "Stomping", 0.5
+		DamageFactor "Fire", 2.5//What are you doing!?! Up from 0.1
+	DamageFactor "Flare",1.25//Up from 0%
+	  DamageFactor "Voodoo",0
+	    DamageFactor "CalebBullet",0
+	States
+	{
+	  	Spawn:
+			BSDR AB 10 A_Look
+			Loop
+	See:
+		BSDR A 20
+		BSDR AAAABBBBCCCC 1 A_Chase
+		BSDR DDDDEEEEFFFF 1 A_Chase
+		BSDR A 0 A_Jump(16,"Jump")
+		Goto See+1
+	Jump:
+		BSDR A 0 ThrustThingZ(0,random[Spiders](8,20),0,0)
+		BSDR A 0 ThrustThing(angle*256/360,random[Spiders](3,10),0,0)
+		Goto See+1
+	Melee:
+	
+	Missile:
+		BSDR G 3
+		BSDR I 6 A_CustomMeleeAttack(random(1,2),"dsdolstb","none","Turner",true)
+		BSDR I 5
+		Goto See+1
+	Pain:
+		BSDR G 3
+		BSDR G 3 A_Pain
+		Goto See+1
+	Death:
+		BSDR I 0 A_Scream
+		BSDR IJKLMNO 3 A_SpawnDebris("FlyingBlood")
+		BSDR O -1 A_SpawnDebris("FlyingBlood")
+		Stop
+	XDeath:
+		BSDR J 0 A_PlaySound("DSSLOP")
+		BSDR JKLMNO 1 A_SpawnItemEx("FlyingBlood",random[Spiders](-4,4),random[Spiders](-4,4),random[Spiders](4,16),((-health/200)*random[Spiders](random[Spiders]((-momx-momy-momz)*10,40)/10,-random[Spiders](-momx-momy-momz,4)))+momx,((-health/200)*random[Spiders](random[Spiders]((-momx-momy-momz)*10,40)/10,-random[Spiders](-momx-momy-momz,4)))+momy,((-health/200)*random[Spiders](-2,random[Spiders]((momx+momy+momz)*10,10)/10))+momz,0,SXF_NOCHECKPOSITION)
+		Stop
+	
+			Death.Fire:
+		SPBD A 0 A_PlaySound("SpiderBurn")
+		SPBD ABEGHFECABEGHFEC 5 Bright
+	SPBD IJK 5 Bright
+	SPBD LMNLMNLMNLMNLMNLMNLMNLMNLMN 15 bright
+	SPBD O 0 A_NOBLOCKING
+	SPBD O 0 A_Scream
+	SPBD O -1
+}}
+
+ACTOR NewSpiderRed 6161 // Delirium Spider
+{
+//$Category Blood Monsters
+//$Title Red Spider
+	tag "$SpiderRed1"
+
+  	Health 18
+	Radius 16
+	Height 8
+	Mass 10
+	Speed 4
+	fastspeed 8
+	PainChance 128
+	//PoisonDamage 1
+	Damage (Random(5,10))
+	Monster
+	GibHealth 50
+	+FLOORCLIP	+DONTSPLASH	+AMBUSH
+	+SLIDESONWALLS +DROPOFF -NODROPOFF
+	+SHOOTABLE -NORADIUSDMG +THRUSPECIES
+		-CANUSEWALLS
+		+CANNOTPUSH
+	MaxTargetRange 30
+	MeleeRange 30
+	scale .35
+	Gravity .45
+	radiusdamagefactor 1
+	translation "80:95 = 220:223","96:111 = [255,128,0]:[0,0,0]"
+	attacksound "dsdolstb"
+	painsound "SpiderPain"
+	deathsound "SpiderDie"
+	activesound "SpiderSee"
+	Obituary "Little spiders swarmed %o"
+	DamageType "Turner"
+	Species "Spiders"
+			DamageFactor "Fire", 2.5//What are you doing!?! Up from 0.1
+	DamageFactor "Stomping", 0.4
+	  DamageFactor "Voodoo",0
+	    DamageFactor "CalebBullet",0
+	States
+	{
+	  	Spawn:
+			SHIA AC 10 A_Look
+			Loop
+	See:
+		SHIA A 0 A_jumpIfInventory("IwasCounted",1,2)
+		SHIA A 0 A_GiveInventory("IwasCounted",1)
+		SHIA A 0 ACS_EXecuteAlways(613)
+	//	SHIA A 20 A_JumpIfInTargetInventory("HoldingSpray",1,"RUN")
+		SHIA AAAAAAACCCCCCC 1 A_Chase
+		SHIA DDDDDDDEEEEEEE 1 A_Chase
+		SHIA A 0 A_Jump(16,"Bounce")
+		Goto See+4
+	RUN:
+	SHIA A 0 A_PlaySound("SpiderBurn")
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+
+	SHIA A 0 A_PlaySound("SpiderBurn")
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+			SHIA BBB 1 ThrustThingZ(0,random[Spiders](11,20),0,0)
+	SHIA A 0 ThrustThing(angle*256/360,random[Spiders](5,8),0,0)
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+
+		SHIA A 0 A_Recoil(-2)
+				SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+						SHIA A 0 A_Recoil(-2)
+						SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+								SHIA A 0 A_Recoil(-2)
+								SHIA AAACCCDDDEEEFFFAAACCCDDDEEEFFF 1 A_Wander
+
+
+
+		Goto See+3
+	Bounce:
+	SHIA A 0 A_Setangle(angle+Random(-90,90))
+	SHIA A 0 A_Recoil(-8)
+		SHIA BBB 1 ThrustThingZ(0,random[Spiders](11,20),0,0)
+		SHIA A 4 ThrustThing(angle*256/360,random[Spiders](5,8),0,0)
+		Goto See+4
+	Melee:
+	SHIA A 0 A_Jump(90,"JumpAndMunch")
+	SHIA A 0 A_Recoil(-1)
+	SHIA A 0 ThrustThing(angle*256/360,random[Spiders](3,8),0,0)
+	Missile:
+		SHIA A 3
+		SHIA G 6 A_CustomMeleeAttack(random(1,2),"dsdolstb","none","Turner",true)
+		SHIA A 6
+		SHIA A 0 A_jumpIfInTargetInventory("HoldingSpray",1,"RUN")
+		Goto See+4
+	JumpAndMunch:
+	SHIA BBB 1 ThrustThingZ(0,random[Spiders](11,20),0,0)
+	SHIA A 0 ThrustThing(angle*256/360,random[Spiders](5,8),0,0)
+	SHIA A 6 A_CustomMeleeAttack(random(1,2),"dsdolstb","none","Turner",true)
+	Goto See+4
+	Pain:
+		SHIA A 3
+		SHIA A 3 A_Pain
+		Goto See+4
+	Death:
+	SHIA H 0 ACS_ExecuteAlways(614)
+		SHIA H 0 A_Scream
+		SHIA IJ 3 A_SpawnDebris("FlyingBlood")
+		SHIA  IJKLM 3  A_Fall
+		SHIA M -1 A_SpawnDebris("FlyingBlood")
+		Stop
+	XDeath:
+		SHIA H 0 ACS_ExecuteAlways(614)
+		SHIA H 0 A_PlaySound("DSSLOP")
+		SHIA IJ 1 A_SpawnItemEx("FlyingBlood",random[Spiders](-4,4),random[Spiders](-4,4),random[Spiders](4,16),((-health/200)*random[Spiders](random[Spiders]((-momx-momy-momz)*10,40)/10,-random[Spiders](-momx-momy-momz,4)))+momx,((-health/200)*random[Spiders](random[Spiders]((-momx-momy-momz)*10,40)/10,-random[Spiders](-momx-momy-momz,4)))+momy,((-health/200)*random[Spiders](-2,random[Spiders]((momx+momy+momz)*10,10)/10))+momz,0,SXF_NOCHECKPOSITION)
+		SHIA KLM 3  A_Fall
+		Stop
+		Burn:
+		Death.Fire:
+			SHIA H 0 ACS_ExecuteAlways(614)
+		SPBD A 0 A_PlaySound("SpiderBurn")
+		SPBD ABEGHFECABEGHFEC 5 Bright
+	SPBD IJK 5 Bright
+	SPBD LMNLMNLMNLMNLMNLMNLMNLMNLMN 15 bright
+	SPBD O 0 A_NOBLOCKING
+	SPBD O 0 A_Scream
+	SPBD O -1
+	}
+}
+
+Actor BabySpiderSpawner2
+{
+    	//$Category "ZBlood Enemies"
+		//$Sprite "SKULG1"
+	tag "$BabySpiderSpawner1"
+	+ISMONSTER
+	-CountKill
+	height 0
+
+	+Noclip
+	Radius 16
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_Jumpif(151 <= (ACS_ExecuteWithResult(615)),"Death")
+		TNT1 A 0 A_Jump(180,"Red")//TOO MANY GREEN
+		TNT1 A 0 A_Jump(230,"Green","SpiderClimber")
+		TNT1 A 0 A_Jump(224,"Blue","Yellow","Purple")
+		TNT1 A 0 A_Jump(256,"Cyan","Black","White")
+		TNT1 A 0 A_Print("Random Spider failed to decide.")
+		Goto Death
+	Red:
+		TNT1 A 0 A_SpawnItemEx("NewRedSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	SpiderClimber:
+			TNT1 A 0 A_SpawnItemEx("SpiderClimber",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+	Goto Death
+	Green:
+		TNT1 A 0 A_SpawnItemEx("GreenSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Blue:
+		TNT1 A 0 A_SpawnItemEx("BlueSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Yellow:
+		TNT1 A 0 A_SpawnItemEx("YellowSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Purple:
+		TNT1 A 0 A_SpawnItemEx("PurpleSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Cyan:
+		TNT1 A 0 A_SpawnItemEx("CyanSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	Black:
+		TNT1 A 0 A_SpawnItemEx("BlackSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death
+	White:
+		TNT1 A 0 A_SpawnItemEx("WhiteSpider",0,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		Goto Death	
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor IwasCounted : Inventory
+{
+	Inventory.amount 1
+	Inventory.maxAmount 1
+}
+ACTOR NewRedSpider : NewSpiderRed 
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			SHIA AAAACCCC 1 A_Chase
+			SHIA DDDDEEEE 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+Actor SpiderClimber : NewSpiderRed {-ThruSpecies Health 25}
+ACTOR SpiderGreen : NewSpiderRed 6191 // Blinding Spider
+{
+//$Category Blood Monsters
+//$Title Green Spider
+	tag "$SpiderGreen1"
+	Health 38
+	Scale 0.42
+	Speed 5
+	fastspeed 9
+	PoisonDamage 6
+	gravity .5
+	Damage (4)
+//	Species "GreenBlockers"
+	DamageFactor "Stomping", 0.2
+	DamageType "BlindingPoison"
+			DamageFactor "Fire", 1.35
+			  DamageFactor "Voodoo",0
+			    DamageFactor "CalebBullet",0
+	Obituary "A green spider bit %o's sorry ass"
+	+ThruSpecies
+	translation "64:79 = 115:127","232:235 = 160:163","236:239 = 123:127","144:151 = 119:127","13:15=124:126"
+	States
+	{
+		Spawn:
+			SHIA AA 10 A_Look
+			Loop
+		See:
+				SHIA A 0 A_jumpIfInventory("IwasCounted",1,2)
+		SHIA A 0 A_GiveInventory("IwasCounted",1)
+		SHIA A 0 ACS_EXecuteAlways(613)
+			SHIA A 5
+			SHIA AAAAACCCCC 1 A_Chase
+			SHIA DDDDDEEEEE 1 A_Chase
+			SHIA A 0 A_Jump(64,"Bounce")
+			Goto See+4
+		Melee:
+			SHIA A 3 A_Recoil(-1)
+			SHIA G 7 A_CustomMeleeAttack(random(2,3),"dsdolstb","none","BlindingPoison",true)
+			SHIA A 7
+			Goto See+4
+	}
+}
+
+ACTOR GreenSpider : SpiderGreen
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			SHIA AAAACCCC 1 A_Chase
+			SHIA DDDDEEEEFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderBlue : SpiderRed 6192 // Poisonous Spider that hunts prey
+{
+//$Category Blood Monsters
+//$Title Blue Spider
+	tag "$SpiderBlue1"
+
+	speed 13
+	fastspeed 17
+	PoisonDamage 16
+	Damage 2
+	DamageFactor "Stomping", 0
+	  DamageFactor "Voodoo",0
+	Obituary "%o hates blue spiders"
+	translation "48:79=192:207","128:151=[48,64,160]:[16,16,64]","80:111=[32,32,128]:[0,0,32]","112:127=[96,96,192]:[16,16,64]"
+	States
+	{
+	Melee:
+		BSDR G 3
+		BSDR I 7 A_CustomMeleeAttack(1,"dsdolstb","none")
+		BSDR I 5
+		Goto See+1
+	}
+}
+
+ACTOR BlueSpider : SpiderBlue 
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderYellow : SpiderGreen 6164 // Another poisonous spider, although far more dangerous
+{
+//$Category Blood Monsters
+//$Title Yellow Spider
+	tag "$SpiderYellow1"
+	Health 100
+	DamageType "PoisonCloud"
+	Obituary "%o was killed by yellow spiders"
+	translation "48:79=160:167","128:151=[160,160,64]:[64,64,32]","80:111=[128,128,32]:[32,32,0]","112:127=[192,192,96]:[64,64,12]"
+	States
+	{
+	Melee:
+		BSDR G 4
+		BSDR I 6 A_CustomMeleeAttack(random[Spiders](5,35),"dsdolstb","none")
+		BSDR I 8
+		Goto See+1
+	}
+}
+
+ACTOR YellowSpider : SpiderYellow
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderPurple : SpiderRed 6165 // A weaker but more annoying spider
+{
+//$Category Blood Monsters
+//$Title Purple Spider
+	tag "$SpiderPurple1"
+	Speed 4
+	Health 49
+	PoisonDamage 3
+	Damage (1)
+	Height 10
+	Radius 13
+	Scale 0.28
+	Obituary "Royal purple spiders purged %o"
+	translation "48:79=250:254","128:151=[150,50,150]:[50,0,50]","80:111=[160,32,160]:[32,0,32]","112:127=[96,32,128]:[32,8,48]"
+	States
+	{
+	Melee:
+		BSDR G 2
+		BSDR II 1 A_CustomMeleeAttack((3),"dsdolstb","none")
+		BSDR A 2
+		Goto See+1
+	}
+}
+
+ACTOR PurpleSpider : SpiderPurple
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderCyan : SpiderGreen 6166 // Numbness spider, you move slower
+{
+//$Category Blood Monsters
+//$Title Cyan Spider
+	tag "$SpiderCyan1"
+	Health 40
+	speed 12
+	fastspeed 30
+	PoisonDamage 0
+	Damage 1
+	DamageType "Numbness"
+	Obituary "%o lost all his stamina to cyan spiders"
+	translation "48:79=[0,255,255]:[32,64,64]","128:151=[50,150,150]:[0,0,0]","80:111=[32,160,160]:[0,32,32]","112:127=[64,192,192]:[16,64,48]"
+	States
+	{
+	Melee:
+		BSDR G 2
+		BSDR II 1 A_CustomMeleeAttack((3),"dsdolstb","none","Numbness")
+		BSDR A 6
+		Goto See+1
+	}
+}
+
+ACTOR CyanSpider : SpiderCyan 
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderBlack : SpiderGreen 6167 // Causes you to take more damage
+{
+//$Category Blood Monsters
+//$Title Black Spider
+	tag "$SpiderBlack1"
+	Health 180
+	gravity .3
+	PoisonDamage 15
+	Damage 1
+	DamageType "Fragility"
+	Obituary "%o was a great feast to spiders"
+	translation "48:79=[16,16,16]:[0,0,0]","128:151=[48,48,48]:[0,0,0]","80:111=[64,64,64]:[16,16,16]","112:127=[32,32,32]:[0,0,0]"
+	States
+	{
+	Melee:
+		BSDR G 2
+		BSDR II 1 A_CustomMeleeAttack((3),"dsdolstb","none","Fragility")
+		BSDR A 6
+		Goto See+1
+	}
+}
+
+ACTOR BlackSpider : SpiderBlack
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+ACTOR SpiderWhite : SpiderRed 6168 // A mediocre version of spider mother
+{
+//$Category Blood Monsters
+//$Title White Spider
+	tag "$SpiderWhite1"
+
+	scale .5
+	PoisonDamage 0
+	Damage 0
+	health 115
+	MeleeRange 128
+	MaxTargetRange 1024
+	-MISSILEMORE -MISSILEEVENMORE +FRIGHTENED
+	translation "48:79=[255,255,255]:[128,128,128]","128:151=80:95","80:111=88:103","112:127=[192,192,192]:[32,32,40]"
+	States
+	{
+		Spawn:
+			BSDR AB 10 A_Look
+			Loop
+	Missile:
+		BSDR I 2
+		TNT1 A 0 A_Jump(240,"Red","Green")
+		Goto See
+	Red:
+		BSDR I 6 A_SpawnItemEx("SpiderRed",16,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		BSDR A 4 
+		Goto See+1
+	Green:
+		BSDR I 4 A_SpawnItemEx("GreenSpider",16,0,0,0,0,0,random[Spiders](0,256),SXF_NOCHECKPOSITION)
+		BSDR A 6
+		Goto See+1
+	}
+}
+
+ACTOR WhiteSpider : SpiderWhite 
+{ 
+	-SOLID
+	States
+	{
+		Spawn:
+			BSDR AAAABBBBCCCC 1 A_Chase
+			BSDR DDDDEEEEFFFF 1 A_Chase
+			TNT1 A 0 A_SetSolid
+		Goto See
+	}
+}
+
+actor Cacoon 9901
+{ 
+//$Category Blood Monsters
+//$Title Spider Cacoon
+  +SOLID
+  states
+  {
+  Spawn:
+    CHCO A -1
+    stop
+  Death:
+    CHCO A 1 A_XScream
+    CHCO AAAAA 0 A_SpawnDebris ("OrganDebris")
+    CHCO AAAAAAAAA 0 A_SpawnDebris("FlyingBlood")
+    stop
+  }
+}

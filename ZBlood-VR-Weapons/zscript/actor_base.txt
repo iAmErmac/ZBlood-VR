@@ -305,10 +305,45 @@ Class BurntMonsterCorpse : Actor
 	}
 }
 
-Class MonsterBurnHelper : EventHandler
+Class BloodMonsterHelper : EventHandler
 {
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		_isTitlemap = CheckTitlemap();
+		if (_isTitlemap) return;
+		
+		if(!Cvar.FindCvar("zblood_monsters").GetBool()) return;
+		
+		if(e.Replacee is "DeadZombieMan") 			e.Replacement = 'DeadACultist';
+		if(e.Replacee is "ZombieMan") 				e.Replacement = 'GreenCultist';
+		if(e.Replacee is "DeadShotgunGuy") 			e.Replacement = 'DeadCultist';
+		if(e.Replacee is "ShotgunGuy") 				e.Replacement = 'BrownCultist';
+		if(e.Replacee is "ChaingunGuy") 			e.Replacement = 'GreyCultist';
+		if(e.Replacee is "DoomImp") 				e.Replacement = 'BloodGargoyle3';
+		if(e.Replacee is "DeadDemon") 				e.Replacement = 'DeadZombie';
+		if(e.Replacee is "Demon") 					e.Replacement = 'BloodZombie';
+		if(e.Replacee is "Spectre") 				e.Replacement = 'HammerHaunt';
+		if(e.Replacee is "LostSoul") 				e.Replacement = 'BloodRat';
+		if(e.Replacee is "Cacodemon") 				e.Replacement = 'GillBeast';
+		if(e.Replacee is "DeadCacodemon") 			e.Replacement = 'DeadGillBeast';
+		if(e.Replacee is "HellKnight") 				e.Replacement = 'HellHound';
+		if(e.Replacee is "Revenant") 				e.Replacement = 'BloatedButcher';
+		if(e.Replacee is "PainElemental") 			e.Replacement = 'Phantasm';
+		if(e.Replacee is "Fatso") 					e.Replacement = 'MancubusReplacer';
+		if(e.Replacee is "BloodyTwitch") 			e.Replacement = 'SpiderMummy';
+		if(e.Replacee is "Arachnotron") 			e.Replacement = 'SpiderMother';
+		if(e.Replacee is "BaronOfHell") 			e.Replacement = 'BloodGargoyle';
+		if(e.Replacee is "ArchVile") 				e.Replacement = 'DangerousWorld';
+		if(e.Replacee is "Cyberdemon") 				e.Replacement = 'Cerberus';
+		if(e.Replacee is "SpiderMasterMind") 		e.Replacement = 'Tchernobog';
+		if(e.Replacee is "WolfensteinSS") 			e.Replacement = 'DangerousWorld';
+	}
+	
 	override void WorldThingDied(WorldEvent e)
 	{
+		_isTitlemap = CheckTitlemap();
+		if (_isTitlemap) return;
+		
 		let dead_thing = e.thing;
 		
 		if(dead_thing.FindInventory("MonsterBurnEffect"))
@@ -329,4 +364,12 @@ Class MonsterBurnHelper : EventHandler
 			//mo.speed *= frandom(1.2, 1.8);
 		}
 	}
+
+	private static bool CheckTitlemap()
+	{
+		bool isTitlemap = (level.mapname == "TITLEMAP");
+		return isTitlemap;
+	}
+	
+	private bool _isTitlemap;
 }

@@ -1,0 +1,132 @@
+Actor BloodRatSpawner : Arachnotron replaces DeadLostSoul // compatibility
+{
+	States
+	{
+		Spawn:
+			TNT1 AAAAA 1 A_SpawnItem("BloodRat")
+		Stop
+	}
+}
+
+ACTOR BloodRat : Arachnotron 6144
+{
+//$Category Blood Monsters
+//$Title Rat
+//$Color 17
+	tag "$Rat1"
+
+	Health 10
+	Radius 8
+	Height 8
+	Mass 3
+	Speed 6
+	FastSpeed 14
+	scale .34
+	MeleeDamage 2
+	MeleeRange 22
+	MaxTargetRange 24
+	MaxStepHeight 9
+	Monster
+	+FLOORCLIP
+	-CANUSEWALLS
+	-CountKill
+	Obituary "%o was plagued by a little cute mouse"
+	SeeSound "Ratsee"
+	PainSound "Ratpain"
+	DeathSound "Ratdie"
+	ActiveSound "Ratsee"
+	Obituary "$Rat2"
+	PainChance Fire, 0
+	PainChance Disintegrate, 0
+	PainChance "LifeLeech", 0
+	DamageFactor "Stomping", 0.5
+	DamageFactor "Tommy", 1.15
+	DamageFactor "Fire",2
+	  DamageFactor "Voodoo",0
+	    DamageFactor "CalebBullet",0
+	States
+	{
+	  	Spawn:
+			RATW A 1 A_Look
+			Loop
+		See: // We check so rat doesnt really act like a retard moving at a wall...
+			TNT1 A 0 A_JumpIfTargetInLos("See2", 160)
+			RATW A 4 A_Chase
+			TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0) 
+			RATW B 4 A_Wander
+			TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0) 
+			RATW C 4 A_Wander
+			TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0) 
+			RATW D 4 A_Chase
+			TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0) 
+			TNT1 A 0 A_PlaySound("Ratsee",CHAN_BODY)
+			TNT1 A 0 A_JumpIfTargetInLos(2, 160)
+			TNT1 A 0
+			Loop
+		See2:
+			BSPI A 0 A_JumpIfInTargetInventory("PowerInvisibility",1,"Wander")
+			BSPI A 0 A_GiveInventory("Fighting", 1)
+			RATW AAAAAABBBBB 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI A 0 A_TakeInventory("Fighting", 1)
+			RATW CCCCCC 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW DDDD 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW AAAAA 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW BBBB 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW CCCCC 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW DDDDD 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW AAAAAA 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW BBBB 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW CCCCC 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI C 0 A_Chase("Melee","Missile",CHF_DONTMOVE)
+			RATW DDDD 1 A_GiveInventory("A_ChaseXMelee",1)
+			TNT1 A 0 A_PlaySound("Ratsee",CHAN_BODY)
+			Goto See
+		Wander:
+			BSPI A 0 A_GiveInventory("Afraid", 1)
+			RATW AAAAAABBBBBCCCCCCDDDDAAAAABBBBCCCCCDDDDDAAAAAABBBBCCCCCDDDD 1 A_GiveInventory("A_ChaseXMelee",1)
+			BSPI A 0 A_TakeInventory("Afraid", 1)
+			Goto See
+		Missile:
+		Melee:
+			RATW A 5  A_FaceTarget
+			// these are for reflection power
+//			POSS F 0 A_JumpIfInTargetInventory("PowerInvulnerability",1,2)
+//			POSS F 0 A_Jump(256,4)
+//			RATW B 5  A_CustomMeleeAttack(random(4,9),"dsdolstb","none")
+//			HEAD G 0 DamageThing(2)
+//			POSS F 0 A_Jump(256,2)
+			TNT1 A 0 A_Playsound("RatBite")
+			RATW B 5  A_CustomMeleeAttack(random(4,9),"","none")
+			RATW C 5
+			Goto See
+		Pain:
+			RATW D 3
+			RATW D 3 A_Playsound("Ratdie")
+			Goto See
+		XDeath:
+		Death:
+			TNT1 A 0 A_Jump(224, 2)	
+			RATW E 5 A_Playsound("Ratdie")
+			RATW F 5 A_Fall
+			RATW GHI 5
+			RATW J -1
+			Stop
+		Burn:
+		Death.SpecialFire:
+		    RABU ABCDEONMABCDEONMABCDEONM 4 BRIGHT
+			RABU  F 8 Bright A_Playsound("Ratdie")
+			RABU GH 7 Bright A_Fall
+			RABU IJKIJKIJKIJK 12 Bright
+			RABU L 64 Bright
+			RABU L -1
+			Stop
+	}
+}

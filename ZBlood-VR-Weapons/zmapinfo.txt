@@ -1,7 +1,7 @@
 
 gameinfo
 {
-	AddEventHandlers = "DeadManDropEvent", "MonsterBurnHelper", "BloodOffhandWeaponHandler", "BulletZHandler", "HapticHelper"
+	AddEventHandlers = "DeadManDropEvent", "BloodMonsterHelper", "BloodOffhandWeaponHandler", "BulletZHandler", "HapticHelper"
 }
 
 DamageType DummyDamage

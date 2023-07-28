@@ -1,0 +1,50 @@
+Actor NoBSItem1 Replaces Healthbonus
+{
+	States
+	{
+		Spawn:
+			TNT1 A 1
+		Stop
+	}
+}
+
+Actor NoBSClip Replaces Clip
+{
+	States
+	{
+		Spawn:
+			TNT1 A 1
+		Stop
+	}
+}
+
+Actor NoBSItem2 replaces Armorbonus
+{
+	States
+	{
+		Spawn:
+			TNT1 A 1
+		Stop
+	}
+}
+
+Actor NoBSItem3 replaces Stimpack
+{
+	States
+	{
+		Spawn:
+			TNT1 A 1
+		Stop
+	}
+}
+/*
+Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on vile
+{
+	States
+	{
+		Spawn:
+			TNT1 A 1
+		Stop
+	}
+}
+*/

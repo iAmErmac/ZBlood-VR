@@ -1,0 +1,750 @@
+actor HeadBlood
+{
+ Decal  BloodSmear
+ Radius 1
+ Height 1
+ PROJECTILE
+ Damage 0
+ +RANDOMIZE
+ -NOGRAVITY
+ +DONTSPLASH
+ +FLOORCLIP
+ -SOLID
+ +LOWGRAVITY
+ +CLIENTSIDEONLY
+ +CannotPush
+ 	Species "Organs"
+	+ThruSpecies
+ Scale 0.5
+ Speed 3
+   States
+   {
+  Spawn:
+  TNT1 A 0 A_JumpIf(waterlevel > 2, "Death")
+  BLUD J 0 A_Jump (231,1,2,3,4,5,6,7,8,9,10)
+  BLUD J 4 A_Jump (127, 1)
+  BLUD K 4 A_SpawnItem("BloodTrail")
+  BLUD L 4 A_Jump (127, 1)
+  BLUD M 4 A_SpawnItem("BloodTrail")
+  BLUD N 4 A_Jump (127, 1)
+  BLUD X 4 A_SpawnItem("BloodTrail")
+  BLUD Y 4 A_Jump (127, 1)
+  BLUD Z 4 A_SpawnItem("BloodTrail")
+  BLUD "[" 4 A_Jump (127, 1)
+  BLUD "\" 4 A_SpawnItem("BloodTrail")
+  BLUD J 4 A_Jump (127, 1)
+  BLUD K 4 A_SpawnItem("BloodTrail")
+  BLUD L 4 A_Jump (127, 1)
+  BLUD M 4 A_SpawnItem("BloodTrail")
+  BLUD N 4 A_Jump (127, 1)
+  BLUD X 4 A_SpawnItem("BloodTrail")
+  BLUD Y 4 A_Jump (127, 1)
+  BLUD Z 4 A_SpawnItem("BloodTrail")
+  BLUD "[" 4 A_Jump (127, 1)
+  BLUD "\" 4 A_SpawnItem("BloodTrail")
+  BLUD J 4 A_Jump (127, 1)
+  BLUD K 4 A_SpawnItem("BloodTrail")
+  BLUD L 4 A_Jump (127, 1)
+  BLUD M 4 A_SpawnItem("BloodTrail")
+  BLUD N 4 A_Jump (127, 1)
+  BLUD X 4 A_SpawnItem("BloodTrail")
+  BLUD Y 4 A_Jump (127, 1)
+  BLUD Z 4 A_SpawnItem("BloodTrail")
+  BLUD "[" 4 A_Jump (127, 1)
+  BLUD "\" 4 A_SpawnItem("BloodTrail")
+  BLUD J 4 A_Jump (127, 1)
+  BLUD K 4 A_SpawnItem("BloodTrail")
+  BLUD L 4 A_Jump (127, 1)
+  BLUD M 4 A_SpawnItem("BloodTrail")
+  BLUD N 4 A_Jump (127, 1)
+  BLUD X 4 A_SpawnItem("BloodTrail")
+  BLUD Y 4 A_Jump (127, 1)
+  BLUD Z 4 A_SpawnItem("BloodTrail")
+  BLUD "[" 4 A_Jump (127, 1)
+  BLUD "\" 4 A_SpawnItem("BloodTrail")
+  Stop
+  Death:
+  BLUD L 1
+  Stop
+   }
+}
+
+actor ZombieHead
+{ 
+  health 5
+  radius 8
+  height 16
+  Speed 10
+  scale 0.5
+  mass 1
+  PROJECTILE
+  Damage 0
+  +RANDOMIZE
+  -NOGRAVITY
+  +DOOMBOUNCE
+  +PUSHABLE
+  +BOUNCEONACTORS
+  +CANBOUNCEWATER
+  +FLOORCLIP
+  seesound "DSHEDBON"
+  states
+  {
+  Spawn:
+		ZHED A 0 A_Jump (248,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
+		ZHED A 3 A_CustomMissile("HeadBlood", 10, 0, 0, 2, 45)
+		ZHED B 3 A_CustomMissile("HeadBlood", 10, 0, 10, 2, 45)
+		ZHED C 3 A_CustomMissile("HeadBlood", 10, 0, 20, 2, 45)
+		ZHED D 3 A_CustomMissile("HeadBlood", 10, 0, 30, 2, 45)
+		ZHED E 3 A_CustomMissile("HeadBlood", 10, 0, 40, 2, 45)
+		ZHED F 3 A_CustomMissile("HeadBlood", 10, 0, 50, 2, 45)
+		ZHED G 3 A_CustomMissile("HeadBlood", 10, 0, 60, 2, 45)
+		ZHED H 3 A_CustomMissile("HeadBlood", 10, 0, 70, 2, 45)
+		ZHED I 3 A_CustomMissile("HeadBlood", 10, 0, 80, 2, 45)
+		ZHED J 3 A_CustomMissile("HeadBlood", 10, 0, 90, 2, 45)
+		ZHED K 3 A_CustomMissile("HeadBlood", 10, 0, 100, 2, 45)
+		ZHED L 3 A_CustomMissile("HeadBlood", 10, 0, 110, 2, 45)
+		ZHED M 3 A_CustomMissile("HeadBlood", 10, 0, 120, 2, 45)
+		ZHED N 3 A_CustomMissile("HeadBlood", 10, 0, 130, 2, 45)
+		ZHED O 3 A_CustomMissile("HeadBlood", 10, 0, 140, 2, 45)
+		ZHED P 3 A_CustomMissile("HeadBlood", 10, 0, 150, 2, 45)
+		ZHED A 3 A_CustomMissile("HeadBlood", 10, 0, 160, 2, 45)
+		ZHED B 3 A_CustomMissile("HeadBlood", 10, 0, 170, 2, 45)
+		ZHED C 3 A_CustomMissile("HeadBlood", 10, 0, 180, 2, 45)
+		ZHED D 3 A_CustomMissile("HeadBlood", 10, 0, 190, 2, 45)
+		ZHED E 3 A_CustomMissile("HeadBlood", 10, 0, 200, 2, 45)
+		ZHED F 3 A_CustomMissile("HeadBlood", 10, 0, 210, 2, 45)
+		ZHED G 3 A_CustomMissile("HeadBlood", 10, 0, 220, 2, 45)
+		ZHED H 3 A_CustomMissile("HeadBlood", 10, 0, 230, 2, 45)
+		ZHED I 3 A_CustomMissile("HeadBlood", 10, 0, 240, 2, 45)
+		ZHED J 3 A_CustomMissile("HeadBlood", 10, 0, 250, 2, 45)
+		ZHED K 3 A_CustomMissile("HeadBlood", 10, 0, 260, 2, 45)
+		ZHED L 3 A_CustomMissile("HeadBlood", 10, 0, 270, 2, 45)
+		ZHED M 3 A_CustomMissile("HeadBlood", 10, 0, 280, 2, 45)
+		ZHED N 3 A_CustomMissile("HeadBlood", 10, 0, 290, 2, 45)
+		ZHED O 3 A_CustomMissile("HeadBlood", 10, 0, 300, 2, 45)
+		ZHED P 3 A_CustomMissile("HeadBlood", 10, 0, 310, 2, 45)
+		TNT1 A 0 A_JumpIf(waterlevel > 2, "Death")
+    goto Spawn+1
+  Death:
+    ZHED A 1
+    ZHED A 0 A_Jump (240,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+    ZHED B -1 //No A.. that is only for kickable!
+    stop
+    ZHED B -1
+    stop
+    ZHED C -1
+    stop
+    ZHED D -1
+    stop
+    ZHED E -1
+    stop
+    ZHED F -1
+    stop
+    ZHED G -1
+    stop
+    ZHED H -1
+    stop
+    ZHED I -1
+    stop
+    ZHED J -1
+    stop
+    ZHED K -1
+    stop
+    ZHED L -1
+    stop
+    ZHED M -1
+    stop
+    ZHED N -1
+    stop
+    ZHED O -1
+    stop
+    ZHED P -1
+    stop
+  }
+}
+
+Actor KickableFlying : ZombieHead
+{
+	Damage(5)
+	Gravity 0.77
+	BounceCount 8
+	DamageType "StunningHead"
+	MONSTER
+	-CountKill
+	+NoExtremeDeath
+	-Solid
+	+ThruSpecies
+	Species "PlayerThrough"
+	States
+	{
+		ZHED A 3 A_ChangeFlag("ThruSpecies",0)
+		ZHED A 0 A_Jump (248,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
+		ZHED A 3 A_CustomMissile("HeadBlood", 10, 0, 0, 2, 45)
+		ZHED B 3 A_CustomMissile("HeadBlood", 10, 0, 10, 2, 45)
+		ZHED C 3 
+		ZHED D 3 A_CustomMissile("HeadBlood", 10, 0, 30, 2, 45)
+		ZHED E 3 
+		ZHED F 3 A_CustomMissile("HeadBlood", 10, 0, 50, 2, 45)
+			
+		ZHED G 3 A_CustomMissile("HeadBlood", 10, 0, 60, 2, 45)
+		ZHED H 3 
+		ZHED I 3 A_CustomMissile("HeadBlood", 10, 0, 80, 2, 45)
+			ZHED AA 5 A_SetSolid
+		ZHED J 3 A_CustomMissile("HeadBlood", 10, 0, 90, 2, 45)
+		ZHED K 3 
+		ZHED L 3 A_CustomMissile("HeadBlood", 10, 0, 110, 2, 45)
+		ZHED M 3 A_CustomMissile("HeadBlood", 10, 0, 120, 2, 45)
+		ZHED N 3 A_CustomMissile("HeadBlood", 10, 0, 130, 2, 45)
+		ZHED O 3 
+		ZHED P 3 A_CustomMissile("HeadBlood", 10, 0, 150, 2, 45)
+		ZHED A 3 A_CustomMissile("HeadBlood", 10, 0, 160, 2, 45)
+		ZHED B 3 A_CustomMissile("HeadBlood", 10, 0, 170, 2, 45)
+		ZHED C 3 A_CustomMissile("HeadBlood", 10, 0, 180, 2, 45)
+		ZHED D 3 A_CustomMissile("HeadBlood", 10, 0, 190, 2, 45)
+		ZHED E 3 
+		ZHED F 3 A_CustomMissile("HeadBlood", 10, 0, 210, 2, 45)
+		ZHED G 3 A_CustomMissile("HeadBlood", 10, 0, 220, 2, 45)
+		ZHED H 3 A_CustomMissile("HeadBlood", 10, 0, 230, 2, 45)
+		ZHED I 3 A_CustomMissile("HeadBlood", 10, 0, 240, 2, 45)
+		ZHED J 3 A_CustomMissile("HeadBlood", 10, 0, 250, 2, 45)
+		ZHED K 3 
+		ZHED L 3 A_CustomMissile("HeadBlood", 10, 0, 270, 2, 45)
+		ZHED M 3 A_CustomMissile("HeadBlood", 10, 0, 280, 2, 45)
+		ZHED N 3 A_CustomMissile("HeadBlood", 10, 0, 290, 2, 45)
+		ZHED O 3 A_CustomMissile("HeadBlood", 10, 0, 300, 2, 45)
+		ZHED P 3 A_CustomMissile("HeadBlood", 10, 0, 310, 2, 45)
+		TNT1 A 0 A_JumpIf(waterlevel > 2, "Death")
+    goto Spawn+3
+	Death:
+	ZHED AA 1
+	ZHED A 2 A_Jump(51,"Boom")
+	ZHED A 0 A_SpawnItemEX("KickableHead",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Boom:
+	ZHED A 1 
+			ZHED AAAAAA 0 A_CustomMissile("HeadBlood", 10, 0, 0, 2, 45)
+			Stop
+}}
+
+Actor KickableHead 16212
+{
+//$Category Blood Monsters
+//$Title Kickable Zombie Head
+	+SHOOTABLE
+	+SOLID
+	+CANPASS
+	+CANPUSHWALLS
+	+CANUSEWALLS
+	+ACTIVATEMCROSS
+	Health 1
+	Radius 6
+	Height 15
+	Mass 20
+	Scale 0.5
+	MONSTER
+	-CountKill
+	+ShootAble
+	SpawnID 168
+	Speed 1
+	DamageFactor "Normal",0.4
+	DamageFactor "Dynamite",3
+	DamageFactor "Stomping", 0.5
+	States
+	{
+	Spawn:
+	ZHED A 30
+	Loop
+	Death.CALINOimmune:
+	Death.Stomping:
+	ZHED A 0 A_PlaySound("DSHEDKCK")
+	ZHED A 0 A_FaceTarget
+	ZHED A 0 A_SetAngle(angle+180)
+		ZHED A 0 A_SpawnItemEX("KickableFlying",0,0,6,Random(9,15),0,Random(5,10),0,SXF_NOCHECKPOSITION)
+	//ZHED BBB -1
+	Stop
+	Death:
+	ZHED B 1
+	Stop
+	}
+}
+
+actor BloodZombie : Demon // 3002
+{
+//$Category Blood Monsters
+//$Title Zombie
+//$Color 17
+  spawnid 8
+  radius 16
+  height 67
+  scale 0.47
+  speed 4 //Faster
+  health 190 //Extra Crispy
+  gibhealth 30
+  meleerange 50
+  MaxTargetRange 49
+  meleesound "ZombieAxe"  
+  obituary "%o got the zombie's AXE"
+  seesound "ZombieSee"
+  attacksound ""
+  deathsound "ZombieDeath"
+  activesound "ZombieSee"
+  DamageFactor Fire, 1.38
+  DamageFactor "LifeLeech",1.25
+  DamageFactor "Flare", 1300
+  //DamageFactor "Sawedoffless", 0.1
+  //DamageFactor "Sawedoff", 0.1
+  //DamageFactor "Sawedoff2",0.1
+  DamageFactor "Stomping", 0
+  DamageFactor "Tesla",0.76
+  Dropitem "UselessStuff", 80
+  painsound ""
+  painchance 145 //The old annoying zombie faking spam
+  painchance "LifeLeech", 192
+  painchance "Tommy", 11 //Never seen them fake from this but oh well
+  painchance Fire, 0
+  PainChance "Flare", 0
+  painchance "PitchFork", 11
+  PainChance "Dynamite", 0
+  PainChance "Blast", 190 //When they survive tnt they usually fake
+  PainChance "Shock", 255
+  PainChance "SawedoffLess", 170 //Nop not less
+  PainChance "SawedOff", 11
+  PainChance "ZBloodBullet", 0
+  MONSTER
+  Species "ZombieFall"
+  +FLOORCLIP
+  +DropOff
+  +DONTOVERLAP
+  +RANDOMIZE
+  +NOSPLASHALERT
+  +COUNTKILL
+  //+thruspecies
+  DamageFactor "StunningHead",3
+  PainChance "SunningHead",230
+  Mass 80 //I CAN FLY.. also sg sends them flying backward
+  states
+  {
+    Spawn:
+		BZOM I 10 A_Look
+    Loop
+	Idle:
+	BZOM I 0 A_Look
+	BZOM AAAABBBBCCCCDDDDEEEEFFFFAAAABBBBCCCCDDDDEEEEFFFFAAAABBBBCCCCDDDDEEEEFFFF 1 A_Wander
+	Loop
+    See:
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM AAAABBBBCCCC 1 A_Chase
+		BZOM A 0 A_Stop //Balance regain
+		BZOM DDDEEEFFF 1 A_Chase
+		BZOM A 0 A_Stop
+		BZOM A 0 A_Jump(150,1)
+		Goto StupidMode
+	Loop
+	
+	StupidMode: //Aka no wallhax hax to make monster feel less doomish
+	 
+			BZOM AAAABBBBCCCC 1 A_Wander
+		BZOM A 0 A_Look //Balance regain
+		BZOM DDDEEEFFF 1 A_Wander
+		BZOM A 0 A_Look
+		BZOM A 0 A_Jump(150,2)
+		BZOM A 0 A_ClearTarget
+		Goto Spawn //For some reason this makes them swing axe in air.. oh well frustrated zombies
+		Loop
+	Melee:
+		BZOM J 4 A_FaceTarget
+		BZOM J 0 A_Recoil(-2)
+		TNT1 A 0 A_PlaySound("ZombieAxe")
+		BZOM KL 4 A_FaceTarget
+		BZOM J 0 A_Recoil(-1)
+		BZOM M 4 A_CustomMeleeAttack(random(16,34), "", "", "Axe", 1)
+		BZOM NO 7
+		TNT1 A 0 A_ClearTarget
+	goto See
+    Pain:
+	TNT1 A 0 A_JumpIfInventory("AmAlreadyFaking",1,"ContFake")
+	TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_Jump (153, "Fake")
+		BZOM H 4 A_TakeInventory("AmAlreadyFaking",99)
+    goto See
+	Fake:
+			TNT1 A 0 A_PlaySound("demon/pain")
+	BZOD A 1
+				BZOM N 0 A_UNSetSolid
+		BZOM N 0 A_ChangeFlag("GHOST", 1)
+		BZOD AB 4
+		BZOD B 4  A_GiveInventory("AmAlreadyFaking",1)
+		BZOD CDE 4
+		PainEL:
+	//	BZOD E 0 A_JumpIfCloser(70,"HAHAHA")
+	ContFake:
+		BZOD EEEE 24 
+		BZOD E 0  A_JumpIfCloser(900,"HAHAHA")
+				BZOD EEEEEEEE 24
+				BZOD E 0 A_Jump(120,"PainEL")
+		BZOD E 5 //A_RadiusThrust(500,32,0) Made zombies kill other monsters when they wake up
+				BZOM N 0 A_ChangeFlag("ThruSpecies",0)
+		BZOM O 0 A_ChangeFlag("GHOST", 0)
+		BZOM O 0 //A_SetShootable
+		BZOM O 0 A_setSolid //Only regretable if zombies stuck another monster lol
+		BZOD E 0 A_PlaySound("Zombie/Fake")
+		BZOD FGHIJK 3
+		TNT1 A 0 A_TakeInventory("AmAlreadyFaking",99)
+		HAHAHA:
+		BZOD E 0 A_TakeInventory("AmAlreadyFaking",99)
+		BZOD E 0 A_FaceTarget
+				BZOM O 0 A_SetSolid
+		BZOM O 0 A_Changeflag("GHOST",0)
+		BZOM O 0 A_setSolid //Only regretable if zombies stuck another monster lol
+				BZOD E 0 A_PlaySound("Zombie/Fake")
+		BZOD EDCBA 3 A_Recoil(-1)	
+    goto Melee+4
+	Pain.Shock:
+		TNT1 A 0 A_PlaySound("demon/pain")
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_ClearTarget // Go dumb
+		ZOMZ A 7  A_ChangeFlag("GHOST",0)
+		ZOMZ A 7 Bright
+		ZOMZ A 7
+		ZOMZ A 7 Bright
+		ZOMZ A 7
+		ZOMZ A 7 Bright
+		ZOMZ A 7
+		ZOMZ A 7 Bright
+	Goto See
+	Pain.LifeLeech:
+	TNT1 A 0 A_ChangeFlag("GHOST",0)
+	//	TNT1 A 0 A_GiveToTarget("LifeLeechHealth", random(1,2))
+	Goto See
+    Death:
+		TNT1 A 0 A_Scream
+		BZOD H 0 A_Jump(50,"DeathKickableHead")
+		BZOD H 0 A_JumpIfHealthLower (-9, 7)
+		BZOD A 8
+		BZOD B 8
+		BZOD C 4
+		BZOD D 4 A_Fall
+		BZOD E -1
+    stop //Reduced the ketchup
+		BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZO2 A 0 A_ThrowGrenade("KickableFlying",0,5,10,0)
+		BZOD LL 2 A_ThrowGrenade("FlyingBlood",5,5+random(-3,3),10+random(-4,4),0)
+		BZOD MM 1 A_ThrowGrenade("FlyingBlood",5,5+random(-3,3),10+random(-4,4),0)
+		BZOD NN 1 A_ThrowGrenade("FlyingBlood",0,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_Fall
+		BZOD OO 1 A_ThrowGrenade("FlyingBlood",-5,5+random(-3,3),10+random(-4,4),0)
+		BZOD PP 2 A_ThrowGrenade("FlyingBlood",-10,5+random(-3,3),10+random(-4,4),0)
+		BZOD QQ 1 A_ThrowGrenade("FlyingBlood",-15,5+random(-3,3),10+random(-4,4),0)
+		BZOD RR 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZOD SSSSSSSSS 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZOD SSSSSSSS 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),5+random(-4,4),0)
+		BZOD S -1
+		DeathKickableHead:
+				BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZO2 A 0 A_ThrowGrenade("KickableFlying",0,5,10,0)
+		BZOD LL 2 A_ThrowGrenade("FlyingBlood",5,5+random(-3,3),10+random(-4,4),0)
+		BZOD MM 1 A_ThrowGrenade("FlyingBlood",5,5+random(-3,3),10+random(-4,4),0)
+		BZOD NN 1 A_ThrowGrenade("FlyingBlood",0,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_Fall
+		BZOD OO 1 A_ThrowGrenade("FlyingBlood",-5,5+random(-3,3),10+random(-4,4),0)
+		BZOD PP 2 A_ThrowGrenade("FlyingBlood",-10,5+random(-3,3),10+random(-4,4),0)
+		BZOD QQ 1 A_ThrowGrenade("FlyingBlood",-15,5+random(-3,3),10+random(-4,4),0)
+		BZOD R 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZOD SSSSS 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),10+random(-4,4),0)
+		BZOM H 0 A_PlaySound("DSBDSPRY")
+		BZOD SSSSS 1 A_ThrowGrenade("FlyingBlood",-20,5+random(-3,3),5+random(-4,4),0)
+		BZOD S -1
+    stop
+	Death.Shock:
+		TNT1 A 0 A_GiveToTarget("DoLaugh", 1)
+	Goto Death //Well it looked goofy when they suddenly disappeared out of the world
+    XDeath:
+		TNT1 A 0 A_Jump(120,"XDeath.KickableAlt")
+		TNT1 A 0 A_Jump(128, 2)
+		TNT1 A 0 A_GiveToTarget("DoLaugh", 1)	
+		BZOX U 0 A_XScream
+		BZOX U 0 A_Fall
+		BZOX A 5    
+		BZOX UUU 0 A_SpawnDebris ("OrganDebris")
+		BZOX B 5
+		BZOX U 0 A_ThrowGrenade("KickableFlying",0,5,10,0)
+		BZOX C 5
+		BZOX U 0 A_SpawnDebris ("Bloodliver")
+		BZOX U 0 A_SpawnDebris ("Hand1")
+		BZOX UUUUUUU 0 A_SpawnDebris("FlyingBlood")
+		ZBOX UUUUUUU 0 A_SpawnItemEx("Blood_")
+		BZOX DEFG 5
+		BZOX H -1
+    Stop
+	XDeath.KickableAlt:
+			TNT1 A 0 A_Jump(128, 2)
+		TNT1 A 0 A_GiveToTarget("DoLaugh", 1)	
+		BZOX U 0 A_XScream
+		BZOX U 0 A_Fall
+		BZOX A 5    
+		BZOX UUU 0 A_SpawnDebris ("OrganDebris")
+		BZOX B 5
+		BZOX U 0 A_ThrowGrenade("KickableFlying",0,5,10,0)
+		BZOX C 5
+		BZOX U 0 A_SpawnDebris ("Bloodliver")
+		BZOX U 0 A_SpawnDebris ("Hand1")
+		BZOX UUUUUUU 0 A_SpawnDebris("FlyingBlood")
+		BZOX DEFG 5
+		BZOX H -1
+		Stop
+    Burn:
+	Death.SpecialFire:
+	Death.Flare:
+		APBX A 1
+		BZOM I 0 A_Fall
+		BZOM I 0 A_Pain
+		TNT1 A 0 A_PlaySound("demon/pain")
+		BZOM I 0 A_SpawnItem("BurnDeathZombie",1,0,0)
+		APBX A -1
+    Stop
+    disintegrate:
+	Death.Voodoo:
+	Death.VoodooAlt:
+	Death.CalebBullet:
+		BZOS I 0 A_Scream
+		BZOS ABCD 6
+		BZOS L 0 A_Fall
+		BZOS EFGH 3
+		BZOS I -1
+    Stop
+    Raise:
+		BZOD FGHIJ 5
+    goto See
+	Death.Dynamite:
+	BZOS I 0 A_Jump(190,"Death")
+	BZOS I 0 ThrustThingZ(0,Random(25,45),0,0)
+	Goto Death
+  }
+}
+
+Actor DeadNOTZombie : BloodZombie 6413
+{	
+//$Category Blood Monsters
+//$Title Zombie Faking Death
+    +Ghost
+	States
+	{
+	Idle:
+	Goto Super::Spawn
+	Spawn:
+	BZOD E 34 A_LookEx(LOF_DONTCHASEGOAL|LOF_NOSEESOUND ,0,260,260)
+	Loop
+	See:
+	UGZZ A 0 A_ChangeFlag("Ghost",0)
+	UGZZ A 0 A_JumpifInventory("Chokeme",1,7)
+	UGZZ A 0 A_GiveInventory("Chokeme",1)
+	//UGZZ A 0 A_PlaySound("Zombie/Raise")
+	BZOD F 6 A_FaceTarget
+	BZOD GHIJK 4 A_FaceTarget
+	Goto Super::See
+	}
+}
+
+Actor AmAlreadyFaking : Inventory
+{
+Inventory.Amount 1
+Inventory.MaxAmount 1
+}
+
+Actor BuriedZombie : BloodZombie 6412
+{	
+//$Category Blood Monsters
+//$Title Buried Zombie
+    seesound ""
+    +Ghost
+	-COUNTKILL
+	States
+	{
+	Spawn:
+	UGZZ J 1 A_Look
+	Loop
+	See:
+	UGZZ J 10 A_JumpIfCloser(300, "Transform")
+	Loop
+	Transform:
+	UGZZ A 0 A_ChangeFlag("Ghost",0)
+	UGZZ A 0 A_JumpifInventory("Chokeme",1,11)
+	UGZZ A 0 A_GiveInventory("Chokeme",1)
+	UGZZ A 0 A_PlaySound("Zombie/Raise")
+	UGZZ ABCDEFGHI 4 A_FaceTarget
+	UGZZ I 1 A_SpawnItemEX("BloodZombie",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Stop
+	}
+}
+
+Actor BurnDeathZombie
+{
+	Scale 0.5
+	Speed 3
+	Deathsound "ZombieDeathB"
+    Radius 16
+    Height 56
+    +FIREDAMAGE
+    +RANDOMIZE
+    +DONTSPLASH
+    +FLOORCLIP
+    +LOOKALLAROUND
+    damagetype "SpecialFire"
+    Obituary "%o hugged a zombie on fire."
+    activesound "DSBDYBRN"
+    States
+    {
+    Spawn:
+        FGUY A 0   A_KillMaster
+        FGUY A 3 Bright  A_Look
+			FGUY A 0   A_PlaySound("demon/pain",2)
+        goto See
+    See:
+
+        FGUY A 0   //A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BurningAlive")
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY AAA 1 Bright  A_Wander
+        FGUY A 0   //A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY BBB 1 Bright  A_Wander
+        FGUY A 0   //A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY CCC 1 Bright  A_Wander
+        FGUY A 0   //A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY DDD 1 Bright  A_Wander
+        FGUY A 0   //A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY EEE 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY FFF 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY AAA 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY BBB 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY CCC 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BurningAlive")
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY DDD 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY EEE 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY FFF 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY AAA 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY BBB 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY CCC 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY DDD 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY EEE 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BurningAlive")
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY FFF 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+		FGUY A 0   A_Jump(128,"See")
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY AAA 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY BBB 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY CCC 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY DDD 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY EEE 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BFireTrail",8+random(-5,5),58+random(-5,5),0,0)
+        FGUY A 0   A_Explode (4,24,0)
+        FGUY FFF 1 Bright  A_Wander
+        FGUY A 0   A_LoopActiveSound
+        FGUY A 0   A_SpawnItem ("BurningAlive")
+        FGUY A 0   A_Explode (4,24,0)
+        Goto Death
+		Death:
+			TNT1 A 0 A_Scream
+			FGUY G 3 Bright  A_PlaySound("DSBDYBRN")
+			FGUY G 0 A_SpawnDebris("FlyingBlood")
+			FGUY G 0 A_SpawnDebris("FlyingBlood")
+			FGUY G 0 A_SpawnDebris("FlyingBlood")
+			FGUY G 0 A_SpawnDebris("FlyingBlood")
+			FGUY G 0 A_SpawnDebris("FlyingBlood")
+			FGUY G 0 A_SpawnDebris ("NapalmDebris")
+			FGUY G 0 A_Fall
+			FGUY GGHHII 3 Bright  A_SpawnItem("BFireTrail",8+random(-5,5),20+random(-5,5))
+			FGUY A 0 Bright  A_SpawnItem ("BurnDeathSmoke")
+			FGUY JJKKLLMMNNOO 3  Bright  A_SpawnItem ("BFireTrail",8+random(-5,5),20+random(-5,5)) 
+			FGUY JJKKLLMMNNOO 3  Bright  A_SpawnItem ("BFireTrail",8+random(-5,5),20+random(-5,5))
+			FGUY JJKKLLMMNNOO 3  Bright  A_SpawnItem ("BFireTrail",8+random(-5,5),20+random(-5,5))
+			FGUY PPQQRRSS 3 Bright 
+			TNT1 A 0 A_StopSound
+			FGUT T -1
+		Stop
+	}
+}

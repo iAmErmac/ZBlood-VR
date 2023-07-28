@@ -1,0 +1,26 @@
+actor SpiderMummy : HangingMeat
+{ 
+	+SHOOTABLE
+	+SOLID 
+	+SPAWNCEILING
+	tag "Hanging Bloody Skeleton"
+  Height 150
+  states
+  {
+  Spawn:
+    MUM1 A -1
+    stop
+  Death:
+    MUM1 A 1 A_Scream
+    MUM1 AAA 1 A_SpawnDebris("FlyingBlood")
+	MUM1 AAAAA 1 A_SpawnItemEX("BabySpiderSpawner",0,0,+60)
+    stop
+  }
+}
+
+actor SpiderMummyEd :SpiderMummy 9900
+{
+//$Category Blood Monsters
+//$Title Hanging Spider Trap
+//$Color 17
+}

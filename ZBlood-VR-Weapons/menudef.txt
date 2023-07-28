@@ -65,6 +65,11 @@ AddOptionMenu "OptionsMenu"
 	Submenu "$ZBV_OPTIONS", "ZBVR_Settings"
 }
 
+OptionValue "ZBV_enable_switch" {
+	0, "Disabled"
+	1, "Enabled"
+}
+
 OptionValue "ZBV_WeaponModel_Option" {
 	0, "3D"
 	1, "Voxel"
@@ -84,6 +89,12 @@ OptionMenu "ZBVR_Settings" {
 	Option "$ZBV_WEAPON_MODEL", "zblood_models", "ZBV_WeaponModel_Option"
 	Option "$ZBV_WEAPON_FLASH", "zblood_muzzle_flash", "OnOff"
 	Option "$ZBV_WEAPON_SWITCH", "zblood_fastswitch", "OnOff"
+	
+	StaticText " "
+	StaticText "$ZBV_MONSTERS", "Gold"
+	Option "$ZBV_MON_REPLACE", "zblood_monsters", "ZBV_enable_switch"
+	StaticText "$ZBV_MON_REPLACE_NOTE1", "DarkRed"
+	StaticText "$ZBV_MON_REPLACE_NOTE2", "DarkGrey"
 	
 	StaticText " "
 	StaticText "$ZBV_BULLETZ", "Gold"

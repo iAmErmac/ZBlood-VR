@@ -1,0 +1,291 @@
+Actor GillBeastChecks : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 30
+}
+
+ACTOR GillBeast: Cacodemon 6142
+{
+//$Category Blood Monsters
+//$Title Gill Beast
+//$Color 17
+	tag "$GillBeast1"
+	Health 320 //UN nerfed
+	GibHealth 70
+	Speed 4
+	fastspeed 4
+	floatspeed 4
+	Damage 7
+	MeleeRange 56
+	MeleeDamage 6 //Less damage still scary
+	MaxTargetRange 56
+	mass 800
+	BloodColor DarkRed
+	painchance 32
+	PainChance "Fire", 0
+	PainChance "Flare", 0
+	PainChance "Tommy", 0
+	PainChance "Napalm", 0
+	PainChance "Dynamite", 0
+	Painchance "Pitchfork", 0
+	Painchance "Tesla", 0
+	PainChance "Shock", 255
+	PainChance "Sawedoff", 64
+	PainChance "SawedoffLess", 0
+	PainChance "Sawedoff2", 64
+	PainChance "Blast", 0
+	PainChance "LifeLeech", 0
+	PainChance "ZBloodBullet", 0
+	PainChance "Voodoo", 16
+	painchance "Shock",32
+	DamageFactor "Flare",0.3
+	DamageFactor "Shock",0.7
+	DamageFactor "Blast",0.6
+	DamageFactor "LifeLeech",1.2
+	SeeSound "GillBeastSee"
+	PainSound "GillBeastPain"
+	DeathSound "GillBeastDie"
+	ActiveSound "GillBeastSee"
+	Attacksound "dsdolstb"
+	Obituary "Gill Beasts zerg rushed %o"
+	HitObituary "Gill Beasts zerg rushed %o"
+	-NoTeleport
+	+FloorClip
+	height 48
+	ProjectilePassHeight 64
+	Scale 0.72
+	States
+	{
+		Forget:
+			TNT1 A 0 A_GiveInventory("GillBeastChecks",1)
+			TNT1 A 0 A_JumpIfInventory("GillBeastChecks",28,"Memory")
+			Goto See+1
+		Memory:
+	//		TNT1 A 0 A_GiveToTarget("LifeLeech",1)
+			TNT1 A 0 A_ClearTarget
+	  	Spawn:
+		Water.Idle:
+
+			GILW AAAAAAAAAAAAAAAAAA 4 A_Look
+			GILW F 0 A_JumpIf(waterlevel<1,"Ground.Idle")
+			GILW AAAAAAAAAAAAAAAAAA 4 A_Look
+			GILW F 0 A_JumpIf(waterlevel<1,"Ground.Idle")
+		SpawnCont:
+		GILW A 4 A_Look
+		Loop
+		Water.See:
+		Water:
+		See:
+		//			TNT1 A 0 A_CheckSight("Forget")
+		//	TNT1 A 0 A_UnSetFloorClip
+		//	TNT1 A 0 ThrustThingZ(0,5,0,0)
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+		//TNT1 A 0 A_JumpIfInTargetInventory("PowerInvisibility",1,"SwimAround")
+			GILW F 1 A_Chase
+			GILW F 1 A_Chase
+			GILW F 1 A_Chase
+			GILW G 1 A_Chase
+			GILW G 1 A_Chase
+			GILW G 1 A_Chase
+			GILW H 1 A_Chase
+			GILW H 1 A_Chase
+			GILW H 1 A_Chase
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+//			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+			GILW I 1 A_Chase
+			GILW I 1 A_Chase
+			GILW I 1 A_Chase
+//			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+			GILW J 1 A_Chase
+			GILW J 1 A_Chase
+			GILW J 1 A_Chase
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")	
+		//				TNT1 A 0 A_UnSetFloorClip
+			TNT1 A 0 ThrustThingZ(0,5,0,0)
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+		//	TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+		//	TNT1 A 0 A_JumpIfInTargetInventory("PowerInvisibility",1,"SwimAround")
+			GILW F 1 A_Chase
+			GILW F 1 A_Chase
+			GILW F 1 A_Chase
+			GILW G 1 A_Chase
+			GILW G 1 A_Chase
+			GILW G 1 A_Chase
+			GILW H 1 A_Chase
+			GILW H 1 A_Chase
+			GILW H 1 A_Chase
+//			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+			GILW I 1 A_Chase
+			GILW I 1 A_Chase
+			GILW I 1 A_Chase
+//			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+			GILW J 1 A_Chase
+			GILW J 1 A_Chase
+			GILW J 1 A_Chase
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")	
+			//TNT1 A 0 A_CheckSight("Forget")
+		Loop
+		/*
+		SwimAround:
+		GILW F 0 A_Recoil(-1)
+			GILW F 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW F 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW F 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW G 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW A 0 A_Playsound("GillBeastSee")
+			GILW G 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW G 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW H 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW H 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW H 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+random[GillBeast](0,64),1,0,0)
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+			GILW I 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW I 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW I 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+random[GillBeast](0,64),1,0,0)
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")
+						GILW A 0 A_Playsound("GillBeastSee")
+			GILW J 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+64,1,0,0)
+			GILW J 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 //ThrustThing(angle*256/360+64,1,0,0)
+			GILW J 1 A_SetAngle(angle+(random(-10,10))
+			TNT1 A 0 ThrustThing(angle*256/360+random[GillBeast](0,64),1,0,0)
+			TNT1 A 0 A_JumpIf(waterlevel<1,"Ground.See")	
+			//			TNT1 A 0 A_CheckSight("Forget")
+		Goto See
+		*/
+		Missile:
+		Melee:
+//			TNT1 A 0 A_UnSetFloorClip
+//			TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+			GILB D 2 A_FaceTarget
+			GILB D 2 A_JumpIf(waterlevel<1,"Ground.Melee")
+			GILB D 2 A_FaceTarget
+			GILB D 2 A_FaceTarget
+//			TNT1 A 0 A_JumpIfInTargetInventory("PowerInvulnerability",1,2)
+//			TNT1 A 0 A_Jump(256,4)
+//			GILB E 4 A_CustomMeleeAttack(CallACS("ZBROM",12),"dsdolstb")
+//			TNT1 A 0 DamageThing(CallACS("ZBROM",12))
+//			TNT1 A 0 A_Jump(256,2)
+			GILB F 6 A_CustomMeleeAttack(random(36,46),"dsdolstb")
+			GILB E 7
+		Goto See
+		Pain:
+//			TNT1 A 0 A_UnSetFloorClip
+//			TNT1 A 0 A_ChangeFlag("NOGRAVITY",1)
+			GILP B 3 A_JumpIf(waterlevel<1,"Ground.Pain")
+			GILP B 3 A_Pain
+		Goto See
+			/*
+				Pain.Fire:
+				TNT1 A 0 A_GiveInventory("BurningToken",1)
+				TNT1 A 0 A_SpawnItemEx("BurningInit",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+				Goto See
+				*/
+				Pain.Shock:
+				GSOK A 0 A_ChangeFlag("NoPain",1)
+			//	GSOK A 0 A_ScaleVelocity(.25)
+			//	GSOK A 0 A_Jump(192,1,2,3,4,5,6,7,8,9,10)
+				GSOK AAAAAAAAAAAAAAAAAAAAAAAA 1 
+				GSOK A 4 A_Pain
+				GSOK A 0 A_ChangeFlag("NoPain",0)
+				GSOK A 0 A_ChangeFlag("NoPain",0)
+				GSOK A 0 A_JumpIfHealthLower(100,2)
+		//		GSOK A 0 A_Jump(192,"See")
+			//	GSOK AAAAAAAAAAAAAAAAAAAAAAAA 1 
+				Goto Ground.See
+	
+		Death:
+			TNT1 A 0 A_UnSetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			GILD G 9 A_JumpIf(waterlevel<1,"Ground.Death")
+			GILD H 8 A_Scream
+			GILD IJ 7 A_NoBlocking
+			GILD K -1 A_SetFloorClip
+		Stop
+		XDeath:
+			TNT1 A 0 //A_JumpIf(waterlevel>2,"Apart")
+			TNT1 A 0 A_ChangeFlag("NoGravity",0)
+			TNT1 A 0 A_Scream
+			GILG AAABB 1 A_SpawnItemEx ("OrganDebris",random(0,16),random(0,16),random(0,16),random(0,10),random(0,10),random(0,10),random(-360,360))
+			GILG BCCDDEE 1 A_SpawnItemEx ("OrganDebris",random(0,16),random(0,16),random(0,16),random(0,10),random(0,10),random(0,10),random(-360,360))
+			TNT1 A 0 A_Fall
+			GILG FFFFFFFFFF 0 A_SpawnItemEx("FlyingBlood",random(0,16),random(0,16),random(0,16),random(0,10),random(0,10),random(0,10),random(-360,360))
+			GILG F -1
+		Stop
+		Ground.Idle:
+		//	TNT1 A 0 A_SetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			TNT1 A 0 A_Look
+		//	GILW A 1 A_JumpIf(waterlevel>0,"Water.Idle")
+			GILW AAAAAAAAAA 2 A_Look
+		//	GILW A 1 A_JumpIf(waterlevel>0,"Water.Idle")
+		//	GILW AAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_PlaySound("GillBeastAct")
+		Ground.IdleCont:
+		GILW A 6 A_Look
+		Loop
+		Ground.See:
+		//	TNT1 A 0 A_SetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			//TNT1 A 0 A_JumpIfInTargetInventory("PowerInvisibility",1,"Ground.Wander")
+			GILW AAAAA 1 A_Chase("Ground.Melee","Ground.Melee",CHF_NOPLAYACTIVE)
+			GILW BBBBB 1 A_Chase("Ground.Melee","Ground.Melee",CHF_NOPLAYACTIVE)
+			TNT1 A 0 A_PlaySound("GillBeastAct")
+			GILW CCCCC 1 A_Chase("Ground.Melee","Ground.Melee",CHF_NOPLAYACTIVE)
+			GILW DDDDD 1 A_Chase("Ground.Melee","Ground.Melee",CHF_NOPLAYACTIVE)
+			GILW EEEEE 1 A_Chase("Ground.Melee","Ground.Melee",CHF_NOPLAYACTIVE)
+			TNT1 A 0 A_JumpIf(waterlevel>0,"Water")
+			//			TNT1 A 0 A_CheckSight("Forget")
+		Loop
+		Ground.Wander:
+		//	TNT1 A 0 A_SetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			GILW AAAAAABBBBBBCCCCCCDDDDDDEEEEEE 1 A_Wander
+		Goto Ground.See
+		Ground.Pain:
+		//	TNT1 A 0 A_SetFloorClip
+		//	TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			GILP A 3
+			GILP A 3 A_Pain
+		Goto Ground.See
+		Ground.Melee:
+		//	TNT1 A 0 A_SetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			GILB A 6 A_FaceTarget
+			GILB B 4 A_CustomMeleeAttack(random(42,49),"dsdolstb")
+			GILB C 7 A_FaceTarget
+		Goto Ground.See
+		Ground.Death:
+		//	TNT1 A 0 A_SetFloorClip
+			TNT1 A 0 A_ChangeFlag("NOGRAVITY",0)
+			GILD A 7
+			GILD B 6 A_Scream
+			GILD C 5 A_Fall
+			GILD DE 5
+			GILD F -1
+		Stop
+	}
+}
+
+ACTOR DeadGillBeast
+{
+  Scale 0.72
+  States
+  {
+  Spawn:
+    DGLB A -1
+	Stop
+  }
+}

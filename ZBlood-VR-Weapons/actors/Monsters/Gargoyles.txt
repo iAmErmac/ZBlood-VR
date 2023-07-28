@@ -1,0 +1,403 @@
+actor GargoyleBlastLight
+{
+	Radius 8
+	Height 8
+	Scale 0.5
+	+NOGRAVITY
+	+NOINTERACTION
+	States
+	{
+		Spawn:
+		OMG2 A 4
+		OMG2 A 1
+		Stop
+	}
+}
+
+actor GargoyleBallLight
+{
+	Radius 8
+	Height 8
+	Scale 0.5
+	+NOGRAVITY
+	+NOINTERACTION
+	States
+	{
+		Spawn:
+		OMG2 A 4
+		OMG2 A 1
+		Stop
+	}
+}
+
+ACTOR StoneGargBall2
+{
+	Radius 6
+	Height 8
+	Scale 0.65
+	Speed 24
+	FastSpeed 34
+	seesound "SARGBLST"
+	deathsound "SARGFX"
+	DamageType "Spiritual"
+	Damage (random (40,70))
+	renderstyle Add
+	alpha 0.9
+	PROJECTILE
+	+RANDOMIZE
+	States 
+	{
+		Spawn:
+			EYEB ABCD 1 bright
+			Loop
+		Death:
+			BAL2 E 0
+			Stop
+	}
+}
+
+Actor BloodGargoyle
+{ 
+//$Category Blood Monsters
+//$Title Gargoyle
+//$Color 17
+	Health 390
+	Speed 18
+	Radius 31
+	Height 56
+	PainChance 20
+	Mass 400
+	Meleedamage 5
+	REACTIONTIME 8 
+	+NOGRAVITY
+	+FLOAT
+	+FLOORCLIP
+	+MISSILEMORE
+	FloatSpeed 8
+	Monster
+	Species "Enemies"	
+	Scale 0.58
+	PainChance "CalebFire", 0		
+	MissileHeight 30
+	SeeSound "GargoyleSee"
+	DeathSound "GargoyleDie"
+	PainSound "GargoylePain"
+	ActiveSound "GargoyleAct"
+	Obituary "%o was killed by a gargoyle."
+	States
+	{
+
+	Spawn: 
+		BGAR ABCD 4 A_Look 
+		Loop 
+	See: 		
+		BGAR AA 3 A_Chase("","")
+		BGAR BB 3 A_Chase
+		BGAR CC 3 A_Chase("","")
+		BGAR DD 3 A_Chase
+		Loop 
+	Melee:
+		BGAR EFG 3 A_FaceTarget
+		BGAR H 3 A_CustomMeleeAttack(5*random(1,8),"GargoyleMelee")
+		BGAR I 3 A_FaceTarget
+		Goto See
+	Missile:
+		BGAR FEG 3 A_FaceTarget
+		BGAR H 3 A_CustomMissile("GargoyleBone",34)
+		BGAR I 3 A_FaceTarget
+		Goto See
+	Pain: 
+		BGAR J 3 
+		BGAR J 3 A_Pain 
+		Goto See 
+      Death:
+		TNT1 A 0 
+	  Death2:		  
+		TNT1 A 0
+		BGAR K 5
+		BGAR L 5 A_Scream
+		BGAR M 5 A_Fall
+		BGAR NO 6
+		BGAR P -1
+		Stop 
+	XDeath: 
+		BGAR Q 1 
+	XDeath2:							
+		BGAR Q 2 A_Scream
+	    TNT1 A 0 A_UnsetSolid		
+		TNT1 AA 0 A_SpawnDebris("Bloodliver")	
+		TNT1 A 0 		
+		TNT1 A 0 A_SpawnDebris("OrganDebris")
+		BGAR RST 3
+		BGAR U 3 A_NoBlocking
+		BGAR U -1
+		stop
+	Death.EradGreenFire:
+	Death.EradCoopGreenFire:
+		TNT1 A 0 A_Jump(218,"Burn")
+		Goto Burn		
+	Death.SWFlame:
+	Death.SWFlame2:
+	Death.SWFlame2Coop:
+	Death.SWFlame3:		
+		TNT1 A 0 A_Jump(218,"Burn")
+		Goto Burn		
+	Death.PSFire:	
+		TNT1 A 0 A_Jump(218,"Burn")
+		Goto Burn		
+	Death.CalebFire:
+	Death.LifeLeech:
+		TNT1 A 0 A_Jump(218,"Burn")
+		Goto Burn
+	Death.PhosFireCoop:
+    Death.HexGreenFire:
+    Death.QuakeFire:
+	Death.FireExplosive:
+    Death.WolfenFlamethrower:	  
+    Death.MarathonPlasma:
+    Death.Slime:		
+	Burn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("Blood/BurningBody",CHAN_BODY,1.0,0,ATTN_NORM)
+		TNT1 A 0 A_playsound("GargoylePain",CHAN_VOICE,1.0,0,ATTN_NORM)
+		TNT1 A 0 A_Jump(60,"CrispyYum")
+		GARF AABBCCDD 2 Bright
+		GARF AABBCCDD 2 Bright
+		Goto Burn+3
+	CrispyYum:	
+		GARF AABBCCDD 2 Bright
+	    TNT1 A 0 A_PlaySound("Blood/CrispyBody",CHAN_BODY,1.0,0,ATTN_NORM)		
+		TNT1 A 0 A_Scream			
+		GARF E 5 A_Fall
+		GARF F 5
+		GARF GHIJ 5
+		GARF K -1
+		Stop
+	Raise:
+		BGAR F 5 A_UnSetFloorClip
+		BGAR EDCBA 5
+		Goto See
+	Pain.LifeLeech:
+		Goto Pain		
+	Pain.Vodoo:
+		TNT1 A 0 A_GiveToTarget("Voodoo", 1)
+		Goto Pain
+	Death.Dynamite:
+	Death.CalebNapalm:
+	Death.Shock:	  
+	Death.Vodoo:
+		TNT1 A 0 A_JumpIfHealthLower(-20,"XDeathForCaleb")
+	Death.Tesla:
+	Death.CalebBullet:	
+		TNT1 A 0 A_Jump(218, "Death")
+		Goto Death
+	XDeathForCaleb:
+	    TNT1 A 0 A_UnsetSolid
+        TNT1 A 0 A_Jump(96,"XDeath")
+        TNT1 A 0
+		Goto XDeath		
+	} 
+} 
+
+Actor BloodGargoyle3 : BloodGargoyle
+{}
+
+ACTOR GargoyleBone
+{
+	Radius 6
+	Height 8
+	Scale 0.65
+	Speed 12
+	FastSpeed 24
+	SeeSound "Cultists/Toss"
+	Damage (random (3, 12))
+	PROJECTILE
+	+RANDOMIZE
+	States 
+	{
+		Spawn:
+			GARF LLMMNNOOPPQQRRSS 2 Bright
+			Loop
+		Death:
+			GARF TTUUVV 2
+			Stop
+	}
+}
+
+ACTOR GargBurn
+{
+    Radius 20
+    Height 56
+    Speed 4
+    mass 100
+    Scale 0.6
+    +FIREDAMAGE
+    +RANDOMIZE
+    -DONTSPLASH
+    //+FLOAT
+    //+NOGRAVITY
+    +LOOKALLAROUND
+    +DONTSPLASH
+    Obituary "%o was near a gargoyle in flames."
+    activesound "dsFRBALL"
+    ExplosionDamage 4
+    ExplosionRadius 40
+    States
+    {
+    Spawn:
+        GARF A 0 Bright
+        goto See
+    See:
+        GARF A 0 bright A_LoopActiveSound       
+        GARF A 0 Bright A_PlaySound("imp/death")
+        GARF ABCDABCDABCDABCDABC 4 Bright A_SpawnItem ("BFireTrail",8+random(-5,5),20+random(-5,5))       
+        GARF A 0 Bright A_SpawnItem("BurnDeathSmoke")
+        GARF DABCDABCDABCDABCDABCDDABCDABCDABCDABCDABCD 3 Bright A_SpawnItem ("BFireTrail",8+random(-5,5),20+random(-5,5))
+        goto Death
+    Death:
+        GARF A 0 A_SpawnDebris ("NapalmDebris")    
+        GARF A 4 A_StopSound
+        GARF B 4 Bright
+        GARF C 4 Bright A_Fall
+        GARF EFG 4 Bright
+        GARF HIJIJHJIJIHIJHHIJHJHIHJHIJHIHJHIJIHIJ 4 Bright
+        GARF HIJIJHJIJIHIJHHIJHJHIHJHIJHIHJHIJIHIJ 4
+        GARF K -1
+        Stop
+    }
+}
+
+Actor Cheogh : BloodGargoyle 7000
+{
+//$Category Blood Monsters
+//$Title Stone Gargoyle (Cheogh)
+	Health 3600
+	Speed 16
+	Radius 31
+	Height 56
+	PainChance 20
+	Mass 400
+	Meleedamage 5
+	REACTIONTIME 8 
+	+NOGRAVITY
+	+FLOAT
+	+FLOORCLIP
+	+MISSILEMORE
+	FloatSpeed 8
+	Monster
+	Scale 1.05
+	  painchance 0
+	  seesound "baron/sight"
+	  painsound "baron/pain"
+	  deathsound "baron/death"
+	  activesound "SARGROAM"
+	  DamageFactor Fire, 0.0
+	  DamageFactor "GargoyleBlast", 0.0
+	  DamageFactor "LifeLeech", 0.0
+	  DamageFactor "Voodoo", 1.9
+	  DamageFactor Disintegrate, 2.0	
+	MissileHeight 30
+	  seesound "baron/sight"
+	  painsound "baron/pain"
+	  deathsound "baron/death"
+	  activesound "SARGROAM"
+	  obituary "%o stood no chance against Cheogh"
+      hitobituary "%o was owned by Cheogh"
+	States
+	{
+
+	Spawn: 
+	    GARG A 1 A_SetScale(1.05,1.05)
+		GARG ABCD 4 A_Look 
+		Loop 
+	See: 		
+	    GARG A 1 A_SetScale(1.05,1.05)
+		GARG AA 3 A_Chase("","")
+		GARG BB 3 A_Chase
+		GARG CC 3 A_Chase("","")
+		GARG DD 3 A_Chase
+		Loop 
+	Melee:
+		GARG EFG 3 A_FaceTarget
+		GARG H 3 A_CustomMeleeAttack(5*random(1,8),"GargoyleMelee")
+		GARG I 3 A_FaceTarget
+		Goto See
+	Missile:
+		TNT1 A 0 A_SetInvulnerable
+		TNT1 A 0 A_ChangeFlag("NOBLOOD", 1)
+		GARG A 3 A_FaceTarget
+		GARG A 3 A_CustomMissile("StoneGargBall2",34)
+		GARG L 3 A_FaceTarget
+		TNT1 A 0 A_UnSetInvulnerable
+		TNT1 A 0 A_ChangeFlag("NOBLOOD", 0)
+		Goto See
+      Death:
+			GARG M 8
+			GARG N 10 A_Scream
+			GARG O 10 A_Fall
+			GARG PQ 12 
+			GARG R -1 A_BossDeath	
+			stop
+	} 
+} 
+
+actor StatueGargoyle : Cheogh 7001
+{
+//$Category Blood Monsters
+//$Title Statue Gargoyle
+ +INVULNERABLE
+ -NOGRAVITY
+ -FLOAT
+ Scale 0.58
+	SeeSound ""
+	DeathSound "GargoyleDie"
+	PainSound "GargoylePain"
+	ActiveSound "GargoyleAct"
+ States
+ {
+	Spawn: 
+	 GSTT A 4 A_Look 
+	Loop 
+	See: 		
+	  GSTT BCD 5
+	  GSTT D 0 A_ChangeFlag("INVULNERABLE", FALSE)
+	  GSTT D 0 A_ChangeFlag("NOGRAVITY", TRUE)
+	  GSTT D 0 A_ChangeFlag("FLOAT", TRUE)
+	  GSTT D 1 A_SpawnItemEX("BloodGargoyle",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	  GSTT D 1 A_SpawnItemEX("GargStatueLeftover",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	 Stop
+ }
+}
+
+actor StatueCheogh : Cheogh 7002
+{
+//$Category Blood Monsters
+//$Title Statue Stone Gargoyle
+ +INVULNERABLE
+ -NOGRAVITY
+ -FLOAT
+ Scale 0.58
+ States
+ {
+	Spawn: 
+	 GSTT A 4 A_Look 
+	Loop 
+	See: 	
+	  GSTT D 0 A_ChangeFlag("INVULNERABLE", FALSE)
+	  GSTT D 0 A_ChangeFlag("NOGRAVITY", TRUE)
+	  GSTT D 0 A_ChangeFlag("FLOAT", TRUE)
+	  GSTT D 1 A_SpawnItemEX("Cheogh",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	  GSTT D 1 A_SpawnItemEX("GargStatueLeftover",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	 Stop
+ }
+}
+
+actor GargStatueLeftover
+{
+States
+ {
+  Spawn:
+   GSTT E -1
+   stop
+ }
+}

@@ -1,0 +1,39 @@
+ACTOR HammerHaunt : Demon
+{
+  SeeSound "spectre/sight"
+  AttackSound "spectre/melee"
+  PainSound "spectre/pain"
+  DeathSound "spectre/death"
+  ActiveSound "spectre/active"
+  HitObituary "%o was caught by a Hammer Haunt."
+  Scale 0.7
+  States
+  {
+  Spawn:
+    SMT2 AB 10 A_Look
+    Loop
+  See:
+    SMT2 AABBCCDD 2 Fast A_Chase
+    Loop
+  Melee:
+    SMT2 EF 8 Fast A_FaceTarget
+    SMT2 G 8 Fast A_SargAttack
+    Goto See
+  Pain:
+    SMT2 H 2 Fast
+    SMT2 H 2 Fast A_Pain
+    Goto See
+  Death:
+    SMT2 I 8
+    SMT2 J 8 A_Scream
+    SMT2 K 4
+    SMT2 L 4 A_NoBlocking
+    SMT2 M 4
+    SMT2 N -1
+    Stop
+  Raise:
+    SMT2 N 5
+    SMT2 MLKJI 5
+    Goto See
+  }
+}

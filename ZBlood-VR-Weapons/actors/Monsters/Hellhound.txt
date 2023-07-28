@@ -1,0 +1,197 @@
+actor HellHound : HellKnight
+{ 
+//$Category Blood Monsters
+//$Title Hell Hound
+//$Color 17
+	tag "$HellHound1"
+	MeleeDamage 4
+	Speed 8
+	Maxstepheight 46
+	fastspeed 8
+	Scale .6
+	height 32
+	ProjectilePassHeight 40
+	radius 20
+	health 220
+	mass 800
+	DamageFactor "Fire", 0
+	DamageFactor "Flare", 0.4
+	DamageFactor "Shock", 2.6
+	DamageFactor "Tesla", 1.6
+	DamageFactor "LifeLeech", 1.3
+	DamageFactor "Stomping", 0
+	DamageFactor "Tommy", 1
+	DamageFactor "Dynamite", 0.65
+	DamageFactor "Napalm", 0.65
+	DamageFactor "Blast", 0.65
+	DamageFactor "ZBloodBullet" ,0.8
+	  DamageFactor "Voodoo",0.0
+	    DamageFactor "CalebBullet",0.0
+	painchance 32
+	painchance "Shock", 32
+	PainChance "Tommy", 0
+	PainChance "SawedoffLess", 0
+	Painchance "Dynamite", 0
+	PainChance "Blast", 0
+	PainChance "ZBloodBullet", 0
+	PainChance "Napalm", 0
+	PainChance "Flare", 0
+	PainChance "Fire", 0
+	painsound "HellHoundPain"
+	Deathsound "HellHoundDie"
+	SeeSound "HellHoundSee"
+	activesound "HellHoundSee"
+	minmissilechance 128
+	+DropOff //Their secret tactic!
+	+NOTarget
+	MaxTargetRange 256
+	meleesound "dsdolstb"
+	MeleeRange 50
+	MeleeThreshold 128
+	HitObituary "%o got caught by a puppy"
+	Obituary "%o was incinerated by a Hell Hound"
+	Species "HellDogs"
+	DamageType "GOUPBOY"
+	States
+	{
+  	Spawn:
+		HOUN A 10 A_Look 
+		Loop
+	See:
+	//HOUN A 0 A_Jump(30,"Hunter")
+		TNT1 A 0 A_JumpIfInTargetInventory("PowerInvisibility",1,"Wander")
+		TNT1 A 0 A_JumpIf(waterlevel>2,"Sunk")
+		HOUN AAAABBBB 1 A_Chase
+		HOUN CCCCDDDD 1 A_Chase
+		HOUN EEEEFFFF 1 A_Chase
+		HOUN E 0 A_Jump(112,"Sproink")
+		Loop
+		//Hunter:
+		//HOUN ABCDABCD 2 A_FaceTarget
+		//HOUN ABCDABCDABCD 1 A_Recoil(-1)
+		//HOUN ABCD 1 A_Recoil(-40)
+		//Goto Missile
+	Sunk:
+	TNT1 A 20 Thing_Damage(0,health,0)
+	Loop
+	Sproink:
+	HOUN C 2 ThrustThingZ(0,random(20,30),0,1)
+	HOUN DDDD 1 A_Recoil(-5)
+	HOUN EEEEFFFF 1
+	Fallin:
+	HOUN FFFFFFFFFFFFFFFFF 3 A_CheckFloor("See")
+	Goto See
+	Wander:
+		HOUN AAAAABBBBB 1 A_Wander
+		TNT1 A 0 ThrustThing(angle*256/360,2,0,0)
+		HOUN CCCCCDDDDDD 1 A_Wander
+		TNT1 A 0 ThrustThing(angle*256/360,2,0,0)
+		HOUN EEEEEFFFFF 1 A_Wander
+		Goto See
+	Melee:
+		HOUN H 5 A_FaceTarget
+		HOUN I 7 A_Recoil(-2)
+	TNT1 A 0 A_CustomMeleeAttack(random(7,24),"dsdolstb","HellHound/Bite")
+	TNT1 A 0 A_CustomMeleeAttack(random(6,16),"dsdolstb","HellHound/Bite")
+
+		HOUN A 0 A_Jump(125,"Sproink")
+		HOUN AAAAAAAA 1 A_Chase
+		Goto Spawn
+	MeleeFurious:
+	HOUN H 3 A_FaceTarget
+	HOUN I 5 A_Recoil(-12)
+	TNT1 A 0 A_CustomMeleeAttack(random(13,22),"dsdolstb","HellHound/Bite")
+	TNT1 A 0 A_CustomMeleeAttack(random(10,22),"dsdolstb","HellHound/Bite")
+		HOUN A 0 A_Jump(76,"Sproink")
+			HOUN H 4 A_jumpIfInTargetInventory("BurnTics",1,"MeleeFurious")
+			Goto See
+	Missile:
+		HOUN H 6 A_jumpIfInTargetInventory("BurnTics",1,"MeleeFurious")
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+				HOUN H 4 A_CustomMissile("HellHoundFire",20,0,random(-20,20),0)
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_JumpIfCloser(200,1)
+		Goto See
+		HOUN AAAAAAAA 0 A_SentinelRefire
+		Goto Missile+1
+	Pain:
+		HOUN J 3
+		HOUN J 5 A_Pain
+		HOUN J 0 A_SetAngle(random(-90,90))
+		Goto Sproink
+			Pain.Fire:
+//			TNT1 A 0 A_GiveInventory("BurningToken",1)
+//			TNT1 A 0 A_SpawnItemEx("BurningInit",0,0,16)
+			TNT1 A 0 HealThing(4)
+			Goto See
+			Pain.LifeLeech:
+				//TNT1 A 0 A_GiveToTarget("LifeLeechHealth", random(1,2))
+			Goto See			
+			
+			Pain.Shock: 
+			HSOK A 0 A_ChangeFlag("NoPain",1)
+			HSOK A 0 A_ScaleVelocity(.25)
+			HSOK A 0 A_Jump(192,1,2,3,4,5,6,7,8)
+			HSOK AAAAAAAAAAAAAAAAAAAAAAAA 1 BRIGHT
+			HSOK A 4 A_Pain
+			HSOK A 0 A_ChangeFlag("NoPain",0)
+			HSOK A 0 A_JumpIfHealthLower(64,2)
+			HSOK A 0 A_Jump(192,"See")
+			HSOK AAAAAAAAAAAAAAAAAAAAAAAA 1 BRIGHT
+			Goto See
+			
+	Death:
+		HOUN K  6
+		HOUN L  5 A_Scream
+		HOUN M  4
+		HOUN N  4 A_NoBlocking
+		HOUN OPQRQQQRQRQRRRQ 4
+		HOUN R -1
+		Stop
+	}
+}
+
+ACTOR HellHoundFire
+{
+	Radius 6
+	Height 8
+	Speed 14
+	Scale 0.18
+	DamageType "Fire"
+	Damage (random (3, 12))
+	PROJECTILE
+	+RANDOMIZE
+	States 
+	{
+		Spawn:
+			ESST JKL 2 Bright
+		See:	
+			ESST ABC 2 Bright
+			ESST DEF 2 Bright
+		Death:
+		Crash:
+			ESST GHI 2 Bright A_FadeOut
+			Loop			
+	}
+}
+
+Actor MancubusReplacer : Hellhound { }
