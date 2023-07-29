@@ -7,6 +7,7 @@ Class CalebOffHandFist : BloodWeaponZ
 	Weapon.SlotNumber 1;
 	Obituary "$OB_MPFIST";
 	Tag "$TAG_FIST";
+	+WEAPON.NOALERT
 	+WEAPON.WIMPY_WEAPON;
 	+WEAPON.MELEEWEAPON;
 	+WEAPON.OFFHANDWEAPON;

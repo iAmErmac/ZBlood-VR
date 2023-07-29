@@ -632,7 +632,8 @@ actor GunsAkimboSpawner : PowerupGiver
   +COUNTITEM
   +INVENTORY.FANCYPICKUPSOUND
   +INVENTORY.BIGPOWERUP
-  powerup.type "WeaponLevel2"
+  //powerup.type "WeaponLevel2"
+  powerup.type "PowerTargeter"
   powerup.duration 1250
   states
   {

@@ -1,3 +1,4 @@
+/*
 Actor NoBSItem1 Replaces Healthbonus
 {
 	States
@@ -37,7 +38,7 @@ Actor NoBSItem3 replaces Stimpack
 		Stop
 	}
 }
-/*
+
 Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on vile
 {
 	States
@@ -48,3 +49,288 @@ Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on v
 	}
 }
 */
+
+#include "actors/Player_Inv.txt"
+
+Actor StimpackSpawner : RandomSpawner replaces Stimpack
+{
+	DropItem "UselessStuff"
+}
+
+Actor HeartHealthFrag : HeartHealth replaces Healthbonus
+{
+	Scale 0.5
+	inventory.amount 1
+}
+
+Actor ArmorFrag: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",198,"Maxout")
+			TNT1 A 0 A_GiveInventory("BodyArmor", 2)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor FireArmorFrag: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Fire Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARMF A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",198,"Maxout")
+			TNT1 A 0 A_GiveInventory("FireArmor",2)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("FireArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SpiritArmorFrag: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Spirit Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			SARM A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",198,"Maxout")
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 2)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("SpiritArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor ArmorFragSpawner replaces Armorbonus
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
+		SpawnA:
+			TNT1 A 1 A_DropItem("ArmorFrag")
+			Stop
+		SpawnB:
+			TNT1 A 1 A_DropItem("FireArmorFrag")
+			Stop
+		SpawnC:
+			TNT1 A 1 A_DropItem("SpiritArmorFrag")
+			Stop
+	}
+}
+
+Actor BasicAmmoPack Replaces Clip
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_Jump(16, "SpawnA")
+		TNT1 A 1 A_Jump(32, "SpawnB")
+		TNT1 A 1 A_Jump(64, "SpawnC")
+		TNT1 A 1 A_Jump(128, "SpawnD")
+		Stop
+	SpawnA:
+		TNT1 A 1 A_DropItem("EssencePowerSpawner")
+		Stop
+	SpawnB:
+		TNT1 A 1 A_DropItem("SprayCanisterSpawner")
+		Stop
+	SpawnC:
+		TNT1 A 1 A_DropItem("ShellSpawner")
+		Stop
+	SpawnD:
+		TNT1 A 1 A_DropItem("BulletSpawner")
+		Stop
+	}
+}
+
+Actor AdvancedAmmoPack
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 1 A_Jump(16, "SpawnA")
+		TNT1 A 1 A_Jump(32, "SpawnB")
+		TNT1 A 1 A_Jump(64, "SpawnC")
+		Stop
+	SpawnA:
+		TNT1 A 1 A_DropItem("TrappedSoulSpawner")
+		Stop
+	SpawnB:
+		TNT1 A 1 A_DropItem("CellPickupSpawner")
+		Stop
+	SpawnC:
+		TNT1 A 1 A_DropItem("GasolineCanSpawner")
+		Stop
+	}
+}
+
+Actor RandomAmmoPack: CustomInventory
+{
+	Height 26
+	Inventory.PickupMessage "Picked up a pack of happy ammo!"
+	Scale 0.7
+  
+	States
+	{
+	Spawn:
+		BPAK A -1
+		Loop
+	Pickup:
+		TNT1 A 0 A_Jump(256, "PickupA", "PickupB", "PickupC")
+		Stop
+	PickupA:
+		TNT1 A 1 A_GiveInventory("Flares",8)
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("SprayCanister",30)
+		TNT1 A 1 A_GiveInventory("EssencePower",20)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	PickupB:
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("Clip",20)
+		TNT1 A 1 A_GiveInventory("SprayCanister",48)
+		TNT1 A 1 A_GiveInventory("GasolineCan",6)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	PickupC:
+		TNT1 A 1 A_GiveInventory("Flares",8)
+		TNT1 A 1 A_GiveInventory("shell",8)
+		TNT1 A 1 A_GiveInventory("Clip",20)
+		TNT1 A 1 A_GiveInventory("TeslaCharge",30)
+		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
+		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
+		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
+		Stop
+	}
+}
+
+Actor BasicArsenalDrop
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander 
+		TNT1 A 0 A_Gravity
+		TNT1 A 0 A_Fall
+		TNT1 A 0 A_Jump(16, "SpawnA")
+		TNT1 A 0 A_Jump(32, "SpawnB")
+		Goto SpawnBonusAmmo
+	SpawnA:
+		TNT1 AAAAAAAAAA 1 A_Wander // a simple hack to scatter the drops
+		TNT1 A 0 A_DropItem("SprayCanisterPickup")
+		Goto SpawnBonusAmmo
+	SpawnB:
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 0 A_DropItem("Sawedoff")
+	SpawnBonusAmmo:
+		TNT1 A 0 A_DropItem("BasicAmmoPack")
+		Stop
+	}
+}
+
+Actor AdvancedArsenalDrop
+{
+	Speed 15
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAAAAAAAAA 1 A_Wander
+		TNT1 A 0 A_Fall
+		TNT1 A 1 A_Jump(32, "SpawnA", "SpawnB")
+		Goto SpawnBonusAmmo
+	SpawnA:
+		TNT1 A 1 A_DropItem("VoodooDollPickup")
+		Goto SpawnBonusAmmo
+	SpawnB:
+		TNT1 A 1 A_DropItem("TeslaRifle")
+	SpawnBonusAmmo:
+		TNT1 A 1 A_DropItem("AdvancedAmmoPack")
+		Stop
+	}
+}
+
+Actor NoArsenalDrop
+{
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor UnknownAmmoReplacer : RandomSpawner 
+{
+	DropItem "BasicAmmoPack", 255, 12
+	DropItem "AdvancedAmmoPack", 255, 7
+	DropItem "RandomAmmoPack", 255, 1
+}
+
+Actor UnknownWeaponReplacer : RandomSpawner 
+{
+	DropItem "NoArsenalDrop", 255, 10
+	DropItem "BasicArsenalDrop", 255, 6
+	DropItem "AdvancedArsenalDrop", 255, 3
+	DropItem "RandomAmmoPack", 255, 1
+}

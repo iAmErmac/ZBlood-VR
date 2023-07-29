@@ -36,7 +36,7 @@ Class BloodFlameProjectile : Actor
 {
 	override int SpecialMissileHit(Actor victim)
 	{
-		if(!victim.CountInv("PainBurnToken")) victim.SetInventory("MonsterBurnEffect", 1);
+		if(Cvar.FindCvar("zblood_burnall").GetBool() && !victim.CountInv("PainBurnToken")) victim.SetInventory("MonsterBurnEffect", 1);
 		
 		Super.SpecialMissileHit(victim);
 		return -1;
@@ -47,7 +47,7 @@ Class BloodAOEFlameProjectile : Actor
 {
 	override int SpecialMissileHit(Actor victim)
 	{
-		markAreaBurnTargets();
+		if(Cvar.FindCvar("zblood_burnall").GetBool()) markAreaBurnTargets();
 		
 		Super.SpecialMissileHit(victim);
 		return -1;
@@ -55,7 +55,7 @@ Class BloodAOEFlameProjectile : Actor
 	
 	action void A_MarkBurnVictims()
 	{
-		invoker.markAreaBurnTargets();
+		if(Cvar.FindCvar("zblood_burnall").GetBool()) invoker.markAreaBurnTargets();
 	}
 	
 	void markAreaBurnTargets()

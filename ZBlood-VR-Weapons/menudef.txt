@@ -54,6 +54,7 @@ LISTMENU "MainMenu"
 	{
 		TextItem "$MNU_NEWGAME", "n", "PlayerclassMenu"
 		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "$ZBV_OPTIONS", "o", "ZBVR_Settings"
 		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
 		TextItem "$MNU_INFO", "i", "ReadThisMenu"
 		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
@@ -89,6 +90,8 @@ OptionMenu "ZBVR_Settings" {
 	Option "$ZBV_WEAPON_MODEL", "zblood_models", "ZBV_WeaponModel_Option"
 	Option "$ZBV_WEAPON_FLASH", "zblood_muzzle_flash", "OnOff"
 	Option "$ZBV_WEAPON_SWITCH", "zblood_fastswitch", "OnOff"
+	Option "$ZBV_WEAPON_AKIMBO", "zblood_akimbo", "ZBV_enable_switch"
+	StaticText "$ZBV_AKIMBO_NOTE", "DarkGrey"
 	
 	StaticText " "
 	StaticText "$ZBV_MONSTERS", "Gold"
@@ -97,10 +100,22 @@ OptionMenu "ZBVR_Settings" {
 	StaticText "$ZBV_MON_REPLACE_NOTE2", "DarkGrey"
 	
 	StaticText " "
+	StaticText "$ZBV_DROP_OPT", "Gold"
+	Option "$ZBV_DROP_REPLACE", "zblood_drop_replace", "ZBV_enable_switch"
+	StaticText "$ZBV_DROP_REPLACE_NOTE1", "DarkGrey"
+	StaticText "$ZBV_DROP_REPLACE_NOTE2", "DarkGrey"
+	
+	StaticText " "
 	StaticText "$ZBV_BULLETZ", "Gold"
 	Option "$ZBV_BULLETZ_ON", "zblood_bulletz", "OnOff"
 	StaticText "$ZBV_BULLETZ_NOTE1", "DarkGrey"
 	Slider "$ZBV_BULLETZ_SPEED", "zblood_bulletspeed", 20, 150, 5
+	
+	StaticText " "
+	StaticText "$ZBV_BURN_EFFECT", "Gold"
+	Option "$ZBV_BURN_ALL", "zblood_burnall", "ZBV_enable_switch"
+	StaticText "$ZBV_BURN_ALL_NOTE1", "DarkGrey"
+	StaticText "$ZBV_BURN_ALL_NOTE2", "DarkGrey"
 	
 	StaticText " "
 	StaticText "$ZBV_BLOOD", "Gold"

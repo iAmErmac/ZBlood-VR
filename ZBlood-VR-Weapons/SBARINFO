@@ -88,10 +88,10 @@ statusbar normal // ZBlooD Status bar
 		drawswitchableimage YellowSkull, "nullimage", "STKEYS4", 59, 189;
 
 	inInventory Flaregun
-	{ 	isSelected Flaregun, DoubleFlaregun
+	{ 	isSelected Flaregun, Flaregun2
 		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Flares, 145, 180,0; }
 		
-		isSelected not Flaregun, DoubleFlaregun
+		isSelected not Flaregun, Flaregun2
 		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Flares, 145, 180,0; }
 	}
 	
@@ -99,10 +99,10 @@ statusbar normal // ZBlooD Status bar
     { drawnumber 3, BLUEFONT, DarkerBlue, ammo Flares, 145, 180,0; }
 
 	inInventory SawedOff
-	{ 	isSelected SawedOff, DoubleSawedOff
+	{ 	isSelected SawedOff, SawedOff2
 		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Shell2, 145, 186,0;}
 		
-		isSelected not SawedOff, DoubleSawedOff
+		isSelected not SawedOff, SawedOff2
 		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Shell2, 145, 186,0;}
 	}
 	
@@ -110,10 +110,10 @@ statusbar normal // ZBlooD Status bar
     { drawnumber 3, BLUEFONT, DarkerBlue, ammo Shell2, 145, 186,0;}
 	
 	inInventory TommyGun
-	{ 	isSelected TommyGun, DoubleTommyGun
+	{ 	isSelected TommyGun, TommyGun2
 		{ drawnumber 3, BLUEFONT, LighterWhite, ammo Clip, 145, 192,0;}
 		
-		isSelected not TommyGun, DoubleTommyGun
+		isSelected not TommyGun, TommyGun2
 		{ drawnumber 3, BLUEFONT, LighterBlue, ammo Clip, 145, 192,0;}
 	}
 	
@@ -121,10 +121,10 @@ statusbar normal // ZBlooD Status bar
     { drawnumber 3, BLUEFONT, DarkerBlue, ammo Clip, 145, 192,0;}
 	
 	inInventory NapalmLauncher
-	{ 	isSelected NapalmLauncher, DoubleNapalmLauncher
+	{ 	isSelected NapalmLauncher, NapalmLauncher2
 		{ drawnumber 3, BLUEFONT, LighterWhite, ammo GasolineCan, 168, 180,0;}
 		
-		isSelected not NapalmLauncher, DoubleNapalmLauncher
+		isSelected not NapalmLauncher, NapalmLauncher2
 		{ drawnumber 3, BLUEFONT, LighterBlue, ammo GasolineCan, 168, 180,0;}
 	}
 	
@@ -154,10 +154,10 @@ statusbar normal // ZBlooD Status bar
     { drawnumber 3, BLUEFONT, DarkerBlue, ammo SprayCanister, 168, 192,0;}
 	
 	inInventory TeslaRifle
-	{ 	isSelected TeslaRifle, DoubleTesla
+	{ 	isSelected TeslaRifle, TeslaRifle2
 		{ drawnumber 3, BLUEFONT, LighterWhite, ammo TeslaCharge, 191, 180,0;}
 		
-		isSelected not TeslaRifle, DoubleTesla
+		isSelected not TeslaRifle, TeslaRifle2
 		{ drawnumber 3, BLUEFONT, LighterBlue, ammo TeslaCharge, 191, 180,0;}
 	}
 	

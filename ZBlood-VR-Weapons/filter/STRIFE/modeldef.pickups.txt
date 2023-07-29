@@ -23,20 +23,25 @@ Model Pitchfork2
 
 Model ShellSpawner
 { 
-   Path "models/ammo"
-   Model 0 "a_fewshell.md3"
-   Skin 0 "a_fewshell.png"
-   
-   Scale -1 1 1
-   Offset 0 0 0
-   
-   //Alt fire
-   FrameIndex SHEL A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "SHELA.md3"
+	Skin 0 "SHELA_tex.png"
+	
+	FrameIndex SHEL A 0 0
+}
+
+Model _ElectricBolts
+{ 
+	Path "models/voxel/pickups"
+	Model 0 "SHELA.md3"
+	Skin 0 "SHELA_tex.png"
+	
+	FrameIndex SHEL A 0 0
 }
 
 Model BulletSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_fewbullet.md3"
    Skin 0 "a_fewbullet.png"
    
@@ -49,7 +54,7 @@ Model BulletSpawner
 
 Model EssencePowerSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_soul.md3"
    Skin 0 "a_soul.png"
    
@@ -57,7 +62,8 @@ Model EssencePowerSpawner
    Offset 0 0 0
    ZOffset 20
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex ESSE A 0 0
@@ -65,7 +71,7 @@ Model EssencePowerSpawner
 
 Model TrappedSoulSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_soul.md3"
    Skin 0 "a_soul.png"
    
@@ -73,7 +79,8 @@ Model TrappedSoulSpawner
    Offset 0 0 0
    ZOffset 15
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex ESSE A 0 0
@@ -81,53 +88,59 @@ Model TrappedSoulSpawner
 
 Model CellPickup
 { 
-   Path "models/ammo"
-   Model 0 "a_battery.md3"
-   Skin 0 "a_battery.png"
-   
-   Scale -2.8 2.8 2.8
-   Offset 0 0 0
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex TESC A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "TESCA.md3"
+	Skin 0 "TESCA_tex.png"
+
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex TESC A 0 0
 }
 
 Model JumpingBoots
 { 
-   Path "models/items"
-   Model 0 "i_boots.md3"
-   Skin 0 "i_boots.png"
-   
-   Scale -1.8 1.8 1.8
-   Offset 3 8 0
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex SUIT A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "SUITA.md3"
+	Skin 0 "SUITA_tex.png"
+
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex SUIT A 0 0
 }
 
 Model HappyAmmoPack
 { 
-   Path "models/items"
-   Model 0 "i_pouch.md3"
-   Skin 0 "i_pouch.png"
-   
-   Scale -3.5 3.5 3.5
-   Offset 0 0 0
-   ZOffset 10
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex BPAK A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "BPAKA.md3"
+	Skin 0 "BPAKA_tex.png"
+	
+	Scale 1.7 1.2 1.8
+	
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex BPAK A 0 0
+}
+
+Model _AmmoSatchel
+{ 
+	Path "models/voxel/pickups"
+	Model 0 "BPAKA.md3"
+	Skin 0 "BPAKA_tex.png"
+	
+	Scale 1.7 1.2 1.8
+	
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex BPAK A 0 0
 }
 
 Model CloakOfShadow
 { 
-   Path "models/items"
+   Path "models/3d/items"
    Model 0 "i_invisible.md3"
    Skin 0 "i_invisible.png"
    
@@ -135,7 +148,8 @@ Model CloakOfShadow
    Offset 0 0 0
    ZOffset 10
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex INVS A 0 0
@@ -152,7 +166,7 @@ Model CloakOfShadow
 
 Model ReflectiveShotsSpawner
 { 
-   Path "models/items"
+   Path "models/3d/items"
    Model 0 "i_reflect.md3"
    Skin 0 "i_reflect.png"
    
@@ -160,7 +174,8 @@ Model ReflectiveShotsSpawner
    Offset 0 0 0
    ZOffset 15
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex MEGA A 0 0
@@ -169,108 +184,4 @@ Model ReflectiveShotsSpawner
    FrameIndex MEGA D 0 3
    FrameIndex MEGA E 0 4
    FrameIndex MEGA F 0 5
-}
-
-
-//Sigil phase 1
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil_handle.md3"
-   Skin 0 "sigil.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   
-   //Ready
-   FrameIndex SIGH  A 0 0
-}
-
-//Sigil phase 2
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil_handle.md3"
-   Model 1 "sigil_base.md3"
-   Skin 0 "sigil.png"
-   Skin 1 "sigil.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   
-   //Ready
-   FrameIndex SIGH  B 0 0	FrameIndex SIGH  B 1 0
-}
-
-//Sigil phase 3
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil_handle.md3"
-   Model 1 "sigil_base.md3"
-   Model 2 "sigil_spike_right.md3"
-   Skin 0 "sigil.png"
-   Skin 1 "sigil.png"
-   Skin 2 "sigil.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   
-   //Ready
-   FrameIndex SIGH  C 0 0	FrameIndex SIGH  C 1 0	FrameIndex SIGH  C 2 0
-}
-
-//Sigil phase 4
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil_handle.md3"
-   Model 1 "sigil_base.md3"
-   Model 2 "sigil_spike_right.md3"
-   Model 3 "sigil_spike_left.md3"
-   Skin 0 "sigil.png"
-   Skin 1 "sigil.png"
-   Skin 2 "sigil.png"
-   Skin 3 "sigil.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   
-   //Ready
-   FrameIndex SIGH  D 0 0	FrameIndex SIGH D 1 0	FrameIndex SIGH  D 2 0	FrameIndex SIGH  D 3 0
-}
-
-//Sigil phase 5
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil.md3"
-   Skin 0 "sigil.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   
-   //Ready
-   FrameIndex SIGH  E 0 0
-}
-
-//Sigil flash
-Model Sigil
-{
-   Path "models/weapons/sigil"
-   Model 0 "sigil_mf.md3"
-   Skin 0 "sigil_flash1.png"
-
-   Scale -1.6 1.6 1.6
-   Offset 0.0 -28.0 -15.0
-   ZOffset -21
-   
-   //Ready
-   FrameIndex SIGF  A 0 0
-   Skin 0 "sigil_flash2.png"
-   ZOffset -18
-   FrameIndex SIGF  B 0 0
-   Skin 0 "sigil_flash3.png"
-   ZOffset -15
-   FrameIndex SIGF  C 0 0
 }

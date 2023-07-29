@@ -1,4 +1,4 @@
-Class OfhandVoodooDoll : BloodWeaponZ
+Class OffhandVoodooDoll : BloodWeaponZ
 {
 	Default
 	{
@@ -7,6 +7,7 @@ Class OfhandVoodooDoll : BloodWeaponZ
 	Weapon.SlotNumber 1;
 	Obituary "%o was punched to death by %k.";
 	Tag "Vodoo Doll";
+	+WEAPON.NOALERT;
 	+WEAPON.WIMPY_WEAPON;
 	+WEAPON.MELEEWEAPON;
 	+WEAPON.OFFHANDWEAPON;
@@ -31,7 +32,7 @@ Class OfhandVoodooDoll : BloodWeaponZ
 			return;
 		}*/
 		
-		if(owner.player.ReadyWeapon is "VoodooDoll" && owner.player.OffhandWeapon is "OfhandVoodooDoll")
+		if(owner.player.ReadyWeapon is "VoodooDoll" && owner.player.OffhandWeapon is "OffhandVoodooDoll")
 		{
 			if(player.CountInv("UsingVoodooSpell"))
 			{

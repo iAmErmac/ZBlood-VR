@@ -1,0 +1,4 @@
+#include "decorate/pickups.txt"
+#include "decorate/persons.txt"
+#include "decorate/projectiles.txt"
+#include "decorate/spawners.txt"

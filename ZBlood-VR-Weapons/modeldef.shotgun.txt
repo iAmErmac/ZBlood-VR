@@ -48,7 +48,7 @@ Model Sawedoff
 { 
    Path "models/3d/weapons/shotgun"
    Model 0 "shotgun.md3"
-   Skin 0 "shotgun_noshell.png"
+   Skin 0 "shotgun.png"
    Model 1 "shotgun_shell.md3"
    Skin 1 "shotgun.png"
    
@@ -163,7 +163,7 @@ Model Sawedoff2
 { 
    Path "models/3d/weapons/shotgun"
    Model 0 "shotgun.md3"
-   Skin 0 "shotgun_noshell.png"
+   Skin 0 "shotgun.png"
    Model 1 "shotgun_shell.md3"
    Skin 1 "shotgun.png"
    

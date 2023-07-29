@@ -1,11 +1,6 @@
-
 //Weapons
 
-Actor Pitchfork2: Pitchfork replaces Pitchfork
-{
-}
-
-Actor FlareGunSpawner
+Actor FlareFunSpawner
 {
 	States
 	{
@@ -16,7 +11,7 @@ Actor FlareGunSpawner
 	}
 }
 
-Actor SawedoffSpawner: CustomInventory
+Actor SawedoffSpawner
 {
 	States
 	{
@@ -24,15 +19,10 @@ Actor SawedoffSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 1 A_SpawnItem("Sawedoff",1)
 		Stop
-	Pickup:
-		TNT1 A 0
-		TNT1 A 1 A_GiveInventory("Sawedoff",1)
-		TNT1 A 1 A_GiveInventory("shell",20)
-		Stop
 	}
 }
 
-Actor TommygunSpawner: CustomInventory
+Actor TommygunSpawner
 {
 	States
 	{
@@ -40,26 +30,16 @@ Actor TommygunSpawner: CustomInventory
 		TNT1 A 0
 		TNT1 A 1 A_SpawnItem("Tommygun",1)
 		Stop
-	Pickup:
-		TNT1 A 0
-		TNT1 A 1 A_GiveInventory("Tommygun",1)
-		TNT1 A 1 A_GiveInventory("Clip",25)
-		Stop
 	}
 }
 
-Actor SprayCanSpawner: CustomInventory
+Actor SprayCanSpawner
 {
 	States
 	{
 	Spawn:
 		TNT1 A 0
 		TNT1 A 1 A_SpawnItem("SprayCanisterPickup",1)
-		Stop
-	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_GiveInventory("SprayCanister", 48)
-		TNT1 A 1 A_GiveInventory("SprayCan", 1)
 		Stop
 	}
 }
@@ -103,22 +83,6 @@ Actor VoodooDollSpawner
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("VoodooDollPickup",1)
-		Stop
-	}
-}
-
-Actor EssentianWeaponSpawner
-{
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB")
-	SpawnA:
-		TNT1 A 1 A_SpawnItem("FlareGun",1)
-		Stop
-	SpawnB:
 		TNT1 A 1 A_SpawnItem("VoodooDollPickup",1)
 		Stop
 	}
@@ -251,7 +215,7 @@ Actor GasolineCanSpawner
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("GasolineCan")
+		TNT1 A 1 A_SpawnItem("GasolineCanPickup")
 		Stop
 	}
 }
@@ -429,133 +393,8 @@ Actor HappyTNTBundle : RandomSpawner
 }
 
 
-Actor EssentialAmmoSpawner
-{
-   States
-   {
-   Spawn:
-		TNT1 A 1 A_Jump(64, "SpawnB")
-		TNT1 A 1 A_Jump(128, "SpawnA")
-		TNT1 A 1 A_Jump(256, "SpawnC", "SpawnD", "SpawnE")
-	SpawnA:
-		TNT1 A 1 A_DropItem("ShellSpawner")
-		Stop
-	SpawnB:
-		TNT1 A 1 A_DropItem("BulletSpawner")
-		Stop
-	SpawnC:
-		TNT1 A 1 A_DropItem("TNTSpawner")
-		Stop
-	SpawnD:
-		TNT1 A 1 A_DropItem("ProxyBombSpawner")
-		Stop
-	SpawnE:
-		TNT1 A 1 A_DropItem("FlareShellSpawner")
-		Stop
-	}
-}
-
-Actor BasicAmmoSpawner
-{
-   States
-   {
-   Spawn:
-		TNT1 A 1 A_Jump(32, "SpawnA", "SpawnB")
-		TNT1 A 1 A_Jump(64, "SpawnC", "SpawnD")
-		TNT1 A 1 A_DropItem("BulletSpawner")
-		Stop
-	SpawnA:
-		TNT1 A 1 A_DropItem("ShellSpawner")
-		Stop
-	SpawnB:
-		TNT1 A 1 A_DropItem("SprayCanisterSpawner")
-		Stop
-	SpawnC:
-		TNT1 A 1 A_DropItem("EssencePowerSpawner")
-		Stop
-	SpawnD:
-		TNT1 A 1 A_DropItem("FlareBoxSpawner")
-		Stop
-	}
-}
-
-Actor PowerAmmoSpawner
-{
-   States
-   {
-   Spawn:
-		TNT1 A 1 A_Jump(20, "SpawnA", "SpawnB")
-		TNT1 A 1 A_Jump(50, "SpawnC", "SpawnD")
-		TNT1 A 1 A_Jump(256, "SpawnE", "SpawnF", "SpawnG")
-	SpawnA:
-		TNT1 A 1 A_DropItem("CellPickupSpawner")
-		Stop
-	SpawnB:
-		TNT1 A 1 A_DropItem("SprayCanisterSpawner")
-		Stop
-	SpawnC:
-		TNT1 A 1 A_DropItem("EssencePowerSpawner")
-		Stop
-	SpawnD:
-		TNT1 A 1 A_DropItem("FlareBoxSpawner")
-		Stop
-	SpawnE:
-		TNT1 A 1 A_DropItem("ProxyBombBoxSpawner")
-		Stop
-	SpawnF:
-		TNT1 A 1 A_DropItem("VoodooDollSpawner")
-		Stop
-	SpawnG:
-		TNT1 A 1 A_DropItem("TNTBoxSpawner")
-		Stop
-	}
-}
-
-Actor AdvancedAmmoSpawner
-{
-   States
-   {
-   Spawn:
-		TNT1 A 1 A_Jump(20, "SpawnA", "SpawnB")
-		TNT1 A 1 A_Jump(80, "SpawnC", "SpawnD", "SpawnE")
-		TNT1 A 1 A_DropItem("TrappedSoulSpawner")
-		Stop
-	SpawnA:
-		TNT1 A 1 A_DropItem("CellPickupSpawner")
-		Stop
-	SpawnB:
-		TNT1 A 1 A_DropItem("GasolineCanSpawner")
-		Stop
-	SpawnC:
-		TNT1 A 1 A_DropItem("TNTBoxSpawner")
-		Stop
-	SpawnD:
-		TNT1 A 1 A_DropItem("ProxyBombBoxSpawner")
-		Stop
-	SpawnE:
-		TNT1 A 1 A_DropItem("HappyTNTBundle")
-		Stop
-	}
-}
-
-
 
 //Items
-
-Actor BloodAmmoRefill : CustomInventory
-{
-	States
-	{
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Flares", 25, "NoRefill")
-		TNT1 A 1 A_TakeInventory("Flares", 25) //Make sure refll don't go over 20
-		TNT1 A 1 A_GiveInventory("Flares", 25)
-		Stop
-	NoRefill:
-		TNT1 A 0
-		Stop
-	}
-}
 
 Actor HappyAmmoPack: CustomInventory
 {
@@ -598,58 +437,6 @@ Actor HappyAmmoPack: CustomInventory
 		TNT1 A 1 A_GiveInventory("TNTAmmo",2)
 		TNT1 A 1 A_GiveInventory("DTNTAMMO",1)
 		TNT1 A 1 A_GiveInventory("RTNTAMMO",1)
-		Stop
-	}
-}
-
-ACTOR EnvironmentalSuit2 : PowerupGiver
-{
-  +FLOORCLIP
-  +INVENTORY.INVBAR
-  -INVENTORY.FANCYPICKUPSOUND
-  Inventory.MaxAmount 5
-  Powerup.Type "Mask"
-  Tag "$TAG_ENVSUIT" // "Environmental Suit"
-  Inventory.Icon "I_MASK"
-  Inventory.PickupSound "misc/i_pkup"
-  Inventory.PickupMessage "$TXT_ENVSUIT" // "You picked up the Environmental Suit."
-  States
-  {
-  Spawn:
-    MASK A -1
-    Stop
-  }
-}
-
-Actor BloodWearablesSpawner : CustomInventory //spawn instead of environmental suit
-{
-	Speed 15
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("EnvironmentalSuit2",1)
-		TNT1 A 0 A_Jump(128, "ExtraStuff")
-	SpawnArmor:
-		TNT1 AAAAAAAAAA 1 A_Wander // a simple hack to spread out drops
-		TNT1 A 1 A_SpawnItem("SmallArmorSpawner",1)
-	ExtraStuff:
-		TNT1 AAAAAAAAAA 1 A_Wander // a simple hack to spread out drops
-		TNT1 A 1 A_Jump(64, "SpawnC") //A chance to spawn extra items
-		TNT1 A 1 A_Jump(128, "SpawnA", "SpawnB")
-		Stop
-	SpawnA:
-		TNT1 A 1 A_SpawnItem("JumpingBootSpawner",1)
-		Stop
-	SpawnB:
-		TNT1 A 1 A_SpawnItem("BeastVisionSpawner",1)
-		Stop
-	SpawnC:
-		TNT1 A 1 A_SpawnItem("GunsAkimboSpawner",1)
-		Stop
-	Pickup:
-		TNT1 A 1 A_GiveInventory("EnvironmentalSuit2",1)
-		TNT1 A 1 A_GiveInventory("JumpingBootSpawner",1)
 		Stop
 	}
 }
@@ -702,6 +489,17 @@ Actor ReflectiveShotsSpawner: PowerupGiver
   }
 }
 
+Actor DivingSuitSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItem("DivingSuit",1)
+		Stop
+	}
+}
+
 Actor JumpingBootSpawner
 {
 	States
@@ -723,7 +521,8 @@ actor GunsAkimboSpawner : PowerupGiver
   +COUNTITEM
   +INVENTORY.FANCYPICKUPSOUND
   +INVENTORY.BIGPOWERUP
-  powerup.type "WeaponLevel2"
+  //powerup.type "WeaponLevel2"
+  powerup.type "PowerTargeter"
   powerup.duration 1250
   states
   {
@@ -747,7 +546,7 @@ Actor BeastVisionSpawner
 	}
 }
 
-Actor CloakOfShadow: ShadowArmor
+Actor CloakOfShadow: ArtiInvisibility
 {
 	Inventory.Icon "INVISCLK"
 	States
@@ -758,37 +557,92 @@ Actor CloakOfShadow: ShadowArmor
 	}
 }
 
-Actor BloodPowerItemsSpawner : CustomInventory //spawn instead of shadow armor
+Actor LifeSeed: ArtiSuperHealth
 {
+	Inventory.Icon "LIFESEED"
 	States
 	{
 	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
-		Stop
-	Pickup:
-		TNT1 A 1 A_GiveInventory("ReflectiveShotsSpawner",1)
-		Stop
-	SpawnA:
-		TNT1 A 1 A_SpawnItem("CloakOfShadow",1)
-		Stop
-	SpawnB:
-		TNT1 A 1 A_SpawnItem("ReflectiveShotsSpawner",1)
-		Stop
-	SpawnC:
-		TNT1 A 1 A_SpawnItem("DeathmaskSpawner",1)
-		Stop
+		SPHL ABCDEFGHIJKLMNOPQR 1
+		TNT1 A 0 A_Jump(256, "StareA", "StareB")
+	StareA:
+		SPHL S 35
+	StareB:
+		SPHL S 35
+	CloseEye:
+		SPHL RQPONMLKJIHGFEDCB 1
+		TNT1 A 0 A_Jump(256, "SleepEyeA", "SleepEyeB")
+	SleepEyeA:
+		SPHL A 35
+	SleepEyeB:
+		SPHL A 35
+		Goto Spawn
 	}
 }
 
-Actor SmallArmorSpawner: CustomInventory
+Actor ArmorFragment: CustomInventory
 {
 	inventory.amount 1
 	inventory.maxamount 200
-	
-	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupMessage "Picked up Armor fragment!"
 	Inventory.PickupSound "misc/armor_pkup"
-	Scale 0.7
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("BodyArmor", 5)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor FireArmorFragment: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Fire Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
+	States
+	{
+		Spawn:
+			ARMF A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("FireArmor",5)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("FireArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 0 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SpiritArmorFragment: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up Spirit Armor fragment!"
+	Inventory.PickupSound "misc/armor_pkup"
+	Scale 0.5
 	States
 	{
 		Spawn:
@@ -796,37 +650,73 @@ Actor SmallArmorSpawner: CustomInventory
 			Stop
 		Pickup:
 			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
-			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
-			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
 			TNT1 A 0 A_JumpIfInventory("SpiritArmor",200,"DontPick")
-			TNT1 A 0 A_JumpIfInventory("BodyArmor",175,"Maxout")
-			TNT1 A 0 A_JumpIfInventory("FireArmor",175,"Maxout")
-			TNT1 A 0 A_JumpIfInventory("SpiritArmor",175,"Maxout")
-			SARM A 1
-			TNT1 A 0 A_GiveInventory("BodyArmor", 25)
-			TNT1 A 0 A_GiveInventory("FireArmor", 25)
-			TNT1 A 0 A_GiveInventory("SpiritArmor", 25)
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",195,"Maxout")
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 5)
 			Stop
 		Maxout:
-			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
-			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
-			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
-			TNT1 A 0 A_GiveInventory("FireArmor", 200)
 			TNT1 A 0 A_TakeInventory("SpiritArmor", 200) // Make sure don't go over 200
 			TNT1 A 0 A_GiveInventory("SpiritArmor", 200)
 			Stop
 		DontPick:
-			SARM A 1 //Don't pick if all already at 200
+			TNT1 A 0 //Don't pick if all already at 200
 			Fail
 	}
 }
 
-Actor BigArmorSpawner: CustomInventory
+Actor ArmorFragmentSpawner
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
+		SpawnA:
+			TNT1 A 1 A_DropItem("ArmorFragment")
+			Stop
+		SpawnB:
+			TNT1 A 1 A_DropItem("FireArmorFragment")
+			Stop
+		SpawnC:
+			TNT1 A 1 A_DropItem("SpiritArmorFragment")
+			Stop
+	}
+}
+
+Actor SmallArmorDrop: CustomInventory
 {
 	inventory.amount 1
 	inventory.maxamount 200
-	
-	Inventory.PickupMessage "Picked up fortified Armor!"
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("BodyArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("BodyArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("BodyArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallFireArmorDrop: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
 	Inventory.PickupSound "misc/armor_pkup"
 	States
 	{
@@ -835,19 +725,94 @@ Actor BigArmorSpawner: CustomInventory
 			Stop
 		Pickup:
 			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
-			TNT1 A 0 A_JumpIfInventory("BodyArmor",100,"DontPick")
-			TNT1 A 0 A_JumpIfInventory("FireArmor",100,"DontPick")
-			TNT1 A 0 A_JumpIfInventory("SpiritArmor",100,"DontPick")
-			ARMF A 1
+			TNT1 A 0 A_JumpIfInventory("FireArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("FireArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("FireArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("FireArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("FireArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallSpiritArmorDrop: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Scale 0.8
+	Inventory.PickupMessage "Picked up small Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			SARM A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",200,"DontPick")
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",175,"Maxout")
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 25)
+			Stop
+		Maxout:
+			TNT1 A 0 A_TakeInventory("SpiritArmor", 200) // Make sure don't go over 200
+			TNT1 A 0 A_GiveInventory("SpiritArmor", 200)
+			Stop
+		DontPick:
+			TNT1 A 1 //Don't pick if all already at 200
+			Fail
+	}
+}
+
+Actor SmallArmorSpawner
+{
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_Jump(256, "SpawnA", "SpawnB", "SpawnC")
+		SpawnA:
+			TNT1 A 1 A_DropItem("SmallArmorDrop")
+			Stop
+		SpawnB:
+			TNT1 A 1 A_DropItem("SmallFireArmorDrop")
+			Stop
+		SpawnC:
+			TNT1 A 1 A_DropItem("SmallSpiritArmorDrop")
+			Stop
+	}
+}
+
+Actor BigArmorSpawner: CustomInventory
+{
+	inventory.amount 1
+	inventory.maxamount 200
+	Inventory.PickupMessage "Picked up fortified Armor!"
+	Inventory.PickupSound "misc/armor_pkup"
+	States
+	{
+		Spawn:
+			ARM1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(997, 0), 2) // Dont know why, but I need it to be like this for this one
+			TNT1 A 0 A_JumpIfInventory("BodyArmor",100,"CheckFireArmor")
 			TNT1 A 0 A_TakeInventory("BodyArmor", 100) // Make sure don't go over 100
 			TNT1 A 0 A_GiveInventory("BodyArmor", 100)
+		CheckFireArmor:
+			TNT1 A 0 A_JumpIfInventory("FireArmor",100,"CheckSpiritArmor")
 			TNT1 A 0 A_TakeInventory("FireArmor", 100) // Make sure don't go over 100
 			TNT1 A 0 A_GiveInventory("FireArmor", 100)
+		CheckSpiritArmor:
+			TNT1 A 0 A_JumpIfInventory("SpiritArmor",100,"DontPick")
 			TNT1 A 0 A_TakeInventory("SpiritArmor", 100) // Make sure don't go over 100
 			TNT1 A 0 A_GiveInventory("SpiritArmor", 100)
 			Stop
 		DontPick:
-			ARMF A 1 //Don't pick if all already at 100
+			TNT1 A 1 //Don't pick if all already at 100
 			Fail
 	}
 }
@@ -859,82 +824,6 @@ Actor SuperArmorSpawner: CustomInventory
 	Spawn:
 		TNT1 A 0
 		TNT1 A 1 A_SpawnItem("SuperArmorPickup",1)
-		Stop
-	}
-}
-
-
-//modified weapons drops
-
-//Rowan drop stuff to continue progress if Rowan is killed early
-Actor RowanDrops : CustomInventory
-{
-	+FIXMAPTHINGPOS
-	Inventory.PickupMessage "$TXT_COMMUNICATOR"
-	States
-	{
-	Spawn:
-		TNT1 A 0 //if player already has the comm unit, its not spawned
-		TNT1 A 0 A_JumpIfInTargetInventory("Communicator",1,"NoSpawn",AAPTR_PLAYER1)
-		TNT1 A 1 A_DropItem("SawedoffSpawner")//the only way to obtain it other than with the dialogs
-		COMM A -1
-		Stop
-	Pickup:
-		TNT1 A 0 //the items below are needed for story progression:
-		TNT1 A 0 A_GiveInventory("Communicator")//given to be able to hear Blackbird
-		TNT1 A 0 A_GiveInventory("QuestItem1")//required for Blackbird's "bridge clue"
-		TNT1 A 0 A_GiveInventory("BaseKey")//required for "I need gold" dialog to appear
-	NoSpawn:
-		TNT1 A 0 //create nothing
-		Stop
-	}
-}
-
-//Macil gives additional stuff on first meeting
-Actor MacilGiftPack : Custominventory
-{
-	ConversationID 172
-	
-	States //additional rewards are given when talked to Macil
-	{
-	Pickup:
-		TNT1 A 0 A_GiveInventory("Coin",300)//always give monetary reward	
-		TNT1 A 0 A_TakeInventory("StrifeOfferingChalice",1)//Remove the stolen chalice from inventory
-		TNT1 A 0 A_TakeInventory("QuestItem2",1)//Remove the alarm given by stolen chalice
-		Stop
-	}
-}
-
-Actor ChaliceItemSpawner
-{
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_SpawnItem("StrifeOfferingChalice")
-		TNT1 A 1 A_DropItem("BasicAmmoSpawner", 1)
-		TNT1 A 1 A_DropItem("PowerAmmoSpawner", 1)
-		TNT1 A 1 A_DropItem("AdvancedAmmoSpawner", 1)
-		TNT1 A 1 A_DropItem("HappyTNTBundle", 1)
-		Stop
-	}
-}
-
-Actor TargeterSpawner
-{
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		//TNT1 A 1 A_SpawnItem("StrifeTargeter")
-		TNT1 A 1 A_SpawnItem("TeslaRifleSpawner")
-		TNT1 A 1 A_Jump(100, "SpawnA", "SpawnB") //A chance to spawn explosives
-		Stop
-	SpawnA:
-		TNT1 A 1 A_DropItem("HappyTNTBundle")
-		Stop
-	SpawnB:
-		TNT1 A 1 A_DropItem("AdvancedAmmoSpawner")
 		Stop
 	}
 }

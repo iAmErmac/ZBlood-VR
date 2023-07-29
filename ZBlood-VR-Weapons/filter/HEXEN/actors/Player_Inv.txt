@@ -1,19 +1,75 @@
-ACTOR CalebRebel : PlayerPawn
+Actor IsUnderwater : Inventory
 {
-	Health 100
-	Radius 16
-	Height 56
- 	Player.forwardMove 1 0.9
+	Inventory.Amount 1
+	Inventory.MaxAmount 300
+}
+
+Actor BurnSound : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 90
+}
+Actor Swimming : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+
+Actor PoisonIntensity : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 400
+}
+
+Actor StrongPoison : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 100
+}
+
+Actor ArmorPicker : PuzzleItem
+{	Inventory.MaxAmount 2 -INVBAR }
+
+ACTOR PowerNumbness : PowerSpeed
+{  	Speed 0.5	}
+
+ACTOR CurseNumbness : PowerupGiver
+{
+  Powerup.Type Numbness
+  Powerup.Duration -1
+  Powerup.Color "00 00 22",.2
+ //inventory.pickupmessage "$CurseNumbness1"
+ inventory.maxamount 0
+ +AUTOACTIVATE
+ +INVENTORY.QUIET
+ +INVENTORY.ADDITIVETIME
+}
+
+actor PowerFragility : PowerProtection
+{	damagefactor "normal", 2	}
+
+actor CurseFragility : PowerupGiver
+{
+ //inventory.pickupmessage "$CurseFragility1"
+ powerup.color "22 00 00" 0.2
+ inventory.maxamount 0
+ powerup.type Fragility
+ powerup.duration -1
+ +AUTOACTIVATE
+ +INVENTORY.QUIET
+ +INVENTORY.ADDITIVETIME
+}
+
+actor Caleb : DoomPlayer
+{
+	Player.forwardMove 0.75 0.70
 	player.displayname "Caleb"
 	player.startitem "Clip", 0
-	player.startitem "Pitchfork2", 1
-	player.startitem "Backpack", 1
-	Player.StartItem "Shell", 6
+	player.startitem "Pitchfork" 1
+	player.startitem "Backpack" 1
+	Player.StartItem "Shell" 6
 	player.soundclass "Caleb"
     Player.CrouchSprite "CALC"
-	Player.ScoreIcon "CLERFACE"
-	Player.InvulnerabilityMode "Ghost"
-	Player.HealRadiusType "Health"
 	DamageFactor "CALINOimmune",0
 	Player.WeaponSlot 1, "Pitchfork2"
 	Player.WeaponSlot 2, "Flaregun"
@@ -24,17 +80,18 @@ ACTOR CalebRebel : PlayerPawn
 	Player.WeaponSlot 7, "SprayCan"
 	Player.WeaponSlot 8, "TeslaRifle"
 	Player.WeaponSlot 9, "LifeLeech"
-	Player.WeaponSlot 0, "VoodooDoll", "Sigil"
+	Player.WeaponSlot 0, "VoodooDoll"
+	Player.SpawnClass "Cleric"
+	Player.InvulnerabilityMode "Ghost"
+	Player.HexenArmor 10, 10, 25, 5, 20
 	Player.FlechetteType "ArtiPoisonBag1"
 	DamageFactor "Blast", 0.544
 	DamageFactor "Flare", 3
 	DamageFactor "Shock", 0.75
 	DamageFactor "Napalm", 1.22
-	Player.ViewHeight 45
-	player.attackzoffset 18
 	player.jumpz 10//jumping distance increased
 	DamageFactor "StunningHead", 0.1
-	PainChance 256
+	PainChance "KickableHead",0
 //	Player.DamageScreenColor "dd 11 00", .8
 //	Player.DamageScreenColor "ff 88 11", .8, "Fire"	
 //	Player.DamageScreenColor "22 88 22", 1, "Disintegrate"
@@ -42,9 +99,6 @@ ACTOR CalebRebel : PlayerPawn
 	XScale 0.6
 	YScale 0.52
 	+ThruSpecies
-	+FLOORCLIP
-	+MTHRUSPECIES
-	WoundHealth 10
 	Species "PlayerThrough"
 	Mass 500
     states
@@ -230,4 +284,60 @@ ACTOR CalebRebel : PlayerPawn
 
 		Goto See
     }
+}
+
+Actor CultistSounder
+{
+	Height 1
+	Radius 1
+	-TELESTOMP
+	+NOGRAVITY
+	States
+	{
+		Spawn:
+			TNT1 A 15 
+			TNT1 A 0 A_PlaysoundEx("CultistGotYou", 1)
+		Stop
+	}
+}
+
+Actor LaughDelay : PowerDamage // Given when Caleb does maniacal laugh for gibbing
+{
+	powerup.duration -3
+	damagefactor "nothing", 1.0
+}
+
+actor StompingDamager
+{
+	+DONTSPLASH
+	+PAINLESS
+	+NOTIMEFREEZE
+	+BLOODLESSIMPACT
+	+NODAMAGETHRUST
+	Renderstyle None
+	Damagetype "Stomping"
+	states
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_JumpIf(momz>0, 2)
+			TNT1 A 0 A_Explode(random(1,-momz)+4,24,0)
+			TNT1 A 0
+			Stop
+			
+	}
+}
+
+actor PlayerController : CustomInventory
+{
+	inventory.maxamount 1
+	+INVENTORY.AUTOACTIVATE
+	+NOTIMEFREEZE
+	States
+	{
+		Pickup:
+		Stomp:
+			TNT1 A 1 A_SpawnItemEx("StompingDamager",0,0,-1,0,0,momz/4,0,SXF_NOCHECKPOSITION /* as it is intended to be INSIDE monster */)
+        Goto Stomp
+	}
 }

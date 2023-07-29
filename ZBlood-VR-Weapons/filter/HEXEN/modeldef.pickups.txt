@@ -1,20 +1,16 @@
 
 Model ShellSpawner
 { 
-   Path "models/ammo"
-   Model 0 "a_fewshell.md3"
-   Skin 0 "a_fewshell.png"
-   
-   Scale -1 1 1
-   Offset 0 0 0
-   
-   //Alt fire
-   FrameIndex SHEL A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "SHELA.md3"
+	Skin 0 "SHELA_tex.png"
+	
+	FrameIndex SHELL A 0 0
 }
 
 Model BulletSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_fewbullet.md3"
    Skin 0 "a_fewbullet.png"
    
@@ -27,7 +23,7 @@ Model BulletSpawner
 
 Model EssencePowerSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_soul.md3"
    Skin 0 "a_soul.png"
    
@@ -35,7 +31,8 @@ Model EssencePowerSpawner
    Offset 0 0 0
    ZOffset 20
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex ESSE A 0 0
@@ -43,7 +40,7 @@ Model EssencePowerSpawner
 
 Model TrappedSoulSpawner
 { 
-   Path "models/ammo"
+   Path "models/3d/ammo"
    Model 0 "a_soul.md3"
    Skin 0 "a_soul.png"
    
@@ -51,7 +48,8 @@ Model TrappedSoulSpawner
    Offset 0 0 0
    ZOffset 15
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex ESSE A 0 0
@@ -59,53 +57,45 @@ Model TrappedSoulSpawner
 
 Model CellPickup
 { 
-   Path "models/ammo"
-   Model 0 "a_battery.md3"
-   Skin 0 "a_battery.png"
-   
-   Scale -2.8 2.8 2.8
-   Offset 0 0 0
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex TESC A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "TESCA.md3"
+	Skin 0 "TESCA_tex.png"
+
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex TESC A 0 0
 }
 
 Model JumpingBoots
 { 
-   Path "models/items"
-   Model 0 "i_boots.md3"
-   Skin 0 "i_boots.png"
-   
-   Scale -1.8 1.8 1.8
-   Offset 3 8 0
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex SUIT A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "SUITA.md3"
+	Skin 0 "SUITA_tex.png"
+
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex SUIT A 0 0
 }
 
 Model HappyAmmoPack
 { 
-   Path "models/items"
-   Model 0 "i_pouch.md3"
-   Skin 0 "i_pouch.png"
-   
-   Scale -3.5 3.5 3.5
-   Offset 0 0 0
-   ZOffset 10
-   
-   ROTATING
-   
-   //Alt fire
-   FrameIndex BPAK A 0 0
+	Path "models/voxel/pickups"
+	Model 0 "BPAKA.md3"
+	Skin 0 "BPAKA_tex.png"
+	
+	Scale 1.7 1.2 1.8
+	
+	Rotating
+	Rotation-Speed 0.2
+	
+	FrameIndex BPAK A 0 0
 }
 
 Model ReflectiveShotsSpawner
 { 
-   Path "models/items"
+   Path "models/3d/items"
    Model 0 "i_reflect.md3"
    Skin 0 "i_reflect.png"
    
@@ -113,7 +103,8 @@ Model ReflectiveShotsSpawner
    Offset 0 0 0
    ZOffset 15
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex MEGA A 0 0
@@ -126,7 +117,7 @@ Model ReflectiveShotsSpawner
 
 Model LifeSeed
 { 
-   Path "models/items"
+   Path "models/3d/items"
    Model 0 "i_seed.md3"
    Skin 0 "i_seed.png"
    
@@ -134,7 +125,8 @@ Model LifeSeed
    Offset 0 0 0
    ZOffset 15
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex SPHL A 0 0
@@ -160,14 +152,15 @@ Model LifeSeed
 
 Model BasicArmorPickup2
 { 
-   Path "models/items"
+   Path "models/3d/items"
    Model 0 "i_basic.md3"
    Skin 0 "i_basic.png"
    
    Scale -1.2 1.2 1.2
    Offset 0 0 0
    
-   ROTATING
+   Rotating
+   Rotation-Speed 0.2
    
    //Alt fire
    FrameIndex BARM A 0 0

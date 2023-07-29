@@ -75,6 +75,7 @@ Model Spraycan
    FrameIndex DYHN A 0 0
 }
 
+/*
 //Flame overlays on canister
 Model Spraycan
 { 
@@ -114,6 +115,7 @@ Model Spraycan
    //Throw
    FrameIndex SPLF M 0 11
 }
+*/
 
 //------------- VOXEL MODELS -------------
 

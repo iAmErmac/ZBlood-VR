@@ -29,6 +29,12 @@ Class MonsterBurnEffect : Inventory
 	
 	override void PostBeginPlay()
 	{
+		if(!Cvar.FindCvar("zblood_burnall").GetBool())
+		{
+			destroy();
+			return;
+		}
+		
 		self_timeout = true;
 		pain_countdown = random(3,7) * 35;
 		pain_death = false;
@@ -215,6 +221,11 @@ Class BurningMonsterTint : Actor
 	
 	override void PostBeginPlay()
 	{
+		if (!master || master.health <= 0)
+		{
+			destroy();
+			return;
+		}
 		glow_helper = Actor.Spawn("BurningGlow", master.pos);
 	}
 	
@@ -343,6 +354,8 @@ Class BloodMonsterHelper : EventHandler
 	{
 		_isTitlemap = CheckTitlemap();
 		if (_isTitlemap) return;
+		
+		if(!Cvar.FindCvar("zblood_burnall").GetBool()) return;
 		
 		let dead_thing = e.thing;
 		

@@ -7,6 +7,7 @@ Class Zippo : BloodWeaponZ
 	Weapon.SlotNumber 1;
 	Obituary "%o was punched to death by %k.";
 	Tag "Lighter";
+	+WEAPON.NOALERT;
 	+WEAPON.WIMPY_WEAPON;
 	+WEAPON.MELEEWEAPON;
 	+WEAPON.OFFHANDWEAPON;
@@ -24,6 +25,12 @@ Class Zippo : BloodWeaponZ
 			return;
 			
 		let player = owner.player.mo;
+		
+		if(!(owner.player.OffhandWeapon is "Zippo"))
+		{
+			player.SetInventory("ZippoOpen", 0);
+			player.SetInventory("PutOutFlame", 0);
+		}
 		
 		if(owner.player.ReadyWeapon is "Dynamite" && player.CountInv("ZippoOpen") > 0)
 		{

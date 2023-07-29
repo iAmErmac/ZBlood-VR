@@ -1,0 +1,305 @@
+
+Class ZBItemDropEvent : EventHandler
+{
+	override void WorldThingDied(WorldEvent e)
+	{
+		if(e.thing && e.thing.bIsMonster && !e.thing.bNoBlood && (e.thing is "ZombieMan" || e.thing is "ShotgunGuy" || e.thing is "DoomImp" || e.thing is "Demon" || e.thing is "ChaingunGuy"))
+		{
+			if(random(0,10) > 9) e.thing.A_Dropitem("UselessStuff");
+		}
+	}
+	
+	//must replace all custom weapons and ammo drops
+	override void WorldThingSpawned(WorldEvent e)
+	{
+		let player = Players[ConsolePlayer].mo;
+		let spawned_thing = e.Thing;
+		
+		//if Akimbo disabled them replace the powerup with something else
+		if(!Cvar.FindCvar("zblood_akimbo").GetBool() && (spawned_thing is "GunsAkimbo" || spawned_thing is "Berserk"))
+		{
+			if(random(0,3) > 2)
+				Actor.Spawn("ReflectiveShots", spawned_thing.pos);
+			else
+				Actor.Spawn("Sawedoff", spawned_thing.pos);
+			spawned_thing.Destroy();
+			return;
+		}
+	
+		//do no replace drops from heretic/hexen/strife. they will be handled by filter lumps
+		if((GameInfo.GameType & GAME_Heretic) || (GameInfo.GameType & GAME_Hexen) || (GameInfo.GameType & GAME_Strife)) return;
+		
+		bool custom_drop_replace = Cvar.FindCvar("zblood_drop_replace").GetBool();
+	
+		String pickup_class = spawned_thing.GetClassName();
+		pickup_class = pickup_class.MakeLower();
+		
+		for(int i = 0; i < ZB_pickup_list.Size(); i++) {
+			if(spawned_thing && pickup_class == ZB_pickup_list[i]) {
+				return;
+				break;
+			}
+		}
+		
+		if(spawned_thing is "Ammo" || spawned_thing is "Weapon")
+		{
+			//if this thing is give by the game into iventory destroy it immediately
+			if(player.FindInventory(spawned_thing.GetClassName()))
+			{
+				spawned_thing.Destroy();
+				return;
+			}
+		
+			//Remove all custom ammo or weapon from inventory
+			let invitem = Inventory(spawned_thing);
+			if(invitem.owner && (spawned_thing is "Ammo" || spawned_thing is "Weapon")) {
+				invitem.owner.RemoveInventory(invitem);
+			}
+			
+			if(custom_drop_replace)
+			{
+				//Replace all spawned custom weapon and ammo
+				if(spawned_thing is "Weapon") { spawned_thing.Spawn("UnknownWeaponReplacer", spawned_thing.pos); }
+				if(spawned_thing is "Ammo") { spawned_thing.Spawn("UnknownAmmoReplacer", spawned_thing.pos); }
+			}
+			
+			spawned_thing.Destroy();
+		}
+	}
+	
+	static const string ZB_pickup_list[] = {
+	
+		//weapons
+		"pitchfork",
+		"pitchfork2",
+		"flaregun",
+		"flaregun2",
+		"sawedoff",
+		"sawedoff2",
+		"tommygun",
+		"tommygun2",
+		"napalmlauncher",
+		"napalmlauncher2",
+		"tntbundle",
+		"dynamite",
+		"remotebombpickup",
+		"remotedynamite",
+		"proximitydynamite",
+		"proximitydetonator",
+		"spraycan",
+		"spraycanisterpickup",
+		"teslarifle",
+		"teslarifle2",
+		"lifeleechbuddy",
+		"lifeleech",
+		"voodoodollpickup",
+		"voodoodoll",
+		"offhandvoodoodoll",
+		"zippo",
+		"caleboffhandfist",
+		"bombremote",
+		
+		//ammo
+		"flares",
+		"flarebox2",
+		"flarebox3",
+		"spraycanister2",
+		"shell2",
+		"bulletbox2",
+		"gasolinecan",
+		"gasolinecanpickup",
+		"dtntammo",
+		"tntammo",
+		"tntammobox",
+		"dtntbox",
+		"happybundle",
+		"rtntbox",
+		"rtntammo",
+		"proxscan",
+		"spraycanister",
+		"teslacharge",
+		"cellpickup",
+		"essencepower",
+		"trappedsoul",
+		"voodoo",
+		
+		//pickups
+		"medicinepouch",
+		"bodyarmor",
+		"bodyarmorpickup",
+		"basicarmorpickup2",
+		"firearmorpickup",
+		"superarmorpickup",
+		"bodyarmorpickuplower",
+		"firearmorpickuplower",
+		"spiritarmorpickuplower",
+		"firearmor",
+		"spiritarmor",
+		"hearthealth",
+		"hearthealth2",
+		"hearthealth3",
+		"hearthealth4",
+		"hearthealth5",
+		"hearthealth6",
+		"hearthealth7",
+		"hearthealth8",
+		"hearthealth9",
+		"hearthealth10",
+		"hearthealth11",
+		"hearthealth12",
+		"hearthealth13",
+		"hearthealth14",
+		"hearthealth15",
+		"hearthealth16",
+		"hearthealth17",
+		"hearthealth18",
+		"hearthealth19",
+		"hearthealth20",
+		"hearthealth21",
+		"hearthealth22",
+		"hearthealth23",
+		"hearthealth24",
+		"hearthealth25",
+		"hearthealth26",
+		"hearthealth27",
+		"hearthealth28",
+		"hearthealth29",
+		"hearthealth30",
+		"hearthealth31",
+		"hearthealth32",
+		"hearthealth33",
+		"hearthealth34",
+		"hearthealth35",
+		"hearthealth36",
+		"hearthealth37",
+		"hearthealth38",
+		"hearthealth39",
+		"hearthealth40",
+		"hearthealth41",
+		"hearthealth42",
+		"hearthealth43",
+		"hearthealth44",
+		"hearthealth45",
+		"hearthealth46",
+		"uselessstuff",
+		"jumpingboots",
+		"jumpboots",
+		"reflectiveshots",
+		"divingsuit",
+		"divingsuit2",
+		"beastvision",
+		"deathmask",
+		"gunsakimbo",
+		"doctorbag",
+		
+		//custom spawners
+		"HeartHealthFrag",
+		"ArmorFrag",
+		"FireArmorFrag",
+		"SpiritArmorFrag",
+		"ArmorFragSpawner",
+		"StimpackSpawner",
+		"BasicAmmoPack",
+		"AdvancedAmmoPack",
+		"RandomAmmoPack",
+		"BasicArsenalDrop",
+		"AdvancedArsenalDrop",
+		"NoArsenalDrop",
+		"UnknownAmmoReplacer",
+		"UnknownWeaponReplacer",
+		
+		//custom spawners for heretic/hexen
+		"flarefunspawner",
+		"sawedoffspawner",
+		"tommygunspawner",
+		"spraycanspawner",
+		"teslariflespawner",
+		"napalmspawner",
+		"lifeleechspawner",
+		"voodoodollspawner",
+		"flareshellspawner",
+		"flareboxspawner",
+		"flarebox2spawner",
+		"bulletspawner",
+		"bulletboxspawner",
+		"shellspawner",
+		"shellbundlespawner",
+		"gasolinecanspawner",
+		"spraycanisterspawner",
+		"cellpickupspawner",
+		"essencepowerspawner",
+		"trappedsoulspawner",
+		"tntspawner",
+		"tntboxspawner",
+		"proxybombspawner",
+		"proxybombboxspawner",
+		"remotebombspawner",
+		"happytntbundle",
+		"happyammopack",
+		"deathmaskspawner",
+		"reflectiveshotsspawner",
+		"divingsuitspawner",
+		"jumpingbootspawner",
+		"gunsakimbospawner",
+		"beastvisionspawner",
+		"cloakofshadow",
+		"lifeseed",
+		"armorfragment",
+		"firearmorfragment",
+		"spiritarmorfragment",
+		"armorfragmentspawner",
+		"smallarmordrop",
+		"smallfirearmordrop",
+		"smallspiritarmordrop",
+		"smallarmorspawner",
+		"bigarmorspawner",
+		"superarmorspawner",
+		"extraitemdrop",
+		"basicarsenalspawner",
+		"advancedarsenalspawner",
+		"basicammospawner",
+		"advancedammospawner",
+		"healthvialspawner",
+		"amuletspawner",
+		"helmspawner",
+		"shieldspawner",
+		"mesharmorspawner",
+		"porkalatorspawner",
+		"superhealthspawner",
+		"sittingcorpsespawner",
+		"sleepingcorpsespawner",
+		"barrelloots",
+		
+		//helper items
+		"usingpitchfork",
+		"chokeme",
+		"throwpower",
+		"throwpowerbig",
+		"boombaby",
+		"basicarmor",
+		"hexenarmor",
+		
+		//default starter items
+		"clip",
+		"clipbox",
+		"shell",
+		"shellbox",
+		"rocketammo",
+		"cell",
+		"goldwandammo",
+		"crossbowammo",
+		"maceammo",
+		"blasterammo",
+		"skullrodammo",
+		"phoenixrodammo",
+		"mana1",
+		"mana2",
+		"hegrenaderounds",
+		"phosphorusgrenaderounds",
+		"clipofbullets",
+		"minimissiles",
+		"energypod",
+		"poisonbolts",
+		"electricbolts"
+	};
+}

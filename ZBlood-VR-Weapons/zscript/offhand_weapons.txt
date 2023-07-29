@@ -15,7 +15,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
 		
-		if(voodoo_cursor && !(player.OffhandWeapon is "OfhandVoodooDoll")) voodoo_cursor.bInvisible = true;
+		if(voodoo_cursor && !(player.OffhandWeapon is "OffhandVoodooDoll")) voodoo_cursor.bInvisible = true;
 		
 		if (_isInitialized) return;
 		
@@ -63,13 +63,13 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if(player.ReadyWeapon IS "VoodooDoll")
 		{
-			if(!(player.OffhandWeapon is "OfhandVoodooDoll")) prevWeapon = player.OffhandWeapon.GetClassName();
+			if(!(player.OffhandWeapon is "OffhandVoodooDoll")) prevWeapon = player.OffhandWeapon.GetClassName();
 		
-			if(!player.mo.CountInv("OfhandVoodooDoll")) player.mo.setinventory("OfhandVoodooDoll", 1, false);
+			if(!player.mo.CountInv("OffhandVoodooDoll")) player.mo.setinventory("OffhandVoodooDoll", 1, false);
 			
-			if(!(player.OffhandWeapon IS "OfhandVoodooDoll"))
+			if(!(player.OffhandWeapon IS "OffhandVoodooDoll"))
 			{
-				Weapon weap = Weapon(player.mo.FindInventory("OfhandVoodooDoll"));
+				Weapon weap = Weapon(player.mo.FindInventory("OffhandVoodooDoll"));
 				player.OffhandWeapon = weap;
 				player.PendingWeapon = weap;
 				player.mo.BringUpWeapon();
@@ -79,7 +79,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		}
 		else
 		{
-			player.mo.setinventory("OfhandVoodooDoll", 0, false);
+			player.mo.setinventory("OffhandVoodooDoll", 0, false);
 			player.mo.setinventory("VoodooSpellCasted", 0, false);
 		}
 	}
@@ -101,11 +101,11 @@ Class BloodOffhandWeaponHandler : EventHandler
 		let player = players[consolePlayer].mo;
 		if(!player) return;
 		
-		if(!player.CountInv("OfhandVoodooDoll")) return;
+		if(!player.CountInv("OffhandVoodooDoll")) return;
 		
 		voodoo_cursor.bInvisible = true;
 		
-		let VoodooWeapon = OfhandVoodooDoll(player.FindInventory("OfhandVoodooDoll"));
+		let VoodooWeapon = OffhandVoodooDoll(player.FindInventory("OffhandVoodooDoll"));
 		player.target = NULL;
 		VoodooWeapon.voodoo_target = NULL;
 		
@@ -127,6 +127,8 @@ Class BloodOffhandWeaponHandler : EventHandler
 	{
 		Playerinfo player = players[consolePlayer];
 		if(!player) return;
+		
+		if(!Cvar.FindCvar("zblood_akimbo").GetBool()) return;
 		
 		Weapon weap;
 		
