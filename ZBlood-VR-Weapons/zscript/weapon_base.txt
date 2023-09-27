@@ -36,10 +36,31 @@ Class BloodFlameProjectile : Actor
 {
 	override int SpecialMissileHit(Actor victim)
 	{
-		if(Cvar.FindCvar("zblood_burnall").GetBool() && !victim.CountInv("PainBurnToken")) victim.SetInventory("MonsterBurnEffect", 1);
+		if(Cvar.FindCvar("zblood_burnall").GetBool() && !isBloodEnemy(victim) && !victim.CountInv("PainBurnToken")) victim.SetInventory("MonsterBurnEffect", 1);
 		
 		Super.SpecialMissileHit(victim);
 		return -1;
+	}
+	
+	private bool isBloodEnemy(Actor mo)
+	{
+		Array<String> blood_enemies = {
+			"bloodzombie", "bluecultist", "greycultist", "greencultist", "browncultist", "moron", "bloodrat", "bonefish", "bloatedbutcher", "chokinghand", "bracedhand", "chrysalidpod", "lavapod", "lavabarf", "hellrosebramblered", 
+			"spidermother", "spidermother2", "spidermother3", "spiderred", "newspiderred", "newredspider", "greenspider", "spiderblue", "bluespider", "spideryellow", "yellowspider", "spiderpurple", "purplespider", "spidercyan", "spiderblack", "blackspider", "spiderwhite", "whitespider",
+			"bloodgargoyle", "bloodgargoyle3", "cheogh", "statuecheogh", "statuegargoyle", "gillbeast", "hammerhaunt", "hellhound", "phantasm", "cerberus", "tchernobog"
+		};
+	
+		String actor_class = mo.GetClassName();
+		actor_class = actor_class.MakeLower();
+		for(int i=0; i < blood_enemies.Size(); i++)
+		{
+			if(actor_class.IndexOf(blood_enemies[i]) != -1)
+			{
+				return true;
+				break;
+			}
+		}
+		return false;
 	}
 }
 

@@ -29,6 +29,7 @@ Class MonsterBurnEffect : Inventory
 	
 	override void PostBeginPlay()
 	{
+		Super.PostBeginPlay();
 		if(!Cvar.FindCvar("zblood_burnall").GetBool())
 		{
 			destroy();
@@ -59,6 +60,8 @@ Class MonsterBurnEffect : Inventory
 			timeout++;
 		else if(self_timeout)
 			destroy();
+			
+		Super.DoEffect();
 	}
 	
 	private bool isBloodEnemy(Actor mo)
@@ -118,7 +121,7 @@ Class MonsterBurnEffect : Inventory
 				return;
 			}
 			
-			//or we start making out own universal burn sequence
+			//or we start making our own universal burn sequence
 			self_timeout = false;
 			let burn_tint = Actor.Spawn("BurningMonsterTint", owner.pos);
 			burn_tint.master = owner;
@@ -230,9 +233,11 @@ Class BurningMonsterTint : Actor
 	}
 	
 	override void Tick()
-	{   
+	{  
+		Super.TIck();
 		if (!master || master.health <= 0)
 		{
+			glow_helper.A_RemoveLight("BurningGlow1");
 			glow_helper.destroy();
 			destroy();
 			return;
