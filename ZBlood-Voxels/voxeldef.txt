@@ -236,35 +236,35 @@ BZODS = "voxels/monsters/zombie/BZODS.kvx"
 
 RABUI = "voxels/monsters/rat/RATBD.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RABUJ = "voxels/monsters/rat/RATBE.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RABUK = "voxels/monsters/rat/RATBF.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RABUL = "voxels/monsters/rat/RATBG.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RATBD = "voxels/monsters/rat/RATBD.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RATBE = "voxels/monsters/rat/RATBE.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RATBF = "voxels/monsters/rat/RATBF.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 RATBG = "voxels/monsters/rat/RATBG.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 
 //gargoyle body
@@ -282,19 +282,19 @@ TROOM = "voxels/monsters/gargoyle/BGARP.kvx"
 
 MORNO = "voxels/moron/MORNO.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 MORNP = "voxels/moron/MORNP.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 HORRA = "voxels/moron/HORRA.kvx"
 {
-	scale = 0.9
+	scale = 1.0
 }
 HORRC = "voxels/moron/HORRC.kvx"
 {
-	scale = 0.75
+	scale = 1.0
 }
 
 //zombiecan
@@ -310,11 +310,11 @@ BZBRB = "voxels/props/BZBRA.kvx"
 
 POL6A = "voxels/corpse/POL6A.kvx"
 {
-	scale = 0.7
+	scale = 1.0
 }
 POL6B = "voxels/corpse/POL6B.kvx"
 {
-	scale = 0.7
+	scale = 1.0
 }
 
 //props
@@ -475,5 +475,5 @@ GOR5Z = "voxels/corpse/GOR5A.kvx"
 
 PLAYW = "voxels/corpse/PLAYW.kvx"
 {
-	scale = 0.8
+	scale = 1.0
 }
