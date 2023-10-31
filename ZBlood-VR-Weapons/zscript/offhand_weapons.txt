@@ -7,7 +7,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
 		
 		PlayerInfo player = players[consolePlayer];
-		if (player == null) { return; }
+		if (player == null || player.mo.health < 1) { return; }
 		
 		HandleOffhandAutoSwitchWeapon();
 		HandleSprayCanIgnition();
@@ -26,9 +26,12 @@ Class BloodOffhandWeaponHandler : EventHandler
 		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
 		
 		Weapon weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
-		player.OffhandWeapon = weap;
-		player.PendingWeapon = weap;
-		player.mo.BringUpWeapon();
+		if(weap)
+		{
+			player.OffhandWeapon = weap;
+			player.PendingWeapon = weap;
+			player.mo.BringUpWeapon();
+		}
 		
 		voodoo_cursor = Actor.Spawn("voodooTargetIcon");
 		
@@ -407,7 +410,7 @@ Class HapticHelper : EventHandler
 	static void BuzzHand(int hand = 0)
 	{
 		Let player = Players[ConsolePlayer].mo;
-		if(!player) return;
+		if(!player || player.health < 1) return;
 		
 		player.LineAttack(0, 0, 0, 1, "melee", "hapticDummy", LAF_NOIMPACTDECAL | LAF_NOINTERACT | LAF_NORANDOMPUFFZ | (hand ? LAF_ISOFFHAND : 0));
 	}

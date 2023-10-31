@@ -67,7 +67,7 @@ Class MonsterBurnEffect : Inventory
 	private bool isBloodEnemy(Actor mo)
 	{
 		Array<String> blood_enemies = {
-			"bloodzombie", "bluecultist", "greycultist", "greencultist", "browncultist", "moron", "bloodrat", "bonefish", "bloatedbutcher", "chokinghand", "bracedhand", "chrysalidpod", "lavapod", "lavabarf", "hellrosebramblered", 
+			"bloodzombie", "bluecultist", "greycultist", "greencultist", "browncultist", "moron", "bloodrat", "bloodratspawner", "bonefish", "bloatedbutcher", "chokinghand", "bracedhand", "chrysalidpod", "lavapod", "lavabarf", "hellrosebramblered", 
 			"spidermother", "spidermother2", "spidermother3", "spiderred", "newspiderred", "newredspider", "greenspider", "spiderblue", "bluespider", "spideryellow", "yellowspider", "spiderpurple", "purplespider", "spidercyan", "spiderblack", "blackspider", "spiderwhite", "whitespider",
 			"bloodgargoyle", "bloodgargoyle3", "cheogh", "statuecheogh", "statuegargoyle", "gillbeast", "hammerhaunt", "hellhound", "phantasm", "cerberus", "tchernobog"
 		};
@@ -329,19 +329,20 @@ Class BloodMonsterHelper : EventHandler
 		if (_isTitlemap) return;
 		
 		if(!Cvar.FindCvar("zblood_monsters").GetBool()) return;
+		if(isBloodEnemyClass(e.Replacee.GetClassName())) return;
 		
-		if(e.Replacee is "DeadZombieMan") 			e.Replacement = 'DeadACultist';
+		//if(e.Replacee is "DeadZombieMan") 			e.Replacement = 'DeadACultist';
 		if(e.Replacee is "ZombieMan") 				e.Replacement = 'GreenCultist';
-		if(e.Replacee is "DeadShotgunGuy") 			e.Replacement = 'DeadCultist';
+		//if(e.Replacee is "DeadShotgunGuy") 			e.Replacement = 'DeadCultist';
 		if(e.Replacee is "ShotgunGuy") 				e.Replacement = 'BrownCultist';
 		if(e.Replacee is "ChaingunGuy") 			e.Replacement = 'GreyCultist';
 		if(e.Replacee is "DoomImp") 				e.Replacement = 'BloodGargoyle3';
-		if(e.Replacee is "DeadDemon") 				e.Replacement = 'DeadZombie';
+		//if(e.Replacee is "DeadDemon") 				e.Replacement = 'DeadZombie';
 		if(e.Replacee is "Demon") 					e.Replacement = 'BloodZombie';
 		if(e.Replacee is "Spectre") 				e.Replacement = 'HammerHaunt';
 		if(e.Replacee is "LostSoul") 				e.Replacement = 'BloodRat';
 		if(e.Replacee is "Cacodemon") 				e.Replacement = 'GillBeast';
-		if(e.Replacee is "DeadCacodemon") 			e.Replacement = 'DeadGillBeast';
+		//if(e.Replacee is "DeadCacodemon") 			e.Replacement = 'DeadGillBeast';
 		if(e.Replacee is "HellKnight") 				e.Replacement = 'HellHound';
 		if(e.Replacee is "Revenant") 				e.Replacement = 'BloatedButcher';
 		if(e.Replacee is "PainElemental") 			e.Replacement = 'Phantasm';
@@ -359,6 +360,7 @@ Class BloodMonsterHelper : EventHandler
 	{
 		_isTitlemap = CheckTitlemap();
 		if (_isTitlemap) return;
+		if (e.thing is "PlayerPawn") return;
 		
 		if(!Cvar.FindCvar("zblood_burnall").GetBool()) return;
 		
@@ -381,6 +383,26 @@ Class BloodMonsterHelper : EventHandler
 			mo.bALWAYSFAST = true;
 			//mo.speed *= frandom(1.2, 1.8);
 		}
+	}
+	
+	private bool isBloodEnemyClass(String actor_class)
+	{
+		Array<String> blood_enemies = {
+			"bloodzombie", "bluecultist", "greycultist", "greencultist", "browncultist", "moron", "bloodrat", "bloodratspawner", "bonefish", "bloatedbutcher", "chokinghand", "bracedhand", "chrysalidpod", "lavapod", "lavabarf", "hellrosebramblered", 
+			"spidermother", "spidermother2", "spidermother3", "spiderred", "newspiderred", "newredspider", "greenspider", "spiderblue", "bluespider", "spideryellow", "yellowspider", "spiderpurple", "purplespider", "spidercyan", "spiderblack", "blackspider", "spiderwhite", "whitespider",
+			"bloodgargoyle", "bloodgargoyle3", "cheogh", "statuecheogh", "statuegargoyle", "gillbeast", "hammerhaunt", "hellhound", "phantasm", "cerberus", "tchernobog"
+		};
+	
+		actor_class = actor_class.MakeLower();
+		for(int i=0; i < blood_enemies.Size(); i++)
+		{
+			if(actor_class.IndexOf(blood_enemies[i]) != -1)
+			{
+				return true;
+				break;
+			}
+		}
+		return false;
 	}
 
 	private static bool CheckTitlemap()

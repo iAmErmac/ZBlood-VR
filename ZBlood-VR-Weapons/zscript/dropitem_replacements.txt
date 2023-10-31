@@ -1,13 +1,26 @@
 
 Class ZBItemDropEvent : EventHandler
 {
-	override void WorldThingDied(WorldEvent e)
+	/*override void WorldThingDied(WorldEvent e)
 	{
-		if(e.thing && e.thing.bIsMonster && !e.thing.bNoBlood && (e.thing is "ZombieMan" || e.thing is "ShotgunGuy" || e.thing is "DoomImp" || e.thing is "Demon" || e.thing is "ChaingunGuy"))
+		if(e.thing && e.thing.bIsMonster && !e.thing.bNoBlood)
 		{
-			if(random(0,10) > 9) e.thing.A_Dropitem("UselessStuff");
+			String mo_class = e.thing.GetClassName();
+			mo_class = mo_class.MakeLower();
+			
+			for(int i = 0; i < blood_enemies.Size(); i++) {
+				if(mo_class == blood_enemies[i]) {
+					return;
+					break;
+				}
+			}
+		
+			if(e.thing is "ZombieMan" || e.thing is "ShotgunGuy" || e.thing is "DoomImp" || e.thing is "Demon" || e.thing is "ChaingunGuy")
+			{
+				if(random(0,10) > 9) e.thing.A_Dropitem("UselessStuff");
+			}
 		}
-	}
+	}*/
 	
 	//must replace all custom weapons and ammo drops
 	override void WorldThingSpawned(WorldEvent e)
@@ -41,10 +54,85 @@ Class ZBItemDropEvent : EventHandler
 			}
 		}
 		
+		//now try to match weapons based on parent class
+		if(spawned_thing is "weapon")
+		{
+			bool weapon_replaced;
+			if(spawned_thing is "supershotgun" || pickup_class.IndexOf("supershotgun") >= 0 || pickup_class.IndexOf("ssg") >= 0 || pickup_class.IndexOf("sawed") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("sawedoff", 1);
+				else
+					Actor.Spawn("sawedoff", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "shotgun" || pickup_class.IndexOf("shotgun") >= 0 || pickup_class.IndexOf("shotty") >= 0 || pickup_class.IndexOf("boomstick") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("flaregun", 1);
+				else
+					Actor.Spawn("flaregun", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "rocketlauncher" || pickup_class.IndexOf("rpg") >= 0 || pickup_class.IndexOf("rocket") >= 0 || pickup_class.IndexOf("missile") >= 0 || pickup_class.IndexOf("grenade") >= 0 || pickup_class.IndexOf("flak") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("napalmlauncher", 1);
+				else
+					Actor.Spawn("napalmlauncher", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "plasmarifle" || pickup_class.IndexOf("plasma") >= 0 || pickup_class.IndexOf("laser") >= 0 || pickup_class.IndexOf("flame") >= 0 || pickup_class.IndexOf("lightning") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("spraycan", 1);
+				else
+					Actor.Spawn("spraycan", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "bfg9000" || pickup_class.IndexOf("bfg") >= 0 || pickup_class.IndexOf("blackhole") >= 0 || pickup_class.IndexOf("mass") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("lifeleech", 1);
+				else
+					Actor.Spawn("lifeleech", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "chaingun" || pickup_class.IndexOf("chaingun") >= 0 || pickup_class.IndexOf("machinegun") >= 0 || pickup_class.IndexOf("smg") >= 0 || pickup_class.IndexOf("assault") >= 0 || pickup_class.IndexOf("rifle") >= 0 || pickup_class.IndexOf("mp") >= 0 || pickup_class.IndexOf("machine") >= 0 || pickup_class.IndexOf("carbine") >= 0 || pickup_class.IndexOf("ak47") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("tommygun", 1);
+				else
+					Actor.Spawn("tommygun", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "pistol" || pickup_class.IndexOf("pistol") >= 0 || pickup_class.IndexOf("magnum") >= 0 || pickup_class.IndexOf("colt") >= 0 || pickup_class.IndexOf("berreta") >= 0 || pickup_class.IndexOf("luger") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("flaregun", 1);
+				else
+					Actor.Spawn("flaregun", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			else if(spawned_thing is "chainsaw" || pickup_class.IndexOf("saw") >= 0 || pickup_class.IndexOf("grind") >= 0)
+			{
+				if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
+					player.GiveInventory("dynamite", 1);
+				else
+					Actor.Spawn("dynamite", spawned_thing.pos);
+				weapon_replaced = true;
+			}
+			if(weapon_replaced)
+			{
+				spawned_thing.Destroy();
+				return;
+			}
+		}
+		
 		if(spawned_thing is "Ammo" || spawned_thing is "Weapon")
 		{
-			//if this thing is give by the game into iventory destroy it immediately
-			if(player.FindInventory(spawned_thing.GetClassName()))
+			//if this thing is given by the game into iventory destroy it immediately
+			if(spawned_thing.bNoBlockmap && spawned_thing.bNoSector && Inventory(spawned_thing).owner && Inventory(spawned_thing).owner is "PlayerPawn")
 			{
 				spawned_thing.Destroy();
 				return;
@@ -52,7 +140,7 @@ Class ZBItemDropEvent : EventHandler
 		
 			//Remove all custom ammo or weapon from inventory
 			let invitem = Inventory(spawned_thing);
-			if(invitem.owner && (spawned_thing is "Ammo" || spawned_thing is "Weapon")) {
+			if(invitem.owner && invitem.owner is "PlayerPawn" && (spawned_thing is "Ammo" || spawned_thing is "Weapon")) {
 				invitem.owner.RemoveInventory(invitem);
 			}
 			
@@ -302,4 +390,10 @@ Class ZBItemDropEvent : EventHandler
 		"poisonbolts",
 		"electricbolts"
 	};
+	
+	static const string blood_enemies[] = {
+			"bloodzombie", "bluecultist", "greycultist", "greencultist", "browncultist", "moron", "bloodrat", "bloodratspawner", "bonefish", "bloatedbutcher", "chokinghand", "bracedhand", "chrysalidpod", "lavapod", "lavabarf", "hellrosebramblered", 
+			"spidermother", "spidermother2", "spidermother3", "spiderred", "newspiderred", "newredspider", "greenspider", "spiderblue", "bluespider", "spideryellow", "yellowspider", "spiderpurple", "purplespider", "spidercyan", "spiderblack", "blackspider", "spiderwhite", "whitespider",
+			"bloodgargoyle", "bloodgargoyle3", "cheogh", "statuecheogh", "statuegargoyle", "gillbeast", "hammerhaunt", "hellhound", "phantasm", "cerberus", "tchernobog"
+		};
 }
