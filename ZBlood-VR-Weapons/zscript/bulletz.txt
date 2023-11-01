@@ -113,7 +113,7 @@ class BulletZRound : FastProjectile
 		Spawn:
 			PUFF A 0 NoDelay
 			{
-				int speed = CVar.FindCVar("bulletspeed").GetInt();
+				int speed = CVar.FindCVar("zblood_bulletspeed").GetInt();
 				A_ScaleVelocity(speed);
 			}
 		FlyLoop:

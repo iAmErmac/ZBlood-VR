@@ -10,9 +10,9 @@ ZBV_WEAPON_AKIMBO		= "Akimbo Mode";
 ZBV_AKIMBO_NOTE			= "Akimbo powerup allows you to have same weapon on both hands";
 
 ZBV_MONSTERS			= "Monster Replacement";
-ZBV_MON_REPLACE			= "Blood Monsters";
+ZBV_MON_REPLACE			= "Replace Doom Monsters";
 ZBV_MON_REPLACE_NOTE1	= "Requires a level restart";
-ZBV_MON_REPLACE_NOTE2	= "This will replace all Doom monsters with Blood monsters";
+ZBV_MON_REPLACE_NOTE2	= "This will replace all Doom monsters with Blood monsters in Doom maps";
 
 ZBV_DROP_OPT			= "Weapon/Ammo Replacement";
 ZBV_DROP_REPLACE		= "Replace Custom Drops";

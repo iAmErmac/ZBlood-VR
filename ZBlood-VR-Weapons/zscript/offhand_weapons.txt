@@ -304,24 +304,28 @@ Class BloodOffhandWeaponHandler : EventHandler
 		}
 		
 		weap = Weapon(player.mo.FindInventory("Sawedoff"));
+		if(weap && weap.bOffhandWeapon)
 		{
 			weap.bOffhandWeapon = false;
 			weap.bNoHandSwitch = true;
 		}
 		
 		weap = Weapon(player.mo.FindInventory("Tommygun"));
+		if(weap && weap.bOffhandWeapon)
 		{
 			weap.bOffhandWeapon = false;
 			weap.bNoHandSwitch = true;
 		}
 		
 		weap = Weapon(player.mo.FindInventory("NapalmLauncher"));
+		if(weap && weap.bOffhandWeapon)
 		{
 			weap.bOffhandWeapon = false;
 			weap.bNoHandSwitch = true;
 		}
 		
 		weap = Weapon(player.mo.FindInventory("TeslaRifle"));
+		if(weap && weap.bOffhandWeapon)
 		{
 			weap.bOffhandWeapon = false;
 			weap.bNoHandSwitch = true;
