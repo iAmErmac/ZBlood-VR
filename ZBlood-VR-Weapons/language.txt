@@ -32,3 +32,6 @@ ZBV_BURN_ALL_NOTE2		= "Flaregun, Spray-Can and LifeLeech can burn them. You cann
 ZBV_BLOOD				= "3D Bloodspots";
 ZBV_BLOOD_3D			= "Bloodspot on Floor";
 ZBV_BLOOD_FADE			= "Bloodspot Fadeout";
+
+ZBV_LEVEL_WARP			= "Level Warp";
+ZBV_LEVEL_SELECT		= "Select a Level";

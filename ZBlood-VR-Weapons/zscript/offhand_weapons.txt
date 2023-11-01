@@ -1,7 +1,6 @@
 
 Class BloodOffhandWeaponHandler : EventHandler
 {
-	
 	override void WorldTick()
 	{
 		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
@@ -17,6 +16,9 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if(voodoo_cursor && !(player.OffhandWeapon is "OffhandVoodooDoll")) voodoo_cursor.bInvisible = true;
 		
+		let zb_gvar = ZBGlobalVar.Get();
+		if(player.OffhandWeapon) zb_gvar.last_offhandweapon = player.OffhandWeapon.GetClassName();
+		
 		if (_isInitialized) return;
 		
 		//Initialization part
@@ -25,7 +27,17 @@ Class BloodOffhandWeaponHandler : EventHandler
 		
 		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
 		
-		Weapon weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
+		let get_gvar = ZBGlobalVar.Get();
+		Weapon weap;
+		if(get_gvar.last_offhandweapon.length() > 0)
+		{
+			weap = Weapon(player.mo.FindInventory(get_gvar.last_offhandweapon));
+		}
+		else
+		{
+			weap = Weapon(player.mo.FindInventory("CalebOffHandFist"));
+		}
+		
 		if(weap)
 		{
 			player.OffhandWeapon = weap;
@@ -407,6 +419,30 @@ Class BloodOffhandWeaponHandler : EventHandler
 	private actor voodoo_cursor;
 	private Class<Weapon> prevWeapon;
 	private bool init_akimbo;
+	private string last_offhandweapon;
+}
+
+class ZBGlobalVar : Thinker
+{
+	string last_offhandweapon;
+
+	ZBGlobalVar Init()
+	{
+		last_offhandweapon = "";
+		ChangeStatNum(STAT_STATIC);
+		return self;
+	}
+
+	static ZBGlobalVar Get()
+	{
+		ThinkerIterator it = ThinkerIterator.Create("ZBGlobalVar", STAT_STATIC);
+		let p = ZBGlobalVar(it.Next());
+		if (p == null)
+		{
+			p = new("ZBGlobalVar").Init();
+		}
+		return p;
+	}
 }
 
 Class HapticHelper : EventHandler
