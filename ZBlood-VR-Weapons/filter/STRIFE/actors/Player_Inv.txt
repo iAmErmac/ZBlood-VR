@@ -65,7 +65,7 @@ actor Caleb : DoomPlayer
 	Player.forwardMove 0.75 0.70
 	player.displayname "Caleb"
 	player.startitem "Clip", 0
-	player.startitem "Pitchfork" 1
+	player.startitem "Pitchfork2" 1
 	player.startitem "Backpack" 1
 	Player.StartItem "Shell" 6
 	player.soundclass "Caleb"

@@ -1,0 +1,463 @@
+
+GameInfo
+{
+	TitleMusic = "ZBTITLEM"
+	AddEventHandlers = "DeadMonsterDrops"
+}
+
+clearskills
+
+// ================================================
+// Skill level: Easy 
+//									  STILL KICKING
+// ================================================
+//Lets face it.. people playing this dont want to die in one hit
+//After second thought.. it was still difficult!
+skill ZB_Easy
+{		
+	name = "Still Kicking"
+	textcolor = White
+	picname = "M_JKILL" 
+	acsreturn = 0		
+	spawnfilter = "Easy"
+	damagefactor = 0.3
+	//MonsterHealth = 0.7	
+	aggressiveness = 0.5
+	ammofactor = 1.4
+	doubleammofactor = 1
+	easybossbrain
+	MonsterHealth = 1.0
+}
+
+// ================================================
+// Skill level: Moderate
+//								   SLIGHTLY BROILED
+// ================================================
+skill ZB_Moderate
+{
+	name = "Slightly Broiled"		
+	textcolor = White
+	picname = "M_ROUGH"  
+	acsreturn = 1
+	spawnfilter = "Easy"
+	damagefactor = 0.5
+	//MonsterHealth = 0.86	
+	aggressiveness = 0.9
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 1.0
+}
+
+// ================================================
+// Skill level: Recommended
+//								 PINK ON THE INSIDE
+// ================================================
+skill ZB_Normal
+{
+	name = "Pink on the Inside"
+	textcolor = White	
+	picname = "M_HURT"
+	acsreturn = 2
+	spawnfilter = "Normal"
+	damagefactor = 0.75
+	aggressiveness = 1
+	ammofactor = 1.0
+	doubleammofactor = 1
+	MonsterHealth = 1.5 //had to buff health, weapons too OP
+}
+
+// ================================================
+// Skill level: Difficult
+//										  WELL DONE
+// ================================================
+skill ZB_Difficult
+{
+	name = "Hardcore"
+	textcolor = White
+	picname = "M_ULTRA"
+	acsreturn = 3
+	spawnfilter = "Hard"
+	damagefactor = 1
+	aggressiveness = 1.1
+	ammofactor = 1
+	doubleammofactor = 1
+	MonsterHealth = 1.5
+}
+
+// ================================================
+// Skill level: Extreme
+//									   EXTRA CRISPY
+// ================================================
+//GL BEATING IT
+skill ZB_Extreme
+{
+	name = "Extra Crispy"
+	textcolor = White
+	picname = "M_NMARE"
+	acsreturn = 4
+	spawnfilter = "Hard"
+	damagefactor = 1.25
+	aggressiveness = 2
+	ammofactor = 1
+	doubleammofactor = 1
+	//MonsterHealth = 1.25
+	MonsterHealth = 1.8
+}
+
+
+
+gamedefaults
+{
+	forcenoskystretch
+	strifefallingdamage
+	nointermission
+	clipmidtextures
+	noinfighting
+}
+
+map MAP01 LOOKUP "TXT_STRIFE_MAP01"
+{
+	next = "MAP02"
+	sky1 = "SKYMNT02"
+	music = "D_ACTION"
+	cluster = 1
+}
+
+map MAP02 LOOKUP "TXT_STRIFE_MAP02"
+{
+	next = "MAP03"
+	sky1 = "SKYMNT02"
+	music = "D_TAVERN"
+	cluster = 1
+}
+
+map MAP03 LOOKUP "TXT_STRIFE_MAP03"
+{
+	next = "MAP04"
+	sky1 = "SKYMNT02"
+	music = "D_DANGER"
+	cluster = 1
+	noallies
+	redirect = "Sigil", "map30"
+	slideshow = "Inter_Strife_MAP03"
+}
+
+map MAP04 LOOKUP "TXT_STRIFE_MAP04"
+{
+	next = "MAP05"
+	sky1 = "SKYMNT02"
+	music = "D_FAST"
+	cluster = 1
+	compat_railing
+}
+
+map MAP05 LOOKUP "TXT_STRIFE_MAP05"
+{
+	next = "MAP06"
+	sky1 = "SKYMNT02"
+	music = "D_INTRO"
+	cluster = 1
+}
+
+map MAP06 LOOKUP "TXT_STRIFE_MAP06"
+{
+	next = "MAP07"
+	sky1 = "SKYMNT02"
+	music = "D_DARKER"
+	cluster = 1
+}
+
+map MAP07 LOOKUP "TXT_STRIFE_MAP07"
+{
+	next = "MAP08"
+	sky1 = "SKYMNT02"
+	music = "D_STRIKE"
+	cluster = 1
+	redirect = "Sigil", "map10"
+}
+
+map MAP08 LOOKUP "TXT_STRIFE_MAP08"
+{
+	next = "MAP09"
+	sky1 = "SKYMNT02"
+	music = "D_SLIDE"
+	cluster = 1
+}
+
+map MAP09 LOOKUP "TXT_STRIFE_MAP09"
+{
+	next = "MAP10"
+	sky1 = "SKYMNT02"
+	music = "D_TRIBAL"
+	cluster = 1
+
+	// These are the sky changes for the first 8 maps
+
+	specialaction = "Programmer", "ACS_Execute", 0, 1, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 2, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 3, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 4, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 5, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 6, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 7, 256
+	specialaction = "Programmer", "ACS_Execute", 0, 8, 256
+	
+	// It seems that Strife was originally going to print the text
+	// from the C1TEXT lump when you move from map 9 to map 10, but
+	// that idea apparently got scrapped as the game developed. 
+}
+
+map MAP10 LOOKUP "TXT_STRIFE_MAP10"
+{
+	next = "MAP11"
+	sky1 = "SKYMNT01"
+	music = "D_MARCH"
+	cluster = 1
+	slideshow = "Inter_Strife_MAP10"
+}
+
+map MAP11 LOOKUP "TXT_STRIFE_MAP11"
+{
+	next = "MAP12"
+	sky1 = "SKYMNT01"
+	music = "D_DANGER"
+	cluster = 1
+}
+
+map MAP12 LOOKUP "TXT_STRIFE_MAP12"
+{
+	next = "MAP13"
+	sky1 = "SKYMNT01"
+	music = "D_MOOD"
+	cluster = 1
+}
+
+map MAP13 LOOKUP "TXT_STRIFE_MAP13"
+{
+	next = "MAP14"
+	sky1 = "SKYMNT01"
+	music = "D_CASTLE"
+	cluster = 1
+}
+
+map MAP14 LOOKUP "TXT_STRIFE_MAP14"
+{
+	next = "MAP15"
+	sky1 = "SKYMNT01"
+	music = "D_DARKER"
+	cluster = 1
+}
+
+map MAP15 LOOKUP "TXT_STRIFE_MAP15"
+{
+	next = "MAP16"
+	sky1 = "SKYMNT01"
+	music = "D_ACTION"
+	cluster = 1
+}
+
+map MAP16 LOOKUP "TXT_STRIFE_MAP16"
+{
+	next = "MAP17"
+	sky1 = "SKYMNT01"
+	music = "D_FIGHT"
+	cluster = 1
+}
+
+map MAP17 LOOKUP "TXT_STRIFE_MAP17"
+{
+	next = "MAP18"
+	sky1 = "SKYMNT01"
+	music = "D_SPENSE"
+	cluster = 1
+}
+
+map MAP18 LOOKUP "TXT_STRIFE_MAP18"
+{
+	next = "MAP19"
+	sky1 = "SKYMNT01"
+	music = "D_SLIDE"
+	cluster = 1
+}
+
+map MAP19 LOOKUP "TXT_STRIFE_MAP19"
+{
+	next = "MAP20"
+	sky1 = "SKYMNT01"
+	music = "D_STRIKE"
+	cluster = 1
+}
+
+map MAP20 LOOKUP "TXT_STRIFE_MAP20"
+{
+	next = "MAP21"
+	sky1 = "SKYMNT01"
+	music = "D_DARK"
+	cluster = 1
+}
+
+map MAP21 LOOKUP "TXT_STRIFE_MAP21"
+{
+	next = "MAP22"
+	sky1 = "SKYMNT01"
+	music = "D_TECH"
+	cluster = 1
+}
+
+map MAP22 LOOKUP "TXT_STRIFE_MAP22"
+{
+	next = "MAP23"
+	sky1 = "SKYMNT01"
+	music = "D_SLIDE"
+	cluster = 1
+}
+
+map MAP23 LOOKUP "TXT_STRIFE_MAP23"
+{
+	next = "MAP24"
+	sky1 = "SKYMNT01"
+	music = "D_DRONE"
+	cluster = 1
+}
+
+map MAP24 LOOKUP "TXT_STRIFE_MAP24"
+{
+	next = "MAP25"
+	sky1 = "SKYMNT01"
+	music = "D_PANTHR"
+	cluster = 1
+}
+
+map MAP25 LOOKUP "TXT_STRIFE_MAP25"
+{
+	next = "MAP26"
+	sky1 = "SKYMNT01"
+	music = "D_SAD"
+	cluster = 1
+}
+
+map MAP26 LOOKUP "TXT_STRIFE_MAP26"
+{
+	next = "MAP27"
+	sky1 = "SKYMNT01"
+	music = "D_INSTRY"
+	cluster = 1
+}
+
+map MAP27 LOOKUP "TXT_STRIFE_MAP27"
+{
+	next = "MAP28"
+	sky1 = "SKYMNT01"
+	music = "D_TECH"
+	cluster = 1
+}
+
+map MAP28 LOOKUP "TXT_STRIFE_MAP28"
+{
+	next = "MAP29"
+	sky1 = "SKYMNT01"
+	music = "D_ACTION"
+	cluster = 1
+}
+
+map MAP29 LOOKUP "TXT_STRIFE_MAP29"
+{
+	next = "EndGameS"
+	sky1 = "SKYMNT01"
+	music = "D_INSTRY"
+	cluster = 1
+	deathsequence = "Inter_Strife_Lose"
+}
+
+map MAP30 LOOKUP "TXT_STRIFE_MAP30"
+{
+	next = "MAP31"
+	sky1 = "SKYMNT01"
+	music = "D_DRONE"
+	cluster = 1
+}
+
+map MAP31 LOOKUP "TXT_STRIFE_MAP31"
+{
+	next = "MAP01"
+	sky1 = "SKYMNT01"
+	music = "D_FIGHT"
+	cluster = 1
+}
+
+map MAP32 LOOKUP "TXT_STRIFE_MAP32"
+{
+	next = "MAP33"
+	sky1 = "SKYMNT02"
+	music = "D_MAP1"
+	cluster = 2
+}
+
+map MAP33 LOOKUP "TXT_STRIFE_MAP33"
+{
+	next = "MAP34"
+	sky1 = "SKYMNT02"
+	music = "D_MAP2"
+	cluster = 2
+}
+
+map MAP34 LOOKUP "TXT_STRIFE_MAP34"
+{
+	next = "EndBuyStrife"
+	sky1 = "SKYMNT02"
+	music = "D_MAP3"
+	cluster = 2
+	noallies
+}
+
+map MAP35 LOOKUP "TXT_STRIFE_MAP35"
+{
+	next = "MAP01"
+	sky1 = "SKYMNT01"
+	music = "D_TRIBAL"
+	cluster = 1
+}
+
+map MAP36 LOOKUP "TXT_STRIFE_MAP36"
+{
+	next = "MAP37"
+	sky1 = "SKYMNT01"
+	music = "D_MARCH"
+	cluster = 3
+}
+
+map MAP37 LOOKUP "TXT_STRIFE_MAP37"
+{
+	next = "MAP38"
+	sky1 = "SKYMNT01"
+	music = "D_STRIKE"
+	cluster = 3
+}
+
+map MAP38 LOOKUP "TXT_STRIFE_MAP38"
+{
+	next = "MAP36"
+	sky1 = "SKYMNT01"
+	music = "D_TRIBAL"
+	cluster = 3
+}
+
+cluster 1
+{
+	hub
+}
+
+cluster 2
+{
+	hub
+	exittext = "T1TEXT"
+	music = "d_fmfast"
+	pic = "PANEL7"
+	exittextislump
+}
+
+clearepisodes
+episode MAP02 teaser MAP33
+{
+	name = "$TXT_STRIFE_EPI"
+}

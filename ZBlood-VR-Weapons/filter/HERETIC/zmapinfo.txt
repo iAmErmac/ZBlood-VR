@@ -1,8 +1,8 @@
 
-
 GameInfo
 {
-	EventHandlers = "DeadMonsterDrops"
+	TitleMusic = "ZBTITLEM"
+	AddEventHandlers = "DeadMonsterDrops"
 }
 
 clearskills

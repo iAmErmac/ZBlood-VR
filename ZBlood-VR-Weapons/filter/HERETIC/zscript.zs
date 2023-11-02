@@ -4,7 +4,9 @@ class DeadMonsterDrops : EventHandler
 {
 	override void WorldThingDied(WorldEvent e)
 	{
-		if ( e.thing.bIsMonster && e.Thing.GetSpecies() != "HereticImp" && e.Thing.GetSpecies() != "HereticImpLeader" )
+		if(!e.thing || !e.thing.bIsMonster) return;
+		
+		if (e.Thing.GetSpecies() != "HereticImp" && e.Thing.GetSpecies() != "HereticImpLeader" )
 		{			
 			//estimating monster through health and dropping items accordingly
 			if(e.thing.SpawnHealth() <= 360){

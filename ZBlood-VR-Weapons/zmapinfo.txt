@@ -1,6 +1,7 @@
 
 gameinfo
 {
+	TitleMusic = "ZBTITLEM"
 	AddEventHandlers = "BloodMonsterHelper", "BloodOffhandWeaponHandler", "BulletZHandler", "HapticHelper", "ZBItemDropEvent"
 }
 

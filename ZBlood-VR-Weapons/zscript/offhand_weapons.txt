@@ -8,13 +8,14 @@ Class BloodOffhandWeaponHandler : EventHandler
 		PlayerInfo player = players[consolePlayer];
 		if (player == null || player.mo.health < 1) { return; }
 		
+		if(!voodoo_cursor) voodoo_cursor = Actor.Spawn("voodooTargetIcon");
+		if(!(player.OffhandWeapon is "OffhandVoodooDoll")) voodoo_cursor.bInvisible = true;
+		
 		HandleOffhandAutoSwitchWeapon();
 		HandleSprayCanIgnition();
 		HandleAkimbo();
 		
 		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
-		
-		if(voodoo_cursor && !(player.OffhandWeapon is "OffhandVoodooDoll")) voodoo_cursor.bInvisible = true;
 		
 		let zb_gvar = ZBGlobalVar.Get();
 		if(player.OffhandWeapon) zb_gvar.last_offhandweapon = player.OffhandWeapon.GetClassName();
@@ -44,8 +45,6 @@ Class BloodOffhandWeaponHandler : EventHandler
 			player.PendingWeapon = weap;
 			player.mo.BringUpWeapon();
 		}
-		
-		voodoo_cursor = Actor.Spawn("voodooTargetIcon");
 		
 		_isInitialized = true;
 	}
@@ -116,7 +115,7 @@ Class BloodOffhandWeaponHandler : EventHandler
 		let player = players[consolePlayer].mo;
 		if(!player) return;
 		
-		if(!player.CountInv("OffhandVoodooDoll")) return;
+		if(!player.CountInv("OffhandVoodooDoll") || !voodoo_cursor) return;
 		
 		voodoo_cursor.bInvisible = true;
 		

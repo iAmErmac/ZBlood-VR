@@ -4,7 +4,7 @@ class DeadMonsterDrops : EventHandler
 {
 	override void WorldThingDied(WorldEvent e)
 	{
-		if ( e.thing.bIsMonster )
+		if (e.thing && e.thing.bIsMonster)
 		{			
 			//estimating monster through health and dropping items accordingly
 			

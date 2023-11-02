@@ -1,4 +1,4 @@
-/*
+
 Actor NoBSItem1 Replaces Healthbonus
 {
 	States
@@ -39,6 +39,7 @@ Actor NoBSItem3 replaces Stimpack
 	}
 }
 
+
 Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on vile
 {
 	States
@@ -48,16 +49,16 @@ Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on v
 		Stop
 	}
 }
-*/
+
 
 #include "actors/Player_Inv.txt"
 
-Actor StimpackSpawner : RandomSpawner replaces Stimpack
+Actor StimpackSpawner : RandomSpawner //replaces Stimpack
 {
 	DropItem "UselessStuff"
 }
 
-Actor HeartHealthFrag : HeartHealth replaces Healthbonus
+Actor HeartHealthFrag : HeartHealth //replaces Healthbonus
 {
 	Scale 0.5
 	inventory.amount 1
@@ -147,7 +148,7 @@ Actor SpiritArmorFrag: CustomInventory
 	}
 }
 
-Actor ArmorFragSpawner replaces Armorbonus
+Actor ArmorFragSpawner //replaces Armorbonus
 {
 	States
 	{
@@ -166,7 +167,7 @@ Actor ArmorFragSpawner replaces Armorbonus
 	}
 }
 
-Actor BasicAmmoPack Replaces Clip
+Actor BasicAmmoPack //Replaces Clip
 {
 	Speed 15
 	States
