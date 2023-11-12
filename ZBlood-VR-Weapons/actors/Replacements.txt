@@ -50,9 +50,6 @@ Actor NoBSMonster replaces ArchVile // To get rid of silly beast copy paste on v
 	}
 }
 
-
-#include "actors/Player_Inv.txt"
-
 Actor StimpackSpawner : RandomSpawner //replaces Stimpack
 {
 	DropItem "UselessStuff"

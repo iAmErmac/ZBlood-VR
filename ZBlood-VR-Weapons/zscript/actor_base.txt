@@ -323,7 +323,7 @@ Class BurntMonsterCorpse : Actor
 
 Class BloodMonsterHelper : EventHandler
 {
-	override void CheckReplacement(ReplaceEvent e)
+	/*override void CheckReplacement(ReplaceEvent e)
 	{
 		_isTitlemap = CheckTitlemap();
 		if (_isTitlemap) return;
@@ -354,7 +354,7 @@ Class BloodMonsterHelper : EventHandler
 		if(e.Replacee is "Cyberdemon") 				e.Replacement = 'Cerberus';
 		if(e.Replacee is "SpiderMasterMind") 		e.Replacement = 'Tchernobog';
 		if(e.Replacee is "WolfensteinSS") 			e.Replacement = 'DangerousWorld';
-	}
+	}*/
 	
 	override void WorldThingDied(WorldEvent e)
 	{

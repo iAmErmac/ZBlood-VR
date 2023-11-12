@@ -1,8 +1,8 @@
 # ZBlood Vengeance
 
-![ZBloody Hell](https://blood-wiki.org/images/5/5a/ZBlood-Gargoyle.png)
+![ZBlood Vengeance](https://i.imgur.com/5xqedch.jpg)
 
-A VR addon mod for ZBloody Hell (Doom TC Mod) by Ermac
+ZBloody Hell is a Total Conversion of the cult classic Blood (1998) in GZDoom engine by Jeffrey Graham (psyren), Joseph Otey and sluggard. This addon mod by Ermac enhances ZBloody Hell experience in VR.
 
 This mod replaces all weapons for ZBloody Hell mod (https://www.moddb.com/mods/zbloody-hell) with 3D and voxel models to use in VR.
 
@@ -13,26 +13,27 @@ This mod replaces all weapons for ZBloody Hell mod (https://www.moddb.com/mods/z
 ## Features
 * Switch between 3D and voxel weapon models anytime
 * Optional voxel addon (thanks to Cheello) to replace more sprite items into voxel
-* Option to disable replacing Doom monsters from Blood (to play Doom levels)
+* ~~Option to disable replacing Doom monsters from Blood (to play Doom levels)~~
 * Cultist hitscan attacks can be replaced with projectiles
 * Dual wield support (QuestZDoom)
-* Akimbo weapons as they were meant to be (weapons on each hand when Akimbo activated)
-* Light up Dynamites and Spray-Can like you'd actually do (requires a dual wield build)
-* Stab Voodoo doll to hurt monsters (with gaze targetting)
+* Akimbo weapons, ie. weapons on each hand when Akimbo activated (QuestZDoom)
+* Light up Dynamites and Spray-Can like you'd actually do (QuestZDoom)
+* Stab Voodoo doll to hurt monsters with gaze targetting (QuestZDoom)
 * Burn (almost) any monster in any wad with FlareGun, Spray-Can and LifeLeech
+* Additional blood spots on floor (optional)
 * Compatible with Doom/Heretic/Hexen/Strife/Chex iwads (you can play those levels)
+
+## Known issues
+* When you run out of main hand weapons but dynamite/voodoo doll you can't switch off-hand weapon
 
 ![Vengeance awaits](https://i.imgur.com/Ky7v3a4.jpg)
 
 ## Installation
 
 Load the mods in this order:
-1) zbloody_hell.wad (iwad)
-2) ZBloody_Hell_v1915.pk3 (main mod)
-3) ZBloody_Hell_v1915_Caleb.pk3
-4) ZBloody_Hell_v1915x_Patch.pk3 (interactive portals)
-5) ZBlood-VR-Weapons
-6) ZBlood-Voxels (additional voxels by Cheello, optional)
+1) ZBLOOD WAD
+2) ZBLOOD VR WEAPONS WAD
+3) ZBLOOD VOXEL WAD (additional voxels by Cheello, optional)
 
 ### GZDoom VR (PC-VR)
 
@@ -75,6 +76,12 @@ To install:
   
 * [Top HP Bars:](https://forum.zdoom.org/viewtopic.php?t=55048)
   - Really simple mod to add HP bars on top of enemies and players. Performance version is recommended for VR
+  
+* [PyWeaponWheel:](https://github.com/iAmErmac/PyWeaponWheel-VR)
+  - An excellent and simple weapon wheel to quickly switch between weapons
+  
+* [Gearbox:](https://github.com/iAmErmac/gearbox)
+  - Another excellent weapon wheel but also supports inventory items
 
 
 ## Credits

@@ -71,7 +71,7 @@ actor Caleb : DoomPlayer
 	player.soundclass "Caleb"
     Player.CrouchSprite "CALC"
 	DamageFactor "CALINOimmune",0
-	Player.WeaponSlot 1, "PitchFork"
+	Player.WeaponSlot 1, "PitchFork", "CalebOffHandFist", "Zippo", "BombRemote"
 	Player.WeaponSlot 2, "Flaregun"
 	Player.WeaponSlot 3, "Sawedoff"
 	Player.WeaponSlot 4, "TommyGun"

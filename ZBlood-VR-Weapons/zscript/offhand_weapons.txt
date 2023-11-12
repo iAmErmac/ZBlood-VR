@@ -1,6 +1,15 @@
 
 Class BloodOffhandWeaponHandler : EventHandler
 {
+	override void PlayerEntered(PlayerEvent e)
+	{
+		PlayerInfo player = players[e.PlayerNumber];
+		if(!player) return;
+		
+		player.mo.SetInventory("ZippoOpen", 0);
+		player.mo.SetInventory("PutOutFlame", 0);
+	}
+
 	override void WorldTick()
 	{
 		if (_isTitlemap) { return; } //we dont need to initiate the mod if it's a titlemap
@@ -11,11 +20,13 @@ Class BloodOffhandWeaponHandler : EventHandler
 		if(!voodoo_cursor) voodoo_cursor = Actor.Spawn("voodooTargetIcon");
 		if(!(player.OffhandWeapon is "OffhandVoodooDoll")) voodoo_cursor.bInvisible = true;
 		
+		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
+		if(!player.mo.CountInv("Zippo")) player.mo.setinventory("Zippo", 1, false); //Give player lighter
+		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
+		
 		HandleOffhandAutoSwitchWeapon();
 		HandleSprayCanIgnition();
 		HandleAkimbo();
-		
-		if(player.mo.CountInv("RemoteDynamite") && !player.mo.CountInv("BombRemote")) player.mo.setinventory("BombRemote", 1, false); //Give player remote when picking up remote bombs
 		
 		let zb_gvar = ZBGlobalVar.Get();
 		if(player.OffhandWeapon) zb_gvar.last_offhandweapon = player.OffhandWeapon.GetClassName();
@@ -23,10 +34,6 @@ Class BloodOffhandWeaponHandler : EventHandler
 		if (_isInitialized) return;
 		
 		//Initialization part
-		
-		if(!player.mo.CountInv("Zippo")) player.mo.setinventory("Zippo", 1, false); //Give player lighter
-		
-		if(!player.mo.CountInv("CalebOffHandFist")) player.mo.setinventory("CalebOffHandFist", 1, false); //Give player off-hand fist weapon
 		
 		let get_gvar = ZBGlobalVar.Get();
 		Weapon weap;

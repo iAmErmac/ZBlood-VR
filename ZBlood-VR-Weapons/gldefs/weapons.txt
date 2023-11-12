@@ -1,0 +1,148 @@
+
+Material texture "models/3d/weapons/hand/hand.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/pitchfork/pitchfork.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/flaregun/flaregun.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/shotgun/shotgun.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/tommygun/tommygun.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/napalm/napalm0.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/napalm/napalm1.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/napalm/napalm2.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/napalm/napalm3.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/napalm/napalm4.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/napalm/napalm5.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+/*Material texture "models/3d/weapons/tnt/lighter.png"
+{
+	shader "shaders/SimSun.fp"
+}*/
+Material texture "models/3d/weapons/tnt/tnt.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/proxy0.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/proxy1.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/proxy2.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/proxy3.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/remote_bomb.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/remote_bomb2.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/trigger0.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/trigger1.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/trigger2.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/trigger3.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/tnt/trigger4.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+/*Material texture "models/3d/weapons/zippo/zippo.png"
+{
+	shader "shaders/SimSun.fp"
+}*/
+
+Material texture "models/3d/weapons/spraycan/aerosol.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/teslagun/tesla0.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/teslagun/tesla1.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/teslagun/tesla2.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/teslagun/tesla3.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/teslagun/tesla4.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/lifeleech/lifeleech.png"
+{
+	shader "shaders/SimSun.fp"
+}
+Material texture "models/3d/weapons/lifeleech/leechbuddy.png"
+{
+	shader "shaders/SimSun.fp"
+}
+
+Material texture "models/3d/weapons/voodoo/voodoo.png"
+{
+	shader "shaders/SimSun.fp"
+}

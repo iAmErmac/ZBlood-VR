@@ -93,11 +93,11 @@ OptionMenu "ZBVR_Settings" {
 	Option "$ZBV_WEAPON_AKIMBO", "zblood_akimbo", "ZBV_enable_switch"
 	StaticText "$ZBV_AKIMBO_NOTE", "DarkGrey"
 	
-	StaticText " "
+	/*StaticText " "
 	StaticText "$ZBV_MONSTERS", "Gold"
 	Option "$ZBV_MON_REPLACE", "zblood_monsters", "ZBV_enable_switch"
 	StaticText "$ZBV_MON_REPLACE_NOTE1", "DarkRed"
-	StaticText "$ZBV_MON_REPLACE_NOTE2", "DarkGrey"
+	StaticText "$ZBV_MON_REPLACE_NOTE2", "DarkGrey"*/
 	
 	StaticText " "
 	StaticText "$ZBV_DROP_OPT", "Gold"
